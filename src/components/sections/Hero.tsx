@@ -9,7 +9,7 @@ export function Hero() {
   const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/XfmwUEJ.png"; 
 
   return (
-    <section className="relative w-full h-[85vh] bg-[#4a2c1d] px-[5px] pt-4">
+    <section className="relative w-full h-screen bg-[#4a2c1d] px-[5px] pt-4">
       {/* Contenedor con margen de 5px e imagen completa */}
       <div className="relative w-full h-full overflow-hidden">
         <Image 

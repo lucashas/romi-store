@@ -11,7 +11,7 @@ export function ProductShowcase() {
   const imgUrl = showcaseImg?.imageUrl || "https://i.imgur.com/j8pwxGX.png";
 
   return (
-    <section className="relative w-full h-[85vh] bg-white px-[5px] pt-4 border-b-8 border-secondary">
+    <section className="relative w-full h-screen bg-white px-[5px] pt-4 border-b-8 border-secondary">
       {/* Imagen completa con margen lateral */}
       <div className="relative w-full h-full overflow-hidden">
         <Image 

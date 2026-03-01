@@ -15,7 +15,7 @@ export function Features() {
   return (
     <section id="caracteristicas" className="bg-white">
       {/* Imagen de Impacto CABELLO - Con márgenes de 5px e imagen completa */}
-      <div className="relative w-full h-[85vh] bg-[#4a2c1d] px-[5px] pt-4 overflow-hidden">
+      <div className="relative w-full h-screen bg-[#4a2c1d] px-[5px] pt-4 overflow-hidden">
         <div className="relative w-full h-full">
           {featHairHero && (
             <Image 
