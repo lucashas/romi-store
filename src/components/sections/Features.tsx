@@ -12,21 +12,21 @@ export function Features() {
 
   return (
     <section id="caracteristicas" className="bg-white">
-      {/* Imagen de Impacto - Ajustada para verse COMPLETA en el móvil */}
-      <div className="relative w-full h-[80vh] bg-secondary/10">
+      {/* Imagen de Impacto CABELLO - Ocupa TODO el ancho y alto del viewport */}
+      <div className="relative w-full h-[90vh] bg-[#4a2c1d] overflow-hidden">
         {featHairHero && (
           <Image 
             src={featHairHero.imageUrl} 
             alt="Impacto MaryRuth's Cabello"
             fill
-            className="object-contain object-center p-4"
+            className="object-cover object-center"
             sizes="500px"
             priority
           />
         )}
       </div>
 
-      {/* Sección Cabello - Foco en Vanidad y Resultado */}
+      {/* Sección Detalle Resultados */}
       <div className="py-12 border-b border-secondary">
         <div className="container mx-auto px-6">
           <div className="space-y-6">
