@@ -1,6 +1,7 @@
 
 import { Hero } from "@/components/sections/Hero";
 import { Benefits } from "@/components/sections/Benefits";
+import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { Features } from "@/components/sections/Features";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ContactForm } from "@/components/sections/ContactForm";
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <div className="space-y-0">
           <Benefits />
+          <ProductShowcase />
           <Features />
           <Testimonials />
           <ContactForm />
