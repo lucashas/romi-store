@@ -1,63 +1,69 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-main",
+      "description": "Anuncio principal MaryRuth's Organics",
+      "imageUrl": "https://i.imgur.com/XfmwUEJ.png",
+      "imageHint": "maryruths hero"
+    },
+    {
       "id": "hero-product",
-      "description": "Botella de multivitamínico líquido MaryRuth's Hair Growth",
-      "imageUrl": "https://images.unsplash.com/photo-1687200267905-d41be64a0a5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx2aXRhbWluJTIwYm90dGxlfGVufDB8fHx8MTc3MjM5MjYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Botella de multivitamínico líquido MaryRuth's",
+      "imageUrl": "https://images.unsplash.com/photo-1763668444855-401b58dceb20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx2aXRhbWluJTIwYm90dGxlfGVufDB8fHx8MTc3MjM5MjYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vitamin bottle"
     },
     {
       "id": "healthy-lifestyle",
-      "description": "Pareja saludable sonriendo, estilo de vida orgánico",
-      "imageUrl": "https://images.unsplash.com/photo-1556911073-a517e752729c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoZWFsdGh5JTIwd29tYW58ZW58MHx8fHwxNzcyMzkyNjMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Estilo de vida saludable y radiante",
+      "imageUrl": "https://images.unsplash.com/photo-1765939945740-22d995927e56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGVhbHRoeSUyMGNvdXBsZXxlbnwwfHx8fDE3NzIzOTMxNTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "healthy couple"
     },
     {
       "id": "feature-hair",
-      "description": "Detalle de cabello saludable y radiante",
-      "imageUrl": "https://images.unsplash.com/photo-1472747624745-ce92d32d3c24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoZWFsdGh5JTIwaGFpcnxlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Cabello saludable y fuerte",
+      "imageUrl": "https://images.unsplash.com/flagged/photo-1580820258381-20c91a156841?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxoZWFsdGh5JTIwaGFpcnxlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "healthy hair"
     },
     {
       "id": "feature-kids",
-      "description": "Niño feliz comiendo una gomita saludable",
-      "imageUrl": "https://images.unsplash.com/photo-1624272949900-9ae4c56397e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoYXBweSUyMGNoaWxkfGVufDB8fHx8MTc3MjM4MzQ2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Niños felices y saludables",
+      "imageUrl": "https://images.unsplash.com/photo-1498674202614-ac0172c6c61a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxoYXBweSUyMGNoaWxkfGVufDB8fHx8MTc3MjM4MzQ2MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "happy child"
     },
     {
       "id": "supplement-d3",
-      "description": "Vitamina D3 en formato líquido premium",
+      "description": "Vitamina D3 Líquida",
       "imageUrl": "https://images.unsplash.com/photo-1766325693829-79d0b13a545e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx2aXRhbWluJTIwRDN8ZW58MHx8fHwxNzcyMzkyNjM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vitamin D3"
     },
     {
       "id": "supplement-complex-b",
-      "description": "Complejo B para energía y metabolismo",
-      "imageUrl": "https://images.unsplash.com/photo-1729704200283-a41b04e18da8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxlbmVyZ3klMjB2aXRhbWluc3xlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Complejo B Líquido",
+      "imageUrl": "https://images.unsplash.com/photo-1729704200280-0d0dda0f3c60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbmVyZ3klMjB2aXRhbWluc3xlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "energy vitamins"
     },
     {
       "id": "supplement-omega",
-      "description": "Suplemento Omega-3 para salud cardíaca",
-      "imageUrl": "https://images.unsplash.com/photo-1687200267616-83a40f3e674c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxvbWVnYSUyMDN8ZW58MHx8fHwxNzcyMzkyNjMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Omega-3 Líquido",
+      "imageUrl": "https://images.unsplash.com/photo-1597484389225-c68a9f0fa106?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b21lZ2ElMjAzfGVufDB8fHx8MTc3MjM5MjYzMnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "omega 3"
     },
     {
       "id": "testimonial-1",
-      "description": "Mujer feliz con los resultados del producto",
-      "imageUrl": "https://images.unsplash.com/photo-1675355291178-2d129f22c740?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwZmFjZXxlbnwwfHx8fDE3NzIzNjc0NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Usuario satisfecho 1",
+      "imageUrl": "https://images.unsplash.com/photo-1599566147214-ce487862ea4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc3MjM2NzQ0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person face"
     },
     {
       "id": "testimonial-2",
-      "description": "Hombre satisfecho con su energía diaria",
-      "imageUrl": "https://images.unsplash.com/photo-1521146764736-56c929d59c83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc3MjM2NzQ0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Usuario satisfecho 2",
+      "imageUrl": "https://images.unsplash.com/photo-1626526804650-7118ac691b7a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc3MjM2NzQ0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person face"
     },
     {
       "id": "testimonial-3",
-      "description": "Usuaria compartiendo su experiencia positiva",
-      "imageUrl": "https://images.unsplash.com/photo-1530268729831-4b0b9e170218?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc3MjM2NzQ0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Usuario satisfecho 3",
+      "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc3MjM2NzQ0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person face"
     }
   ]
