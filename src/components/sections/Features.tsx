@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { CheckCircle2, ShieldCheck, Zap, Heart, Sun } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Sun } from "lucide-react";
 
 export function Features() {
   const featHairHero = PlaceHolderImages.find(img => img.id === "feature-hair-hero");
@@ -12,14 +12,14 @@ export function Features() {
 
   return (
     <section id="caracteristicas" className="bg-white">
-      {/* Nueva Imagen de Impacto - Ocupa ancho y alto móvil */}
-      <div className="relative w-full h-screen bg-secondary/10">
+      {/* Imagen de Impacto - Ajustada para verse COMPLETA en el móvil */}
+      <div className="relative w-full h-[80vh] bg-secondary/10">
         {featHairHero && (
           <Image 
             src={featHairHero.imageUrl} 
             alt="Impacto MaryRuth's Cabello"
             fill
-            className="object-cover object-center"
+            className="object-contain object-center p-4"
             sizes="500px"
             priority
           />
