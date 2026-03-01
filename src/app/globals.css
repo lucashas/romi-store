@@ -46,3 +46,7 @@
 .bronze-text {
   color: #4a2c1d;
 }
+
+.shipping-badge {
+  clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
