@@ -14,19 +14,21 @@ export function Features() {
 
   return (
     <section id="caracteristicas" className="bg-white">
-      {/* Sección Cabello y Belleza */}
       <div className="py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div className="order-2 lg:order-1 relative">
               <div className="rounded-[2rem] overflow-hidden shadow-2xl aspect-square relative group border-4 border-secondary/10">
-                <Image 
-                  src={featHair?.imageUrl || ""} 
-                  alt="Resultados en el cabello"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  data-ai-hint="healthy hair"
-                />
+                {featHair && (
+                  <Image 
+                    src={featHair.imageUrl} 
+                    alt="Resultados en el cabello"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    data-ai-hint="healthy hair"
+                  />
+                )}
               </div>
             </div>
             
@@ -57,7 +59,6 @@ export function Features() {
         </div>
       </div>
 
-      {/* Sección Línea Infantil */}
       <div className="py-20 sm:py-32 bg-secondary/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -84,20 +85,22 @@ export function Features() {
             
             <div className="relative">
               <div className="rounded-[2rem] overflow-hidden shadow-2xl aspect-square relative group border-4 border-white">
-                <Image 
-                  src={featKids?.imageUrl || ""} 
-                  alt="Niños saludables"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  data-ai-hint="happy child"
-                />
+                {featKids && (
+                  <Image 
+                    src={featKids.imageUrl} 
+                    alt="Niños saludables"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    data-ai-hint="happy child"
+                  />
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Sección Suplementos Específicos */}
       <div className="py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -106,10 +109,9 @@ export function Features() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-            {/* Vitamina D3 */}
             <div className="group bg-white p-6 rounded-[2.5rem] border border-border/50 hover:shadow-2xl transition-all hover:-translate-y-2">
               <div className="relative h-64 mb-6 rounded-2xl overflow-hidden shadow-inner">
-                <Image src={featD3?.imageUrl || ""} alt="Vitamina D3" fill className="object-cover" data-ai-hint="vitamin D3" />
+                {featD3 && <Image src={featD3.imageUrl} alt="Vitamina D3" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" data-ai-hint="vitamin D3" />}
               </div>
               <div className="flex items-center gap-2 text-primary mb-3">
                 <Sun className="h-5 w-5" />
@@ -119,10 +121,9 @@ export function Features() {
               <p className="text-sm text-muted-foreground leading-relaxed italic">"Huesos fuertes y un ánimo equilibrado todos los días."</p>
             </div>
 
-            {/* Complejo B */}
             <div className="group bg-white p-6 rounded-[2.5rem] border border-border/50 hover:shadow-2xl transition-all hover:-translate-y-2">
               <div className="relative h-64 mb-6 rounded-2xl overflow-hidden shadow-inner">
-                <Image src={featB?.imageUrl || ""} alt="Complejo B" fill className="object-cover" data-ai-hint="energy vitamins" />
+                {featB && <Image src={featB.imageUrl} alt="Complejo B" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" data-ai-hint="energy vitamins" />}
               </div>
               <div className="flex items-center gap-2 text-primary mb-3">
                 <Zap className="h-5 w-5" />
@@ -132,10 +133,9 @@ export function Features() {
               <p className="text-sm text-muted-foreground leading-relaxed italic">"Impulsa tu mente y cuerpo sin los bajones de la cafeína."</p>
             </div>
 
-            {/* Omega 3 */}
             <div className="group bg-white p-6 rounded-[2.5rem] border border-border/50 hover:shadow-2xl transition-all hover:-translate-y-2">
               <div className="relative h-64 mb-6 rounded-2xl overflow-hidden shadow-inner">
-                <Image src={featOmega?.imageUrl || ""} alt="Omega 3" fill className="object-cover" data-ai-hint="omega 3" />
+                {featOmega && <Image src={featOmega.imageUrl} alt="Omega 3" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" data-ai-hint="omega 3" />}
               </div>
               <div className="flex items-center gap-2 text-primary mb-3">
                 <Heart className="h-5 w-5" />

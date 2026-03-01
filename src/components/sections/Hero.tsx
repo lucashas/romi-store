@@ -12,7 +12,6 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center bg-background py-12 lg:py-0">
-      {/* Elementos de fondo */}
       <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full bg-secondary/10 -skew-x-12 transform origin-top hidden lg:block" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -61,28 +60,32 @@ export function Hero() {
           </div>
 
           <div className="relative animate-fade-in-up [animation-delay:200ms] px-4 sm:px-0">
-            {/* Imagen Principal de Estilo de Vida */}
             <div className="relative rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden aspect-[4/5] shadow-2xl border-4 sm:border-[12px] border-white group">
-              <Image 
-                src={healthyLife?.imageUrl || ""} 
-                alt="Estilo de vida saludable" 
-                fill 
-                className="object-cover group-hover:scale-105 transition-transform duration-1000"
-                priority
-                data-ai-hint="healthy woman"
-              />
+              {healthyLife && (
+                <Image 
+                  src={healthyLife.imageUrl} 
+                  alt="Estilo de vida saludable" 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  data-ai-hint="healthy woman"
+                />
+              )}
             </div>
             
-            {/* Imagen del Producto Flotante - Organizada estratégicamente */}
             <div className="absolute -left-4 sm:-left-12 bottom-8 sm:-bottom-8 w-40 sm:w-64 aspect-[1/1.4] z-20 transition-transform hover:scale-110 duration-500">
-               <div className="relative w-full h-full bg-white rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] border border-secondary/20">
-                 <Image 
-                  src={heroProduct?.imageUrl || ""} 
-                  alt="Producto MaryRuth's" 
-                  fill 
-                  className="object-contain p-2 sm:p-4 drop-shadow-2xl"
-                  data-ai-hint="vitamin bottle"
-                 />
+               <div className="relative w-full h-full bg-white rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] border border-secondary/20 overflow-hidden">
+                 {heroProduct && (
+                   <Image 
+                    src={heroProduct.imageUrl} 
+                    alt="Producto MaryRuth's" 
+                    fill 
+                    className="object-contain p-2 sm:p-4 drop-shadow-2xl"
+                    sizes="(max-width: 768px) 160px, 256px"
+                    data-ai-hint="vitamin bottle"
+                   />
+                 )}
                </div>
             </div>
             

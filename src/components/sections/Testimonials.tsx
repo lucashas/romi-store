@@ -1,29 +1,29 @@
 
 "use client";
 
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent } from "@/components/ui/card";
 
-const testimonials = [
+const testimonialData = [
   {
     name: "Elena Rodríguez",
     role: "Cambio Total",
     quote: "Llevo 3 meses usando el multivitamínico líquido y mi cabello nunca ha estado tan fuerte. ¡Incluso mi peluquero lo notó!",
-    image: PlaceHolderImages.find(img => img.id === "testimonial-1")?.imageUrl
+    imageId: "testimonial-1"
   },
   {
     name: "Sofía Martínez",
     role: "Piel Radiante",
     quote: "El sabor Peach Mango es delicioso. Noto mi piel mucho más hidratada y luminosa desde que empecé.",
-    image: "https://picsum.photos/seed/user2/150/150"
+    imageId: "testimonial-2"
   },
   {
     name: "Marcos Santos",
     role: "Energía Diaria",
     quote: "La absorción líquida es real. No más pastillas difíciles de tragar y mi energía está por las nubes.",
-    image: "https://picsum.photos/seed/user3/150/150"
+    imageId: "testimonial-3"
   }
 ];
 
@@ -39,27 +39,36 @@ export function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <Card key={i} className="bg-white text-foreground border-none shadow-2xl rounded-[2rem] overflow-hidden">
-              <CardContent className="p-10 space-y-6">
-                <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className="h-5 w-5 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-xl font-medium italic leading-relaxed text-muted-foreground">"{t.quote}"</p>
-                <div className="flex items-center gap-4 pt-6 border-t border-primary/10">
-                  <div className="h-14 w-14 rounded-full overflow-hidden border-2 border-primary">
-                    <Image src={t.image || ""} alt={t.name} width={56} height={56} className="object-cover" />
+          {testimonialData.map((t, i) => {
+            const userImg = PlaceHolderImages.find(img => img.id === t.imageId);
+            return (
+              <Card key={i} className="bg-white text-foreground border-none shadow-2xl rounded-[2rem] overflow-hidden">
+                <CardContent className="p-10 space-y-6">
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <Star key={s} className="h-5 w-5 fill-primary text-primary" />
+                    ))}
                   </div>
-                  <div>
-                    <p className="font-bold text-xl">{t.name}</p>
-                    <p className="text-sm text-primary font-bold uppercase tracking-widest">{t.role}</p>
+                  <p className="text-xl font-medium italic leading-relaxed text-muted-foreground">"{t.quote}"</p>
+                  <div className="flex items-center gap-4 pt-6 border-t border-primary/10">
+                    <div className="h-14 w-14 rounded-full overflow-hidden border-2 border-primary relative">
+                      <Image 
+                        src={userImg?.imageUrl || `https://picsum.photos/seed/${i}/150/150`} 
+                        alt={t.name} 
+                        fill
+                        className="object-cover"
+                        sizes="56px"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-bold text-xl">{t.name}</p>
+                      <p className="text-sm text-primary font-bold uppercase tracking-widest">{t.role}</p>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
