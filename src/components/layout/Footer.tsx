@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Star } from "lucide-react";
+import { Leaf } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
@@ -13,12 +13,12 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2">
             <div className="bg-primary p-1.5 rounded-lg text-white">
-              <Star className="h-5 w-5 fill-accent text-accent" />
+              <Leaf className="h-5 w-5 fill-white" />
             </div>
-            <span className="text-xl font-bold font-headline text-primary">ProductoEstelar</span>
+            <span className="text-xl font-bold font-headline text-foreground">MaryRuth's <span className="text-primary">Organics</span></span>
           </div>
           
-          <div className="flex gap-8 text-sm text-muted-foreground font-medium">
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground font-medium">
             <Link href="#" className="hover:text-primary transition-colors">Privacidad</Link>
             <Link href="#" className="hover:text-primary transition-colors">Términos</Link>
             <Link href="#" className="hover:text-primary transition-colors">Cookies</Link>
@@ -26,7 +26,7 @@ export function Footer() {
           </div>
           
           <p className="text-sm text-muted-foreground">
-            © {currentYear} ProductoEstelar. Todos los derechos reservados.
+            © {currentYear} MaryRuth's Organics. Nutrición Líquida de Confianza.
           </p>
         </div>
       </div>

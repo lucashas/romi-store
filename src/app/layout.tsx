@@ -3,8 +3,8 @@ import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ProductoEstelar | Eleva tu Productividad',
-  description: 'Descubre la herramienta definitiva para profesionales. ProductoEstelar combina diseño premium con potencia sin igual.',
+  title: 'MaryRuth\'s Organics | Suplementos Líquidos Premium',
+  description: 'Descubre el poder de la nutrición líquida con MaryRuth\'s. Vitaminas orgánicas, veganas y sin azúcar para toda la familia.',
 };
 
 export default function RootLayout({
