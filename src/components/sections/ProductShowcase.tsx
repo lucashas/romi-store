@@ -8,6 +8,7 @@ import Link from "next/link";
 
 export function ProductShowcase() {
   const showcaseImg = PlaceHolderImages.find(img => img.id === "product-showcase");
+  const imgUrl = showcaseImg?.imageUrl || "https://i.imgur.com/Rjwp6dT.jpeg";
 
   return (
     <section className="py-12 bg-white">
@@ -21,15 +22,14 @@ export function ProductShowcase() {
           </p>
           
           <div className="relative w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-secondary">
-            {showcaseImg && (
-              <Image 
-                src={showcaseImg.imageUrl} 
-                alt="Detalle MaryRuth's"
-                fill
-                className="object-cover"
-                sizes="(max-width: 500px) 100vw, 500px"
-              />
-            )}
+            <Image 
+              src={imgUrl} 
+              alt="Detalle MaryRuth's"
+              fill
+              className="object-cover"
+              sizes="(max-width: 500px) 100vw, 500px"
+              priority
+            />
           </div>
 
           <div className="bg-primary/5 p-6 rounded-3xl border-2 border-primary/10">

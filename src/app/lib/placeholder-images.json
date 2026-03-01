@@ -16,61 +16,61 @@
     {
       "id": "hero-product",
       "description": "Botella de multivitamínico líquido MaryRuth's",
-      "imageUrl": "https://images.unsplash.com/photo-1763668444855-401b58dceb20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx2aXRhbWluJTIwYm90dGxlfGVufDB8fHx8MTc3MjM5MjYzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/bottle/1080/1080",
       "imageHint": "vitamin bottle"
     },
     {
       "id": "healthy-lifestyle",
       "description": "Estilo de vida saludable y radiante",
-      "imageUrl": "https://images.unsplash.com/photo-1765939945740-22d995927e56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGVhbHRoeSUyMGNvdXBsZXxlbnwwfHx8fDE3NzIzOTMxNTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/health/1080/1080",
       "imageHint": "healthy couple"
     },
     {
       "id": "feature-hair",
       "description": "Cabello saludable y fuerte",
-      "imageUrl": "https://images.unsplash.com/flagged/photo-1580820258381-20c91a156841?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxoZWFsdGh5JTIwaGFpcnxlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/hair/1080/1080",
       "imageHint": "healthy hair"
     },
     {
       "id": "feature-kids",
       "description": "Niños felices y saludables",
-      "imageUrl": "https://images.unsplash.com/photo-1498674202614-ac0172c6c61a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxoYXBweSUyMGNoaWxkfGVufDB8fHx8MTc3MjM4MzQ2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/kids/1080/1080",
       "imageHint": "happy child"
     },
     {
       "id": "supplement-d3",
       "description": "Vitamina D3 Líquida",
-      "imageUrl": "https://images.unsplash.com/photo-1766325693829-79d0b13a545e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx2aXRhbWluJTIwRDN8ZW58MHx8fHwxNzcyMzkyNjM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/d3/1080/1080",
       "imageHint": "vitamin D3"
     },
     {
       "id": "supplement-complex-b",
       "description": "Complejo B Líquido",
-      "imageUrl": "https://images.unsplash.com/photo-1729704200280-0d0dda0f3c60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbmVyZ3klMjB2aXRhbWluc3xlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/complexb/1080/1080",
       "imageHint": "energy vitamins"
     },
     {
       "id": "supplement-omega",
       "description": "Omega-3 Líquido",
-      "imageUrl": "https://images.unsplash.com/photo-1597484389225-c68a9f0fa106?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b21lZ2ElMjAzfGVufDB8fHx8MTc3MjM5MjYzMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/omega/1080/1080",
       "imageHint": "omega 3"
     },
     {
       "id": "testimonial-1",
       "description": "Usuario satisfecho 1",
-      "imageUrl": "https://images.unsplash.com/photo-1599566147214-ce487862ea4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc3MjM2NzQ0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/user1/150/150",
       "imageHint": "person face"
     },
     {
       "id": "testimonial-2",
       "description": "Usuario satisfecho 2",
-      "imageUrl": "https://images.unsplash.com/photo-1626526804650-7118ac691b7a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc3MjM2NzQ0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/user2/150/150",
       "imageHint": "person face"
     },
     {
       "id": "testimonial-3",
       "description": "Usuario satisfecho 3",
-      "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc3MjM2NzQ0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/user3/150/150",
       "imageHint": "person face"
     }
   ]
