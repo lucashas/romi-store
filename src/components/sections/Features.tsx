@@ -12,7 +12,7 @@ export function Features() {
 
   return (
     <section id="caracteristicas" className="bg-white">
-      {/* Imagen de Impacto CABELLO - Ocupa TODO el ancho y alto del viewport */}
+      {/* Imagen de Impacto CABELLO - Igualada en altura y ajuste a Hero y Showcase */}
       <div className="relative w-full h-[90vh] bg-[#4a2c1d] overflow-hidden">
         {featHairHero && (
           <Image 
