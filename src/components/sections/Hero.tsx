@@ -2,15 +2,15 @@
 "use client";
 
 import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function Hero() {
-  // Nota: Se ha preparado para la nueva imagen. 
-  // Usa un placeholder temporal ya que el enlace blob es local.
-  const heroImgUrl = "https://i.imgur.com/XfmwUEJ.png"; 
+  const heroImg = PlaceHolderImages.find(img => img.id === "hero-main");
+  const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/j8pwxGX.png"; 
 
   return (
     <section className="relative w-full h-screen flex flex-col overflow-hidden bg-[#4a2c1d]">
-      {/* Imagen Principal - Ocupa el 100% de la pantalla móvil */}
+      {/* Imagen Principal - Ocupa el 100% del viewport móvil */}
       <div className="relative flex-1 w-full h-full">
         <Image 
           src={heroImgUrl} 
