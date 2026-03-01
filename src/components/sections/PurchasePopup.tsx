@@ -1,12 +1,13 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ShoppingCart, Package, Truck, AlertTriangle } from "lucide-react";
 
@@ -15,9 +16,42 @@ interface PurchasePopupProps {
   onOpenChange: (open: boolean) => void;
 }
 
+const ecuadorData: Record<string, string[]> = {
+  "AZUAY": ["CUENCA", "GUALACEO", "PAUTE", "CAMILO PONCE ENRIQUEZ", "SIGSIG"],
+  "BOLIVAR": ["GUARANDA", "SAN MIGUEL", "CHILLANES", "ECHEANDIA"],
+  "CAÑAR": ["AZOGUES", "CAÑAR", "LA TRONCAL", "BIBLIAN"],
+  "CARCHI": ["TULCAN", "MONTUFAR", "ESPEJO", "BOLIVAR"],
+  "CHIMBORAZO": ["RIOBAMBA", "GUANO", "COLTA", "ALAUSI", "CHAMBO"],
+  "COTOPAXI": ["LATACUNGA", "PUJILI", "SALCEDO", "LA MANA", "SAQUISILI"],
+  "EL ORO": ["MACHALA", "PASAJE", "HUAQUILLAS", "SANTA ROSA", "ARENILLAS"],
+  "ESMERALDAS": ["ESMERALDAS", "QUININDE", "ATACAMES", "SAN LORENZO"],
+  "GALAPAGOS": ["PUERTO BAQUERIZO MORENO", "PUERTO AYORA", "PUERTO VILLAMIL"],
+  "GUAYAS": ["GUAYAQUIL", "SAMBORONDON", "DURAN", "DAULE", "MILAGRO", "PLAYAS"],
+  "IMBABURA": ["IBARRA", "OTAVALO", "COTACACHI", "ANTONIO ANTE"],
+  "LOJA": ["LOJA", "CATAMAYO", "CALVAS", "SARAGURO", "MACARA"],
+  "LOS RIOS": ["BABAHOYO", "QUEVEDO", "BABA", "VINCES", "VENTANAS", "MOCACHE"],
+  "MANABI": ["PORTOVIEJO", "MANTA", "CHONE", "MONTECRISTI", "JIPIJAPA", "BAHIA DE CARAQUEZ"],
+  "MORONA SANTIAGO": ["MACAS", "GUALAQUIZA", "SUCUA", "SANTIAGO"],
+  "NAPO": ["TENA", "ARCHIDONA", "EL CHACO"],
+  "ORELLANA": ["PUERTO FRANCISCO DE ORELLANA", "LA JOYA DE LOS SACHAS"],
+  "PASTAZA": ["PUYO", "MERA", "SANTA CLARA"],
+  "PICHINCHA": ["QUITO", "SANGOLQUI", "MACHACHI", "CAYAMBE", "TABACUNDO"],
+  "SANTA ELENA": ["SANTA ELENA", "SALINAS", "LA LIBERTAD"],
+  "SANTO DOMINGO DE LOS TSACHILAS": ["SANTO DOMINGO", "LA CONCORDIA"],
+  "SUCUMBIOS": ["NUEVA LOJA", "SHUSHUFINDI", "CASCALES"],
+  "TUNGURAHUA": ["AMBATO", "BAÑOS", "PELILEO", "PILLARO"],
+  "ZAMORA CHINCHIPE": ["ZAMORA", "YANTZAZA", "EL PANGUI"]
+};
+
 export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
+  const [provincia, setProvincia] = useState<string>("");
+  const [ciudad, setCiudad] = useState<string>("");
   const { toast } = useToast();
+
+  const ciudadesDisponibles = useMemo(() => {
+    return provincia ? ecuadorData[provincia] : [];
+  }, [provincia]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -118,12 +152,30 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
 
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1.5">
-                <Label htmlFor="provincia" className="text-[10px] font-black uppercase">Provincia</Label>
-                <Input id="provincia" placeholder="Pichincha" required className="h-11 text-sm bg-secondary/20 border-none ring-1 ring-border" />
+                <Label className="text-[10px] font-black uppercase">Provincia</Label>
+                <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required>
+                  <SelectTrigger className="h-11 text-sm bg-secondary/20 border-none ring-1 ring-border">
+                    <SelectValue placeholder="Seleccione" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.keys(ecuadorData).map((p) => (
+                      <SelectItem key={p} value={p}>{p}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="ciudad" className="text-[10px] font-black uppercase">Ciudad</Label>
-                <Input id="ciudad" placeholder="Quito" required className="h-11 text-sm bg-secondary/20 border-none ring-1 ring-border" />
+                <Label className="text-[10px] font-black uppercase">Ciudad</Label>
+                <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
+                  <SelectTrigger className="h-11 text-sm bg-secondary/20 border-none ring-1 ring-border">
+                    <SelectValue placeholder={provincia ? "Seleccione" : "---"} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {ciudadesDisponibles.map((c) => (
+                      <SelectItem key={c} value={c}>{c}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 
