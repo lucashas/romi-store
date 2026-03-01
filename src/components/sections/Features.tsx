@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { CheckCircle2, ShieldCheck, Sun, ShoppingCart } from "lucide-react";
+import { CheckCircle2, ShieldCheck, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export function Features() {
   const featHairHero = PlaceHolderImages.find(img => img.id === "feature-hair-hero");
   const featHair = PlaceHolderImages.find(img => img.id === "feature-hair");
-  const featD3 = PlaceHolderImages.find(img => img.id === "supplement-d3");
 
   return (
     <section id="caracteristicas" className="bg-white space-y-[10px]">
-      <div className="px-[5px] py-[5px]">
+      {/* Botón CTA Superior */}
+      <div className="px-[5px]">
         <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">
             <ShoppingCart className="h-5 w-5" />
@@ -22,7 +22,8 @@ export function Features() {
         </Button>
       </div>
 
-      <div className="relative w-full h-screen bg-white px-[5px]">
+      {/* Imagen Impacto Cabello */}
+      <div className="relative w-full aspect-[9/16] bg-white px-[5px]">
         <div className="relative w-full h-full overflow-hidden">
           {featHairHero && (
             <Image 
@@ -37,7 +38,8 @@ export function Features() {
         </div>
       </div>
 
-      <div className="px-[5px] py-[5px]">
+      {/* Botón CTA Intermedio */}
+      <div className="px-[5px]">
         <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">
             <ShoppingCart className="h-5 w-5" />
@@ -46,7 +48,8 @@ export function Features() {
         </Button>
       </div>
 
-      <div className="py-[10px] border-b border-secondary">
+      {/* Detalles Resultados */}
+      <div className="py-[10px] bg-white">
         <div className="container mx-auto px-[10px] space-y-[10px]">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-black text-[10px] tracking-widest uppercase">
             <ShieldCheck className="h-4 w-4" />

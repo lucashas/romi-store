@@ -10,7 +10,7 @@ export function ProductShowcase() {
   const imgUrl = showcaseImg?.imageUrl || "https://i.imgur.com/j8pwxGX.png";
 
   return (
-    <section className="relative w-full h-screen bg-white px-[5px] border-b border-secondary">
+    <section className="relative w-full aspect-[9/16] bg-white px-[5px]">
       <div className="relative w-full h-full overflow-hidden">
         <Image 
           src={imgUrl} 

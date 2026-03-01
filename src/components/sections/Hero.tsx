@@ -8,7 +8,7 @@ export function Hero() {
   const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/XfmwUEJ.png"; 
 
   return (
-    <section className="relative w-full h-screen bg-[#4a2c1d] px-[5px] pt-[5px]">
+    <section className="relative w-full aspect-[9/16] bg-[#4a2c1d] px-[5px] pt-[5px]">
       <div className="relative w-full h-full overflow-hidden">
         <Image 
           src={heroImgUrl} 
@@ -20,7 +20,7 @@ export function Hero() {
         />
       </div>
       
-      <div className="absolute bottom-0 left-0 w-full bg-[#4a2c1d]/90 backdrop-blur-sm py-[10px] z-20">
+      <div className="absolute bottom-0 left-0 w-full bg-[#4a2c1d]/90 backdrop-blur-sm py-[5px] z-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center gap-1">
             <div className="flex items-center gap-2 w-full justify-center">
