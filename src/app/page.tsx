@@ -1,3 +1,4 @@
+
 import { TopMarquee } from "@/components/layout/TopMarquee";
 import { Hero } from "@/components/sections/Hero";
 import { Benefits } from "@/components/sections/Benefits";
