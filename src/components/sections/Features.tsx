@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -14,9 +13,19 @@ export function Features() {
 
   return (
     <section id="caracteristicas" className="bg-white">
-      {/* Imagen de Impacto CABELLO - Con márgenes de 5px e imagen completa */}
-      <div className="relative w-full h-screen bg-[#4a2c1d] px-[5px] pt-4 overflow-hidden">
-        <div className="relative w-full h-full">
+      {/* Botón CTA ANTES de la imagen de cabello */}
+      <div className="px-[10px] py-[10px]">
+        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
+          <Link href="#registro" className="flex items-center gap-3">
+            <ShoppingCart className="h-5 w-5" />
+            ¡QUIERO MI COMPRA!
+          </Link>
+        </Button>
+      </div>
+
+      {/* Imagen de Impacto CABELLO */}
+      <div className="relative w-full h-screen bg-white px-[5px]">
+        <div className="relative w-full h-full overflow-hidden">
           {featHairHero && (
             <Image 
               src={featHairHero.imageUrl} 
@@ -31,79 +40,67 @@ export function Features() {
       </div>
 
       {/* Sección Detalle Resultados */}
-      <div className="py-12 border-b border-secondary">
-        <div className="container mx-auto px-6">
-          <div className="space-y-6">
-            
-            {/* Botón CTA antes de Resultados Comprobados con efecto de latido */}
-            <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl mb-8 animate-heartbeat">
-              <Link href="#registro" className="flex items-center gap-3">
-                <ShoppingCart className="h-5 w-5" />
-                ¡QUIERO MI COMPRA!
-              </Link>
-            </Button>
+      <div className="py-[10px] border-b border-secondary">
+        <div className="container mx-auto px-[10px] space-y-[10px]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-black text-[10px] tracking-widest uppercase">
+            <ShieldCheck className="h-4 w-4" />
+            RESULTADOS COMPROBADOS
+          </div>
+          
+          <h2 className="text-2xl font-black text-foreground leading-tight uppercase">
+            CABELLO MÁS LARGO <br />
+            <span className="text-primary italic">Y PIEL DE PORCELANA</span>
+          </h2>
+          
+          <p className="text-[12px] text-muted-foreground font-medium leading-snug">
+            Nuestra Biotina con Lustriva® está diseñada para quienes no se conforman con menos. Verás la diferencia en tu espejo desde la primera botella.
+          </p>
+          
+          <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl border-4 border-secondary/20">
+            {featHair && (
+              <Image 
+                src={featHair.imageUrl} 
+                alt="Resultados MaryRuth's"
+                fill
+                className="object-cover"
+                sizes="500px"
+              />
+            )}
+          </div>
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-black text-[10px] tracking-widest uppercase">
-              <ShieldCheck className="h-4 w-4" />
-              RESULTADOS COMPROBADOS
-            </div>
-            <h2 className="text-3xl font-black text-foreground leading-tight">
-              CABELLO MÁS LARGO <br />
-              <span className="text-primary italic">Y PIEL DE PORCELANA</span>
-            </h2>
-            <p className="text-sm text-muted-foreground font-medium">
-              Nuestra Biotina con Lustriva® está diseñada para quienes no se conforman con menos. Verás la diferencia en tu espejo desde la primera botella.
-            </p>
-            
-            <div className="relative w-full aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-secondary/20">
-              {featHair && (
-                <Image 
-                  src={featHair.imageUrl} 
-                  alt="Resultados MaryRuth's"
-                  fill
-                  className="object-cover"
-                  sizes="500px"
-                />
-              )}
-            </div>
-
-            <div className="grid grid-cols-1 gap-3">
-              {[
-                "Crecimiento 3x más rápido",
-                "Reduce la caída notablemente",
-                "Brillo natural sin químicos",
-                "Uñas de acero"
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 bg-secondary/20 p-4 rounded-2xl border border-secondary">
-                  <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                  <span className="text-sm font-black text-foreground uppercase">{item}</span>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 gap-[10px]">
+            {[
+              "Crecimiento 3x más rápido",
+              "Reduce la caída notablemente",
+              "Brillo natural sin químicos",
+              "Uñas de acero"
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 bg-secondary/10 p-3 rounded-xl border border-secondary/50">
+                <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                <span className="text-[12px] font-black text-foreground uppercase">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Sección Salud Diaria - Foco en Energía */}
-      <div className="py-16 bg-[#4a2c1d] text-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-black mb-4 uppercase">MÁS QUE VITAMINAS, <br/>ES TU NUEVA ENERGÍA</h2>
-            <p className="text-sm opacity-80 font-medium">Olvídate de los bajones de la tarde.</p>
+      {/* Sección Salud Diaria */}
+      <div className="py-[10px] bg-[#4a2c1d] text-white">
+        <div className="container mx-auto px-[10px] space-y-[10px]">
+          <div className="text-center">
+            <h2 className="text-xl font-black uppercase leading-tight">MÁS QUE VITAMINAS, <br/>ES TU NUEVA ENERGÍA</h2>
           </div>
           
-          <div className="space-y-8">
-            <div className="bg-white/10 p-6 rounded-[2rem] border border-white/10 backdrop-blur-sm">
-               <div className="flex items-center gap-3 mb-4">
-                <Sun className="h-6 w-6 text-primary" />
-                <h3 className="text-xl font-black uppercase">VITAMINA D3 + K2</h3>
-              </div>
-              <p className="text-sm opacity-90 leading-relaxed mb-6">
-                El combo perfecto para un sistema inmune invencible y huesos que no fallan. Absorción instantánea para protegerte hoy mismo.
-              </p>
-              <div className="relative h-48 rounded-2xl overflow-hidden">
-                {featD3 && <Image src={featD3.imageUrl} alt="D3 MaryRuth's" fill className="object-cover" sizes="500px" />}
-              </div>
+          <div className="bg-white/5 p-[10px] rounded-[1.5rem] border border-white/10 backdrop-blur-sm space-y-[10px]">
+             <div className="flex items-center gap-2">
+              <Sun className="h-5 w-5 text-primary" />
+              <h3 className="text-sm font-black uppercase">VITAMINA D3 + K2</h3>
+            </div>
+            <p className="text-[11px] opacity-80 leading-tight">
+              El combo perfecto para un sistema inmune invencible y huesos que no fallan. Absorción instantánea.
+            </p>
+            <div className="relative h-40 rounded-xl overflow-hidden">
+              {featD3 && <Image src={featD3.imageUrl} alt="D3 MaryRuth's" fill className="object-cover" sizes="500px" />}
             </div>
           </div>
         </div>

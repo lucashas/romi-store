@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Zap, Star, Leaf, AlertCircle, ShoppingCart } from "lucide-react";
@@ -25,28 +24,28 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section id="beneficios" className="py-4 bg-white border-b border-secondary">
-      <div className="container mx-auto px-6">
-        {/* Alerta de impacto - Muy compacta y pegada */}
-        <div className="bg-red-50 border-2 border-red-100 p-3 rounded-xl mb-3 flex items-start gap-3">
+    <section id="beneficios" className="py-[10px] bg-white border-b border-secondary">
+      <div className="container mx-auto px-[10px]">
+        {/* Alerta de impacto */}
+        <div className="bg-red-50 border-2 border-red-100 p-[10px] rounded-xl mb-[10px] flex items-start gap-[10px]">
           <AlertCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
           <p className="text-[12px] font-black text-accent leading-tight">
             ¿SABÍAS QUE TU CUERPO DESECHA EL 80% DE LAS PASTILLAS? DEJA DE TIRAR TU DINERO.
           </p>
         </div>
 
-        {/* Titular - Margen mínimo para que se vea "pegado" */}
-        <div className="text-center mb-3">
+        {/* Titular */}
+        <div className="text-center mb-[10px]">
           <h2 className="text-lg font-black text-foreground mb-1 uppercase tracking-tighter leading-none">POR QUÉ SOMOS #1 EN TIKTOK</h2>
           <div className="h-1 w-12 bg-primary mx-auto rounded-full" />
         </div>
 
-        {/* Lista de beneficios - Sin espacios muertos */}
-        <div className="space-y-1.5 mb-6">
+        {/* Lista de beneficios */}
+        <div className="space-y-[10px] mb-[10px]">
           {benefits.map((benefit, index) => (
             <div 
               key={index}
-              className="p-3 rounded-xl bg-secondary/30 border border-primary/10 flex items-center gap-3 text-left"
+              className="p-[10px] rounded-xl bg-secondary/30 border border-primary/10 flex items-center gap-[10px] text-left"
             >
               <div className="h-10 w-10 rounded-lg bg-white flex items-center justify-center shadow-sm border border-secondary shrink-0">
                 <benefit.icon className="h-5 w-5 text-primary" />
@@ -61,8 +60,8 @@ export function Benefits() {
           ))}
         </div>
 
-        {/* Botón CTA debajo de Pureza Total con efecto de latido */}
-        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl mb-4 animate-heartbeat">
+        {/* Botón CTA */}
+        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">
             <ShoppingCart className="h-5 w-5" />
             ¡QUIERO MI COMPRA!
