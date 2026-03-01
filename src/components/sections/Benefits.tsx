@@ -1,7 +1,9 @@
 
 "use client";
 
-import { Zap, Star, Leaf, AlertCircle } from "lucide-react";
+import { Zap, Star, Leaf, AlertCircle, ShoppingCart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const benefits = [
   {
@@ -40,7 +42,7 @@ export function Benefits() {
         </div>
 
         {/* Lista de beneficios - Sin espacios muertos */}
-        <div className="space-y-1.5">
+        <div className="space-y-1.5 mb-6">
           {benefits.map((benefit, index) => (
             <div 
               key={index}
@@ -58,6 +60,14 @@ export function Benefits() {
             </div>
           ))}
         </div>
+
+        {/* Botón CTA debajo de Pureza Total */}
+        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl mb-4">
+          <Link href="#registro" className="flex items-center gap-3">
+            <ShoppingCart className="h-5 w-5" />
+            ¡QUIERO MI COMPRA!
+          </Link>
+        </Button>
       </div>
     </section>
   );

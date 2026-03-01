@@ -3,7 +3,9 @@
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { CheckCircle2, ShieldCheck, Sun } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Sun, ShoppingCart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function Features() {
   const featHairHero = PlaceHolderImages.find(img => img.id === "feature-hair-hero");
@@ -32,6 +34,15 @@ export function Features() {
       <div className="py-12 border-b border-secondary">
         <div className="container mx-auto px-6">
           <div className="space-y-6">
+            
+            {/* Botón CTA antes de Resultados Comprobados */}
+            <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl mb-8">
+              <Link href="#registro" className="flex items-center gap-3">
+                <ShoppingCart className="h-5 w-5" />
+                ¡QUIERO MI COMPRA!
+              </Link>
+            </Button>
+
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-black text-[10px] tracking-widest uppercase">
               <ShieldCheck className="h-4 w-4" />
               RESULTADOS COMPROBADOS
