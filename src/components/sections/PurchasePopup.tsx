@@ -11,50 +11,63 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { ShoppingCart, Package, Truck, AlertTriangle } from "lucide-react";
 
-interface PurchasePopupProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-}
-
 const ecuadorData: Record<string, string[]> = {
-  "AZUAY": ["CUENCA", "GUALACEO", "PAUTE", "CAMILO PONCE ENRIQUEZ", "SIGSIG"],
-  "BOLIVAR": ["GUARANDA", "SAN MIGUEL", "CHILLANES", "ECHEANDIA"],
-  "CAÑAR": ["AZOGUES", "CAÑAR", "LA TRONCAL", "BIBLIAN"],
-  "CARCHI": ["TULCAN", "MONTUFAR", "ESPEJO", "BOLIVAR"],
-  "CHIMBORAZO": ["RIOBAMBA", "GUANO", "COLTA", "ALAUSI", "CHAMBO"],
-  "COTOPAXI": ["LATACUNGA", "PUJILI", "SALCEDO", "LA MANA", "SAQUISILI"],
-  "EL ORO": ["MACHALA", "PASAJE", "HUAQUILLAS", "SANTA ROSA", "ARENILLAS"],
-  "ESMERALDAS": ["ESMERALDAS", "QUININDE", "ATACAMES", "SAN LORENZO"],
+  "AZUAY": ["CUENCA", "GUALACEO", "PAUTE", "CAMILO PONCE ENRIQUEZ", "SIGSIG", "CHORDELEG", "GIRON", "SANTA ISABEL", "NABON", "PUCARA", "OÑA", "SEVILLA DE ORO", "GUACHAPALA", "EL PAN"],
+  "BOLIVAR": ["GUARANDA", "SAN MIGUEL", "CHILLANES", "ECHEANDIA", "CALUMA", "CHIMBO", "LAS NAVES"],
+  "CAÑAR": ["AZOGUES", "CAÑAR", "LA TRONCAL", "BIBLIAN", "DELEG", "EL TAMBO", "SUSCAL"],
+  "CARCHI": ["TULCAN", "MONTUFAR", "ESPEJO", "BOLIVAR", "MIRA", "HUACA"],
+  "CHIMBORAZO": ["RIOBAMBA", "GUANO", "COLTA", "ALAUSI", "CHAMBO", "CUMANDA", "GUAMOTE", "PALLATANGA", "PENIPE", "CHUNCHI"],
+  "COTOPAXI": ["LATACUNGA", "PUJILI", "SALCEDO", "LA MANA", "SAQUISILI", "SIGCHOS", "PANGUA"],
+  "EL ORO": ["MACHALA", "PASAJE", "HUAQUILLAS", "SANTA ROSA", "ARENILLAS", "BALSAS", "CHILLA", "EL GUABO", "LAS LAJAS", "MARCABELI", "PIÑAS", "PORTOVELO", "ZARUMA", "ATAHUALPA"],
+  "ESMERALDAS": ["ESMERALDAS", "QUININDE", "ATACAMES", "SAN LORENZO", "ELOY ALFARO", "MUISNE", "RIO VERDE"],
   "GALAPAGOS": ["PUERTO BAQUERIZO MORENO", "PUERTO AYORA", "PUERTO VILLAMIL"],
-  "GUAYAS": ["GUAYAQUIL", "SAMBORONDON", "DURAN", "DAULE", "MILAGRO", "PLAYAS"],
-  "IMBABURA": ["IBARRA", "OTAVALO", "COTACACHI", "ANTONIO ANTE"],
-  "LOJA": ["LOJA", "CATAMAYO", "CALVAS", "SARAGURO", "MACARA"],
-  "LOS RIOS": ["BABAHOYO", "QUEVEDO", "BABA", "VINCES", "VENTANAS", "MOCACHE"],
-  "MANABI": ["PORTOVIEJO", "MANTA", "CHONE", "MONTECRISTI", "JIPIJAPA", "BAHIA DE CARAQUEZ"],
-  "MORONA SANTIAGO": ["MACAS", "GUALAQUIZA", "SUCUA", "SANTIAGO"],
-  "NAPO": ["TENA", "ARCHIDONA", "EL CHACO"],
-  "ORELLANA": ["PUERTO FRANCISCO DE ORELLANA", "LA JOYA DE LOS SACHAS"],
-  "PASTAZA": ["PUYO", "MERA", "SANTA CLARA"],
-  "PICHINCHA": ["QUITO", "SANGOLQUI", "MACHACHI", "CAYAMBE", "TABACUNDO"],
+  "GUAYAS": ["GUAYAQUIL", "SAMBORONDON", "DURAN", "DAULE", "MILAGRO", "PLAYAS", "NARANJAL", "EL EMPALME", "BALZAR", "BALAO", "COLIMES", "CORONEL MARCELINO MARIDUEÑA", "EL TRIUNFO", "GENERAL ANTONIO ELIZALDE", "ISIDRO AYORA", "LOMAS DE SARGENTILLO", "NARANJITO", "NOBOL", "PALESTINA", "PEDRO CARBO", "SANTA LUCIA", "SIMON BOLIVAR", "YAGUACHI", "SALITRE", "URBINA JADO"],
+  "IMBABURA": ["IBARRA", "OTAVALO", "COTACACHI", "ANTONIO ANTE", "PIMAMPIRO", "URCUQUI"],
+  "LOJA": ["LOJA", "CATAMAYO", "CALVAS", "SARAGURO", "MACARA", "CELICA", "CHAGUARPAMBA", "ESPINDOLA", "GONZANAMA", "PALTAS", "PUYANGO", "QUILANGA", "PINDAL", "SOZORANGA", "ZAPOTILLO", "OLMEDO"],
+  "LOS RIOS": ["BABAHOYO", "QUEVEDO", "BABA", "VINCES", "VENTANAS", "MOCACHE", "BUENA FE", "PALENQUE", "PUEBLOVIEJO", "URDANETA", "VALENCIA", "QUINSALOMA", "MONTALVO"],
+  "MANABI": ["PORTOVIEJO", "MANTA", "CHONE", "MONTECRISTI", "JIPIJAPA", "BAHIA DE CARAQUEZ", "BOLIVAR", "EL CARMEN", "FLAVIO ALFARO", "JAMA", "JARAMIJO", "JUNIN", "OLMEDO", "PAJAN", "PEDERNALES", "PICHINCHA", "ROCAFUERTE", "SANTA ANA", "SUCRE", "TOSAGUA", "24 DE MAYO", "PUERTO LOPEZ"],
+  "MORONA SANTIAGO": ["MACAS", "GUALAQUIZA", "SUCUA", "SANTIAGO", "HUAMBOYA", "LIMON INDANZA", "LOGROÑO", "PABLO SEXTO", "PALORA", "SAN JUAN BOSCO", "TAISHA", "TIWINTZA"],
+  "NAPO": ["TENA", "ARCHIDONA", "EL CHACO", "QUIJOS", "CARLOS JULIO AROSEMENA TOLA"],
+  "ORELLANA": ["PUERTO FRANCISCO DE ORELLANA", "LA JOYA DE LOS SACHAS", "LORETO", "AGUARICO"],
+  "PASTAZA": ["PUYO", "MERA", "SANTA CLARA", "ARAJUNO"],
+  "PICHINCHA": ["QUITO", "SANGOLQUI", "MACHACHI", "CAYAMBE", "TABACUNDO", "PEDRO MONCAYO", "PEDRO VICENTE MALDONADO", "PUERTO QUITO", "SAN MIGUEL DE LOS BANCOS"],
   "SANTA ELENA": ["SANTA ELENA", "SALINAS", "LA LIBERTAD"],
   "SANTO DOMINGO DE LOS TSACHILAS": ["SANTO DOMINGO", "LA CONCORDIA"],
-  "SUCUMBIOS": ["NUEVA LOJA", "SHUSHUFINDI", "CASCALES"],
-  "TUNGURAHUA": ["AMBATO", "BAÑOS", "PELILEO", "PILLARO"],
-  "ZAMORA CHINCHIPE": ["ZAMORA", "YANTZAZA", "EL PANGUI"]
+  "SUCUMBIOS": ["NUEVA LOJA", "SHUSHUFINDI", "CASCALES", "CUYABENO", "GONZALO PIZARRO", "PUTUMAYO", "SUCUMBIOS"],
+  "TUNGURAHUA": ["AMBATO", "BAÑOS", "PELILEO", "PILLARO", "CEVALLOS", "MOCHA", "QUERO", "TISALEO", "PATATE"],
+  "ZAMORA CHINCHIPE": ["ZAMORA", "YANTZAZA", "EL PANGUI", "CENTINELA DEL CONDOR", "CHINCHIPE", "NANGARITZA", "PALANDA", "PAQUISHA", "YACUAMBI"]
 };
 
 export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
   const [provincia, setProvincia] = useState<string>("");
   const [ciudad, setCiudad] = useState<string>("");
+  const [whatsapp, setWhatsapp] = useState<string>("");
   const { toast } = useToast();
 
   const ciudadesDisponibles = useMemo(() => {
-    return provincia ? ecuadorData[provincia] : [];
+    return provincia ? ecuadorData[provincia].sort() : [];
   }, [provincia]);
+
+  const handleWhatsappChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ""); // Solo números
+    if (value.length <= 10) {
+      setWhatsapp(value);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (whatsapp.length !== 10) {
+      toast({
+        variant: "destructive",
+        title: "NÚMERO INVÁLIDO",
+        description: "El WhatsApp debe tener exactamente 10 dígitos.",
+      });
+      return;
+    }
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -63,6 +76,10 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
         title: "¡PEDIDO RECIBIDO!",
         description: "En breve nos contactaremos por WhatsApp para coordinar la entrega.",
       });
+      // Reset form
+      setWhatsapp("");
+      setProvincia("");
+      setCiudad("");
     }, 2000);
   };
 
@@ -141,8 +158,16 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
             </div>
 
             <div className="space-y-1.5">
-              <Label htmlFor="whatsapp" className="text-[10px] font-black uppercase">Número de WhatsApp</Label>
-              <Input id="whatsapp" type="tel" placeholder="099 999 9999" required className="h-11 text-sm bg-secondary/20 border-none ring-1 ring-border" />
+              <Label htmlFor="whatsapp" className="text-[10px] font-black uppercase">Número de WhatsApp (10 dígitos)</Label>
+              <Input 
+                id="whatsapp" 
+                type="tel" 
+                placeholder="0999999999" 
+                required 
+                value={whatsapp}
+                onChange={handleWhatsappChange}
+                className="h-11 text-sm bg-secondary/20 border-none ring-1 ring-border" 
+              />
             </div>
 
             <div className="space-y-1.5">
@@ -158,7 +183,7 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
                     <SelectValue placeholder="Seleccione" />
                   </SelectTrigger>
                   <SelectContent>
-                    {Object.keys(ecuadorData).map((p) => (
+                    {Object.keys(ecuadorData).sort().map((p) => (
                       <SelectItem key={p} value={p}>{p}</SelectItem>
                     ))}
                   </SelectContent>
