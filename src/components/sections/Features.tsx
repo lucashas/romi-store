@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -20,11 +21,11 @@ export function Features() {
             <div className="w-full space-y-6 text-center">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider mx-auto">
                 <ShieldCheck className="h-4 w-4" />
-                Crecimiento Real
+                Belleza Real
               </div>
-              <h2 className="text-3xl font-black font-headline text-foreground leading-tight">Tu Cabello, <br /><span className="text-primary italic">Más Fuerte que Nunca</span></h2>
+              <h2 className="text-3xl font-black font-headline text-foreground leading-tight">Recupera el Brillo y la <br /><span className="text-primary italic">Fuerza de tu Cabello</span></h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Fórmula con Biotina y Lustriva® clínicamente probados para aumentar el volumen capilar y mejorar la elasticidad de la piel.
+                Nuestra Biotina líquida con Lustriva® no solo promete, ¡cumple! Mira cómo tu cabello crece más grueso y tu piel recupera su elasticidad juvenil.
               </p>
               
               <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl border-4 border-secondary/10">
@@ -42,12 +43,12 @@ export function Features() {
 
               <ul className="grid grid-cols-1 gap-3 pt-4">
                 {[
-                  "Crecimiento capilar",
-                  "Piel radiante",
-                  "Absorción rápida",
-                  "100% Orgánico"
+                  "Crecimiento acelerado probado",
+                  "Piel visiblemente más hidratada",
+                  "Uñas que ya no se quiebran",
+                  "Resultados sin efectos secundarios"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-foreground/90 font-bold bg-secondary/20 p-4 rounded-xl">
+                  <li key={i} className="flex items-center gap-3 text-foreground/90 font-bold bg-secondary/20 p-4 rounded-xl text-left">
                     <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
                     <span className="text-sm">{item}</span>
                   </li>
@@ -65,11 +66,11 @@ export function Features() {
             <div className="w-full space-y-6 text-center">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs uppercase tracking-wider mx-auto">
                 <Baby className="h-4 w-4" />
-                MaryRuth's Kids
+                Escudo para tus Hijos
               </div>
-              <h2 className="text-3xl font-black font-headline text-foreground leading-tight">Nutrición para <br /><span className="text-accent italic">Toda la Familia</span></h2>
+              <h2 className="text-3xl font-black font-headline text-foreground leading-tight">Nutrición que <br /><span className="text-accent italic">Ellos Mismos Pedirán</span></h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Gomitas y suplementos líquidos que los niños adoran. Sin químicos, solo los nutrientes esenciales.
+                Olvida las peleas por las vitaminas. Nuestras gomitas orgánicas son el aliado perfecto para un crecimiento sano sin un gramo de azúcar añadida.
               </p>
 
               <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl border-4 border-white">
@@ -87,12 +88,12 @@ export function Features() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-4 rounded-2xl bg-white shadow-sm border border-border/50">
-                  <p className="text-2xl font-black text-primary">0%</p>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Azúcar Añadido</p>
+                  <p className="text-2xl font-black text-primary">100%</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground leading-tight">Natural y Orgánico</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white shadow-sm border border-border/50">
-                  <p className="text-2xl font-black text-primary">100%</p>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Orgánico</p>
+                  <p className="text-2xl font-black text-primary">Zero</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground leading-tight">Químicos Tóxicos</p>
                 </div>
               </div>
             </div>
@@ -101,56 +102,56 @@ export function Features() {
       </div>
 
       {/* Suplementos Específicos */}
-      <div className="py-12">
+      <div className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-black text-foreground mb-4">Suplementos Especializados</h2>
-            <p className="text-base text-muted-foreground">Potencia tu salud diaria con nuestras fórmulas líquidas.</p>
+            <h2 className="text-3xl font-black text-foreground mb-4 leading-tight">Potencia tu <br/>Bienestar Diario</h2>
+            <p className="text-base text-muted-foreground font-medium">Soluciones específicas para necesidades reales.</p>
           </div>
           
           <div className="space-y-8">
             {/* Vitamina D3 */}
-            <div className="group bg-white p-4 rounded-[2rem] border border-border/50 shadow-md">
-              <div className="relative h-48 mb-6 rounded-xl overflow-hidden shadow-inner bg-secondary/10">
+            <div className="group bg-white p-6 rounded-[2.5rem] border border-border/50 shadow-lg">
+              <div className="relative h-56 mb-6 rounded-2xl overflow-hidden shadow-inner bg-secondary/10">
                 {featD3 && <Image src={featD3.imageUrl} alt="Vitamina D3" fill className="object-cover" sizes="(max-width: 500px) 100vw, 500px" data-ai-hint="vitamin D3" />}
               </div>
-              <div className="flex items-center gap-2 text-primary mb-2">
-                <Sun className="h-4 w-4" />
-                <span className="font-bold uppercase text-[10px] tracking-[0.2em]">Inmunidad</span>
+              <div className="flex items-center gap-2 text-primary mb-3">
+                <Sun className="h-5 w-5" />
+                <span className="font-bold uppercase text-[10px] tracking-[0.2em]">Inmunidad de Acero</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Vitamina D3 ☀️</h3>
-              <p className="text-sm text-muted-foreground">
-                Fortalece tus defensas y regula tu estado de ánimo con nuestra fórmula líquida.
+              <h3 className="text-xl font-bold mb-3">Vitamina D3 Líquida ☀️</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Fortalece tus huesos y mantén tus defensas al 100% durante todo el año con la forma más absorbible de Vitamina D.
               </p>
             </div>
 
             {/* Complejo B */}
-            <div className="group bg-white p-4 rounded-[2rem] border border-border/50 shadow-md">
-              <div className="relative h-48 mb-6 rounded-xl overflow-hidden shadow-inner bg-secondary/10">
+            <div className="group bg-white p-6 rounded-[2.5rem] border border-border/50 shadow-lg">
+              <div className="relative h-56 mb-6 rounded-2xl overflow-hidden shadow-inner bg-secondary/10">
                 {featB && <Image src={featB.imageUrl} alt="Complejo B" fill className="object-cover" sizes="(max-width: 500px) 100vw, 500px" data-ai-hint="energy vitamins" />}
               </div>
-              <div className="flex items-center gap-2 text-primary mb-2">
-                <Zap className="h-4 w-4" />
-                <span className="font-bold uppercase text-[10px] tracking-[0.2em]">Energía</span>
+              <div className="flex items-center gap-2 text-primary mb-3">
+                <Zap className="h-5 w-5" />
+                <span className="font-bold uppercase text-[10px] tracking-[0.2em]">Energía Sin Bajones</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Complejo B 🧠</h3>
-              <p className="text-sm text-muted-foreground">
-                Aumenta tu energía natural y mejora la función cerebral sin bajones.
+              <h3 className="text-xl font-bold mb-3">Complejo B Inteligente 🧠</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Aumenta tu enfoque mental y energía física de forma natural. Sin cafeína, sin nervios, solo vitalidad pura.
               </p>
             </div>
 
             {/* Omega-3 */}
-            <div className="group bg-white p-4 rounded-[2rem] border border-border/50 shadow-md">
-              <div className="relative h-48 mb-6 rounded-xl overflow-hidden shadow-inner bg-secondary/10">
+            <div className="group bg-white p-6 rounded-[2.5rem] border border-border/50 shadow-lg">
+              <div className="relative h-56 mb-6 rounded-2xl overflow-hidden shadow-inner bg-secondary/10">
                 {featOmega && <Image src={featOmega.imageUrl} alt="Omega 3" fill className="object-cover" sizes="(max-width: 500px) 100vw, 500px" data-ai-hint="omega 3" />}
               </div>
-              <div className="flex items-center gap-2 text-primary mb-2">
-                <Heart className="h-4 w-4" />
-                <span className="font-bold uppercase text-[10px] tracking-[0.2em]">Cerebro</span>
+              <div className="flex items-center gap-2 text-primary mb-3">
+                <Heart className="h-5 w-5" />
+                <span className="font-bold uppercase text-[10px] tracking-[0.2em]">Corazón y Mente</span>
               </div>
-              <h3 className="text-xl font-bold mb-2">Omega-3 🐟</h3>
-              <p className="text-sm text-muted-foreground">
-                Nutrición vital para un corazón fuerte y una piel radiante.
+              <h3 className="text-xl font-bold mb-3">Omega-3 Vegano 🐟</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Protege tu salud cardiovascular y mejora tu concentración con nuestra fórmula limpia y sostenible.
               </p>
             </div>
           </div>
