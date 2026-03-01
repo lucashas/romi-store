@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,6 +34,8 @@
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
+    /* Forzar vista móvil en pantallas grandes para simular la experiencia */
+    @apply max-w-[500px] mx-auto shadow-2xl min-h-screen bg-white;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-bold tracking-tight;
