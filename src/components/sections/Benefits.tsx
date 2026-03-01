@@ -61,8 +61,8 @@ export function Benefits() {
           ))}
         </div>
 
-        {/* Botón CTA debajo de Pureza Total */}
-        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl mb-4">
+        {/* Botón CTA debajo de Pureza Total con efecto de latido */}
+        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl mb-4 animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">
             <ShoppingCart className="h-5 w-5" />
             ¡QUIERO MI COMPRA!

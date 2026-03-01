@@ -25,9 +25,9 @@ export default function Home() {
         </div>
       </main>
       
-      {/* Sticky CTA para Funnel de TikTok */}
+      {/* Sticky CTA para Funnel de TikTok con efecto de latido */}
       <div className="sticky-cta">
-        <Button asChild size="lg" className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-[0_10px_30px_rgba(239,68,68,0.4)] rounded-2xl animate-bounce">
+        <Button asChild size="lg" className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-[0_10px_30px_rgba(239,68,68,0.4)] rounded-2xl animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">
             <ShoppingCart className="h-6 w-6" />
             ¡QUIERO MI PROMO!

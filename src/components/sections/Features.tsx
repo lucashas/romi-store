@@ -35,8 +35,8 @@ export function Features() {
         <div className="container mx-auto px-6">
           <div className="space-y-6">
             
-            {/* Botón CTA antes de Resultados Comprobados */}
-            <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl mb-8">
+            {/* Botón CTA antes de Resultados Comprobados con efecto de latido */}
+            <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl mb-8 animate-heartbeat">
               <Link href="#registro" className="flex items-center gap-3">
                 <ShoppingCart className="h-5 w-5" />
                 ¡QUIERO MI COMPRA!
