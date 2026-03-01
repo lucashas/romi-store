@@ -1,8 +1,12 @@
+
 "use client";
 
 import { Zap, Star, Leaf, AlertCircle, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+
+interface BenefitsProps {
+  onOpenPopup: () => void;
+}
 
 const benefits = [
   {
@@ -22,7 +26,7 @@ const benefits = [
   }
 ];
 
-export function Benefits() {
+export function Benefits({ onOpenPopup }: BenefitsProps) {
   return (
     <section id="beneficios" className="py-[10px] bg-white border-b border-secondary">
       <div className="container mx-auto px-[10px]">
@@ -60,12 +64,14 @@ export function Benefits() {
           ))}
         </div>
 
-        {/* Botón CTA */}
-        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
-          <Link href="#registro" className="flex items-center gap-3">
-            <ShoppingCart className="h-5 w-5" />
-            ¡QUIERO MI COMPRA!
-          </Link>
+        {/* Botón CTA debajo de Pureza Total */}
+        <Button 
+          onClick={onOpenPopup}
+          size="lg" 
+          className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat"
+        >
+          <ShoppingCart className="h-5 w-5" />
+          ¡QUIERO MI COMPRA!
         </Button>
       </div>
     </section>

@@ -3,13 +3,17 @@
 
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-export function Hero() {
+interface HeroProps {
+  onOpenPopup: () => void;
+}
+
+export function Hero({ onOpenPopup }: HeroProps) {
   const heroImg = PlaceHolderImages.find(img => img.id === "hero-main");
   const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/XfmwUEJ.png"; 
 
   return (
     <section className="bg-[#4a2c1d]">
-      <div className="px-[5px] pt-[5px]">
+      <div className="px-[5px] pt-[5px] cursor-pointer" onClick={onOpenPopup}>
         <div className="w-full overflow-hidden rounded-xl">
           <img 
             src={heroImgUrl} 

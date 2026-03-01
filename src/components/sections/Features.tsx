@@ -5,9 +5,12 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { CheckCircle2, ShieldCheck, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
-export function Features() {
+interface FeaturesProps {
+  onOpenPopup: () => void;
+}
+
+export function Features({ onOpenPopup }: FeaturesProps) {
   const featHairHero = PlaceHolderImages.find(img => img.id === "feature-hair-hero");
   const featHair = PlaceHolderImages.find(img => img.id === "feature-hair");
 
@@ -15,17 +18,19 @@ export function Features() {
     <section id="caracteristicas" className="bg-white">
       {/* Botón CTA Superior */}
       <div className="px-[5px] mb-[10px]">
-        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
-          <Link href="#registro" className="flex items-center gap-3">
-            <ShoppingCart className="h-5 w-5" />
-            ¡QUIERO MI COMPRA!
-          </Link>
+        <Button 
+          onClick={onOpenPopup}
+          size="lg" 
+          className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat"
+        >
+          <ShoppingCart className="h-5 w-5" />
+          ¡QUIERO MI COMPRA!
         </Button>
       </div>
 
       {/* Imagen Impacto Cabello */}
       <div className="px-[5px]">
-        <div className="w-full overflow-hidden rounded-xl">
+        <div className="w-full overflow-hidden rounded-xl cursor-pointer" onClick={onOpenPopup}>
           {featHairHero && (
             <img 
               src={featHairHero.imageUrl} 
@@ -36,13 +41,15 @@ export function Features() {
         </div>
       </div>
 
-      {/* Botón CTA Intermedio */}
+      {/* Botón CTA Intermedio - ANTES de Resultados Comprobados */}
       <div className="px-[5px] mt-[10px]">
-        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
-          <Link href="#registro" className="flex items-center gap-3">
-            <ShoppingCart className="h-5 w-5" />
-            ¡QUIERO MI COMPRA!
-          </Link>
+        <Button 
+          onClick={onOpenPopup}
+          size="lg" 
+          className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat"
+        >
+          <ShoppingCart className="h-5 w-5" />
+          ¡QUIERO MI COMPRA!
         </Button>
       </div>
 

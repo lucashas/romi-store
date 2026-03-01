@@ -2,17 +2,20 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-export function ProductShowcase() {
+interface ProductShowcaseProps {
+  onOpenPopup: () => void;
+}
+
+export function ProductShowcase({ onOpenPopup }: ProductShowcaseProps) {
   const showcaseImg = PlaceHolderImages.find(img => img.id === "product-showcase");
   const imgUrl = showcaseImg?.imageUrl || "https://i.imgur.com/j8pwxGX.png";
 
   return (
     <section className="bg-white">
       <div className="px-[5px]">
-        <div className="w-full overflow-hidden rounded-xl">
+        <div className="w-full overflow-hidden rounded-xl cursor-pointer" onClick={onOpenPopup}>
           <img 
             src={imgUrl} 
             alt="Detalle Producto MaryRuth's"
@@ -30,13 +33,13 @@ export function ProductShowcase() {
             "La forma más deliciosa de nutrir tu cuerpo sin pastillas."
           </p>
           <div className="pt-1">
-            <Link 
-              href="#registro" 
+            <button 
+              onClick={onOpenPopup}
               className="inline-flex items-center gap-1 text-primary font-black uppercase tracking-widest text-[11px] hover:underline"
             >
               Ver disponibilidad ahora
               <ArrowRight className="h-3 w-3" />
-            </Link>
+            </button>
           </div>
         </div>
       </div>
