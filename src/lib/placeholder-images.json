@@ -3,14 +3,14 @@
     {
       "id": "hero-main",
       "description": "Anuncio principal MaryRuth's Organics",
-      "imageUrl": "https://i.imgur.com/XfmwUEJ.png",
+      "imageUrl": "https://i.imgur.com/j8pwxGX.png",
       "imageHint": "maryruths hero"
     },
     {
       "id": "product-showcase",
       "description": "Detalle premium MaryRuth's",
-      "imageUrl": "https://i.imgur.com/Rjwp6dT.jpeg",
-      "imageHint": "maryruths detail"
+      "imageUrl": "https://i.imgur.com/j8pwxGX.png",
+      "imageHint": "maryruths showcase"
     },
     {
       "id": "hero-product",
