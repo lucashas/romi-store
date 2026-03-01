@@ -6,16 +6,31 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { CheckCircle2, ShieldCheck, Zap, Heart, Sun } from "lucide-react";
 
 export function Features() {
+  const featHairHero = PlaceHolderImages.find(img => img.id === "feature-hair-hero");
   const featHair = PlaceHolderImages.find(img => img.id === "feature-hair");
   const featD3 = PlaceHolderImages.find(img => img.id === "supplement-d3");
 
   return (
     <section id="caracteristicas" className="bg-white">
+      {/* Nueva Imagen de Impacto - Ocupa ancho y alto móvil */}
+      <div className="relative w-full h-screen bg-secondary/10">
+        {featHairHero && (
+          <Image 
+            src={featHairHero.imageUrl} 
+            alt="Impacto MaryRuth's Cabello"
+            fill
+            className="object-cover object-center"
+            sizes="500px"
+            priority
+          />
+        )}
+      </div>
+
       {/* Sección Cabello - Foco en Vanidad y Resultado */}
       <div className="py-12 border-b border-secondary">
         <div className="container mx-auto px-6">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-black text-[10px] tracking-widest">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-black text-[10px] tracking-widest uppercase">
               <ShieldCheck className="h-4 w-4" />
               RESULTADOS COMPROBADOS
             </div>
@@ -48,7 +63,7 @@ export function Features() {
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 bg-secondary/20 p-4 rounded-2xl border border-secondary">
                   <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                  <span className="text-sm font-black text-foreground">{item}</span>
+                  <span className="text-sm font-black text-foreground uppercase">{item}</span>
                 </div>
               ))}
             </div>
@@ -60,7 +75,7 @@ export function Features() {
       <div className="py-16 bg-[#4a2c1d] text-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-black mb-4">MÁS QUE VITAMINAS, <br/>ES TU NUEVA ENERGÍA</h2>
+            <h2 className="text-2xl font-black mb-4 uppercase">MÁS QUE VITAMINAS, <br/>ES TU NUEVA ENERGÍA</h2>
             <p className="text-sm opacity-80 font-medium">Olvídate de los bajones de la tarde.</p>
           </div>
           
@@ -68,7 +83,7 @@ export function Features() {
             <div className="bg-white/10 p-6 rounded-[2rem] border border-white/10 backdrop-blur-sm">
                <div className="flex items-center gap-3 mb-4">
                 <Sun className="h-6 w-6 text-primary" />
-                <h3 className="text-xl font-black">VITAMINA D3 + K2</h3>
+                <h3 className="text-xl font-black uppercase">VITAMINA D3 + K2</h3>
               </div>
               <p className="text-sm opacity-90 leading-relaxed mb-6">
                 El combo perfecto para un sistema inmune invencible y huesos que no fallan. Absorción instantánea para protegerte hoy mismo.
