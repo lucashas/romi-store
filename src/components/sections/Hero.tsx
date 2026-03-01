@@ -1,19 +1,22 @@
+
 "use client";
 
 import Image from "next/image";
 
 export function Hero() {
-  const heroImgUrl = "https://i.imgur.com/XfmwUEJ.png";
+  // Nota: Se ha preparado para la nueva imagen. 
+  // Usa un placeholder temporal ya que el enlace blob es local.
+  const heroImgUrl = "https://i.imgur.com/XfmwUEJ.png"; 
 
   return (
-    <section className="relative w-full h-[95vh] flex flex-col overflow-hidden bg-[#4a2c1d]">
-      {/* Imagen Principal - Ocupa todo el espacio disponible */}
-      <div className="relative flex-1 w-full">
+    <section className="relative w-full h-screen flex flex-col overflow-hidden bg-[#4a2c1d]">
+      {/* Imagen Principal - Ocupa el 100% de la pantalla móvil */}
+      <div className="relative flex-1 w-full h-full">
         <Image 
           src={heroImgUrl} 
-          alt="MaryRuth's Organics - Anuncio Principal"
+          alt="MaryRuth's Organics - Promo TikTok"
           fill
-          className="object-cover object-top"
+          className="object-cover object-center"
           priority
           sizes="500px"
         />
@@ -23,18 +26,18 @@ export function Hero() {
       </div>
 
       {/* Banner Informativo Inferior (Estilo TikTok Funnel) */}
-      <div className="w-full bg-[#4a2c1d] py-6 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] relative z-10">
+      <div className="w-full bg-[#4a2c1d] py-4 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] relative z-10">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center gap-2">
+          <div className="flex flex-col items-center justify-center gap-1">
             <div className="flex items-center gap-3 w-full justify-center">
               <span className="h-px flex-1 bg-white/20" />
-              <p className="text-white font-black text-[10px] uppercase tracking-[0.2em] whitespace-nowrap">
+              <p className="text-white font-black text-[9px] uppercase tracking-[0.2em] whitespace-nowrap">
                 Vitalidad Premium
               </p>
               <span className="h-px flex-1 bg-white/20" />
             </div>
-            <p className="text-center text-white font-bold text-[11px] uppercase tracking-[0.15em] leading-tight">
-              CRECIMIENTO CAPILAR • ANTI-ENVEJECIMIENTO • NUTRICIÓN
+            <p className="text-center text-white font-bold text-[10px] uppercase tracking-[0.1em] leading-tight">
+              ENVÍO GRATIS • ABSORCIÓN INMEDIATA • 100% ORGÁNICO
             </p>
           </div>
         </div>
