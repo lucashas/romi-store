@@ -9,7 +9,7 @@ export function Hero() {
   const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/XfmwUEJ.png"; 
 
   return (
-    <section className="relative w-full h-[90vh] flex flex-col overflow-hidden bg-[#4a2c1d]">
+    <section className="relative w-full h-screen flex flex-col overflow-hidden bg-[#4a2c1d]">
       {/* Imagen Principal - Ocupa el 100% del viewport móvil de forma inmersiva */}
       <div className="relative flex-1 w-full h-full">
         <Image 
