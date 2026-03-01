@@ -2,33 +2,45 @@
   "placeholderImages": [
     {
       "id": "hero-product",
-      "description": "MaryRuth's Liquid Multivitamin + Hair Growth bottle and healthy people",
+      "description": "Botella de multivitamínico líquido MaryRuth's con fondo natural",
       "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2aXRhbWluJTIwYm90dGxlfGVufDB8fHx8MTc3MjM4OTk1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vitamin bottle"
     },
     {
-      "id": "healthy-couple",
-      "description": "Healthy glowing couple smiling together",
-      "imageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoYXBweSUyMGNvdXBsZXxlbnwwfHx8fDE3NzIzMDE4MTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "healthy couple"
+      "id": "healthy-lifestyle",
+      "description": "Persona radiante disfrutando de un estilo de vida saludable",
+      "imageUrl": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxoZWFsdGh5JTIwd29tYW58ZW58MHx8fDE3NzIyNzY0NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "healthy woman"
     },
     {
       "id": "feature-hair",
-      "description": "Strong and healthy hair detail",
+      "description": "Detalle de cabello fuerte y saludable",
       "imageUrl": "https://images.unsplash.com/photo-1519735811596-c339a0ef2381?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoZWFsdGh5JTIwaGFpcnxlbnwwfHx8fDE3NzIzOTI4MDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "healthy hair"
     },
     {
       "id": "feature-kids",
-      "description": "Healthy happy child with gummy vitamins",
+      "description": "Niño feliz tomando sus vitaminas orgánicas",
       "imageUrl": "https://images.unsplash.com/photo-1543362906-acfc16c67564?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxoYXBweSUyMGNoaWxkfGVufDB8fHx8MTc3MjM2NTYwM3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "happy child"
     },
     {
-      "id": "testimonial-1",
-      "description": "Radiant woman smiling at camera",
-      "imageUrl": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxoZWFsdGh5JTIwd29tYW58ZW58MHx8fDE3NzIyNzY0NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "healthy woman"
+      "id": "supplement-d3",
+      "description": "Suplemento de Vitamina D3 al sol",
+      "imageUrl": "https://images.unsplash.com/photo-1550573105-df5e65639644?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx2aXRhbWluJTIwZDN8ZW58MHx8fDE3NzI0MDAwMDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vitamin D3"
+    },
+    {
+      "id": "supplement-complex-b",
+      "description": "Energía natural y suplementos",
+      "imageUrl": "https://images.unsplash.com/photo-1471864190281-ad5fe9bb0724?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx2aXRhbWluc3xlbnwwfHx8fDE3NzI0MDAwMDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "energy vitamins"
+    },
+    {
+      "id": "supplement-omega",
+      "description": "Omega-3 para salud cerebral y corazón",
+      "imageUrl": "https://images.unsplash.com/photo-1576602976047-174e57a47881?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvbWVnYSUyMDN8ZW58MHx8fDE3NzI0MDAwMDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "omega 3"
     }
   ]
 }
