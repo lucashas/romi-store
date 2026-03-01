@@ -12,7 +12,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-background">
       <main className="flex-1">
         <Hero />
-        <div className="space-y-0 sm:space-y-8">
+        <div className="space-y-0">
           <Benefits />
           <Features />
           <Testimonials />
