@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-main",
+      "description": "Anuncio principal MaryRuth's Organics",
+      "imageUrl": "https://i.imgur.com/XfmwUEJ.png",
+      "imageHint": "maryruths hero"
+    },
+    {
       "id": "hero-product",
       "description": "Botella de multivitamínico líquido MaryRuth's",
       "imageUrl": "https://picsum.photos/seed/bottle1/600/1000",
