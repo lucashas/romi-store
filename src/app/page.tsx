@@ -12,10 +12,12 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-background">
       <main className="flex-1">
         <Hero />
-        <Benefits />
-        <Features />
-        <Testimonials />
-        <ContactForm />
+        <div className="space-y-0 sm:space-y-8">
+          <Benefits />
+          <Features />
+          <Testimonials />
+          <ContactForm />
+        </div>
       </main>
       <Footer />
       <Toaster />
