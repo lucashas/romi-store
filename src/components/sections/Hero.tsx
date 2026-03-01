@@ -1,7 +1,6 @@
 
 "use client";
 
-import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function Hero() {
@@ -9,21 +8,18 @@ export function Hero() {
   const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/XfmwUEJ.png"; 
 
   return (
-    <section className="bg-[#4a2c1d] space-y-[10px]">
-      <div className="relative w-full aspect-[9/16] px-[5px] pt-[5px]">
-        <div className="relative w-full h-full overflow-hidden">
-          <Image 
+    <section className="bg-[#4a2c1d]">
+      <div className="px-[5px] pt-[5px]">
+        <div className="w-full overflow-hidden rounded-xl">
+          <img 
             src={heroImgUrl} 
             alt="MaryRuth's Organics - Promo TikTok"
-            fill
-            className="object-contain"
-            priority
-            sizes="500px"
+            className="w-full h-auto block"
           />
         </div>
       </div>
       
-      <div className="bg-[#4a2c1d] py-[10px] border-y border-white/10">
+      <div className="bg-[#4a2c1d] py-[10px] border-y border-white/10 mt-[10px]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center gap-1">
             <div className="flex items-center gap-2 w-full justify-center">

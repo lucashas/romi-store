@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -11,9 +12,9 @@ export function Features() {
   const featHair = PlaceHolderImages.find(img => img.id === "feature-hair");
 
   return (
-    <section id="caracteristicas" className="bg-white space-y-[10px]">
+    <section id="caracteristicas" className="bg-white">
       {/* Botón CTA Superior */}
-      <div className="px-[5px]">
+      <div className="px-[5px] mb-[10px]">
         <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">
             <ShoppingCart className="h-5 w-5" />
@@ -23,23 +24,20 @@ export function Features() {
       </div>
 
       {/* Imagen Impacto Cabello */}
-      <div className="relative w-full aspect-[9/16] bg-white px-[5px]">
-        <div className="relative w-full h-full overflow-hidden">
+      <div className="px-[5px]">
+        <div className="w-full overflow-hidden rounded-xl">
           {featHairHero && (
-            <Image 
+            <img 
               src={featHairHero.imageUrl} 
               alt="Impacto MaryRuth's Cabello"
-              fill
-              className="object-contain"
-              sizes="500px"
-              priority
+              className="w-full h-auto block"
             />
           )}
         </div>
       </div>
 
       {/* Botón CTA Intermedio */}
-      <div className="px-[5px]">
+      <div className="px-[5px] mt-[10px]">
         <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">
             <ShoppingCart className="h-5 w-5" />
@@ -49,10 +47,10 @@ export function Features() {
       </div>
 
       {/* Detalles Resultados */}
-      <div className="py-[10px] bg-white">
+      <div className="py-[10px] bg-white mt-[10px]">
         <div className="container mx-auto px-[10px] space-y-[10px]">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-black text-[10px] tracking-widest uppercase">
-            <ShieldCheck className="h-4 w-4" />
+            < ShieldCheck className="h-4 w-4" />
             RESULTADOS COMPROBADOS
           </div>
           
