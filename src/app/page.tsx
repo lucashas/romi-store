@@ -1,4 +1,4 @@
-
+import { TopMarquee } from "@/components/layout/TopMarquee";
 import { Hero } from "@/components/sections/Hero";
 import { Benefits } from "@/components/sections/Benefits";
 import { ProductShowcase } from "@/components/sections/ProductShowcase";
@@ -14,9 +14,10 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background pb-24">
+      <TopMarquee />
       <main className="flex-1">
         <Hero />
-        <div className="space-y-0">
+        <div className="space-y-[10px]">
           <Benefits />
           <ProductShowcase />
           <Features />
@@ -25,7 +26,6 @@ export default function Home() {
         </div>
       </main>
       
-      {/* Sticky CTA para Funnel de TikTok con efecto de latido */}
       <div className="sticky-cta">
         <Button asChild size="lg" className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-[0_10px_30px_rgba(239,68,68,0.4)] rounded-2xl animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">

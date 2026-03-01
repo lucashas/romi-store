@@ -9,7 +9,6 @@ export function Hero() {
 
   return (
     <section className="relative w-full h-screen bg-[#4a2c1d] px-[5px] pt-[5px]">
-      {/* Contenedor principal */}
       <div className="relative w-full h-full overflow-hidden">
         <Image 
           src={heroImgUrl} 
@@ -21,7 +20,6 @@ export function Hero() {
         />
       </div>
       
-      {/* Banner Informativo Inferior pegado */}
       <div className="absolute bottom-0 left-0 w-full bg-[#4a2c1d]/90 backdrop-blur-sm py-[10px] z-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center gap-1">

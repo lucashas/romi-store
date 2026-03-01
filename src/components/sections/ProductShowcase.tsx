@@ -10,8 +10,7 @@ export function ProductShowcase() {
   const imgUrl = showcaseImg?.imageUrl || "https://i.imgur.com/j8pwxGX.png";
 
   return (
-    <section className="relative w-full h-screen bg-white px-[5px] border-b-4 border-secondary">
-      {/* Imagen completa */}
+    <section className="relative w-full h-screen bg-white px-[5px] border-b border-secondary">
       <div className="relative w-full h-full overflow-hidden">
         <Image 
           src={imgUrl} 
@@ -23,7 +22,6 @@ export function ProductShowcase() {
         />
       </div>
 
-      {/* Texto vendedor flotante */}
       <div className="absolute bottom-[10px] left-0 w-full px-[10px] z-10">
         <div className="bg-white/95 backdrop-blur-sm p-[10px] rounded-2xl shadow-lg border border-secondary text-center space-y-1">
           <h2 className="text-lg font-black text-foreground leading-tight uppercase">

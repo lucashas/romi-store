@@ -12,9 +12,8 @@ export function Features() {
   const featD3 = PlaceHolderImages.find(img => img.id === "supplement-d3");
 
   return (
-    <section id="caracteristicas" className="bg-white">
-      {/* Botón CTA ANTES de la imagen de cabello */}
-      <div className="px-[10px] py-[10px]">
+    <section id="caracteristicas" className="bg-white space-y-[10px]">
+      <div className="px-[5px] py-[5px]">
         <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
           <Link href="#registro" className="flex items-center gap-3">
             <ShoppingCart className="h-5 w-5" />
@@ -23,7 +22,6 @@ export function Features() {
         </Button>
       </div>
 
-      {/* Imagen de Impacto CABELLO */}
       <div className="relative w-full h-screen bg-white px-[5px]">
         <div className="relative w-full h-full overflow-hidden">
           {featHairHero && (
@@ -39,7 +37,15 @@ export function Features() {
         </div>
       </div>
 
-      {/* Sección Detalle Resultados */}
+      <div className="px-[5px] py-[5px]">
+        <Button asChild size="lg" className="w-full h-14 text-lg font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat">
+          <Link href="#registro" className="flex items-center gap-3">
+            <ShoppingCart className="h-5 w-5" />
+            ¡QUIERO MI COMPRA!
+          </Link>
+        </Button>
+      </div>
+
       <div className="py-[10px] border-b border-secondary">
         <div className="container mx-auto px-[10px] space-y-[10px]">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-black text-[10px] tracking-widest uppercase">
@@ -80,28 +86,6 @@ export function Features() {
                 <span className="text-[12px] font-black text-foreground uppercase">{item}</span>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Sección Salud Diaria */}
-      <div className="py-[10px] bg-[#4a2c1d] text-white">
-        <div className="container mx-auto px-[10px] space-y-[10px]">
-          <div className="text-center">
-            <h2 className="text-xl font-black uppercase leading-tight">MÁS QUE VITAMINAS, <br/>ES TU NUEVA ENERGÍA</h2>
-          </div>
-          
-          <div className="bg-white/5 p-[10px] rounded-[1.5rem] border border-white/10 backdrop-blur-sm space-y-[10px]">
-             <div className="flex items-center gap-2">
-              <Sun className="h-5 w-5 text-primary" />
-              <h3 className="text-sm font-black uppercase">VITAMINA D3 + K2</h3>
-            </div>
-            <p className="text-[11px] opacity-80 leading-tight">
-              El combo perfecto para un sistema inmune invencible y huesos que no fallan. Absorción instantánea.
-            </p>
-            <div className="relative h-40 rounded-xl overflow-hidden">
-              {featD3 && <Image src={featD3.imageUrl} alt="D3 MaryRuth's" fill className="object-cover" sizes="500px" />}
-            </div>
           </div>
         </div>
       </div>
