@@ -5,27 +5,27 @@
 
 @layer base {
   :root {
-    --background: 30 50% 98%;
+    --background: 35 40% 98%;
     --foreground: 20 50% 15%;
     --card: 0 0% 100%;
     --card-foreground: 20 50% 15%;
     --popover: 0 0% 100%;
     --popover-foreground: 20 50% 15%;
-    --primary: 25 90% 55%;
+    --primary: 28 85% 45%; /* Bronce/Naranja MaryRuth's */
     --primary-foreground: 30 50% 98%;
-    --secondary: 30 80% 92%;
-    --secondary-foreground: 25 90% 40%;
+    --secondary: 30 60% 90%;
+    --secondary-foreground: 28 85% 30%;
     --muted: 30 20% 94%;
     --muted-foreground: 20 20% 45%;
-    --accent: 142 45% 45%;
+    --accent: 0 84% 50%; /* Rojo para Envío Gratis */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 25 20% 88%;
-    --input: 25 20% 88%;
-    --ring: 25 90% 55%;
-    --radius: 1rem;
-    --chart-1: 25 90% 55%;
+    --border: 28 20% 88%;
+    --input: 28 20% 88%;
+    --ring: 28 85% 45%;
+    --radius: 1.25rem;
+    --chart-1: 28 85% 45%;
     --chart-2: 142 45% 45%;
     --chart-3: 45 90% 60%;
     --chart-4: 15 80% 50%;
@@ -38,19 +38,19 @@
     --card-foreground: 30 50% 95%;
     --popover: 20 50% 8%;
     --popover-foreground: 30 50% 95%;
-    --primary: 25 90% 60%;
+    --primary: 28 85% 55%;
     --primary-foreground: 20 50% 5%;
     --secondary: 20 40% 15%;
     --secondary-foreground: 30 50% 95%;
     --muted: 20 40% 12%;
     --muted-foreground: 30 20% 70%;
-    --accent: 142 45% 55%;
+    --accent: 0 84% 60%;
     --accent-foreground: 20 50% 5%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 30 50% 95%;
     --border: 20 40% 20%;
     --input: 20 40% 20%;
-    --ring: 25 90% 60%;
+    --ring: 28 85% 55%;
   }
 }
 

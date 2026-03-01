@@ -1,10 +1,22 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-multivitamin",
-      "description": "MaryRuth's Liquid Multivitamin bottle on a natural background",
+      "id": "hero-product",
+      "description": "MaryRuth's Liquid Multivitamin + Hair Growth bottle and healthy people",
       "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2aXRhbWluJTIwYm90dGxlfGVufDB8fHx8MTc3MjM4OTk1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vitamin bottle"
+    },
+    {
+      "id": "healthy-couple",
+      "description": "Healthy glowing couple smiling together",
+      "imageUrl": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoYXBweSUyMGNvdXBsZXxlbnwwfHx8fDE3NzIzMDE4MTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "healthy couple"
+    },
+    {
+      "id": "feature-hair",
+      "description": "Strong and healthy hair detail",
+      "imageUrl": "https://images.unsplash.com/photo-1519735811596-c339a0ef2381?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoZWFsdGh5JTIwaGFpcnxlbnwwfHx8fDE3NzIzOTI4MDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "healthy hair"
     },
     {
       "id": "feature-kids",
@@ -13,22 +25,10 @@
       "imageHint": "happy child"
     },
     {
-      "id": "feature-omega",
-      "description": "Supplements display on clean wooden table",
-      "imageUrl": "https://images.unsplash.com/photo-1471864190281-ad5f9f33d70e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzdXBwbGVtZW50c3xlbnwwfHx8fDE3NzIzODk5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "supplements display"
-    },
-    {
       "id": "testimonial-1",
-      "description": "Energetic woman at sunrise",
+      "description": "Radiant woman smiling at camera",
       "imageUrl": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxoZWFsdGh5JTIwd29tYW58ZW58MHx8fDE3NzIyNzY0NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "healthy woman"
-    },
-    {
-      "id": "testimonial-2",
-      "description": "Happy family having breakfast",
-      "imageUrl": "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxoYXBweSUyMGZhbWlseXxlbnwwfHx8fDE3NzIzMDE4MTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "happy family"
     }
   ]
 }
