@@ -6,11 +6,11 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function Hero() {
   const heroImg = PlaceHolderImages.find(img => img.id === "hero-main");
-  const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/j8pwxGX.png"; 
+  const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/XfmwUEJ.png"; 
 
   return (
-    <section className="relative w-full h-screen flex flex-col overflow-hidden bg-[#4a2c1d]">
-      {/* Imagen Principal - Ocupa el 100% del viewport móvil */}
+    <section className="relative w-full h-[90vh] flex flex-col overflow-hidden bg-[#4a2c1d]">
+      {/* Imagen Principal - Ocupa el 100% del viewport móvil de forma inmersiva */}
       <div className="relative flex-1 w-full h-full">
         <Image 
           src={heroImgUrl} 
