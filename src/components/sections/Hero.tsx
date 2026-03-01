@@ -2,42 +2,39 @@
 "use client";
 
 import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function Hero() {
-  const heroImg = PlaceHolderImages.find(img => img.id === "hero-main");
+  const heroImgUrl = "https://i.imgur.com/XfmwUEJ.png";
 
   return (
-    <section className="relative w-full h-[90vh] flex flex-col">
-      {/* Contenedor principal de la imagen: ahora usa object-cover para llenar todo el espacio */}
-      <div className="relative flex-1 w-full overflow-hidden">
-        {heroImg && (
-          <Image 
-            src={heroImg.imageUrl} 
-            alt="MaryRuth's Organics - Vitalidad y Belleza Natural"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="(max-width: 500px) 100vw, 500px"
-          />
-        )}
+    <section className="relative w-full h-[90vh] flex flex-col overflow-hidden">
+      {/* Imagen Principal - Ocupa todo el ancho y alto del contenedor */}
+      <div className="relative flex-1 w-full h-full">
+        <Image 
+          src={heroImgUrl} 
+          alt="MaryRuth's Organics - Funnel de Venta"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="(max-width: 500px) 100vw, 500px"
+        />
         
-        {/* Capa de acento visual en la parte inferior para dar profundidad y transición suave */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#4a2c1d]/60 to-transparent" />
+        {/* Capa de acento visual inferior para transición */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#4a2c1d]/40 to-transparent" />
       </div>
 
-      {/* Banner Informativo Inferior (Café Oscuro) - Integrado al final del Hero */}
-      <div className="w-full bg-[#4a2c1d] py-6 shadow-[0_-15px_40px_rgba(0,0,0,0.3)] relative z-10">
+      {/* Banner Informativo Inferior (Café Oscuro) */}
+      <div className="w-full bg-[#4a2c1d] py-5 shadow-[0_-10px_30px_rgba(0,0,0,0.2)] relative z-10">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center gap-3">
-            <div className="flex items-center gap-4 w-full justify-center">
+          <div className="flex flex-col items-center justify-center gap-2">
+            <div className="flex items-center gap-3 w-full justify-center">
               <span className="h-px flex-1 bg-white/10" />
-              <p className="text-white font-black text-[10px] uppercase tracking-[0.3em] whitespace-nowrap">
+              <p className="text-white font-black text-[9px] uppercase tracking-[0.2em] whitespace-nowrap">
                 Vitalidad Premium
               </p>
               <span className="h-px flex-1 bg-white/10" />
             </div>
-            <p className="text-center text-white/90 font-bold text-[11px] uppercase tracking-[0.15em] leading-relaxed">
+            <p className="text-center text-white font-bold text-[10px] uppercase tracking-[0.1em] leading-tight">
               CRECIMIENTO CAPILAR • ANTI-ENVEJECIMIENTO • NUTRICIÓN
             </p>
           </div>
