@@ -9,21 +9,20 @@ export function Hero() {
   const heroImgUrl = heroImg?.imageUrl || "https://i.imgur.com/XfmwUEJ.png"; 
 
   return (
-    <section className="relative w-full h-[90vh] overflow-hidden bg-[#4a2c1d]">
-      {/* Imagen Principal - Ocupa TODO el contenedor de forma inmersiva */}
-      <Image 
-        src={heroImgUrl} 
-        alt="MaryRuth's Organics - Promo TikTok"
-        fill
-        className="object-cover object-center"
-        priority
-        sizes="500px"
-      />
+    <section className="relative w-full h-[85vh] bg-[#4a2c1d] px-[5px] pt-4">
+      {/* Contenedor con margen de 5px e imagen completa */}
+      <div className="relative w-full h-full overflow-hidden">
+        <Image 
+          src={heroImgUrl} 
+          alt="MaryRuth's Organics - Promo TikTok"
+          fill
+          className="object-contain"
+          priority
+          sizes="500px"
+        />
+      </div>
       
-      {/* Capa de acento visual inferior para transición suave */}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#4a2c1d] to-transparent z-10" />
-
-      {/* Banner Informativo Inferior (Estilo TikTok Funnel) */}
+      {/* Banner Informativo Inferior */}
       <div className="absolute bottom-0 left-0 w-full bg-[#4a2c1d]/90 backdrop-blur-sm py-4 z-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center gap-1">

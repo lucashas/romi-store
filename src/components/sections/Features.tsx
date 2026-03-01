@@ -12,18 +12,20 @@ export function Features() {
 
   return (
     <section id="caracteristicas" className="bg-white">
-      {/* Imagen de Impacto CABELLO - Igualada en altura y ajuste a Hero y Showcase */}
-      <div className="relative w-full h-[90vh] bg-[#4a2c1d] overflow-hidden">
-        {featHairHero && (
-          <Image 
-            src={featHairHero.imageUrl} 
-            alt="Impacto MaryRuth's Cabello"
-            fill
-            className="object-cover object-center"
-            sizes="500px"
-            priority
-          />
-        )}
+      {/* Imagen de Impacto CABELLO - Con márgenes de 5px e imagen completa */}
+      <div className="relative w-full h-[85vh] bg-[#4a2c1d] px-[5px] pt-4 overflow-hidden">
+        <div className="relative w-full h-full">
+          {featHairHero && (
+            <Image 
+              src={featHairHero.imageUrl} 
+              alt="Impacto MaryRuth's Cabello"
+              fill
+              className="object-contain"
+              sizes="500px"
+              priority
+            />
+          )}
+        </div>
       </div>
 
       {/* Sección Detalle Resultados */}
