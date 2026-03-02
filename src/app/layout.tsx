@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
+  // Optimizamos el viewport específicamente para el navegador de TikTok
+  // Evitamos el auto-zoom en inputs que molesta a los usuarios móviles
 };
 
 export default function RootLayout({
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
