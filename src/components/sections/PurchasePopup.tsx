@@ -206,7 +206,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   Pago al recibir en casa • Envío 100% Seguro
                 </p>
                 
-                {/* Logo de Confianza Centrado y Visible */}
                 <div className="mt-4 flex justify-center">
                   <div className="relative h-14 w-full max-w-[320px]">
                     <img 
@@ -364,14 +363,19 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   </div>
                 </div>
 
-                <div className="bg-amber-50 border-2 border-amber-100 p-6 rounded-2xl space-y-3 text-center">
+                <div className="bg-amber-50 border-2 border-amber-100 p-6 rounded-2xl space-y-4 text-center">
                   <div className="flex items-center justify-center gap-2 text-amber-600">
                     <AlertTriangle className="h-6 w-6" />
                     <span className="font-black text-[16px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
                   </div>
-                  <p className="text-[16px] font-black text-amber-900 leading-tight">
-                    Al confirmar, tu pedido se registrará y te escribiremos via whatsapp para coordinar la entrega.
-                  </p>
+                  <div className="space-y-3">
+                    <p className="text-[16px] font-black text-amber-900 leading-tight">
+                      Al confirmar, tu pedido se registrará y te escribiremos via whatsapp para coordinar la entrega.
+                    </p>
+                    <p className="text-[15px] font-bold text-amber-800 leading-tight">
+                      Una vez realizada la compra, la empresa pagará el flete de tu producto a la transportadora. Por favor, comprometete con tu compra, así como nosotros lo hacemos brindándote el mejor servicio.
+                    </p>
+                  </div>
                 </div>
 
                 <Button 
