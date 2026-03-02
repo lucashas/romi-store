@@ -23,7 +23,7 @@ git push -u origin main
 1. Ve a [GitHub Tokens Settings](https://github.com/settings/tokens).
 2. Clic en **Generate new token (classic)**.
 3. Nombre: `romi-store-key`.
-4. Selecciona la casilla **repo**.
+4. **IMPORTANTE**: Selecciona la casilla **repo** (esta es la que permite subir el código).
 5. Clic en **Generate token** al final de la página.
 6. **COPIA EL CÓDIGO** y úsalo como tu password en la terminal.
 
