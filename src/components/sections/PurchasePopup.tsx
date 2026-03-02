@@ -8,18 +8,12 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2, PartyPopper, Phone } from "lucide-react";
+import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2, Phone } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
-
-/**
- * 📱 CONFIGURACIÓN DE RECEPCIÓN DE PEDIDOS
- * Tu número de WhatsApp Business (Ecuador: 593 + número sin el primer cero)
- */
-const VENDEDOR_WHATSAPP = "593959461399"; 
 
 export interface Product {
   id: string;
@@ -82,7 +76,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     }
   }, [open, products, selectedProduct]);
 
-  // Resetear estado al cerrar/abrir
   useEffect(() => {
     if (!open) {
       setTimeout(() => setSubmitted(false), 300);
@@ -116,23 +109,18 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
     const orderData = {
       name: `${nombre} ${apellido}`,
-      email: `${whatsapp}@tienda.com`, 
+      email: `${whatsapp}@romistore.com`, 
       phoneNumber: whatsapp,
       message: `PRODUCTO: ${product.name} | PRECIO: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
       landingPageContentId: "main-landing"
     };
 
-    // 1. Guardar en Base de Datos al instante (Firestore)
     const leadsRef = collection(firestore, "leadSubmissions");
     addDoc(leadsRef, orderData)
       .then(() => {
         setLoading(false);
         setSubmitted(true);
-        toast({
-          title: "¡PEDIDO RECIBIDO!",
-          description: "Pronto nos contactaremos contigo para la entrega.",
-        });
       })
       .catch((err) => {
         setLoading(false);
@@ -151,11 +139,10 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       >
         <DialogHeader className="sr-only">
           <DialogTitle>Formulario de Compra</DialogTitle>
-          <DialogDescription>Completa tus datos para recibir tu pedido.</DialogDescription>
+          <DialogDescription>Ingresa tus datos para registrar tu pedido pago contra entrega.</DialogDescription>
         </DialogHeader>
 
         {submitted ? (
-          /* VISTA DE ÉXITO */
           <div className="p-8 text-center space-y-6 animate-in fade-in zoom-in duration-300">
             <div className="flex justify-center">
               <div className="h-20 w-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 shadow-inner">
@@ -168,20 +155,24 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 ¡PEDIDO <span className="text-green-600">RECIBIDO!</span>
               </h3>
               <p className="text-[14px] text-muted-foreground font-medium leading-relaxed">
-                Gracias <strong>{nombre}</strong>, hemos registrado tu solicitud con éxito.
+                Gracias <strong>{nombre}</strong>, tu solicitud ha sido registrada correctamente.
               </p>
             </div>
 
-            <div className="bg-secondary/20 p-4 rounded-2xl border border-secondary/50 text-left">
-              <p className="text-[11px] font-black uppercase text-primary/70 mb-2">Próximos pasos:</p>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-[12px] font-medium text-foreground">
-                  <Truck className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                  <span>Nuestro equipo revisará tu dirección en <strong>{ciudad}</strong>.</span>
+            <div className="bg-secondary/20 p-5 rounded-3xl border border-secondary/50 text-left space-y-3">
+              <p className="text-[11px] font-black uppercase text-primary/70 border-b border-primary/10 pb-1">Pasos a seguir:</p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3 text-[12px] font-medium text-foreground">
+                  <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[10px]">1</div>
+                  <span>Nuestro equipo validará tu dirección en <strong>{ciudad}</strong>.</span>
                 </li>
-                <li className="flex items-start gap-2 text-[12px] font-medium text-foreground">
-                  <Phone className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                  <span>Te llamaremos al <strong>{whatsapp}</strong> para confirmar el envío.</span>
+                <li className="flex items-start gap-3 text-[12px] font-medium text-foreground">
+                  <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[10px]">2</div>
+                  <span>Te llamaremos al <strong>{whatsapp}</strong> para confirmar el despacho.</span>
+                </li>
+                <li className="flex items-start gap-3 text-[12px] font-medium text-foreground">
+                  <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[10px]">3</div>
+                  <span>¡Pagas cuando recibas el producto en tu puerta!</span>
                 </li>
               </ul>
             </div>
@@ -194,23 +185,21 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
             </Button>
             
             <p className="text-[10px] text-muted-foreground italic">
-              * Recuerda tener tu celular a la mano para la confirmación.
+              * Mantente atento a tu celular para la confirmación de envío.
             </p>
           </div>
         ) : (
-          /* FORMULARIO DE COMPRA */
           <>
             <div className="bg-primary p-5 text-white text-center">
               <h2 className="text-[14px] font-black uppercase leading-tight tracking-tighter">
                 INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
               </h2>
               <p className="text-[11px] font-medium opacity-90 mt-1">
-                Pago al recibir en la puerta de tu casa. Envío 100% seguro.
+                Pago al recibir en casa • Envío 100% Seguro
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-4 space-y-5 max-h-[70vh] overflow-y-auto overflow-x-hidden bg-white custom-scrollbar">
-              {/* PASO 1: PRODUCTOS */}
+            <form onSubmit={handleSubmit} className="p-4 space-y-5 max-h-[70vh] overflow-y-auto overflow-x-hidden bg-white">
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-primary border-b pb-1">
                   <Package className="h-4 w-4" />
@@ -247,7 +236,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                           />
                         </div>
 
-                        <div className="flex-1 min-w-0 overflow-hidden">
+                        <div className="flex-1 min-w-0 overflow-hidden text-left">
                           <p className="font-black text-[11px] text-foreground uppercase leading-tight truncate">
                             {product.name}
                           </p>
@@ -267,7 +256,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </RadioGroup>
               </div>
 
-              {/* PASO 2: DATOS DE ENVÍO */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-primary border-b pb-1">
                   <Truck className="h-4 w-4" />
@@ -275,7 +263,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="space-y-1">
+                  <div className="space-y-1 text-left">
                     <Label htmlFor="nombre" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
                     <Input 
                       id="nombre" 
@@ -286,7 +274,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                       className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
                     />
                   </div>
-                  <div className="space-y-1">
+                  <div className="space-y-1 text-left">
                     <Label htmlFor="apellido" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
                     <Input 
                       id="apellido" 
@@ -299,7 +287,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   </div>
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1 text-left">
                   <Label htmlFor="whatsapp" className="text-[10px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
                   <div className="relative">
                     <Input 
@@ -315,11 +303,11 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   </div>
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1 text-left">
                   <Label htmlFor="direccion" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
                   <Input 
                     id="direccion" 
-                    placeholder="Calle y Nro de casa" 
+                    placeholder="Calle, Nro de casa y referencia" 
                     required 
                     value={direccion}
                     onChange={(e) => setDireccion(e.target.value)}
@@ -328,7 +316,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="space-y-1">
+                  <div className="space-y-1 text-left">
                     <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
                     <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
                       <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
@@ -341,7 +329,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-1">
+                  <div className="space-y-1 text-left">
                     <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
                     <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
                       <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
@@ -357,14 +345,13 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </div>
               </div>
 
-              {/* ADVERTENCIA */}
-              <div className="bg-amber-50 border border-amber-100 p-3 rounded-2xl space-y-1">
+              <div className="bg-amber-50 border border-amber-100 p-3 rounded-2xl space-y-1 text-left">
                 <div className="flex items-center gap-2 text-amber-600">
                   <AlertTriangle className="h-3 w-3" />
-                  <span className="font-black text-[9px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</span>
+                  <span className="font-black text-[9px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
                 </div>
                 <p className="text-[9px] font-medium text-amber-800/80 leading-tight italic">
-                  Al confirmar, tu pedido se registrará y te llamaremos para la entrega.
+                  Al confirmar, tu pedido se registrará y te llamaremos para coordinar la entrega.
                 </p>
               </div>
 
