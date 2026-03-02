@@ -94,7 +94,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // VALIDACIÓN ESTRICTA DE CAMPOS OBLIGATORIOS
     if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
       toast({
         variant: "destructive",
@@ -208,10 +207,12 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 
                 <div className="mt-4 flex justify-center">
                   <div className="relative h-14 w-full max-w-[320px]">
-                    <img 
+                    <Image 
                       src="https://i.imgur.com/Jh61uYJ.png" 
                       alt="Garantía de Confianza" 
-                      className="w-full h-full object-contain brightness-110 contrast-110"
+                      fill
+                      className="object-contain brightness-110 contrast-110"
+                      sizes="320px"
                     />
                   </div>
                 </div>
@@ -306,12 +307,12 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   </div>
 
                   <div className="space-y-1.5 text-left">
-                    <Label htmlFor="whatsapp" className="text-[14px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
+                    <Label htmlFor="whatsapp" className="text-[14px] font-black uppercase text-muted-foreground ml-1">Número de WhatsApp (para notificaciones de envío)</Label>
                     <div className="relative">
                       <Input 
                         id="whatsapp" 
                         type="tel" 
-                        placeholder="09XXXXXXXX" 
+                        placeholder="Ingresa tu celular" 
                         required 
                         value={whatsapp}
                         onChange={handleWhatsappChange}
@@ -322,7 +323,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   </div>
 
                   <div className="space-y-1.5 text-left">
-                    <Label htmlFor="direccion" className="text-[14px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
+                    <Label htmlFor="direccion" className="text-[14px] font-black uppercase text-muted-foreground ml-1">Dirección Entrega: (2 calles y una referencia para el envío a domicilio)</Label>
                     <Input 
                       id="direccion" 
                       placeholder="Calle, Nro de casa y referencia" 
@@ -331,6 +332,9 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                       onChange={(e) => setDireccion(e.target.value)}
                       className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[16px] w-full px-4 focus:ring-primary focus:bg-white" 
                     />
+                    <p className="text-[12px] text-muted-foreground font-medium italic mt-1 px-1 leading-tight">
+                      Ejemplo: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, # 23-3, color blanco, barrio La Pradera bloque #...
+                    </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
