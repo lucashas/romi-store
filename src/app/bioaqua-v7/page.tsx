@@ -8,11 +8,11 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Sparkles, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
+import { ShoppingCart, Star, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-// CONFIGURACIÓN DE TUS OFERTAS PARA BIOAQUA
+// CONFIGURACIÓN DE OFERTAS PARA BIOAQUA V7
 const BIOAQUA_PRODUCTS: Product[] = [
   {
     id: "bioaqua_1",
@@ -52,7 +52,7 @@ export default function BioaquaPage() {
       <TopMarquee />
       
       <main className="flex-1">
-        {/* Hero Section - Impacto Visual Inmediato */}
+        {/* Hero Section */}
         <section className="bg-white border-b overflow-hidden">
           <div className="px-1 pt-1 cursor-pointer" onClick={openPopup}>
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg border-2 border-primary/10">
@@ -83,7 +83,7 @@ export default function BioaquaPage() {
           </div>
         </section>
 
-        {/* Alerta de Urgencia */}
+        {/* Urgencia */}
         <div className="bg-red-50 border-y border-red-100 p-4 flex items-center gap-3">
           <Zap className="h-6 w-6 text-accent fill-accent animate-pulse" />
           <p className="text-[12px] font-black text-accent uppercase leading-tight">
@@ -91,31 +91,28 @@ export default function BioaquaPage() {
           </p>
         </div>
 
-        {/* Beneficios Destacados */}
+        {/* Beneficios */}
         <section className="py-8 bg-white">
           <div className="container px-4 space-y-6">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-black text-center uppercase tracking-tight leading-none">
-                ¿POR QUÉ ES <span className="text-primary">VIRAL EN TIKTOK?</span>
-              </h2>
-              <div className="grid grid-cols-1 gap-3">
-                {[
-                  { t: "ACLARA AL INSTANTE", d: "Efecto blanqueador natural y parejo desde la primera aplicación." },
-                  { t: "PIEL DE PORCELANA", d: "Minimiza poros y cubre imperfecciones sin pesadez." },
-                  { t: "NUTRICIÓN VITAMÍNICA", d: "Enriquecida con Vitaminas A, B12, C, E, F y H." },
-                  { t: "CONTROL DE BRILLO", d: "Acabado mate y sedoso, ideal para el clima de Ecuador." }
-                ].map((b, i) => (
-                  <div key={i} className="flex gap-4 items-start p-4 bg-secondary/20 rounded-2xl border border-secondary transition-transform active:scale-95 cursor-pointer" onClick={openPopup}>
-                    <div className="h-10 w-10 bg-primary rounded-xl flex items-center justify-center shrink-0 shadow-sm">
-                      <CheckCircle2 className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-black text-sm uppercase leading-tight">{b.t}</p>
-                      <p className="text-xs text-muted-foreground mt-1 font-medium">{b.d}</p>
-                    </div>
+            <h2 className="text-2xl font-black text-center uppercase tracking-tight leading-none">
+              ¿POR QUÉ ES <span className="text-primary">VIRAL EN TIKTOK?</span>
+            </h2>
+            <div className="grid grid-cols-1 gap-3">
+              {[
+                { t: "ACLARA AL INSTANTE", d: "Efecto blanqueador natural y parejo desde la primera aplicación." },
+                { t: "PIEL DE PORCELANA", d: "Minimiza poros y cubre imperfecciones sin pesadez." },
+                { t: "NUTRICIÓN VITAMÍNICA", d: "Enriquecida con Vitaminas A, B12, C, E, F y H." }
+              ].map((b, i) => (
+                <div key={i} className="flex gap-4 items-start p-4 bg-secondary/20 rounded-2xl border border-secondary" onClick={openPopup}>
+                  <div className="h-10 w-10 bg-primary rounded-xl flex items-center justify-center shrink-0 shadow-sm">
+                    <CheckCircle2 className="h-6 w-6 text-white" />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <p className="font-black text-sm uppercase leading-tight">{b.t}</p>
+                    <p className="text-xs text-muted-foreground mt-1 font-medium">{b.d}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -138,7 +135,6 @@ export default function BioaquaPage() {
           </div>
         </section>
 
-        {/* Testimonios */}
         <Testimonials />
 
         {/* Garantías */}
@@ -162,20 +158,16 @@ export default function BioaquaPage() {
               <Button 
                 onClick={openPopup}
                 size="lg" 
-                className="w-full h-20 text-2xl font-black bg-accent hover:bg-accent/90 shadow-[0_10px_40px_rgba(239,68,68,0.4)] rounded-2xl animate-heartbeat"
+                className="w-full h-20 text-2xl font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat"
               >
                 <ShoppingCart className="h-8 w-8 mr-2" />
-                ¡COMPRAR CON DESCUENTO!
+                ¡COMPRAR AHORA!
               </Button>
-              <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
-                Envíos gratis a todo el Ecuador 🇪🇨
-              </p>
             </div>
           </div>
         </section>
       </main>
       
-      {/* Botón Flotante Pegajoso */}
       <div className="sticky-cta">
         <Button 
           onClick={openPopup}
