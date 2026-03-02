@@ -126,7 +126,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     addDoc(leadsRef, orderData)
       .then(() => {
         setLoading(false);
-        // Redirigir a la página de gracias con los datos del cliente
+        // REDIRECCIÓN PROFESIONAL: Envía al usuario a la página de gracias
         router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
       })
       .catch((err) => {
