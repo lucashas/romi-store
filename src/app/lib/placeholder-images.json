@@ -58,13 +58,13 @@
     {
       "id": "supplement-complex-b",
       "description": "Complejo B Líquido",
-      "imageUrl": "https://images.unsplash.com/photo-1729704166757-7f8bed2adc62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxlbmVyZ3klMjB2aXRhbWluc3xlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1729704166757-7f8bed2adc62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxlbmVyZ3klMjB2aXRhbWluc3xlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "energy vitamins"
     },
     {
       "id": "supplement-omega",
       "description": "Omega-3 Líquido",
-      "imageUrl": "https://images.unsplash.com/photo-1704694671399-7bfac37b3e1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvbWVnYSUyMDN8ZW58MHx8fHwxNzcyMzkyNjMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1704694671399-7bfac37b3e1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvbWVnYSUyMDN8ZW58MHx8fHwxNzcyMzkyNjM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "omega 3"
     },
     {

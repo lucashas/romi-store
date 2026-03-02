@@ -1,35 +1,35 @@
+
 # 🚀 Guía de Lanzamiento Final - Romi Store EC
 
-Para corregir el error de "No buildpack groups passed detection", sigue estos pasos exactos en tu terminal:
+Para corregir el error de "No buildpack groups passed detection", sigue estos pasos exactos:
 
-### 1. Encuentra la carpeta de tu proyecto
-En tu terminal actual, escribe:
+### 1. Encuentra tu carpeta en la terminal
+Si estás en la terminal de Firebase Studio, lo más probable es que ya estés en la carpeta correcta. Escribe:
 ```bash
-find ~ -name "package.json" -not -path "*/node_modules/*"
+ls -F
 ```
-Este comando te dirá la ruta exacta (ejemplo: `/home/stalinrobles/romi-store-ec/package.json`).
+Si ves una lista que incluye `src/`, `package.json` y `app/`, **¡ESTÁS EN EL LUGAR CORRECTO!**
 
-### 2. Entra a esa carpeta
-Si el comando anterior te devolvió `/home/stalinrobles/romi-store-ec/package.json`, escribe:
+Si no ves nada, prueba entrar aquí:
 ```bash
-cd ~/romi-store-ec
+cd ~/studio/romi-store-ec
 ```
 
-### 3. Genera el archivo de bloqueo (CRÍTICO)
-Una vez dentro de la carpeta (donde veas la carpeta `src`), ejecuta:
+### 2. Genera el archivo de bloqueo (CRÍTICO)
+Una vez dentro de la carpeta donde ves el archivo `package.json`, ejecuta:
 ```bash
 npm install
 ```
 Esto creará el archivo `package-lock.json` **dentro** de la carpeta del proyecto.
 
-### 4. Sube los cambios a GitHub
+### 3. Sube los cambios a GitHub
 ```bash
 git add .
 git commit -m "Solución definitiva: Standalone + Lockfile"
 git push
 ```
 
-### 5. Verifica en Firebase
+### 4. Verifica en Firebase
 La compilación debería detectar ahora automáticamente que es un proyecto de Next.js y ponerse en verde.
 
 ---
