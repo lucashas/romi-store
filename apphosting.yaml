@@ -1,9 +1,7 @@
-# Configuración para Firebase App Hosting
+# Configuración optimizada para Romi Store EC
 runConfig:
-  # Mantener una instancia mínima para asegurar rapidez en las respuestas
   minInstances: 0
   maxInstances: 1
-  # Aumentamos la memoria a 1GiB para asegurar que Next.js compile sin errores
   memory: 1GiB
 env:
   - variable: MY_GEMINI_KEY
