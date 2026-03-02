@@ -2,7 +2,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { CheckCircle2, Phone, Truck, Home, MessageCircle, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Truck, Home, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
@@ -12,11 +12,15 @@ function GraciasContent() {
   const [nombre, setNombre] = useState("Cliente");
   const [ciudad, setCiudad] = useState("Ecuador");
   const [whatsapp, setWhatsapp] = useState("");
+  const [producto, setProducto] = useState("su pedido");
+  const [volverUrl, setVolverUrl] = useState("/");
 
   useEffect(() => {
     setNombre(searchParams.get("nombre") || "Cliente");
     setCiudad(searchParams.get("ciudad") || "Ecuador");
     setWhatsapp(searchParams.get("whatsapp") || "");
+    setProducto(searchParams.get("producto") || "su pedido");
+    setVolverUrl(searchParams.get("back") || "/");
   }, [searchParams]);
 
   return (
@@ -50,7 +54,7 @@ function GraciasContent() {
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">1</div>
             <div className="space-y-1">
               <p className="font-black text-foreground text-sm uppercase">VERIFICACIÓN DE DATOS</p>
-              <p className="text-sm text-muted-foreground">Un asesor revisará tu dirección para el despacho inmediato.</p>
+              <p className="text-sm text-muted-foreground">Un asesor revisará tu dirección para el despacho inmediato de <strong>{producto}</strong>.</p>
             </div>
           </div>
 
@@ -74,14 +78,14 @@ function GraciasContent() {
 
       <div className="w-full space-y-4 mb-12">
         <Button asChild className="w-full h-16 text-lg font-black uppercase bg-green-600 hover:bg-green-700 shadow-xl rounded-2xl transition-transform active:scale-95">
-          <a href={`https://wa.me/593999999999?text=Hola,%20soy%20${nombre}.%20Acabo%20de%20hacer%20un%20pedido%20para%20${ciudad}.`} target="_blank">
+          <a href={`https://wa.me/593999999999?text=Hola,%20soy%20${nombre}.%20Acabo%20de%20pedir%20${producto}%20para%20${ciudad}.`} target="_blank">
             <MessageCircle className="mr-2 h-6 w-6" />
             CONFIRMAR POR WHATSAPP
           </a>
         </Button>
         
         <Button asChild variant="outline" className="w-full h-14 text-sm font-bold uppercase border-2 rounded-2xl">
-          <Link href="/">
+          <Link href={volverUrl}>
             <Home className="mr-2 h-4 w-4" />
             VOLVER A LA TIENDA
           </Link>

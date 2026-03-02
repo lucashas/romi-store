@@ -15,7 +15,7 @@ import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export interface Product {
   id: string;
@@ -71,6 +71,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const { toast } = useToast();
   const firestore = useFirestore();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -110,7 +111,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       phoneNumber: whatsapp,
       message: `PRODUCTO: ${product.name} | PRECIO: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
-      landingPageContentId: "mary-ruth"
+      landingPageContentId: pathname.replace("/", "") || "principal"
     };
 
     try {
@@ -119,8 +120,8 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       setLoading(false);
       onOpenChange(false);
       
-      // REDIRECCIÓN PROFESIONAL A LA PÁGINA DE GRACIAS ESPECÍFICA DE MARY RUTH
-      router.push(`/mary-ruth-gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
+      // REDIRECCIÓN INTELIGENTE A LA PÁGINA DE GRACIAS UNIFICADA
+      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product.name)}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);
       errorEmitter.emit("permission-error", new FirestorePermissionError({
