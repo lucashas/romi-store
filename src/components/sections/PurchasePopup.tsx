@@ -53,12 +53,6 @@ const ecuadorData: Record<string, string[]> = {
   "ZAMORA CHINCHIPE": ["ZAMORA", "YANTZAZA", "EL PANGUI", "CENTINELA DEL CONDOR", "CHINCHIPE", "NANGARITZA", "PALANDA", "PAQUISHA", "YACUAMBI"]
 };
 
-interface PurchasePopupProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  products: Product[];
-}
-
 export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState("");
@@ -149,7 +143,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
         </DialogHeader>
 
         <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden">
-          {/* Header del Formulario que ahora sube con el scroll */}
           <div className="bg-primary p-6 text-white text-center">
             <h2 className="text-[18px] font-black uppercase leading-tight tracking-tight px-4">
               INGRESE SUS DATOS CORRECTAMENTE PARA ENVIAR SU PEDIDO
