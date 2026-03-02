@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, CheckCircle2, ShieldCheck, Lock, X } from "lucide-react";
+import { ShoppingCart, Package, Truck, ShieldCheck, Lock } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -118,7 +118,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
-      // REDIRECCIÓN A LA PÁGINA ESPECÍFICA DE MARY RUTH GRACIAS
+      // REDIRECCIÓN PROFESIONAL A LA PÁGINA DE GRACIAS ESPECÍFICA
       router.push(`/mary-ruth-gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
     } catch (err) {
       setLoading(false);

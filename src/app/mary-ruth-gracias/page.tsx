@@ -2,7 +2,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { CheckCircle2, Phone, Truck, Home, MessageCircle, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Truck, Home, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
