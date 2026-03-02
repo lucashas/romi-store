@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Crítico para Firebase App Hosting: Genera los archivos necesarios para producción
   output: 'standalone',
   reactStrictMode: true,
   images: {
@@ -13,7 +12,6 @@ const nextConfig: NextConfig = {
     ],
   },
   typescript: {
-    // Ignorar errores en build para agilizar el lanzamiento inicial
     ignoreBuildErrors: true,
   },
   eslint: {
