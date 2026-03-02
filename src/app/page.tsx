@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -17,15 +16,14 @@ import { ShoppingCart } from "lucide-react";
 /**
  * 🛠️ PANEL DE CONTROL DE PRODUCTOS (CHECKOUT)
  * Modifica este array para cambiar los productos que aparecen en el Popup.
- * Puedes cambiar: id, nombre, precio, imagen, etiqueta (badge) y descripción.
  */
 const CUSTOM_PRODUCTS: Product[] = [
   {
     id: "oferta_1",
     name: "1 Botella Multivitamínico",
     price: 35.00,
-    image: "https://i.imgur.com/XfmwUEJ.png", // URL de la imagen del producto
-    badge: null, // Si no quieres etiqueta, pon: null
+    image: "https://i.imgur.com/XfmwUEJ.png",
+    badge: null,
     description: "Tratamiento básico para 30 días"
   },
   {
@@ -33,7 +31,7 @@ const CUSTOM_PRODUCTS: Product[] = [
     name: "2 Botellas (Tratamiento Pro)",
     price: 60.00,
     image: "https://i.imgur.com/j8pwxGX.png",
-    badge: "Más Vendido", // Aparece como una burbuja flotante
+    badge: "Más Vendido",
     description: "Envío Prioritario Gratis a todo Ecuador"
   },
   {
@@ -64,7 +62,7 @@ export default function Home() {
         </div>
       </main>
       
-      {/* Botón Flotante Inferior */}
+      {/* Botón Flotante Inferior optimizado para TikTok */}
       <div className="sticky-cta">
         <Button 
           onClick={openPopup}
@@ -72,11 +70,11 @@ export default function Home() {
           className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-[0_10px_30px_rgba(239,68,68,0.4)] rounded-2xl animate-heartbeat"
         >
           <ShoppingCart className="h-6 w-6" />
-          ¡QUIERO MI PROMO!
+          ¡COMPRAR AHORA!
         </Button>
       </div>
 
-      {/* Popup de Checkout Dinámico */}
+      {/* Popup de Checkout con registro en Firestore */}
       <PurchasePopup 
         open={isPopupOpen} 
         onOpenChange={setIsPopupOpen} 

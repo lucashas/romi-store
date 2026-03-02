@@ -9,8 +9,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  // Optimizamos el viewport específicamente para el navegador de TikTok
-  // Evitamos el auto-zoom en inputs que molesta a los usuarios móviles
+  openGraph: {
+    title: 'Romi Store EC | MaryRuth\'s Organics',
+    description: 'Suplementos orgánicos premium con envío gratis a todo Ecuador.',
+    url: 'https://romi-store.com',
+    siteName: 'Romi Store EC',
+    locale: 'es_EC',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
