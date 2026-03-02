@@ -51,7 +51,7 @@ export default function BioaquaPage() {
       <TopMarquee />
       
       <main className="flex-1">
-        {/* Banner de Impacto Inmediato - Naranja/Blanco */}
+        {/* Banner de Impacto Inmediato */}
         <section className="bg-white overflow-hidden">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-xl shadow-lg border-2 border-orange-100">
@@ -80,7 +80,7 @@ export default function BioaquaPage() {
           </div>
         </section>
 
-        {/* Urgencia con colores Bioaqua */}
+        {/* Urgencia */}
         <div className="bg-orange-600 p-4 flex items-center gap-3">
           <Zap className="h-6 w-6 text-white animate-pulse" />
           <p className="text-[12px] font-black text-white uppercase leading-tight">
