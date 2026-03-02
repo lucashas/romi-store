@@ -202,8 +202,8 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
             <form onSubmit={handleSubmit} className="p-4 space-y-6 max-h-[80vh] overflow-y-auto bg-white overflow-x-hidden">
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-primary border-b border-primary/10 pb-1.5">
-                  <Package className="h-5 w-5" />
-                  <h3 className="font-black uppercase text-[12px] tracking-widest text-primary/80">PASO 1: ELIGE TU OFERTA</h3>
+                  <Package className="h-6 w-6" />
+                  <h3 className="font-black uppercase text-[15px] tracking-widest text-primary">PASO 1: ELIGE TU OFERTA</h3>
                 </div>
                 
                 <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
@@ -258,8 +258,8 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-primary border-b border-primary/10 pb-1.5">
-                  <Truck className="h-5 w-5" />
-                  <h3 className="font-black uppercase text-[12px] tracking-widest text-primary/80">PASO 2: DATOS DE ENVÍO</h3>
+                  <Truck className="h-6 w-6" />
+                  <h3 className="font-black uppercase text-[15px] tracking-widest text-primary">PASO 2: DATOS DE ENVÍO</h3>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -345,13 +345,13 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </div>
               </div>
 
-              <div className="bg-amber-50 border-2 border-amber-100 p-4 rounded-xl space-y-1.5 text-left">
-                <div className="flex items-center gap-2 text-amber-600">
-                  <AlertTriangle className="h-5 w-5" />
-                  <span className="font-black text-[13px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
+              <div className="bg-amber-50 border-2 border-amber-100 p-6 rounded-2xl space-y-3 text-center">
+                <div className="flex items-center justify-center gap-2 text-amber-600">
+                  <AlertTriangle className="h-6 w-6" />
+                  <span className="font-black text-[16px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
                 </div>
-                <p className="text-[14px] font-medium text-amber-800/80 leading-tight italic">
-                  Al confirmar, tu pedido se registrará y te llamaremos para coordinar la entrega.
+                <p className="text-[16px] font-black text-amber-900 leading-tight">
+                  Al confirmar, tu pedido se registrará y te escribiremos via whatsapp para coordinar la entrega.
                 </p>
               </div>
 
