@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, CheckCircle2, ShieldCheck, Lock } from "lucide-react";
+import { ShoppingCart, Package, Truck, CheckCircle2, ShieldCheck, Lock, X } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -110,7 +110,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       phoneNumber: whatsapp,
       message: `PRODUCTO: ${product.name} | PRECIO: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
-      landingPageContentId: "main-landing"
+      landingPageContentId: "mary-ruth"
     };
 
     try {
@@ -118,8 +118,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
-      // REDIRECCIÓN FINAL CRÍTICA
-      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
+      router.push(`/mary-ruth-gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
     } catch (err) {
       setLoading(false);
       errorEmitter.emit("permission-error", new FirestorePermissionError({
