@@ -1,29 +1,26 @@
-# Romi Store EC - Lanzamiento Oficial
+# Romi Store EC - ¡Lanzamiento Exitoso! 🚀
 
-Esta es la landing page optimizada para TikTok Ads de **Romi Store EC**.
+¡Felicidades! Tu landing page optimizada para TikTok Ads ya está conectada con GitHub y lista para ser desplegada en Firebase App Hosting.
 
-## Solución al error "Repository not found" (Paso a Paso)
+## Próximos Pasos en Firebase Console
+1. **Paso 2 (Conectar Repo):** Busca y selecciona `lucashas/romi-store` en la lista.
+2. **Configuración de Despliegue:** Deja los valores por defecto y haz clic en "Finish".
+3. **Espera el Build:** Firebase tardará unos minutos en procesar el código de Next.js.
+4. **Dominio:** Una vez termine, Firebase te dará una URL temporal (ej. `romi-store-ec.web.app`). Puedes conectar tu dominio `romi-store.com` en la pestaña "Settings" de App Hosting.
 
-Si te sale "Repository not found" o "Authentication failed", ejecuta estos comandos exactos en la terminal:
+## Cómo actualizar tu tienda en el futuro
+Si quieres cambiar precios o productos:
+1. Edita el archivo `src/app/page.tsx` en este editor.
+2. Guarda los cambios.
+3. Ejecuta estos dos comandos en la terminal:
+   ```bash
+   git add .
+   git commit -m "Actualización de precios"
+   git push
+   ```
+4. ¡Firebase detectará el cambio y actualizará la página automáticamente!
 
-### 1. Limpiar y Re-conectar (Copia y pega uno por uno)
-```bash
-git remote remove origin
-git remote add origin https://github.com/lucashas/romi-store.git
-git push -u origin main
-```
-
-### 2. Cuando te pida los datos:
-- **Username**: `lucashas`
-- **Password**: Pega el **Personal Access Token (PAT)** que generaste. 
-  *(Recuerda: Al pegar el token NO se verán letras ni asteriscos, solo pégalo y presiona Enter).*
-
-### IMPORTANTE: Verifica esto en GitHub
-1. Entra a [https://github.com/lucashas/romi-store](https://github.com/lucashas/romi-store). Si te sale un error 404, es que **NO has creado el repositorio**. Créalo con el nombre `romi-store`.
-2. Al crear tu Token (PAT), asegúrate de que la casilla **repo** esté marcada con un check azul. Sin eso, GitHub rechazará la conexión.
-
-## Configuración Final en Firebase
-Una vez que el comando `git push` diga "Done" o "100%":
-1. Ve a la consola de Firebase > **App Hosting**.
-2. Sigue los pasos. Selecciona el repositorio `lucashas/romi-store`.
-3. ¡Tu página estará en vivo en minutos!
+## Soporte
+- **Distribuidor:** Romi Store EC
+- **Marca:** MaryRuth's Organics Ecuador
+- **Plataforma:** Next.js + Firebase + ShadCN UI
