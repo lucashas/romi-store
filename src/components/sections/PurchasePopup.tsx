@@ -149,6 +149,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
         </DialogHeader>
 
         <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden">
+          {/* Header del Formulario que ahora sube con el scroll */}
           <div className="bg-primary p-6 text-white text-center">
             <h2 className="text-[18px] font-black uppercase leading-tight tracking-tight px-4">
               INGRESE SUS DATOS CORRECTAMENTE PARA ENVIAR SU PEDIDO
@@ -285,7 +286,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   onChange={(e) => setDireccion(e.target.value)}
                   className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[16px] w-full px-4 focus:ring-primary focus:bg-white" 
                 />
-                <p className="text-[12px] text-muted-foreground font-medium italic mt-1 px-1 leading-tight">
+                <p className="text-[12px] text-muted-foreground font-medium italic mt-1 px-1 leading-tight text-left">
                   Ejemplo: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, # 23-3, color blanco, barrio La Pradera bloque #...
                 </p>
               </div>
