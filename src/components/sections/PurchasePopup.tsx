@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -9,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2, PartyPopper, Phone } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -66,6 +65,7 @@ interface PurchasePopupProps {
 
 export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [direccion, setDireccion] = useState("");
@@ -81,6 +81,13 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       setSelectedProduct(products[0].id);
     }
   }, [open, products, selectedProduct]);
+
+  // Resetear estado al cerrar/abrir
+  useEffect(() => {
+    if (!open) {
+      setTimeout(() => setSubmitted(false), 300);
+    }
+  }, [open]);
 
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? ecuadorData[provincia].sort() : [];
@@ -116,50 +123,25 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       landingPageContentId: "main-landing"
     };
 
-    // 1. Guardar en Base de Datos al instante (Tu seguro)
+    // 1. Guardar en Base de Datos al instante (Firestore)
     const leadsRef = collection(firestore, "leadSubmissions");
-    addDoc(leadsRef, orderData).catch((err) => {
-      errorEmitter.emit("permission-error", new FirestorePermissionError({
-        path: "leadSubmissions",
-        operation: "create",
-        requestResourceData: orderData
-      }));
-    });
-
-    // 2. Construcción del mensaje para WhatsApp
-    const messageText = `¡Hola! Acabo de realizar un pedido desde la tienda:\n\n` +
-      `📦 *PRODUCTO:* ${product.name}\n` +
-      `💰 *PRECIO:* $${product.price.toFixed(2)}\n\n` +
-      `👤 *CLIENTE:* ${nombre} ${apellido}\n` +
-      `📱 *WHATSAPP:* ${whatsapp}\n` +
-      `📍 *PROVINCIA:* ${provincia}\n` +
-      `🏙️ *CIUDAD:* ${ciudad}\n` +
-      `🏠 *DIRECCIÓN:* ${direccion}\n\n` +
-      `*PAGO AL RECIBIR*`;
-
-    const whatsappUrl = `https://wa.me/${VENDEDOR_WHATSAPP}?text=${encodeURIComponent(messageText)}`;
-
-    // Pequeño delay para simular procesamiento
-    setTimeout(() => {
-      setLoading(false);
-      onOpenChange(false);
-      
-      // Redirigir a WhatsApp (La alerta que te llegará al celular)
-      window.open(whatsappUrl, '_blank');
-
-      toast({
-        title: "¡PEDIDO REGISTRADO!",
-        description: "Tus datos han sido guardados. Ahora abre WhatsApp para el envío.",
+    addDoc(leadsRef, orderData)
+      .then(() => {
+        setLoading(false);
+        setSubmitted(true);
+        toast({
+          title: "¡PEDIDO RECIBIDO!",
+          description: "Pronto nos contactaremos contigo para la entrega.",
+        });
+      })
+      .catch((err) => {
+        setLoading(false);
+        errorEmitter.emit("permission-error", new FirestorePermissionError({
+          path: "leadSubmissions",
+          operation: "create",
+          requestResourceData: orderData
+        }));
       });
-
-      // Limpiar campos
-      setNombre("");
-      setApellido("");
-      setDireccion("");
-      setWhatsapp("");
-      setProvincia("");
-      setCiudad("");
-    }, 800);
   };
 
   return (
@@ -167,187 +149,240 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       <DialogContent 
         className="w-[95%] max-w-[450px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto translate-x-[-50%] left-[50%] overflow-x-hidden"
       >
-        <DialogHeader className="bg-primary p-5 text-white text-center">
-          <DialogTitle className="text-[14px] font-black uppercase leading-tight tracking-tighter">
-            INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
-          </DialogTitle>
-          <DialogDescription className="text-[11px] font-medium opacity-90 mt-1">
-            Pago al recibir en la puerta de tu casa. Envío 100% seguro.
-          </DialogDescription>
+        <DialogHeader className="sr-only">
+          <DialogTitle>Formulario de Compra</DialogTitle>
+          <DialogDescription>Completa tus datos para recibir tu pedido.</DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="p-4 space-y-5 max-h-[70vh] overflow-y-auto overflow-x-hidden bg-white custom-scrollbar">
-          {/* PASO 1: PRODUCTOS */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-primary border-b pb-1">
-              <Package className="h-4 w-4" />
-              <h3 className="font-black uppercase text-[10px] tracking-widest text-primary/80">PASO 1: ELIGE TU OFERTA</h3>
+        {submitted ? (
+          /* VISTA DE ÉXITO */
+          <div className="p-8 text-center space-y-6 animate-in fade-in zoom-in duration-300">
+            <div className="flex justify-center">
+              <div className="h-20 w-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 shadow-inner">
+                <CheckCircle2 className="h-10 w-10" />
+              </div>
             </div>
             
-            <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-2">
-              {products.map((product) => (
-                <Label
-                  key={product.id}
-                  htmlFor={product.id}
-                  className={`flex items-center gap-2 p-3 rounded-2xl border-2 transition-all cursor-pointer relative w-full box-border ${
-                    selectedProduct === product.id 
-                    ? "border-primary bg-primary/5 shadow-sm scale-[1.01]" 
-                    : "border-secondary bg-white hover:border-primary/20"
-                  }`}
-                >
-                  {product.badge && (
-                    <div className="absolute -top-2 right-2 bg-accent text-white text-[9px] px-2.5 py-1 rounded-full font-black uppercase shadow-sm z-10 animate-bounce">
-                      {product.badge}
-                    </div>
-                  )}
-                  
-                  <div className="flex items-center gap-3 w-full overflow-hidden">
-                    <RadioGroupItem value={product.id} id={product.id} className="shrink-0" />
-                    
-                    <div className="h-10 w-10 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
-                      <Image 
-                        src={product.image} 
-                        alt={product.name} 
-                        fill 
-                        className="object-cover"
-                        sizes="40px"
-                      />
-                    </div>
-
-                    <div className="flex-1 min-w-0 overflow-hidden">
-                      <p className="font-black text-[11px] text-foreground uppercase leading-tight truncate">
-                        {product.name}
-                      </p>
-                      <p className="text-[9px] text-muted-foreground font-medium truncate">
-                        {product.description}
-                      </p>
-                    </div>
-
-                    <div className="text-right shrink-0">
-                      <p className="font-black text-primary text-[13px]">
-                        ${product.price.toFixed(2)}
-                      </p>
-                    </div>
-                  </div>
-                </Label>
-              ))}
-            </RadioGroup>
-          </div>
-
-          {/* PASO 2: DATOS DE ENVÍO */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-primary border-b pb-1">
-              <Truck className="h-4 w-4" />
-              <h3 className="font-black uppercase text-[10px] tracking-widest text-primary/80">PASO 2: DATOS DE ENVÍO</h3>
+            <div className="space-y-2">
+              <h3 className="text-2xl font-black text-foreground uppercase leading-tight">
+                ¡PEDIDO <span className="text-green-600">RECIBIDO!</span>
+              </h3>
+              <p className="text-[14px] text-muted-foreground font-medium leading-relaxed">
+                Gracias <strong>{nombre}</strong>, hemos registrado tu solicitud con éxito.
+              </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              <div className="space-y-1">
-                <Label htmlFor="nombre" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
-                <Input 
-                  id="nombre" 
-                  placeholder="Juan" 
-                  required 
-                  value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
-                  className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
-                />
-              </div>
-              <div className="space-y-1">
-                <Label htmlFor="apellido" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
-                <Input 
-                  id="apellido" 
-                  placeholder="Pérez" 
-                  required 
-                  value={apellido}
-                  onChange={(e) => setApellido(e.target.value)}
-                  className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
-                />
-              </div>
+            <div className="bg-secondary/20 p-4 rounded-2xl border border-secondary/50 text-left">
+              <p className="text-[11px] font-black uppercase text-primary/70 mb-2">Próximos pasos:</p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-[12px] font-medium text-foreground">
+                  <Truck className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                  <span>Nuestro equipo revisará tu dirección en <strong>{ciudad}</strong>.</span>
+                </li>
+                <li className="flex items-start gap-2 text-[12px] font-medium text-foreground">
+                  <Phone className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                  <span>Te llamaremos al <strong>{whatsapp}</strong> para confirmar el envío.</span>
+                </li>
+              </ul>
             </div>
 
-            <div className="space-y-1">
-              <Label htmlFor="whatsapp" className="text-[10px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
-              <div className="relative">
-                <Input 
-                  id="whatsapp" 
-                  type="tel" 
-                  placeholder="09XXXXXXXX" 
-                  required 
-                  value={whatsapp}
-                  onChange={handleWhatsappChange}
-                  className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] pl-3 w-full" 
-                />
-                {whatsapp.length === 10 && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-green-500" />}
-              </div>
-            </div>
-
-            <div className="space-y-1">
-              <Label htmlFor="direccion" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
-              <Input 
-                id="direccion" 
-                placeholder="Calle y Nro de casa" 
-                required 
-                value={direccion}
-                onChange={(e) => setDireccion(e.target.value)}
-                className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
-              <div className="space-y-1">
-                <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
-                <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                  <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
-                    <SelectValue placeholder="Elegir" />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-xl max-h-[180px]">
-                    {Object.keys(ecuadorData).sort().map((p) => (
-                      <SelectItem key={p} value={p}>{p}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-1">
-                <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
-                <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                  <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
-                    <SelectValue placeholder={provincia ? "Elegir" : "---"} />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-xl max-h-[160px]">
-                    {ciudadesDisponibles.map((c) => (
-                      <SelectItem key={c} value={c}>{c}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
-
-          {/* ADVERTENCIA */}
-          <div className="bg-amber-50 border border-amber-100 p-3 rounded-2xl space-y-1">
-            <div className="flex items-center gap-2 text-amber-600">
-              <AlertTriangle className="h-3 w-3" />
-              <span className="font-black text-[9px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</span>
-            </div>
-            <p className="text-[9px] font-medium text-amber-800/80 leading-tight italic">
-              Al confirmar, tu pedido se guardará y te abriremos WhatsApp para finalizar el envío.
+            <Button 
+              onClick={() => onOpenChange(false)}
+              className="w-full h-14 text-lg font-black uppercase bg-accent hover:bg-accent/90 shadow-xl rounded-[1.2rem]"
+            >
+              CERRAR Y CONTINUAR
+            </Button>
+            
+            <p className="text-[10px] text-muted-foreground italic">
+              * Recuerda tener tu celular a la mano para la confirmación.
             </p>
           </div>
+        ) : (
+          /* FORMULARIO DE COMPRA */
+          <>
+            <div className="bg-primary p-5 text-white text-center">
+              <h2 className="text-[14px] font-black uppercase leading-tight tracking-tighter">
+                INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
+              </h2>
+              <p className="text-[11px] font-medium opacity-90 mt-1">
+                Pago al recibir en la puerta de tu casa. Envío 100% seguro.
+              </p>
+            </div>
 
-          <Button 
-            type="submit" 
-            disabled={loading} 
-            className="w-full h-14 text-lg font-black uppercase bg-accent hover:bg-accent/90 shadow-2xl rounded-[1.2rem] animate-heartbeat"
-          >
-            {loading ? "PROCESANDO..." : (
-              <>
-                <ShoppingCart className="mr-2 h-5 w-5" />
-                CONFIRMAR COMPRA
-              </>
-            )}
-          </Button>
-        </form>
+            <form onSubmit={handleSubmit} className="p-4 space-y-5 max-h-[70vh] overflow-y-auto overflow-x-hidden bg-white custom-scrollbar">
+              {/* PASO 1: PRODUCTOS */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-primary border-b pb-1">
+                  <Package className="h-4 w-4" />
+                  <h3 className="font-black uppercase text-[10px] tracking-widest text-primary/80">PASO 1: ELIGE TU OFERTA</h3>
+                </div>
+                
+                <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-2">
+                  {products.map((product) => (
+                    <Label
+                      key={product.id}
+                      htmlFor={product.id}
+                      className={`flex items-center gap-2 p-3 rounded-2xl border-2 transition-all cursor-pointer relative w-full box-border ${
+                        selectedProduct === product.id 
+                        ? "border-primary bg-primary/5 shadow-sm scale-[1.01]" 
+                        : "border-secondary bg-white hover:border-primary/20"
+                      }`}
+                    >
+                      {product.badge && (
+                        <div className="absolute -top-2 right-2 bg-accent text-white text-[9px] px-2.5 py-1 rounded-full font-black uppercase shadow-sm z-10 animate-bounce">
+                          {product.badge}
+                        </div>
+                      )}
+                      
+                      <div className="flex items-center gap-3 w-full overflow-hidden">
+                        <RadioGroupItem value={product.id} id={product.id} className="shrink-0" />
+                        
+                        <div className="h-10 w-10 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
+                          <Image 
+                            src={product.image} 
+                            alt={product.name} 
+                            fill 
+                            className="object-cover"
+                            sizes="40px"
+                          />
+                        </div>
+
+                        <div className="flex-1 min-w-0 overflow-hidden">
+                          <p className="font-black text-[11px] text-foreground uppercase leading-tight truncate">
+                            {product.name}
+                          </p>
+                          <p className="text-[9px] text-muted-foreground font-medium truncate">
+                            {product.description}
+                          </p>
+                        </div>
+
+                        <div className="text-right shrink-0">
+                          <p className="font-black text-primary text-[13px]">
+                            ${product.price.toFixed(2)}
+                          </p>
+                        </div>
+                      </div>
+                    </Label>
+                  ))}
+                </RadioGroup>
+              </div>
+
+              {/* PASO 2: DATOS DE ENVÍO */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-primary border-b pb-1">
+                  <Truck className="h-4 w-4" />
+                  <h3 className="font-black uppercase text-[10px] tracking-widest text-primary/80">PASO 2: DATOS DE ENVÍO</h3>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="space-y-1">
+                    <Label htmlFor="nombre" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
+                    <Input 
+                      id="nombre" 
+                      placeholder="Juan" 
+                      required 
+                      value={nombre}
+                      onChange={(e) => setNombre(e.target.value)}
+                      className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="apellido" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
+                    <Input 
+                      id="apellido" 
+                      placeholder="Pérez" 
+                      required 
+                      value={apellido}
+                      onChange={(e) => setApellido(e.target.value)}
+                      className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <Label htmlFor="whatsapp" className="text-[10px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
+                  <div className="relative">
+                    <Input 
+                      id="whatsapp" 
+                      type="tel" 
+                      placeholder="09XXXXXXXX" 
+                      required 
+                      value={whatsapp}
+                      onChange={handleWhatsappChange}
+                      className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] pl-3 w-full" 
+                    />
+                    {whatsapp.length === 10 && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-green-500" />}
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <Label htmlFor="direccion" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
+                  <Input 
+                    id="direccion" 
+                    placeholder="Calle y Nro de casa" 
+                    required 
+                    value={direccion}
+                    onChange={(e) => setDireccion(e.target.value)}
+                    className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="space-y-1">
+                    <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
+                    <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
+                      <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
+                        <SelectValue placeholder="Elegir" />
+                      </SelectTrigger>
+                      <SelectContent className="rounded-xl max-h-[180px]">
+                        {Object.keys(ecuadorData).sort().map((p) => (
+                          <SelectItem key={p} value={p}>{p}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
+                    <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
+                      <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
+                        <SelectValue placeholder={provincia ? "Elegir" : "---"} />
+                      </SelectTrigger>
+                      <SelectContent className="rounded-xl max-h-[160px]">
+                        {ciudadesDisponibles.map((c) => (
+                          <SelectItem key={c} value={c}>{c}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+
+              {/* ADVERTENCIA */}
+              <div className="bg-amber-50 border border-amber-100 p-3 rounded-2xl space-y-1">
+                <div className="flex items-center gap-2 text-amber-600">
+                  <AlertTriangle className="h-3 w-3" />
+                  <span className="font-black text-[9px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</span>
+                </div>
+                <p className="text-[9px] font-medium text-amber-800/80 leading-tight italic">
+                  Al confirmar, tu pedido se registrará y te llamaremos para la entrega.
+                </p>
+              </div>
+
+              <Button 
+                type="submit" 
+                disabled={loading} 
+                className="w-full h-14 text-lg font-black uppercase bg-accent hover:bg-accent/90 shadow-2xl rounded-[1.2rem] animate-heartbeat"
+              >
+                {loading ? "REGISTRANDO..." : (
+                  <>
+                    <ShoppingCart className="mr-2 h-5 w-5" />
+                    CONFIRMAR COMPRA
+                  </>
+                )}
+              </Button>
+            </form>
+          </>
+        )}
       </DialogContent>
     </Dialog>
   );
