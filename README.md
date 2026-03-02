@@ -4,34 +4,25 @@ Esta es la landing page oficial de **Romi Store EC** para la promoción de produ
 
 ## Despliegue en Firebase App Hosting
 
-Para conectar este código con tu dominio `romi-store.com`, sigue estos pasos:
+Sigue estos pasos finales en la **Terminal** para subir tu código a GitHub:
 
-### 1. Configurar Identidad de Git (Solo la primera vez)
-Si recibes un error de "Author identity unknown", ejecuta esto en la **Terminal**:
+### 1. Conectar con GitHub
+Reemplaza `TU_USUARIO` con tu nombre de usuario de GitHub:
 ```bash
-git config --global user.email "tu-correo@ejemplo.com"
-git config --global user.name "Tu Nombre"
+git remote add origin https://github.com/TU_USUARIO/romi-store.git
 ```
 
-### 2. Subir a GitHub
-Usa estos comandos en la **Terminal**:
+### 2. Subir el código
 ```bash
-git init
-git add .
-git commit -m "Initial deployment"
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/romi-store.git
 git push -u origin main
 ```
-*(Recuerda cambiar TU_USUARIO por tu nombre de usuario de GitHub y asegúrate de haber creado el repositorio en github.com primero)*
 
 ### 3. Configurar en Firebase Console
+Una vez que el comando anterior termine con éxito:
 1. Ve a **App Hosting** en la consola de Firebase.
-2. Crea un nuevo **Backend**.
-3. Conecta tu cuenta de GitHub y selecciona el repositorio `romi-store`.
-4. Elige la región `us-central1` o `us-east4`.
-5. Vincula la App Web de Firebase.
-6. Una vez desplegado, añade tu dominio personalizado `romi-store.com` en la pestaña de configuración del dominio.
+2. En el **Paso 2**, selecciona el repositorio `romi-store` que ahora ya aparecerá en tu lista.
+3. Completa los pasos 3, 4 y 5 como vimos anteriormente.
+4. ¡Listo! Tu página se estará construyendo en `romi-store.com`.
 
 ## Características
 - Optimizado para tráfico de TikTok Ads.
