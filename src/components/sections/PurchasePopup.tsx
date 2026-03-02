@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2, ShieldCheck, Lock } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -188,7 +188,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
           ) : (
             <>
               <div className="bg-primary p-6 text-white text-center">
-                <h2 className="text-[18px] font-black uppercase leading-tight tracking-tight px-4 pr-10">
+                <h2 className="text-[18px] font-black uppercase leading-tight tracking-tight px-4">
                   INGRESE SUS DATOS CORRECTAMENTE PARA ENVIAR SU PEDIDO
                 </h2>
                 <p className="text-[14px] font-medium opacity-90 mt-1">
@@ -364,6 +364,22 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                     </>
                   )}
                 </Button>
+
+                {/* Insignias de confianza para TikTok Ads */}
+                <div className="flex justify-center items-center gap-6 pt-2 pb-6 opacity-60 grayscale scale-90">
+                  <div className="flex flex-col items-center gap-1">
+                    <ShieldCheck className="h-6 w-6" />
+                    <span className="text-[9px] font-black uppercase">Seguro</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-1">
+                    <Lock className="h-6 w-6" />
+                    <span className="text-[9px] font-black uppercase">Privado</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-1">
+                    <Truck className="h-6 w-6" />
+                    <span className="text-[9px] font-black uppercase">Ecuador</span>
+                  </div>
+                </div>
               </form>
             </>
           )}

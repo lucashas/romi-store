@@ -1,6 +1,6 @@
 "use client";
 
-import { Leaf, ShieldCheck } from "lucide-react";
+import { Leaf, ShieldCheck, Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -29,20 +29,36 @@ export function Footer() {
               Distribuidor Autorizado MaryRuth's
             </p>
           </div>
-          
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground font-medium">
-            <Link href="#" className="hover:text-primary transition-colors">Privacidad</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Términos de Envío</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Contacto</Link>
+
+          <div className="grid grid-cols-1 gap-4 text-center text-[13px] font-medium text-muted-foreground">
+            <div className="flex items-center justify-center gap-2">
+              <Phone className="h-4 w-4 text-primary" />
+              <span>Soporte: +593 99 999 9999</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Mail className="h-4 w-4 text-primary" />
+              <span>Email: contacto@romi-store.com</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" />
+              <span>Quito, Ecuador - Envíos Nacionales</span>
+            </div>
           </div>
           
-          <div className="text-center space-y-2">
-            <p className="text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-6 text-[12px] font-black text-muted-foreground/80 uppercase tracking-tighter">
+            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/30">Política de Privacidad</Link>
+            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/30">Términos de Servicio</Link>
+            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/30">Política de Envío</Link>
+          </div>
+          
+          <div className="text-center space-y-4">
+            <p className="text-[11px] text-muted-foreground">
               © {year ?? "..."} Romi Store EC. <br />
               Hecho para Ecuador con ❤️
             </p>
-            <p className="text-[9px] text-muted-foreground/60 max-w-[250px] mx-auto leading-tight italic">
-              Este sitio es operado por Romi Store. MaryRuth's Organics es una marca registrada utilizada bajo autorización de distribución. Toda la gestión de pedidos se realiza de forma privada y segura a través de nuestra plataforma oficial.
+            <p className="text-[9px] text-muted-foreground/60 max-w-[350px] mx-auto leading-tight italic border-t border-primary/5 pt-4">
+              Este sitio no es parte del sitio web de Facebook ni de Facebook Inc. o TikTok. Además, este sitio NO está respaldado por Facebook o TikTok de ninguna manera. FACEBOOK y TIKTOK son marcas comerciales de sus respectivos dueños. <br /><br />
+              MaryRuth's Organics es una marca registrada utilizada bajo autorización de distribución. Toda la gestión de pedidos se realiza de forma segura a través de nuestra plataforma oficial.
             </p>
           </div>
         </div>
