@@ -106,7 +106,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[490px] w-[calc(100%-10px)] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body">
+      <DialogContent className="w-[calc(100%-10px)] max-w-[490px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white">
         <DialogHeader className="bg-primary p-6 text-white text-center">
           <DialogTitle className="text-lg font-black uppercase leading-tight tracking-tighter">
             INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
