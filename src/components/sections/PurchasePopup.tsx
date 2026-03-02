@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -11,13 +10,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
+import { useFirestore } from "@/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { errorEmitter } from "@/firebase/error-emitter";
+import { FirestorePermissionError } from "@/firebase/errors";
 
 /**
  * 📱 CONFIGURACIÓN DE RECEPCIÓN DE PEDIDOS
- * Cambia este número por tu número de WhatsApp Business (formato internacional sin el +)
- * Ejemplo para Ecuador: 593987654321
+ * Tu número de WhatsApp Business (formato internacional sin el +)
  */
-const VENDEDOR_WHATSAPP = "593900000000"; 
+const VENDEDOR_WHATSAPP = "593959461399"; 
 
 export interface Product {
   id: string;
@@ -71,6 +73,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const [whatsapp, setWhatsapp] = useState<string>("");
   const [selectedProduct, setSelectedProduct] = useState("");
   const { toast } = useToast();
+  const db = useFirestore();
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -87,7 +90,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     setWhatsapp(value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (whatsapp.length !== 10) {
       toast({
@@ -103,7 +106,30 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
     setLoading(true);
 
-    // Construcción del mensaje para WhatsApp
+    const orderData = {
+      name: `${nombre} ${apellido}`,
+      email: "cliente@tienda.com", // Campo requerido por esquema pero no pedido en UI
+      phoneNumber: whatsapp,
+      message: `Pedido de: ${product.name} ($${product.price})`,
+      provincia,
+      ciudad,
+      direccion,
+      submissionDateTime: new Date().toISOString(),
+      landingPageContentId: "main-landing",
+      status: "pending"
+    };
+
+    // 1. Guardar en Base de Datos (Seguridad de lead)
+    const leadsRef = collection(db, "leadSubmissions");
+    addDoc(leadsRef, orderData).catch(err => {
+      errorEmitter.emit("permission-error", new FirestorePermissionError({
+        path: "leadSubmissions",
+        operation: "create",
+        requestResourceData: orderData
+      }));
+    });
+
+    // 2. Construcción del mensaje para WhatsApp
     const message = `¡Hola! Acabo de realizar un pedido desde la tienda:\n\n` +
       `📦 *PRODUCTO:* ${product.name}\n` +
       `💰 *PRECIO:* $${product.price.toFixed(2)}\n\n` +
@@ -116,16 +142,17 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
     const whatsappUrl = `https://wa.me/${VENDEDOR_WHATSAPP}?text=${encodeURIComponent(message)}`;
 
+    // Pequeño delay para asegurar que el usuario vea el éxito antes de redirigir
     setTimeout(() => {
       setLoading(false);
       onOpenChange(false);
       
-      // Abrir WhatsApp en una nueva pestaña
+      // Redirigir a WhatsApp
       window.open(whatsappUrl, '_blank');
 
       toast({
-        title: "¡PEDIDO ENVIADO!",
-        description: "Estamos abriendo WhatsApp para que nos envíes tu pedido.",
+        title: "¡PEDIDO REGISTRADO!",
+        description: "Tu pedido ha sido guardado. Ahora abre WhatsApp para confirmarlo.",
       });
 
       // Limpiar campos
@@ -135,7 +162,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       setWhatsapp("");
       setProvincia("");
       setCiudad("");
-    }, 1500);
+    }, 1000);
   };
 
   return (
@@ -147,8 +174,8 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
           <DialogTitle className="text-[14px] font-black uppercase leading-tight tracking-tighter">
             INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
           </DialogTitle>
-          <DialogDescription className="text-[11px] font-medium opacity-90">
-            Paga al recibir en toda la puerta de tu casa.
+          <DialogDescription className="sr-only">
+            Formulario de pedido para pago al recibir en toda la puerta de tu casa.
           </DialogDescription>
         </DialogHeader>
 
@@ -307,7 +334,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               <span className="font-black text-[10px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</span>
             </div>
             <p className="text-[10px] font-medium text-amber-800/80 leading-snug italic">
-              *Tu pedido únicamente podrá salir si tus datos están completos. Al confirmar, te redirigiremos a WhatsApp para finalizar.
+              *Al confirmar, tu pedido se registrará automáticamente y te redirigiremos a WhatsApp.
             </p>
           </div>
 
@@ -316,7 +343,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
             disabled={loading} 
             className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-2xl rounded-[1.5rem] animate-heartbeat"
           >
-            {loading ? "PROCESANDO..." : (
+            {loading ? "REGISTRANDO..." : (
               <>
                 <ShoppingCart className="mr-2 h-6 w-6" />
                 CONFIRMAR COMPRA
