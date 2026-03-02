@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: 'Suplementos orgánicos premium con envío gratis a todo Ecuador.',
     url: 'https://romi-store.com',
     siteName: 'Romi Store EC',
-    locale: 'es_EC',
+    locale: 'es_ES',
     type: 'website',
   },
 };

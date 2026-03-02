@@ -135,7 +135,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="w-[95%] max-w-[450px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto translate-x-[-50%] left-[50%] overflow-x-hidden"
+        className="w-[95%] max-w-[450px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto translate-x-[-50%] left-[50%]"
       >
         <DialogHeader className="sr-only">
           <DialogTitle>Formulario de Compra</DialogTitle>
@@ -155,7 +155,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 ¡PEDIDO <span className="text-green-600">RECIBIDO!</span>
               </h3>
               <p className="text-[14px] text-muted-foreground font-medium leading-relaxed">
-                Gracias <strong>{nombre}</strong>, tu solicitud ha sido registrada correctamente.
+                Gracias <strong>{nombre}</strong>, tu solicitud ha sido registrada correctamente en Romi Store.
               </p>
             </div>
 
@@ -199,7 +199,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-4 space-y-5 max-h-[70vh] overflow-y-auto overflow-x-hidden bg-white">
+            <form onSubmit={handleSubmit} className="p-4 space-y-5 max-h-[70vh] overflow-y-auto bg-white">
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-primary border-b pb-1">
                   <Package className="h-4 w-4" />
