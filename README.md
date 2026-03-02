@@ -1,13 +1,12 @@
-
 # 🎊 ROMI STORE EC - GUÍA FINAL DE LANZAMIENTO
 
-Tu tienda ya está casi lista. Hemos corregido el error de configuración del archivo `apphosting.yaml`.
+Tu tienda ya está casi lista. Hemos corregido los conflictos de configuración que causaban el error de "Build".
 
 ### 🚀 PASO FINAL PARA ACTIVAR LA TIENDA
 Copia y pega este comando en tu terminal de Firebase Studio (la que está aquí abajo) para que Firebase vea la corrección:
 
 ```bash
-git add . && git commit -m "Fix: apphosting.yaml format" && git push
+rm next.config.js && git add . && git commit -m "Fix: Build error 51 and config conflict" && git push
 ```
 
 ### 🌐 ¿DÓNDE VER MI TIENDA?
