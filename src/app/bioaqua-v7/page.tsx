@@ -51,7 +51,7 @@ export default function BioaquaPage() {
       <TopMarquee />
       
       <main className="flex-1">
-        {/* Banner de Impacto Inmediato - Imagen de Imgur */}
+        {/* Banner de Impacto Inmediato - Imagen de Imgur justo debajo de la marquesina */}
         <section className="bg-white overflow-hidden">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-xl shadow-lg border-2 border-primary/10">
