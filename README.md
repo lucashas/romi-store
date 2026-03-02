@@ -1,12 +1,16 @@
 
-# 🎊 ¡ROMI STORE EC ESTÁ EN MARCHA!
+# 🎊 ¡ROMI STORE EC ESTÁ CASI LISTA!
 
 ¡Felicidades! Has completado con éxito la subida de tu tienda a GitHub. Ahora el sistema de **Firebase App Hosting** está construyendo tu sitio web automáticamente.
 
-### 🌐 ¿QUÉ SIGUE AHORA?
-1. **Monitoreo:** Ve a tu [Consola de Firebase](https://console.firebase.google.com/) y entra en la sección **App Hosting**.
-2. **Estado:** Verás un proceso de "Rollout" en curso. Tardará unos 3-5 minutos en completarse.
-3. **¡En Vivo!:** Una vez termine, Firebase te dará la URL oficial de tu tienda (ej. `romi-store-ec.web.app`).
+### 🌐 ¿DÓNDE ENCUENTRO MI ENLACE?
+Para ver tu tienda en vivo, sigue estos pasos:
+
+1. **Entra a la Consola:** Ve a [console.firebase.google.com](https://console.firebase.google.com/).
+2. **Selecciona tu Proyecto:** Haz clic en el proyecto llamado `studio-2214925909...` (o el nombre que le diste).
+3. **Busca "App Hosting":** En el menú de la izquierda, baja hasta encontrar la sección **Build** (Construir) y haz clic en **App Hosting**.
+4. **Estado del Rollout:** Verás un proceso llamado "Rollout" en curso. Cuando cambie de color a **VERDE** y diga "Live", aparecerá tu enlace oficial.
+5. **Tu URL:** Verás una dirección que termina en `.web.app` (ejemplo: `romi-store-ec.web.app`). ¡Ese es tu enlace para TikTok!
 
 ---
 
@@ -15,10 +19,10 @@
 - **Envío:** Gratis a todo Ecuador.
 - **Pago:** Contra entrega (Cash on Delivery).
 
-### 🛠️ SOPORTE TÉCNICO:
-Si por alguna razón el build vuelve a fallar, simplemente vuelve a esta terminal y ejecuta:
+### 🛠️ ¿ALGO NO CARGA?
+Si el proceso de "Rollout" falla en la web, vuelve aquí a la terminal y pon este comando de emergencia:
 ```bash
-npm install && git add . && git commit -m "Fix final" && git push
+npm install && git add . && git commit -m "Fix final build" && git push
 ```
 
-¡Tu embudo de ventas de TikTok está listo para recibir pedidos! 🚀📦
+¡Tu embudo de ventas de TikTok está a minutos de recibir sus primeros pedidos! 🚀📦
