@@ -1,19 +1,28 @@
 
-# 🚀 Romi Store EC - Lanzamiento Final
+# 🚀 Romi Store EC - Solución de Lanzamiento
 
-He detectado que el error `No buildpack groups passed detection` ocurre porque Firebase no encuentra el archivo `package-lock.json` en la carpeta raíz del despliegue.
+Si recibes el error `No buildpack groups passed detection`, es porque Firebase no encuentra tu proyecto en la carpeta actual de la terminal.
 
-### 🛠️ CÓMO SOLUCIONARLO EN 10 SEGUNDOS
+### 🛠️ PASO ÚNICO PARA ARREGLARLO
 
-Copia y pega este comando exactamente así en tu terminal de Firebase:
+Copia este bloque completo, pégalo en tu terminal de Firebase y presiona **Enter**:
 
 ```bash
-cd /workspace && npm install && mv package-lock.json /workspace/ && git add . && git commit -m "Lanzamiento: Lockfile generado en workspace" && git push
+# 1. Encontrar la carpeta real del proyecto
+export PROJECT_ROOT=$(find ~ /workspace -name "next.config.js" -not -path "*/node_modules/*" 2>/dev/null | head -n 1 | xargs dirname)
+
+# 2. Entrar a la carpeta y generar el archivo que falta
+cd "$PROJECT_ROOT" && \
+npm install && \
+git add . && \
+git commit -m "Solución: Lockfile generado para Buildpack" && \
+git push
 ```
 
-### ¿Por qué este comando?
-1. **`cd /workspace`**: Entra directamente a la carpeta real donde está tu código (Firebase Studio usa esta carpeta, no `~`).
-2. **`npm install`**: Genera el archivo `package-lock.json` necesario para que Firebase detecte Next.js.
-3. **`git push`**: Sube el archivo a GitHub para que Firebase inicie el despliegue automáticamente.
+### ¿Qué hace este comando?
+- **`find`**: Busca el archivo `next.config.js` en todo el servidor (incluso en carpetas ocultas).
+- **`cd "$PROJECT_ROOT"`**: Te lleva automáticamente a la carpeta donde SÍ está tu código.
+- **`npm install`**: Crea el archivo `package-lock.json` que Firebase necesita para aprobar el despliegue.
+- **`git push`**: Envía la solución a Firebase para que empiece a compilar de inmediato.
 
-**¡Una vez que ejecutes esto, el despliegue en la consola de Firebase pasará de ERROR a SUCCESS!** 🇪🇨✨
+**Nota:** Si el comando te pide usuario/contraseña de GitHub, usa tu usuario y tu **Token de Acceso Personal**.
