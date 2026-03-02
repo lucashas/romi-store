@@ -1,10 +1,10 @@
 # Configuración para Firebase App Hosting
 runConfig:
-  # Mantener una instancia mínima para asegurar rapidez en las respuestas de TikTok
+  # Mantener una instancia mínima para asegurar rapidez en las respuestas
   minInstances: 0
   maxInstances: 1
-  # Memoria recomendada para Next.js con Genkit
-  memory: 512MiB
+  # Aumentamos la memoria a 1GiB para asegurar que Next.js compile sin errores
+  memory: 1GiB
 env:
   - variable: MY_GEMINI_KEY
     availability:
