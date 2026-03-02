@@ -1,3 +1,4 @@
+
 # 🚀 Guía Final de Lanzamiento - Romi Store EC
 
 Para que Firebase detecte tu tienda, sigue estos pasos exactos en tu terminal:
