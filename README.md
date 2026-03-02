@@ -2,30 +2,38 @@
 
 Esta es la landing page oficial de **Romi Store EC** para la promoción de productos de MaryRuth's Organics en Ecuador.
 
-## Despliegue en Firebase App Hosting
+## Guía para subir tu código a GitHub
 
-Sigue estos pasos finales en la **Terminal** para subir tu código a GitHub:
+GitHub requiere un **Token de Acceso Personal (PAT)** en lugar de tu contraseña normal. Sigue estos pasos:
 
-### 1. Conectar con GitHub
-Reemplaza `TU_USUARIO` con tu nombre de usuario de GitHub:
+### 1. Generar Token en GitHub
+1. Ve a [GitHub Settings > Developer Settings](https://github.com/settings/tokens).
+2. Haz clic en **Personal access tokens** -> **Tokens (classic)**.
+3. Clic en **Generate new token (classic)**.
+4. Nombre: `romi-store-token`.
+5. Selecciona la casilla **repo**.
+6. Clic en **Generate token** y **COPIA EL CÓDIGO** (no lo pierdas).
+
+### 2. Comandos en la Terminal de Firebase Studio
+Copia y pega uno por uno:
+
 ```bash
+git init
+git config --global user.email "tu-correo@ejemplo.com"
+git config --global user.name "Tu Nombre"
+git add .
+git commit -m "Lanzamiento Romi Store"
+git branch -M main
 git remote add origin https://github.com/TU_USUARIO/romi-store.git
-```
-
-### 2. Subir el código
-```bash
 git push -u origin main
 ```
 
-### 3. Configurar en Firebase Console
-Una vez que el comando anterior termine con éxito:
-1. Ve a **App Hosting** en la consola de Firebase.
-2. En el **Paso 2**, selecciona el repositorio `romi-store` que ahora ya aparecerá en tu lista.
-3. Completa los pasos 3, 4 y 5 como vimos anteriormente.
-4. ¡Listo! Tu página se estará construyendo en `romi-store.com`.
+**Cuando te pida:**
+- **Username**: Tu usuario de GitHub.
+- **Password**: Pega el **Token** que copiaste (no se verán los caracteres al pegar, es normal).
 
-## Características
-- Optimizado para tráfico de TikTok Ads.
-- Formulario de pedido con pago contra entrega.
-- Registro automático en Firebase Firestore.
-- Diseño 100% móvil.
+## Configuración en Firebase Console
+Una vez que el comando termine con éxito:
+1. Ve a **App Hosting** en la consola de Firebase.
+2. Sigue los pasos 1 al 5. El repositorio `romi-store` ya aparecerá en la lista.
+3. ¡Listo! Tu página se estará construyendo en `romi-store.com`.
