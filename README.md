@@ -1,23 +1,33 @@
-# ¡Romi Store EC está casi lista! 🇪🇨🚀
+# 🚀 Guía Final de Lanzamiento - Romi Store EC
 
-Tu código ya está sincronizado. Para solucionar el error de compilación final de Firebase, sigue estos pasos:
+Para que Firebase detecte tu tienda, sigue estos pasos exactos en tu terminal:
 
-## 🛠️ Paso de Lanzamiento Definitivo
-Copia y pega estos 3 comandos en la terminal por última vez:
+### 1. Encuentra la carpeta de tu proyecto
+Si `cd romi-store` no funciona, usa este comando para saber dónde estás:
+```bash
+ls -F
+```
+Busca una carpeta que tenga el archivo `package.json`. Cuando la veas, entra en ella:
+```bash
+cd NOMBRE_DE_LA_CARPETA
+```
 
-1. **Sincroniza el código corregido:**
-   ```bash
-   git add .
-   git commit -m "Lanzamiento final standalone v3"
-   git push
-   ```
-   *(Pega tu Token si te pide Password).*
+### 2. Genera el archivo de bloqueo (Crítico)
+Una vez dentro de la carpeta, ejecuta:
+```bash
+npm install
+```
+Esto creará el archivo `package-lock.json` que Firebase necesita para no dar error.
 
-2. **Verifica la Clave en Firebase:**
-   En la consola de Firebase, pestaña "Configuración", asegúrate de que la clave se llame `MY_GEMINI_KEY`.
+### 3. Sube todo a GitHub
+```bash
+git add .
+git commit -m "Solución definitiva: Standalone + Lockfile"
+git push
+```
 
-3. **¡Listo!**
-   Con la configuración `standalone`, Firebase ya podrá compilar tu página sin errores.
+### 4. Verifica la Clave en Firebase
+En la consola de Firebase, pestaña "Configuración", la clave debe llamarse `MY_GEMINI_KEY`.
 
 ---
 **Soporte:** Romi Store EC | MaryRuth's Organics Ecuador

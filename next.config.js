@@ -6,7 +6,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'placehold.co' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https://picsum.photos', hostname: 'picsum.photos' },
+      { protocol: 'https', hostname: 'picsum.photos' },
       { protocol: 'https', hostname: 'i.imgur.com' }
     ],
   },
