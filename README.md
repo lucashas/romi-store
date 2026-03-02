@@ -1,37 +1,34 @@
-# Romi Store EC - Landing Page
+# Romi Store EC - Lanzamiento Oficial
 
-Esta es la landing page oficial de **Romi Store EC** para la promoción de productos de MaryRuth's Organics en Ecuador.
+Esta es la landing page optimizada para TikTok Ads de **Romi Store EC**.
 
-## Guía para subir tu código a GitHub (Si te saliste o falló)
+## Solución al error de GitHub (Paso a Paso)
 
-GitHub requiere un **Token de Acceso Personal (PAT)** en lugar de tu contraseña normal. Sigue estos pasos:
+Si te sale "Invalid username or token", ejecuta esto en la terminal:
 
-### 1. Generar Token en GitHub
-1. Ve a [GitHub Settings > Developer Settings](https://github.com/settings/tokens).
-2. Haz clic en **Personal access tokens** -> **Tokens (classic)**.
-3. Clic en **Generate new token (classic)**.
-4. Nombre: `romi-store-token`.
-5. Selecciona la casilla **repo**.
-6. Clic en **Generate token** y **COPIA EL CÓDIGO** (no lo pierdas).
-
-### 2. Comandos en la Terminal de Firebase Studio
-Copia y pega uno por uno (reemplaza `TU_USUARIO` con tu nombre de usuario de GitHub):
-
+### 1. Limpiar y Re-conectar
+Copia y pega uno por uno:
 ```bash
-git add .
-git commit -m "Lanzamiento Romi Store"
-git branch -M main
-# Si ya pusiste el 'remote' antes, este paso dará error pero no importa, sigue al siguiente:
-git remote add origin https://github.com/TU_USUARIO/romi-store.git 
+git remote remove origin
+git remote add origin https://github.com/lucashas/romi-store.git
 git push -u origin main
 ```
 
-**Cuando te pida:**
-- **Username**: Tu usuario de GitHub.
-- **Password**: Pega el **Token** que copiaste (no se verán los caracteres al pegar, es normal).
+### 2. Cuando te pida los datos:
+- **Username**: `lucashas`
+- **Password**: Pega el **Personal Access Token (PAT)** que generaste en GitHub. 
+  *(Recuerda: Al pegar el token NO se verán letras, solo pégalo y presiona Enter).*
 
-## Configuración en Firebase Console
-Una vez que el comando termine con éxito:
-1. Ve a **App Hosting** en la consola de Firebase.
-2. Sigue los pasos 1 al 5. El repositorio `romi-store` ya aparecerá en la lista.
-3. ¡Listo! Tu página se estará construyendo en `romi-store.com`.
+### ¿Cómo generar un nuevo Token si el anterior no sirve?
+1. Ve a [GitHub Tokens Settings](https://github.com/settings/tokens).
+2. Clic en **Generate new token (classic)**.
+3. Nombre: `romi-store-key`.
+4. Selecciona la casilla **repo**.
+5. Clic en **Generate token** al final de la página.
+6. **COPIA EL CÓDIGO** y úsalo como tu password en la terminal.
+
+## Configuración Final en Firebase
+Una vez que el comando `git push` diga "Done":
+1. Ve a la consola de Firebase > **App Hosting**.
+2. Sigue los 5 pasos. Selecciona el repositorio `romi-store`.
+3. Al terminar, tu página estará en vivo.
