@@ -56,6 +56,7 @@ export function Testimonials() {
                         src={userImg?.imageUrl || `https://picsum.photos/seed/${i}/150/150`} 
                         alt={t.name} 
                         fill
+                        unoptimized
                         className="object-cover"
                         sizes="48px"
                       />

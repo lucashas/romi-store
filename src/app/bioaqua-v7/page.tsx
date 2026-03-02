@@ -66,7 +66,6 @@ export default function BioaquaPage() {
                 alt="Bioaqua V7 Crema 7 Vitaminas"
                 className="w-full h-auto block"
               />
-              {/* Distintivo movido a la parte inferior izquierda para no obstruir el título */}
               <div className="absolute bottom-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-full font-black text-[11px] animate-pulse shadow-2xl border-2 border-white uppercase tracking-tighter">
                 OFERTA MUJER ✨
               </div>
@@ -142,6 +141,7 @@ export default function BioaquaPage() {
                   src={showcaseImg || "https://images.unsplash.com/photo-1611082216373-7c1bc0412822?q=80&w=1080"} 
                   alt="Textura Bioaqua"
                   fill
+                  unoptimized
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                   data-ai-hint="skincare woman"
                 />
