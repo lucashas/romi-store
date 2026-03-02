@@ -1,3 +1,4 @@
+
 kind: AppHostingConfig
 schemaVersion: v1
 runConfig:
@@ -5,3 +6,6 @@ runConfig:
   maxInstances: 1
   memory: 2GiB
   cpu: 1
+env:
+  - variable: NODE_OPTIONS
+    value: --max-old-space-size=1536
