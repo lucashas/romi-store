@@ -1,10 +1,12 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
-  title: 'MaryRuth\'s Organics | Suplementos Líquidos Premium',
-  description: 'Descubre el poder de la nutrición líquida con MaryRuth\'s. Vitaminas orgánicas, veganas y sin azúcar para toda la familia.',
+  title: 'MaryRuth\'s Organics | Suplementos Líquidos Premium Ecuador',
+  description: 'Venta autorizada en Ecuador. Descubre el poder de la nutrición líquida con MaryRuth\'s. Vitaminas orgánicas y veganas con envío a todo el país.',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
 };
 
 export default function RootLayout({
