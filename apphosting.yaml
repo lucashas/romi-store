@@ -3,8 +3,6 @@ schemaVersion: v1
 buildConfig:
   memory: 2GiB
 runConfig:
-  minInstances: 0
-  maxInstances: 1
   memory: 2GiB
   cpu: 1
 env:

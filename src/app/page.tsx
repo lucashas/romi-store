@@ -15,7 +15,7 @@ import { ShoppingCart } from "lucide-react";
 
 /**
  * 🛠️ PANEL DE CONTROL DE PRODUCTOS (CHECKOUT)
- * Modifica este array para cambiar los productos que aparecen en el Popup.
+ * Versión de Seguridad: 15.1.9 - Memoria: 2GB
  */
 const CUSTOM_PRODUCTS: Product[] = [
   {
@@ -62,7 +62,6 @@ export default function Home() {
         </div>
       </main>
       
-      {/* Botón Flotante Inferior optimizado para TikTok */}
       <div className="sticky-cta">
         <Button 
           onClick={openPopup}
@@ -74,7 +73,6 @@ export default function Home() {
         </Button>
       </div>
 
-      {/* Popup de Checkout con registro en Firestore */}
       <PurchasePopup 
         open={isPopupOpen} 
         onOpenChange={setIsPopupOpen} 
