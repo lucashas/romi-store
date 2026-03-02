@@ -24,21 +24,21 @@ export function ProductShowcase({ onOpenPopup }: ProductShowcaseProps) {
         </div>
       </div>
 
-      <div className="px-[10px] mt-[10px]">
-        <div className="bg-secondary/20 p-[15px] rounded-2xl border border-secondary text-center space-y-2">
-          <h2 className="text-lg font-black text-foreground leading-tight uppercase">
+      <div className="px-[15px] mt-[15px]">
+        <div className="bg-secondary/20 p-5 rounded-2xl border border-secondary text-center space-y-3">
+          <h2 className="text-xl font-black text-foreground leading-tight uppercase">
             Tu Ritual de <span className="text-primary">30 Segundos</span>
           </h2>
-          <p className="text-[12px] text-muted-foreground font-medium italic leading-tight">
+          <p className="text-[14px] text-muted-foreground font-medium italic leading-snug">
             "La forma más deliciosa de nutrir tu cuerpo sin pastillas."
           </p>
-          <div className="pt-1">
+          <div className="pt-2">
             <button 
               onClick={onOpenPopup}
-              className="inline-flex items-center gap-1 text-primary font-black uppercase tracking-widest text-[11px] hover:underline"
+              className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest text-[12px] hover:underline"
             >
               Ver disponibilidad ahora
-              <ArrowRight className="h-3 w-3" />
+              <ArrowRight className="h-4 w-4" />
             </button>
           </div>
         </div>

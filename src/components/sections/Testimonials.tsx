@@ -32,39 +32,39 @@ const testimonialData = [
 
 export function Testimonials() {
   return (
-    <section id="testimonios" className="py-[10px] bg-primary text-white overflow-hidden relative">
-      <div className="container mx-auto px-[10px] relative z-10">
-        <div className="text-center mb-[10px]">
-          <h2 className="text-2xl font-black font-headline uppercase tracking-tight leading-none">Experiencias Reales</h2>
+    <section id="testimonios" className="py-[20px] bg-primary text-white overflow-hidden relative">
+      <div className="container mx-auto px-[15px] relative z-10">
+        <div className="text-center mb-[15px]">
+          <h2 className="text-3xl font-black font-headline uppercase tracking-tight leading-none">Experiencias Reales</h2>
         </div>
 
-        <div className="space-y-[10px]">
+        <div className="space-y-[15px]">
           {testimonialData.map((t, i) => {
             const userImg = PlaceHolderImages.find(img => img.id === t.imageId);
             return (
               <Card key={i} className="bg-white text-foreground border-none shadow-xl rounded-2xl overflow-hidden">
-                <CardContent className="p-4 space-y-3">
+                <CardContent className="p-5 space-y-4">
                   <div className="flex gap-1">
                     {[1, 2, 3, 4, 5].map((s) => (
-                      <Star key={s} className="h-3 w-3 fill-primary text-primary" />
+                      <Star key={s} className="h-4 w-4 fill-primary text-primary" />
                     ))}
                   </div>
-                  <p className="text-[12px] font-medium italic leading-relaxed text-muted-foreground">"{t.quote}"</p>
-                  <div className="flex items-center gap-3 pt-3 border-t border-primary/10">
-                    <div className="h-10 w-10 rounded-full overflow-hidden border-2 border-primary relative shrink-0">
+                  <p className="text-[15px] font-medium italic leading-relaxed text-muted-foreground">"{t.quote}"</p>
+                  <div className="flex items-center gap-4 pt-4 border-t border-primary/10">
+                    <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-primary relative shrink-0">
                       <Image 
                         src={userImg?.imageUrl || `https://picsum.photos/seed/${i}/150/150`} 
                         alt={t.name} 
                         fill
                         className="object-cover"
-                        sizes="40px"
+                        sizes="48px"
                       />
                     </div>
                     <div>
-                      <p className="font-black text-[13px] leading-tight">
-                        {t.name} <span className="text-muted-foreground font-medium text-[11px]">- {t.city}</span>
+                      <p className="font-black text-[15px] leading-tight">
+                        {t.name} <span className="text-muted-foreground font-medium text-[13px]">- {t.city}</span>
                       </p>
-                      <p className="text-[10px] text-primary font-black uppercase tracking-widest">{t.role}</p>
+                      <p className="text-[11px] text-primary font-black uppercase tracking-widest">{t.role}</p>
                     </div>
                   </div>
                 </CardContent>

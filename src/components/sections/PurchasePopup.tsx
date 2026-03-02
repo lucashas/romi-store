@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -154,24 +155,24 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               <h3 className="text-2xl font-black text-foreground uppercase leading-tight">
                 ¡PEDIDO <span className="text-green-600">RECIBIDO!</span>
               </h3>
-              <p className="text-[14px] text-muted-foreground font-medium leading-relaxed">
+              <p className="text-[16px] text-muted-foreground font-medium leading-relaxed">
                 Gracias <strong>{nombre}</strong>, tu solicitud ha sido registrada correctamente en Romi Store.
               </p>
             </div>
 
-            <div className="bg-secondary/20 p-5 rounded-3xl border border-secondary/50 text-left space-y-3">
-              <p className="text-[11px] font-black uppercase text-primary/70 border-b border-primary/10 pb-1">Pasos a seguir:</p>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 text-[12px] font-medium text-foreground">
-                  <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[10px]">1</div>
+            <div className="bg-secondary/20 p-6 rounded-3xl border border-secondary/50 text-left space-y-4">
+              <p className="text-[12px] font-black uppercase text-primary/70 border-b border-primary/10 pb-1">Pasos a seguir:</p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-4 text-[14px] font-medium text-foreground">
+                  <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[12px]">1</div>
                   <span>Nuestro equipo validará tu dirección en <strong>{ciudad}</strong>.</span>
                 </li>
-                <li className="flex items-start gap-3 text-[12px] font-medium text-foreground">
-                  <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[10px]">2</div>
+                <li className="flex items-start gap-4 text-[14px] font-medium text-foreground">
+                  <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[12px]">2</div>
                   <span>Te llamaremos al <strong>{whatsapp}</strong> para confirmar el despacho.</span>
                 </li>
-                <li className="flex items-start gap-3 text-[12px] font-medium text-foreground">
-                  <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[10px]">3</div>
+                <li className="flex items-start gap-4 text-[14px] font-medium text-foreground">
+                  <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[12px]">3</div>
                   <span>¡Pagas cuando recibas el producto en tu puerta!</span>
                 </li>
               </ul>
@@ -179,74 +180,74 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
             <Button 
               onClick={() => onOpenChange(false)}
-              className="w-full h-14 text-lg font-black uppercase bg-accent hover:bg-accent/90 shadow-xl rounded-[1.2rem]"
+              className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-xl rounded-[1.2rem]"
             >
               CERRAR Y CONTINUAR
             </Button>
             
-            <p className="text-[10px] text-muted-foreground italic">
+            <p className="text-[11px] text-muted-foreground italic">
               * Mantente atento a tu celular para la confirmación de envío.
             </p>
           </div>
         ) : (
           <>
-            <div className="bg-primary p-5 text-white text-center">
-              <h2 className="text-[14px] font-black uppercase leading-tight tracking-tighter">
+            <div className="bg-primary p-6 text-white text-center">
+              <h2 className="text-[16px] font-black uppercase leading-tight tracking-tighter">
                 INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
               </h2>
-              <p className="text-[11px] font-medium opacity-90 mt-1">
+              <p className="text-[13px] font-medium opacity-90 mt-1">
                 Pago al recibir en casa • Envío 100% Seguro
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-4 space-y-5 max-h-[70vh] overflow-y-auto bg-white">
-              <div className="space-y-3">
+            <form onSubmit={handleSubmit} className="p-4 space-y-6 max-h-[70vh] overflow-y-auto bg-white">
+              <div className="space-y-4">
                 <div className="flex items-center gap-2 text-primary border-b pb-1">
-                  <Package className="h-4 w-4" />
-                  <h3 className="font-black uppercase text-[10px] tracking-widest text-primary/80">PASO 1: ELIGE TU OFERTA</h3>
+                  <Package className="h-5 w-5" />
+                  <h3 className="font-black uppercase text-[11px] tracking-widest text-primary/80">PASO 1: ELIGE TU OFERTA</h3>
                 </div>
                 
-                <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-2">
+                <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
                   {products.map((product) => (
                     <Label
                       key={product.id}
                       htmlFor={product.id}
-                      className={`flex items-center gap-2 p-3 rounded-2xl border-2 transition-all cursor-pointer relative w-full box-border ${
+                      className={`flex items-center gap-2 p-4 rounded-2xl border-2 transition-all cursor-pointer relative w-full box-border ${
                         selectedProduct === product.id 
                         ? "border-primary bg-primary/5 shadow-sm scale-[1.01]" 
                         : "border-secondary bg-white hover:border-primary/20"
                       }`}
                     >
                       {product.badge && (
-                        <div className="absolute -top-2 right-2 bg-accent text-white text-[9px] px-2.5 py-1 rounded-full font-black uppercase shadow-sm z-10 animate-bounce">
+                        <div className="absolute -top-2.5 right-3 bg-accent text-white text-[10px] px-3 py-1.5 rounded-full font-black uppercase shadow-sm z-10 animate-bounce">
                           {product.badge}
                         </div>
                       )}
                       
-                      <div className="flex items-center gap-3 w-full overflow-hidden">
-                        <RadioGroupItem value={product.id} id={product.id} className="shrink-0" />
+                      <div className="flex items-center gap-4 w-full overflow-hidden">
+                        <RadioGroupItem value={product.id} id={product.id} className="shrink-0 h-5 w-5" />
                         
-                        <div className="h-10 w-10 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
+                        <div className="h-12 w-12 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
                           <Image 
                             src={product.image} 
                             alt={product.name} 
                             fill 
                             className="object-cover"
-                            sizes="40px"
+                            sizes="48px"
                           />
                         </div>
 
                         <div className="flex-1 min-w-0 overflow-hidden text-left">
-                          <p className="font-black text-[11px] text-foreground uppercase leading-tight truncate">
+                          <p className="font-black text-[14px] text-foreground uppercase leading-tight truncate">
                             {product.name}
                           </p>
-                          <p className="text-[9px] text-muted-foreground font-medium truncate">
+                          <p className="text-[11px] text-muted-foreground font-medium truncate">
                             {product.description}
                           </p>
                         </div>
 
                         <div className="text-right shrink-0">
-                          <p className="font-black text-primary text-[13px]">
+                          <p className="font-black text-primary text-[15px]">
                             ${product.price.toFixed(2)}
                           </p>
                         </div>
@@ -256,39 +257,39 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </RadioGroup>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex items-center gap-2 text-primary border-b pb-1">
-                  <Truck className="h-4 w-4" />
-                  <h3 className="font-black uppercase text-[10px] tracking-widest text-primary/80">PASO 2: DATOS DE ENVÍO</h3>
+                  <Truck className="h-5 w-5" />
+                  <h3 className="font-black uppercase text-[11px] tracking-widest text-primary/80">PASO 2: DATOS DE ENVÍO</h3>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="space-y-1 text-left">
-                    <Label htmlFor="nombre" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5 text-left">
+                    <Label htmlFor="nombre" className="text-[11px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
                     <Input 
                       id="nombre" 
                       placeholder="Juan" 
                       required 
                       value={nombre}
                       onChange={(e) => setNombre(e.target.value)}
-                      className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
+                      className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4" 
                     />
                   </div>
-                  <div className="space-y-1 text-left">
-                    <Label htmlFor="apellido" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
+                  <div className="space-y-1.5 text-left">
+                    <Label htmlFor="apellido" className="text-[11px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
                     <Input 
                       id="apellido" 
                       placeholder="Pérez" 
                       required 
                       value={apellido}
                       onChange={(e) => setApellido(e.target.value)}
-                      className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
+                      className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4" 
                     />
                   </div>
                 </div>
 
-                <div className="space-y-1 text-left">
-                  <Label htmlFor="whatsapp" className="text-[10px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
+                <div className="space-y-1.5 text-left">
+                  <Label htmlFor="whatsapp" className="text-[11px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
                   <div className="relative">
                     <Input 
                       id="whatsapp" 
@@ -297,29 +298,29 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                       required 
                       value={whatsapp}
                       onChange={handleWhatsappChange}
-                      className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] pl-3 w-full" 
+                      className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] pl-4 pr-10 w-full" 
                     />
-                    {whatsapp.length === 10 && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-green-500" />}
+                    {whatsapp.length === 10 && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-green-500" />}
                   </div>
                 </div>
 
-                <div className="space-y-1 text-left">
-                  <Label htmlFor="direccion" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
+                <div className="space-y-1.5 text-left">
+                  <Label htmlFor="direccion" className="text-[11px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
                   <Input 
                     id="direccion" 
                     placeholder="Calle, Nro de casa y referencia" 
                     required 
                     value={direccion}
                     onChange={(e) => setDireccion(e.target.value)}
-                    className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
+                    className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4" 
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="space-y-1 text-left">
-                    <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5 text-left">
+                    <Label className="text-[11px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
                     <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                      <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
+                      <SelectTrigger className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[12px] w-full px-4">
                         <SelectValue placeholder="Elegir" />
                       </SelectTrigger>
                       <SelectContent className="rounded-xl max-h-[180px]">
@@ -329,10 +330,10 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-1 text-left">
-                    <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
+                  <div className="space-y-1.5 text-left">
+                    <Label className="text-[11px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
                     <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                      <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
+                      <SelectTrigger className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[12px] w-full px-4">
                         <SelectValue placeholder={provincia ? "Elegir" : "---"} />
                       </SelectTrigger>
                       <SelectContent className="rounded-xl max-h-[160px]">
@@ -345,12 +346,12 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-100 p-3 rounded-2xl space-y-1 text-left">
+              <div className="bg-amber-50 border border-amber-100 p-4 rounded-2xl space-y-1.5 text-left">
                 <div className="flex items-center gap-2 text-amber-600">
-                  <AlertTriangle className="h-3 w-3" />
-                  <span className="font-black text-[9px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
+                  <AlertTriangle className="h-4 w-4" />
+                  <span className="font-black text-[10px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
                 </div>
-                <p className="text-[9px] font-medium text-amber-800/80 leading-tight italic">
+                <p className="text-[11px] font-medium text-amber-800/80 leading-tight italic">
                   Al confirmar, tu pedido se registrará y te llamaremos para coordinar la entrega.
                 </p>
               </div>
@@ -358,11 +359,11 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               <Button 
                 type="submit" 
                 disabled={loading} 
-                className="w-full h-14 text-lg font-black uppercase bg-accent hover:bg-accent/90 shadow-2xl rounded-[1.2rem] animate-heartbeat"
+                className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-2xl rounded-[1.2rem] animate-heartbeat"
               >
                 {loading ? "REGISTRANDO..." : (
                   <>
-                    <ShoppingCart className="mr-2 h-5 w-5" />
+                    <ShoppingCart className="mr-2 h-6 w-6" />
                     CONFIRMAR COMPRA
                   </>
                 )}
