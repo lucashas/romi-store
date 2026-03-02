@@ -16,6 +16,7 @@ git branch -M main
 git remote add origin https://github.com/TU_USUARIO/romi-store.git
 git push -u origin main
 ```
+*(Recuerda cambiar TU_USUARIO por tu nombre de usuario de GitHub)*
 
 ### 2. Configurar en Firebase Console
 1. Ve a **App Hosting** en la consola de Firebase.
