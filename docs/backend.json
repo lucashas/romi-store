@@ -1,0 +1,338 @@
+{
+  "entities": {
+    "LandingPageContent": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "LandingPageContent",
+      "type": "object",
+      "description": "Stores the main content and structural elements for the promotional landing page, including the hero section, SEO metadata, and general page configuration.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the LandingPageContent entity."
+        },
+        "heroTitle": {
+          "type": "string",
+          "description": "The captivating headline for the hero section."
+        },
+        "heroDescription": {
+          "type": "string",
+          "description": "Descriptive text supporting the hero title."
+        },
+        "heroMediaUrl": {
+          "type": "string",
+          "description": "URL of the high-resolution product image or video in the hero section.",
+          "format": "uri"
+        },
+        "heroCtaButtonText": {
+          "type": "string",
+          "description": "Text displayed on the call-to-action button in the hero section."
+        },
+        "heroCtaButtonUrl": {
+          "type": "string",
+          "description": "URL to which the hero CTA button directs users.",
+          "format": "uri"
+        },
+        "pageTitle": {
+          "type": "string",
+          "description": "The title for the landing page, used in browser tabs and search results."
+        },
+        "metaDescription": {
+          "type": "string",
+          "description": "A brief summary of the page content for search engine optimization."
+        },
+        "lastUpdated": {
+          "type": "string",
+          "description": "Timestamp of when the landing page content was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "heroTitle",
+        "heroMediaUrl",
+        "heroCtaButtonText",
+        "heroCtaButtonUrl",
+        "pageTitle",
+        "lastUpdated"
+      ]
+    },
+    "Benefit": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Benefit",
+      "type": "object",
+      "description": "Represents a distinct advantage or positive outcome a user gains from the product, designed to be displayed on the landing page.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Benefit entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The concise title of the benefit."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed explanation of what the benefit offers to the user."
+        },
+        "iconUrl": {
+          "type": "string",
+          "description": "URL of the descriptive icon or illustration associated with the benefit.",
+          "format": "uri"
+        },
+        "order": {
+          "type": "number",
+          "description": "The display order of the benefit on the landing page."
+        },
+        "landingPageContentId": {
+          "type": "string",
+          "description": "Reference to the LandingPageContent entity this benefit belongs to. (Relationship: LandingPageContent 1:N Benefit)"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "iconUrl",
+        "order",
+        "landingPageContentId"
+      ]
+    },
+    "Feature": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Feature",
+      "type": "object",
+      "description": "Details a specific functionality or characteristic of the product, explaining how it works and its advantages on the landing page.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Feature entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The concise title of the feature."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed explanation of the feature's functionality and specific advantages."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the image or illustration depicting the feature.",
+          "format": "uri"
+        },
+        "order": {
+          "type": "number",
+          "description": "The display order of the feature on the landing page."
+        },
+        "landingPageContentId": {
+          "type": "string",
+          "description": "Reference to the LandingPageContent entity this feature belongs to. (Relationship: LandingPageContent 1:N Feature)"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "order",
+        "landingPageContentId"
+      ]
+    },
+    "Testimonial": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Testimonial",
+      "type": "object",
+      "description": "Stores feedback from a satisfied customer, including their quote, name, and optional photo, to build credibility on the landing page.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Testimonial entity."
+        },
+        "quote": {
+          "type": "string",
+          "description": "The actual quote or statement from the customer."
+        },
+        "customerName": {
+          "type": "string",
+          "description": "The name of the customer providing the testimonial."
+        },
+        "customerTitle": {
+          "type": "string",
+          "description": "The customer's role or description (e.g., 'CEO', 'Satisfied User')."
+        },
+        "customerPhotoUrl": {
+          "type": "string",
+          "description": "URL of an optional photo of the customer.",
+          "format": "uri"
+        },
+        "displayOrder": {
+          "type": "number",
+          "description": "The display order of the testimonial on the landing page."
+        },
+        "landingPageContentId": {
+          "type": "string",
+          "description": "Reference to the LandingPageContent entity this testimonial belongs to. (Relationship: LandingPageContent 1:N Testimonial)"
+        }
+      },
+      "required": [
+        "id",
+        "quote",
+        "customerName",
+        "displayOrder",
+        "landingPageContentId"
+      ]
+    },
+    "LeadSubmission": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "LeadSubmission",
+      "type": "object",
+      "description": "Records contact or registration details submitted by potential customers through the landing page form, indicating their interest.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the LeadSubmission entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The full name of the person submitting the form."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address provided by the person submitting the form.",
+          "format": "email"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The phone number provided by the person submitting the form."
+        },
+        "message": {
+          "type": "string",
+          "description": "The message or expression of interest from the submitter."
+        },
+        "submissionDateTime": {
+          "type": "string",
+          "description": "Timestamp indicating when the form was submitted.",
+          "format": "date-time"
+        },
+        "landingPageContentId": {
+          "type": "string",
+          "description": "Reference to the LandingPageContent entity from which this lead was submitted. (Relationship: LandingPageContent 1:N LeadSubmission)"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "message",
+        "submissionDateTime",
+        "landingPageContentId"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/landingPageContent/{landingPageContentId}",
+        "definition": {
+          "entityName": "LandingPageContent",
+          "schema": {
+            "$ref": "#/backend/entities/LandingPageContent"
+          },
+          "description": "Stores the main content for each promotional landing page. Intended for public read access and admin-only write access."
+        }
+      },
+      {
+        "path": "/landingPageContent/{landingPageContentId}/benefits/{benefitId}",
+        "definition": {
+          "entityName": "Benefit",
+          "schema": {
+            "$ref": "#/backend/entities/Benefit"
+          },
+          "description": "Stores individual benefits associated with a specific landing page. Each document includes 'landingPageContentId' as a denormalized foreign key. Intended for public read access and admin-only write access.",
+          "params": [
+            {
+              "name": "landingPageContentId",
+              "description": "The unique identifier of the parent LandingPageContent document."
+            },
+            {
+              "name": "benefitId",
+              "description": "The unique identifier of the Benefit document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/landingPageContent/{landingPageContentId}/features/{featureId}",
+        "definition": {
+          "entityName": "Feature",
+          "schema": {
+            "$ref": "#/backend/entities/Feature"
+          },
+          "description": "Stores product features associated with a specific landing page. Each document includes 'landingPageContentId' as a denormalized foreign key. Intended for public read access and admin-only write access.",
+          "params": [
+            {
+              "name": "landingPageContentId",
+              "description": "The unique identifier of the parent LandingPageContent document."
+            },
+            {
+              "name": "featureId",
+              "description": "The unique identifier of the Feature document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/landingPageContent/{landingPageContentId}/testimonials/{testimonialId}",
+        "definition": {
+          "entityName": "Testimonial",
+          "schema": {
+            "$ref": "#/backend/entities/Testimonial"
+          },
+          "description": "Stores customer testimonials associated with a specific landing page. Each document includes 'landingPageContentId' as a denormalized foreign key. Intended for public read access and admin-only write access.",
+          "params": [
+            {
+              "name": "landingPageContentId",
+              "description": "The unique identifier of the parent LandingPageContent document."
+            },
+            {
+              "name": "testimonialId",
+              "description": "The unique identifier of the Testimonial document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/leadSubmissions/{leadSubmissionId}",
+        "definition": {
+          "entityName": "LeadSubmission",
+          "schema": {
+            "$ref": "#/backend/entities/LeadSubmission"
+          },
+          "description": "Records contact form submissions from interested users. Allows public create access but restricts read/list access to administrators only. Includes 'landingPageContentId' for traceability.",
+          "params": [
+            {
+              "name": "leadSubmissionId",
+              "description": "The unique identifier for the LeadSubmission document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roles_admin/{adminId}",
+        "definition": {
+          "entityName": "admin",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "A top-level collection to manage administrator roles. Each document's ID is the Firebase 'uid' of an administrator. Used for DBAC to grant write access to content and read access to lead submissions. This is an auxiliary collection, not directly tied to the provided entities but essential for administrative authorization."
+        }
+      }
+    ],
+    "reasoning": "The recommended Firestore structure for 'ProductoEstelar' prioritizes secure, scalable, and debuggable access to a promotional landing page's content and lead submissions.The core design principle of Authorization Independence is achieved through strategic use of top-level collections for different security postures and the denormalization of authorization context where applicable, though in this case, explicit denormalization for authorization is minimized due to the predominantly public-read nature of content and a clear separation of admin roles.\n\nFor `LandingPageContent`, `Benefit`, `Feature`, and `Testimonial` entities, the structure is designed for public read access, with administrative write capabilities. These entities are organized hierarchically where it makes logical sense (e.g., benefits as a subcollection of a landing page), which aids in data organization. Since these are publicly viewable, read access rules are simple (`allow read: true;`), inherently satisfying QAPs as no client-side filtering is required for basic viewing. Admin write access to these collections will be governed by a separate, global `roles_admin` collection, ensuring that write permissions are independent of the content of the documents themselves or their hierarchical parents.\n\n`LeadSubmission` stands as a top-level collection (`/leadSubmissions/{leadSubmissionId}`). This is a critical design choice to maintain Authorization Independence and a clear security posture. `LeadSubmission` documents have a public-write, admin-read security model. Placing it at the top level segregates its rules: anyone can create a submission, but only authenticated users with an entry in the `/roles_admin` collection can read (get or list) them. The `landingPageContentId` field within each `LeadSubmission` document explicitly links it to the specific landing page it originated from, maintaining data integrity without creating an authorization dependency on the parent `LandingPageContent` document. This separation ensures that `LeadSubmission` creation is atomic and its read authorization does not rely on `get()` operations on other documents, thus fully supporting QAPs for both write (public create) and read (admin-only list/get) operations. The `roles_admin` collection provides the necessary DBAC for all administrative functions, ensuring a clear and independent authorization mechanism."
+  }
+}

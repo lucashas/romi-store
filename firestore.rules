@@ -1,0 +1,136 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * CORE PHILOSOPHY
+     * This ruleset implements a Role-Based Access Control (RBAC) model for a promotional landing page. 
+     * It prioritizes public visibility for marketing content while strictly restricting management 
+     * capabilities to verified administrators. 
+     *
+     * DATA STRUCTURE
+     * The hierarchy is centered around 'LandingPageContent' documents. 
+     * - Content details (Benefits, Features, Testimonials) are organized as subcollections 
+     *   under specific landing pages for logical grouping.
+     * - 'LeadSubmissions' is a top-level collection to allow flat querying of all potential 
+     *   customers across various landing pages.
+     * - 'roles_admin' is a dedicated top-level collection used for Database Access Control (DBAC).
+     *
+     * KEY SECURITY DECISIONS
+     * 1. Public Content: All landing page content is readable by any user (authenticated or not).
+     * 2. Admin-Only Writes: Modifications to the landing page and its sub-entities require 
+     *    the user's UID to be present in the 'roles_admin' collection.
+     * 3. Lead Capture: Lead submissions are "write-only" for public users (anonymous or password), 
+     *    while only admins can review or manage these leads.
+     * 4. Denormalization: Entity IDs (like landingPageContentId) are enforced within documents 
+     *    to ensure relational integrity without complex cross-document lookups.
+     */
+
+    // --- Helper Functions ---
+
+    /**
+     * @description Checks if the user is authenticated with Firebase Auth.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * @description Determines if the authenticated user has administrative privileges 
+     * by checking for a corresponding document in the 'roles_admin' collection.
+     */
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+    }
+
+    /**
+     * @description Combines an existence check with an admin check for updates and deletes.
+     */
+    function isExistingAdmin() {
+      return resource != null && isAdmin();
+    }
+
+    // --- Collection Rules ---
+
+    /**
+     * @description Rules for managing the main landing page configuration.
+     * @path /landingPageContent/{landingPageContentId}
+     * @allow (get) Anyone can view the landing page content.
+     * @deny (create) Non-admin users attempting to create a new page.
+     * @principle Public read-only access for content; RBAC for modifications.
+     */
+    match /landingPageContent/{landingPageContentId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && request.resource.data.id == landingPageContentId;
+      allow update, delete: if isExistingAdmin();
+
+      /**
+       * @description Rules for benefits associated with a landing page.
+       * @path /landingPageContent/{landingPageContentId}/benefits/{benefitId}
+       * @allow (list) Publicly list benefits for a specific page.
+       * @deny (update) Attempting to change the parent landingPageContentId link.
+       * @principle Path-to-data consistency and admin-only writes.
+       */
+      match /benefits/{benefitId} {
+        allow get, list: if true;
+        allow create: if isAdmin() && request.resource.data.landingPageContentId == landingPageContentId;
+        allow update: if isExistingAdmin() && request.resource.data.landingPageContentId == resource.data.landingPageContentId;
+        allow delete: if isExistingAdmin();
+      }
+
+      /**
+       * @description Rules for product features.
+       * @path /landingPageContent/{landingPageContentId}/features/{featureId}
+       * @allow (get) Anonymous users viewing feature details.
+       * @deny (create) Authenticated non-admin users.
+       * @principle Admin-controlled marketing assets.
+       */
+      match /features/{featureId} {
+        allow get, list: if true;
+        allow create: if isAdmin() && request.resource.data.landingPageContentId == landingPageContentId;
+        allow update: if isExistingAdmin() && request.resource.data.landingPageContentId == resource.data.landingPageContentId;
+        allow delete: if isExistingAdmin();
+      }
+
+      /**
+       * @description Rules for customer testimonials.
+       * @path /landingPageContent/{landingPageContentId}/testimonials/{testimonialId}
+       * @allow (create) Admin adding social proof.
+       * @deny (delete) A non-admin user trying to remove a testimonial.
+       * @principle Public read; RBAC for data management.
+       */
+      match /testimonials/{testimonialId} {
+        allow get, list: if true;
+        allow create: if isAdmin() && request.resource.data.landingPageContentId == landingPageContentId;
+        allow update: if isExistingAdmin() && request.resource.data.landingPageContentId == resource.data.landingPageContentId;
+        allow delete: if isExistingAdmin();
+      }
+    }
+
+    /**
+     * @description Collection for potential customer submissions.
+     * @path /leadSubmissions/{leadSubmissionId}
+     * @allow (create) Any signed-in user (including anonymous) submitting their interest.
+     * @deny (list) Public users attempting to see other people's contact info.
+     * @principle Write-only public access to protect sensitive lead data.
+     */
+    match /leadSubmissions/{leadSubmissionId} {
+      allow get, list: if isAdmin();
+      allow create: if isSignedIn(); // Use isSignedIn to allow anonymous/password leads while preventing totally open writes.
+      allow update, delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description System-level collection defining administrative UIDs.
+     * @path /roles_admin/{adminId}
+     * @allow (get) Any authenticated user verifying their own or others' roles.
+     * @deny (write) Any client-side attempt to modify roles.
+     * @principle Immutable admin roles from the client perspective to maintain system integrity.
+     */
+    match /roles_admin/{adminId} {
+      allow get: if isSignedIn();
+      allow list: if isAdmin();
+      allow create, update, delete: if false; // Admin assignment handled via Cloud Functions or Console.
+    }
+  }
+}
