@@ -136,7 +136,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="w-[95%] max-w-[450px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto translate-x-[-50%] left-[50%]"
+        className="w-[98%] max-w-[480px] p-0 overflow-hidden rounded-[2rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]"
       >
         <DialogHeader className="sr-only">
           <DialogTitle>Formulario de Compra</DialogTitle>
@@ -160,18 +160,18 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               </p>
             </div>
 
-            <div className="bg-secondary/20 p-6 rounded-3xl border border-secondary/50 text-left space-y-4">
+            <div className="bg-secondary/20 p-6 rounded-2xl border border-secondary/50 text-left space-y-4">
               <p className="text-[12px] font-black uppercase text-primary/70 border-b border-primary/10 pb-1">Pasos a seguir:</p>
               <ul className="space-y-4">
-                <li className="flex items-start gap-4 text-[14px] font-medium text-foreground">
+                <li className="flex items-start gap-4 text-[15px] font-medium text-foreground">
                   <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[12px]">1</div>
                   <span>Nuestro equipo validará tu dirección en <strong>{ciudad}</strong>.</span>
                 </li>
-                <li className="flex items-start gap-4 text-[14px] font-medium text-foreground">
+                <li className="flex items-start gap-4 text-[15px] font-medium text-foreground">
                   <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[12px]">2</div>
                   <span>Te llamaremos al <strong>{whatsapp}</strong> para confirmar el despacho.</span>
                 </li>
-                <li className="flex items-start gap-4 text-[14px] font-medium text-foreground">
+                <li className="flex items-start gap-4 text-[15px] font-medium text-foreground">
                   <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary font-bold text-[12px]">3</div>
                   <span>¡Pagas cuando recibas el producto en tu puerta!</span>
                 </li>
@@ -180,75 +180,75 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
             <Button 
               onClick={() => onOpenChange(false)}
-              className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-xl rounded-[1.2rem]"
+              className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-xl rounded-[1rem]"
             >
               CERRAR Y CONTINUAR
             </Button>
             
-            <p className="text-[11px] text-muted-foreground italic">
+            <p className="text-[12px] text-muted-foreground italic">
               * Mantente atento a tu celular para la confirmación de envío.
             </p>
           </div>
         ) : (
           <>
             <div className="bg-primary p-6 text-white text-center">
-              <h2 className="text-[16px] font-black uppercase leading-tight tracking-tighter">
-                INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
+              <h2 className="text-[18px] font-black uppercase leading-tight tracking-tight px-2">
+                INGRESE SUS DATOS CORRECTAMENTE PARA ENVIAR SU PEDIDO
               </h2>
-              <p className="text-[13px] font-medium opacity-90 mt-1">
+              <p className="text-[14px] font-medium opacity-90 mt-1">
                 Pago al recibir en casa • Envío 100% Seguro
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-4 space-y-6 max-h-[70vh] overflow-y-auto bg-white">
+            <form onSubmit={handleSubmit} className="p-4 space-y-6 max-h-[80vh] overflow-y-auto bg-white overflow-x-hidden">
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-primary border-b pb-1">
+                <div className="flex items-center gap-2 text-primary border-b border-primary/10 pb-1.5">
                   <Package className="h-5 w-5" />
-                  <h3 className="font-black uppercase text-[11px] tracking-widest text-primary/80">PASO 1: ELIGE TU OFERTA</h3>
+                  <h3 className="font-black uppercase text-[12px] tracking-widest text-primary/80">PASO 1: ELIGE TU OFERTA</h3>
                 </div>
                 
-                <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
+                <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
                   {products.map((product) => (
                     <Label
                       key={product.id}
                       htmlFor={product.id}
                       className={`flex items-center gap-2 p-4 rounded-2xl border-2 transition-all cursor-pointer relative w-full box-border ${
                         selectedProduct === product.id 
-                        ? "border-primary bg-primary/5 shadow-sm scale-[1.01]" 
+                        ? "border-primary bg-primary/5 shadow-sm" 
                         : "border-secondary bg-white hover:border-primary/20"
                       }`}
                     >
                       {product.badge && (
-                        <div className="absolute -top-2.5 right-3 bg-accent text-white text-[10px] px-3 py-1.5 rounded-full font-black uppercase shadow-sm z-10 animate-bounce">
+                        <div className="absolute -top-3 right-3 bg-accent text-white text-[11px] px-3 py-1.5 rounded-full font-black uppercase shadow-sm z-10 animate-bounce">
                           {product.badge}
                         </div>
                       )}
                       
-                      <div className="flex items-center gap-4 w-full overflow-hidden">
-                        <RadioGroupItem value={product.id} id={product.id} className="shrink-0 h-5 w-5" />
+                      <div className="flex items-center gap-4 w-full">
+                        <RadioGroupItem value={product.id} id={product.id} className="shrink-0 h-6 w-6" />
                         
-                        <div className="h-12 w-12 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
+                        <div className="h-14 w-14 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
                           <Image 
                             src={product.image} 
                             alt={product.name} 
                             fill 
                             className="object-cover"
-                            sizes="48px"
+                            sizes="56px"
                           />
                         </div>
 
-                        <div className="flex-1 min-w-0 overflow-hidden text-left">
-                          <p className="font-black text-[14px] text-foreground uppercase leading-tight truncate">
+                        <div className="flex-1 min-w-0 text-left">
+                          <p className="font-black text-[15px] text-foreground uppercase leading-tight">
                             {product.name}
                           </p>
-                          <p className="text-[11px] text-muted-foreground font-medium truncate">
+                          <p className="text-[12px] text-muted-foreground font-medium mt-0.5">
                             {product.description}
                           </p>
                         </div>
 
                         <div className="text-right shrink-0">
-                          <p className="font-black text-primary text-[15px]">
-                            ${product.price.toFixed(2)}
+                          <p className="font-black text-primary text-[17px]">
+                            ${product.price.toFixed(0)}
                           </p>
                         </div>
                       </div>
@@ -258,38 +258,38 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               </div>
 
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-primary border-b pb-1">
+                <div className="flex items-center gap-2 text-primary border-b border-primary/10 pb-1.5">
                   <Truck className="h-5 w-5" />
-                  <h3 className="font-black uppercase text-[11px] tracking-widest text-primary/80">PASO 2: DATOS DE ENVÍO</h3>
+                  <h3 className="font-black uppercase text-[12px] tracking-widest text-primary/80">PASO 2: DATOS DE ENVÍO</h3>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5 text-left">
-                    <Label htmlFor="nombre" className="text-[11px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
+                    <Label htmlFor="nombre" className="text-[13px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
                     <Input 
                       id="nombre" 
                       placeholder="Juan" 
                       required 
                       value={nombre}
                       onChange={(e) => setNombre(e.target.value)}
-                      className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4" 
+                      className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[16px] w-full px-4 focus:ring-primary focus:bg-white" 
                     />
                   </div>
                   <div className="space-y-1.5 text-left">
-                    <Label htmlFor="apellido" className="text-[11px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
+                    <Label htmlFor="apellido" className="text-[13px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
                     <Input 
                       id="apellido" 
                       placeholder="Pérez" 
                       required 
                       value={apellido}
                       onChange={(e) => setApellido(e.target.value)}
-                      className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4" 
+                      className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[16px] w-full px-4 focus:ring-primary focus:bg-white" 
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1.5 text-left">
-                  <Label htmlFor="whatsapp" className="text-[11px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
+                  <Label htmlFor="whatsapp" className="text-[13px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
                   <div className="relative">
                     <Input 
                       id="whatsapp" 
@@ -298,32 +298,32 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                       required 
                       value={whatsapp}
                       onChange={handleWhatsappChange}
-                      className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] pl-4 pr-10 w-full" 
+                      className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[16px] pl-4 pr-10 w-full focus:ring-primary focus:bg-white" 
                     />
-                    {whatsapp.length === 10 && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-green-500" />}
+                    {whatsapp.length === 10 && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-green-500" />}
                   </div>
                 </div>
 
                 <div className="space-y-1.5 text-left">
-                  <Label htmlFor="direccion" className="text-[11px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
+                  <Label htmlFor="direccion" className="text-[13px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
                   <Input 
                     id="direccion" 
                     placeholder="Calle, Nro de casa y referencia" 
                     required 
                     value={direccion}
                     onChange={(e) => setDireccion(e.target.value)}
-                    className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4" 
+                    className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[16px] w-full px-4 focus:ring-primary focus:bg-white" 
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5 text-left">
-                    <Label className="text-[11px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
+                    <Label className="text-[13px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
                     <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                      <SelectTrigger className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[12px] w-full px-4">
+                      <SelectTrigger className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4 focus:ring-primary">
                         <SelectValue placeholder="Elegir" />
                       </SelectTrigger>
-                      <SelectContent className="rounded-xl max-h-[180px]">
+                      <SelectContent className="rounded-xl max-h-[250px]">
                         {Object.keys(ecuadorData).sort().map((p) => (
                           <SelectItem key={p} value={p}>{p}</SelectItem>
                         ))}
@@ -331,12 +331,12 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                     </Select>
                   </div>
                   <div className="space-y-1.5 text-left">
-                    <Label className="text-[11px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
+                    <Label className="text-[13px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
                     <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                      <SelectTrigger className="h-12 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[12px] w-full px-4">
+                      <SelectTrigger className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4 focus:ring-primary">
                         <SelectValue placeholder={provincia ? "Elegir" : "---"} />
                       </SelectTrigger>
-                      <SelectContent className="rounded-xl max-h-[160px]">
+                      <SelectContent className="rounded-xl max-h-[250px]">
                         {ciudadesDisponibles.map((c) => (
                           <SelectItem key={c} value={c}>{c}</SelectItem>
                         ))}
@@ -346,12 +346,12 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-100 p-4 rounded-2xl space-y-1.5 text-left">
+              <div className="bg-amber-50 border-2 border-amber-100 p-4 rounded-xl space-y-1.5 text-left">
                 <div className="flex items-center gap-2 text-amber-600">
-                  <AlertTriangle className="h-4 w-4" />
-                  <span className="font-black text-[10px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
+                  <AlertTriangle className="h-5 w-5" />
+                  <span className="font-black text-[12px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
                 </div>
-                <p className="text-[11px] font-medium text-amber-800/80 leading-tight italic">
+                <p className="text-[13px] font-medium text-amber-800/80 leading-tight italic">
                   Al confirmar, tu pedido se registrará y te llamaremos para coordinar la entrega.
                 </p>
               </div>
@@ -359,7 +359,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               <Button 
                 type="submit" 
                 disabled={loading} 
-                className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-2xl rounded-[1.2rem] animate-heartbeat"
+                className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-xl rounded-[1rem] animate-heartbeat mt-2"
               >
                 {loading ? "REGISTRANDO..." : (
                   <>
