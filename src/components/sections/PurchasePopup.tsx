@@ -201,13 +201,13 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 
                 {checkoutLogo && (
                   <div className="mt-4 flex justify-center">
-                    <div className="relative h-14 w-32">
+                    <div className="relative h-16 w-full max-w-[280px]">
                       <Image 
                         src={checkoutLogo.imageUrl} 
-                        alt="Trust Logo" 
+                        alt="Garantía de Confianza" 
                         fill 
-                        className="object-contain"
-                        sizes="128px"
+                        className="object-contain brightness-110 contrast-110"
+                        sizes="(max-width: 480px) 280px, 280px"
                         data-ai-hint="trust logo"
                         priority
                       />
