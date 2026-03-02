@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: 'https://i.imgur.com/XfmwUEJ.png', // Esta imagen aparecerá en la pestaña del navegador
+    icon: 'https://i.imgur.com/XfmwUEJ.png', // Esta imagen aparecerá en la pestaña del navegador (Favicon)
     shortcut: 'https://i.imgur.com/XfmwUEJ.png',
     apple: 'https://i.imgur.com/XfmwUEJ.png',
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: 'Romi Store EC',
     images: [
       {
-        url: 'https://i.imgur.com/XfmwUEJ.png', // Esta es la foto que se ve al compartir el link
+        url: 'https://i.imgur.com/XfmwUEJ.png', // Foto que se ve al compartir el link en WhatsApp/TikTok
         width: 800,
         height: 600,
         alt: 'MaryRuth\'s Organics Ecuador',
