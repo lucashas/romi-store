@@ -2,7 +2,7 @@
 
 Esta es la landing page oficial de **Romi Store EC** para la promoción de productos de MaryRuth's Organics en Ecuador.
 
-## Guía para subir tu código a GitHub
+## Guía para subir tu código a GitHub (Si te saliste o falló)
 
 GitHub requiere un **Token de Acceso Personal (PAT)** en lugar de tu contraseña normal. Sigue estos pasos:
 
@@ -15,16 +15,14 @@ GitHub requiere un **Token de Acceso Personal (PAT)** en lugar de tu contraseña
 6. Clic en **Generate token** y **COPIA EL CÓDIGO** (no lo pierdas).
 
 ### 2. Comandos en la Terminal de Firebase Studio
-Copia y pega uno por uno:
+Copia y pega uno por uno (reemplaza `TU_USUARIO` con tu nombre de usuario de GitHub):
 
 ```bash
-git init
-git config --global user.email "tu-correo@ejemplo.com"
-git config --global user.name "Tu Nombre"
 git add .
 git commit -m "Lanzamiento Romi Store"
 git branch -M main
-git remote add origin https://github.com/TU_USUARIO/romi-store.git
+# Si ya pusiste el 'remote' antes, este paso dará error pero no importa, sigue al siguiente:
+git remote add origin https://github.com/TU_USUARIO/romi-store.git 
 git push -u origin main
 ```
 
