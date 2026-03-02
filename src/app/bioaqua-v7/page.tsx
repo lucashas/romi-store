@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -7,7 +8,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, CheckCircle2, ShieldCheck, Zap, Sparkles, Heart } from "lucide-react";
+import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -65,15 +66,16 @@ export default function BioaquaPage() {
                 alt="Bioaqua V7 Crema 7 Vitaminas"
                 className="w-full h-auto block"
               />
-              <div className="absolute top-4 right-4 bg-[#f97316] text-white px-4 py-2 rounded-full font-black text-xs animate-bounce shadow-xl border-2 border-white">
-                ¡OFERTA ESPECIAL MUJER!
+              {/* Distintivo reposicionado a la izquierda para no obstruir */}
+              <div className="absolute top-3 left-3 bg-orange-600 text-white px-3 py-1.5 rounded-full font-black text-[10px] animate-pulse shadow-xl border-2 border-white uppercase tracking-tighter">
+                OFERTA MUJER ✨
               </div>
             </div>
           </div>
           
           <div className="p-6 text-center space-y-4">
             <div className="flex justify-center items-center gap-2 mb-2">
-              <div className="flex gap-1">
+              <div className="flex gap-0.5">
                 {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-orange-500 text-orange-500" />)}
               </div>
               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">(+2,400 CLIENTAS FELICES)</span>
