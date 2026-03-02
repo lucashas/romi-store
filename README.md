@@ -1,28 +1,39 @@
 
-# 🚀 Romi Store EC - Lanzamiento Final
+# 🚀 Romi Store EC - LANZAMIENTO FINAL (PASO A PASO)
 
-Para solucionar el error **"No buildpack groups passed detection"**, Firebase necesita encontrar el archivo `package-lock.json` en la raíz de tu proyecto. El problema es que estás usando el terminal de Google Cloud Shell externo (que es una máquina vacía).
+¡Ya estás en la terminal correcta! Ahora solo nos falta conectar esta carpeta con tu GitHub para que Firebase pueda ver tu tienda.
 
-### 🛠️ ¿DÓNDE ESTÁ EL TERMINAL CORRECTO?
-Mira la parte inferior de esta pantalla (donde ves este editor de código). Verás una pestaña que dice **"Terminal"**. Haz clic ahí. Ese terminal ya está dentro de tu proyecto y tiene todos tus archivos.
-
-### 🛠️ PASO FINAL: COMANDOS DE LANZAMIENTO (Copia y Pega)
-
-Una vez que abras el **Terminal de Firebase Studio** (el de aquí abajo), pega esto:
+### 🛠️ PASO 1: CONECTAR A GITHUB (Solo una vez)
+Copia la URL de tu repositorio de GitHub (ejemplo: `https://github.com/tu-usuario/tu-repositorio.git`) y pégala en este comando:
 
 ```bash
-# 1. Crear el archivo package-lock.json necesario para Firebase
-npm install
-
-# 2. Subir el archivo a GitHub para que Firebase lo vea
-git add .
-git commit -m "Lanzamiento: Generación de package-lock.json"
-git push
+git remote add origin https://github.com/TU_USUARIO/TU_REPOSITORIO.git
 ```
 
-### ¿Por qué fallaba antes?
-- **Cloud Shell:** Es una máquina virtual externa, no tiene acceso a tus archivos locales.
-- **Firebase Studio Terminal:** Es el entorno real donde vive tu código.
-- **Buildpack:** Sin el `package-lock.json`, Firebase no sabe que tu aplicación es de Node.js.
+### 🛠️ PASO 2: PREPARAR EL LANZAMIENTO
+Ejecuta estos comandos uno por uno para generar el archivo que Firebase necesita (`package-lock.json`):
 
-**Nota:** Si el terminal te pide credenciales, usa tu usuario de GitHub y tu Token de Acceso Personal como contraseña.
+```bash
+# 1. Crear el archivo de bloqueo
+npm install
+
+# 2. Guardar los cambios localmente
+git add .
+git commit -m "Lanzamiento: Generación de archivos para Firebase"
+```
+
+### 🛠️ PASO 3: SUBIR A PRODUCCIÓN
+Finalmente, envía todo a GitHub:
+
+```bash
+git push -u origin main
+```
+*(Si te pide usuario y contraseña, recuerda usar tu **Token de GitHub** como contraseña).*
+
+---
+
+### ✅ ¿Por qué esto soluciona el error?
+- **Buildpack Error:** Firebase fallaba porque no encontraba el archivo `package-lock.json`.
+- **Git Push Error:** Tu terminal no sabía a dónde enviar los archivos; con `git remote add` ahora ya lo sabe.
+
+¡Tu tienda estará en línea en cuanto termines el Paso 3! 🇪🇨✨
