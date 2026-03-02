@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -121,6 +120,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       onOpenChange(false);
       
       // REDIRECCIÓN INTELIGENTE A LA PÁGINA DE GRACIAS UNIFICADA
+      // Pasamos el producto y la URL de retorno para que la página sea 100% dinámica
       router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product.name)}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);

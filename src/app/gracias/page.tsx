@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -16,6 +15,7 @@ function GraciasContent() {
   const [volverUrl, setVolverUrl] = useState("/");
 
   useEffect(() => {
+    // Extraemos los datos de la URL para personalizar la página
     setNombre(searchParams.get("nombre") || "Cliente");
     setCiudad(searchParams.get("ciudad") || "Ecuador");
     setWhatsapp(searchParams.get("whatsapp") || "");
