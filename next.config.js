@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  /* Habilita la salida standalone para compatibilidad con Firebase App Hosting */
   output: 'standalone',
   reactStrictMode: true,
   images: {
