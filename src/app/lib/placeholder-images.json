@@ -20,6 +20,18 @@
       "imageHint": "hair results"
     },
     {
+      "id": "feature-hair-extra",
+      "description": "Imagen extra impacto MaryRuth's",
+      "imageUrl": "https://i.imgur.com/16ulc1H.png",
+      "imageHint": "hair results extra"
+    },
+    {
+      "id": "bioaqua-banner-top",
+      "description": "Banner principal Bioaqua V7",
+      "imageUrl": "https://i.imgur.com/P4G3s0w.png",
+      "imageHint": "bioaqua banner"
+    },
+    {
       "id": "bioaqua-hero",
       "description": "Crema V7 Bioaqua - Imagen Principal",
       "imageUrl": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1080",

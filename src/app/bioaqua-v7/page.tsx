@@ -12,13 +12,12 @@ import { ShoppingCart, Star, CheckCircle2, ShieldCheck, Zap } from "lucide-react
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-// CONFIGURACIÓN DE OFERTAS PARA BIOAQUA V7
 const BIOAQUA_PRODUCTS: Product[] = [
   {
     id: "bioaqua_1",
     name: "1 Crema V7 Bioaqua",
     price: 15.00,
-    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=400",
+    image: "https://i.imgur.com/P4G3s0w.png",
     badge: null,
     description: "Efecto aclarante instantáneo"
   },
@@ -26,7 +25,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
     id: "bioaqua_2",
     name: "2 Cremas (Dúo Piel Perfecta)",
     price: 25.00,
-    image: "https://images.unsplash.com/photo-1611082216373-7c1bc0412822?q=80&w=400",
+    image: "https://i.imgur.com/P4G3s0w.png",
     badge: "Más Vendido",
     description: "Envío Gratis a todo Ecuador"
   },
@@ -34,7 +33,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
     id: "bioaqua_3",
     name: "3 Cremas (Tratamiento Completo)",
     price: 32.00,
-    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=400",
+    image: "https://i.imgur.com/P4G3s0w.png",
     badge: "Mejor Precio",
     description: "Máximo ahorro + Regalo sorpresa"
   }
@@ -44,7 +43,7 @@ export default function BioaquaPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
 
-  const heroImg = PlaceHolderImages.find(img => img.id === "bioaqua-hero")?.imageUrl;
+  const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-banner-top")?.imageUrl;
   const showcaseImg = PlaceHolderImages.find(img => img.id === "bioaqua-showcase")?.imageUrl;
 
   return (
@@ -52,18 +51,16 @@ export default function BioaquaPage() {
       <TopMarquee />
       
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-white border-b overflow-hidden">
-          <div className="px-1 pt-1 cursor-pointer" onClick={openPopup}>
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg border-2 border-primary/10">
-              <Image 
-                src={heroImg || "https://picsum.photos/seed/bio1/800/1000"} 
+        {/* Banner de Impacto Inmediato */}
+        <section className="bg-white overflow-hidden">
+          <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
+            <div className="relative w-full overflow-hidden rounded-xl shadow-lg border-2 border-primary/10">
+              <img 
+                src={bannerTopImg || "https://i.imgur.com/P4G3s0w.png"} 
                 alt="Bioaqua V7 Crema 7 Vitaminas"
-                fill
-                className="object-cover"
-                priority
+                className="w-full h-auto block"
               />
-              <div className="absolute top-4 right-4 bg-accent text-white px-4 py-2 rounded-full font-black text-sm animate-bounce shadow-xl">
+              <div className="absolute top-4 right-4 bg-accent text-white px-4 py-2 rounded-full font-black text-xs animate-bounce shadow-xl">
                 ¡OFERTA TIKTOK!
               </div>
             </div>
