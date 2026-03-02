@@ -1,29 +1,35 @@
 # Romi Store EC - ¡Casi en vivo! 🚀
 
-¡Felicidades! El código ya está en GitHub. Ahora solo falta terminar la configuración en la Consola de Firebase.
+¡Felicidades! Ya subiste el código a GitHub. Ahora solo falta el último paso en la Consola de Firebase.
 
 ## Pasos Finales en la Consola (App Hosting)
-1. **ID del Backend:** Deja `romi-store`.
-2. **Variables de Entorno:**
-   - Haz clic en **"Agregar variable"**.
-   - **Clave:** `GOOGLE_GENAI_API_KEY`
-   - **Valor:** Pega tu API Key de Google AI Studio (Gemini).
-   - *Nota:* Esto es necesario para que las funciones de IA (si las activas) funcionen correctamente.
-3. **Desplegar:** Haz clic en "Finalizar". Firebase tardará unos 3-5 minutos en compilar tu tienda.
+
+### 1. ID del Backend
+- Deja `romi-store` tal como está.
+
+### 2. Configurar la IA (Variables de Entorno)
+Para que las funciones de IA funcionen, necesitas tu clave de Gemini:
+1. **Consigue tu clave:** Ve a [Google AI Studio](https://aistudio.google.com/app/apikey) y haz clic en **"Create API key"**.
+2. **Copia la clave:** Es un código largo que empieza con `AIza...`.
+3. **Regresa a Firebase:**
+   - En **Clave**, pon: `GOOGLE_GENAI_API_KEY`
+   - En **Valor**, pega tu clave `AIza...`.
+4. Haz clic en **"Finalizar"**.
+
+## ¿Qué pasa ahora?
+Firebase tardará unos **3-5 minutos** en construir tu tienda. Verás una barra de progreso. Cuando termine, te dará una URL (ejemplo: `romi-store.web.app`) que puedes compartir en tus redes sociales.
 
 ## Cómo actualizar tu tienda en el futuro
-Si quieres cambiar precios o productos:
+Si quieres cambiar precios o fotos:
 1. Edita el archivo `src/app/page.tsx` en este editor.
 2. Guarda los cambios.
-3. Ejecuta estos tres comandos en la terminal:
+3. Ejecuta estos comandos en la terminal:
    ```bash
    git add .
-   git commit -m "Actualización de productos"
+   git commit -m "Cambios en mi tienda"
    git push
    ```
 4. ¡Firebase detectará el cambio y actualizará la página automáticamente!
 
-## Soporte
-- **Distribuidor:** Romi Store EC
-- **Marca:** MaryRuth's Organics Ecuador
-- **Plataforma:** Next.js + Firebase + ShadCN UI
+---
+**Soporte:** Romi Store EC | MaryRuth's Organics Ecuador
