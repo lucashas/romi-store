@@ -53,6 +53,12 @@ const ecuadorData: Record<string, string[]> = {
   "ZAMORA CHINCHIPE": ["ZAMORA", "YANTZAZA", "EL PANGUI", "CENTINELA DEL CONDOR", "CHINCHIPE", "NANGARITZA", "PALANDA", "PAQUISHA", "YACUAMBI"]
 };
 
+interface PurchasePopupProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  products: Product[];
+}
+
 export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState("");
@@ -84,6 +90,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validar campos indispensables
     if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
       toast({
         variant: "destructive",
@@ -120,6 +127,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     addDoc(leadsRef, orderData)
       .then(() => {
         setLoading(false);
+        // Redirección profesional a la página de Gracias
         router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
       })
       .catch((err) => {
@@ -320,10 +328,10 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 <span className="font-black text-[16px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
               </div>
               <div className="space-y-3">
-                <p className="text-[16px] font-black text-amber-900 leading-tight">
+                <p className="text-[16px] font-black text-amber-900 leading-tight text-center">
                   Al confirmar, tu pedido se registrará y te escribiremos via whatsapp para coordinar la entrega.
                 </p>
-                <p className="text-[15px] font-bold text-amber-800 leading-tight">
+                <p className="text-[15px] font-bold text-amber-800 leading-tight text-center">
                   Una vez realizada la compra, la empresa pagará el flete de tu producto a la transportadora. Por favor, comprometete con tu compra, así como nosotros lo hacemos brindándote el mejor servicio.
                 </p>
               </div>
