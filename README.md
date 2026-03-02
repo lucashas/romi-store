@@ -1,21 +1,21 @@
 
 # 🚀 Guía de Lanzamiento Final - Romi Store EC
 
-Para corregir el error de "No buildpack groups passed detection", sigue estos pasos exactos en tu terminal:
+Si ves el error "No buildpack groups passed detection", es porque Firebase no encuentra tu proyecto. Sigue estos pasos exactos para solucionarlo:
 
-### 🛠️ COMANDO MAESTRO DE SOLUCIÓN
-Copia y pega este comando completo en tu terminal y presiona **Enter**. Este comando encontrará tu proyecto, generará el archivo necesario y subirá todo a GitHub automáticamente:
+### 🛠️ COMANDO DE RESCATE TOTAL
+Copia y pega este comando único en tu terminal y presiona **Enter**. Este comando buscará tu código, entrará a la carpeta correcta, generará el archivo de bloqueo y subirá todo a GitHub:
 
 ```bash
-PROJECT_DIR=$(find /home -name "package.json" -not -path "*/node_modules/*" -exec dirname {} \;) && cd $PROJECT_DIR && npm install && git add . && git commit -m "Solución: Generación de Lockfile y Standalone" && git push
+cd $(find ~ -name "package.json" -not -path "*/node_modules/*" -exec dirname {} \; | head -n 1) && npm install && git add . && git commit -m "Solución definitiva Buildpack" && git push
 ```
 
 ---
 
 ### ¿Qué hace este comando?
-1. **Busca** en todo el servidor dónde está guardado tu archivo `package.json`.
-2. **Entra** a esa carpeta automáticamente (`cd`).
-3. **Crea** el archivo `package-lock.json` (`npm install`), que es el que Firebase necesita para no dar error.
-4. **Sube** los cambios a GitHub para que Firebase empiece a construir tu tienda.
+1. **Busca** la carpeta real de tu proyecto (donde esté el archivo `package.json`).
+2. **Entra** a esa carpeta automáticamente.
+3. **Crea** el archivo `package-lock.json` (`npm install`), que es el requisito indispensable para Firebase.
+4. **Sube** los cambios a GitHub.
 
-**Nota:** Si el comando te pide contraseña para GitHub, usa tu **Token de Acceso Personal**. Una vez que el comando termine, el círculo de carga en Firebase se pondrá en verde. ¡Felicidades!
+**Nota:** Si el comando te pide contraseña para GitHub, recuerda usar tu **Token de Acceso Personal**. Una vez que termine, el círculo de carga en Firebase se pondrá en verde. ¡Felicidades!
