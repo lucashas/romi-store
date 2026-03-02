@@ -1,18 +1,20 @@
-# 🚀 ¡ROMI STORE EC: ÚLTIMO EMPUJÓN!
+# 🚀 ¡ROMI STORE EC: LANZAMIENTO FINAL!
 
-¡Stalin! Hemos aumentado la memoria del servidor a **2GB**. Esto solucionará el **Error 51** (que ocurre cuando el servidor se queda sin "aliento" al construir la app).
+¡Stalin! El comando anterior no funcionó porque los cambios ya estaban listos pero no se enviaron. He añadido una configuración extra para que el servidor de construcción no se canse.
 
-### 🏁 PASOS PARA EL ÉXITO DEFINITIVO:
+### 🏁 ÚLTIMO PASO PARA ACTIVAR LA TIENDA:
 1. Ve a la terminal aquí abajo.
-2. Ejecuta este comando para enviar la actualización de memoria:
+2. Ejecuta **exactamente** este comando:
    ```bash
-   git add . && git commit -m "Fix: Increase memory to 2GB for build" && git push
+   git add . && git commit -m "Fix: Build memory limit" && git push
    ```
-3. **Monitoreo:** Ve a tu [Consola de Firebase](https://console.firebase.google.com/) > **App Hosting**. Verás un nuevo lanzamiento. ¡Esta vez tiene el doble de memoria para terminar con éxito!
+3. **Si el comando anterior te dice "nothing to commit", simplemente ejecuta este:**
+   ```bash
+   git push
+   ```
 
-### 🇪🇨 DETALLES DE TU TIENDA:
-- **Estado:** Subiendo corrección de memoria.
-- **Envío:** Configurado (Ecuador).
-- **Pago:** Contra entrega listo.
+### 🇪🇨 MONITOREO:
+- Una vez que veas que el porcentaje llega al 100% en la terminal, ve a tu **Consola de Firebase > App Hosting**.
+- Verás un nuevo lanzamiento. ¡Con 2GB de memoria y el ajuste de Node, esta vez funcionará!
 
-¡Casi lo tenemos, dale al `git push`! 📈📦
+¡Dale al `git push` y terminamos! 📈📦
