@@ -17,7 +17,7 @@ git push -u origin main
 ### 2. Cuando te pida los datos:
 - **Username**: `lucashas`
 - **Password**: Pega el **Personal Access Token (PAT)** que generaste en GitHub. 
-  *(Recuerda: Al pegar el token NO se verán letras, solo pégalo y presiona Enter).*
+  *(Recuerda: Al pegar el token NO se verán letras ni asteriscos, solo pégalo y presiona Enter).*
 
 ### ¿Cómo generar un nuevo Token si el anterior no sirve?
 1. Ve a [GitHub Tokens Settings](https://github.com/settings/tokens).
