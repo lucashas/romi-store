@@ -21,20 +21,20 @@
     },
     {
       "id": "bioaqua-hero",
-      "description": "Crema V7 Bioaqua Hero",
-      "imageUrl": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "description": "Crema V7 Bioaqua - Imagen Principal",
+      "imageUrl": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1080",
       "imageHint": "skincare cream"
     },
     {
       "id": "bioaqua-showcase",
       "description": "Bioaqua Textura y Aplicación",
-      "imageUrl": "https://images.unsplash.com/photo-1611082216373-7c1bc0412822?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1611082216373-7c1bc0412822?q=80&w=1080",
       "imageHint": "face cream"
     },
     {
       "id": "bioaqua-results",
       "description": "Resultados Piel Porcelana",
-      "imageUrl": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1080",
       "imageHint": "smooth skin"
     },
     {
@@ -42,24 +42,6 @@
       "description": "Logo de confianza para checkout",
       "imageUrl": "https://i.imgur.com/Jh61uYJ.png",
       "imageHint": "trust logo"
-    },
-    {
-      "id": "testimonial-user-1",
-      "description": "Elena Rodríguez - Usuario Satisfecho",
-      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&fit=crop",
-      "imageHint": "woman smiling"
-    },
-    {
-      "id": "testimonial-user-2",
-      "description": "Sofía Martínez - Usuario Satisfecho",
-      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&h=200&fit=crop",
-      "imageHint": "young woman"
-    },
-    {
-      "id": "testimonial-user-3",
-      "description": "Marcos Santos - Usuario Satisfecho",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&h=200&fit=crop",
-      "imageHint": "man smiling"
     }
   ]
 }
