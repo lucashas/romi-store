@@ -1,13 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // Crítico para Firebase App Hosting: Genera los archivos necesarios para producción
   output: 'standalone',
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'placehold.co' },
@@ -15,6 +11,13 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'picsum.photos' },
       { protocol: 'https', hostname: 'i.imgur.com' }
     ],
+  },
+  typescript: {
+    // Ignorar errores en build para agilizar el lanzamiento inicial
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
