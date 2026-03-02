@@ -369,3 +369,4 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     </Dialog>
   );
 }
+
