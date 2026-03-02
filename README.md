@@ -7,7 +7,7 @@ Esta es la landing page oficial de **Romi Store EC** para la promoción de produ
 Para conectar este código con tu dominio `romi-store.com`, sigue estos pasos:
 
 ### 1. Subir a GitHub
-Si aún no has subido el código, usa estos comandos en la terminal:
+Si aún no has subido el código, usa estos comandos en la **Terminal** (búscala en la parte inferior de esta pantalla):
 ```bash
 git init
 git add .
