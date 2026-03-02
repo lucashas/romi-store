@@ -118,6 +118,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
+      // REDIRECCIÓN A LA PÁGINA ESPECÍFICA DE MARY RUTH GRACIAS
       router.push(`/mary-ruth-gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
     } catch (err) {
       setLoading(false);
