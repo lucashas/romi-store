@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -107,12 +107,14 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
         className="w-[calc(100%-10px)] max-w-[450px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white"
-        onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <DialogHeader className="bg-primary p-5 text-white text-center">
           <DialogTitle className="text-[14px] font-black uppercase leading-tight tracking-tighter">
             INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Complete el formulario para procesar su compra de MaryRuth's Organics en Ecuador.
+          </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="p-5 space-y-6 max-h-[75vh] overflow-y-auto bg-white custom-scrollbar">
