@@ -1,16 +1,18 @@
-# 🚀 ROMI STORE EC: LANZAMIENTO FINAL SEGURO
+# 🇪🇨 ROMI STORE EC - MANUAL DE OPERACIONES
 
-¡Stalin! He aplicado la versión de seguridad **15.1.9** y configurado **2GB de memoria** para construcción y ejecución.
+¡Felicidades Stalin! Tu tienda oficial de **MaryRuth's Organics** ya está en órbita. 🚀
 
-### 🏁 ÚLTIMO PASO PARA ACTIVAR LA TIENDA:
-1. Ve a la terminal aquí abajo.
-2. Ejecuta **exactamente** este comando:
-   ```bash
-   git add . && git commit -m "Fix: Upgrade Next.js to 15.1.9 and set 2GB RAM" && git push
-   ```
+### 🛠️ ¿CÓMO HACER CAMBIOS?
+Cada vez que yo termine de hacer un ajuste en el código, debes ejecutar este comando en la terminal para que la tienda se actualice en internet:
 
-### 🇪🇨 MONITOREO:
-- Una vez que veas el 100% en la terminal, ve a tu **Consola de Firebase > App Hosting**.
-- Verás un nuevo lanzamiento. Con esta versión parcheada y los 2GB de RAM, la construcción se completará con éxito.
+```bash
+git add . && git commit -m "Ajuste: Descripción de lo que cambiamos" && git push
+```
 
-¡Dale al comando y terminamos! 📦📈
+### 📋 NOTAS TÉCNICAS (¡IMPORTANTE!):
+- **Versión de Seguridad:** Siempre usamos Next.js 15.1.9+ para estar protegidos.
+- **Memoria de Construcción:** El servidor está configurado con **2GB de RAM** para que nunca falle el despliegue.
+- **Pagos:** El sistema está optimizado para **Pago Contra Entrega** en todo Ecuador.
+
+---
+**¡Dime qué ajustes quieres hacer primero y nos ponemos manos a la obra!** 📦📈
