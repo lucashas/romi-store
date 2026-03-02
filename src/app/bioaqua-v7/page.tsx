@@ -8,7 +8,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck } from "lucide-react";
+import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck, Gift, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -39,6 +39,39 @@ const BIOAQUA_PRODUCTS: Product[] = [
   }
 ];
 
+const GIFTS = [
+  {
+    name: "Ácido Salicílico The Ordinary",
+    desc: "Ideal para acné y manchas",
+    img: "https://i.imgur.com/OfmNXS4.png",
+    tag: "TOP"
+  },
+  {
+    name: "Ácido Hialurónico The Ordinary",
+    desc: "Hidratación profunda",
+    img: "https://i.imgur.com/pm0vI4d.png",
+    tag: "RECOMENDADO"
+  },
+  {
+    name: "Multipeptido Capilar The Ordinary",
+    desc: "Fortalece y nutre el cabello",
+    img: "https://i.imgur.com/1BJoaQw.png",
+    tag: "MÁS PEDIDO"
+  },
+  {
+    name: "Base Bioaqua",
+    desc: "Acabado perfecto",
+    img: "https://i.imgur.com/I5qe7G7.png",
+    tag: "TOP"
+  },
+  {
+    name: "Kit x3 Pestañas Bioaqua",
+    desc: "Mirada más intensa",
+    img: "https://i.imgur.com/0C9znXt.png",
+    tag: "RECOMENDADO"
+  }
+];
+
 export default function BioaquaPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
@@ -50,7 +83,6 @@ export default function BioaquaPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white pb-24 font-body">
-      {/* Marquesina especial Día de la Mujer con colores Bioaqua */}
       <TopMarquee 
         text={womenDayMessage} 
         className="bg-orange-600 text-white border-orange-500" 
@@ -96,16 +128,84 @@ export default function BioaquaPage() {
                 7 Vitaminas • Aclarante • Efecto Porcelana
               </p>
             </div>
+
+            {/* IMAGEN DEBAJO DEL TEXTO ACLARANTE */}
+            <div className="px-2 pt-2 cursor-pointer" onClick={openPopup}>
+              <div className="relative w-full rounded-2xl overflow-hidden shadow-md border-2 border-orange-50">
+                <img 
+                  src="https://i.imgur.com/0C9znXt.png" 
+                  alt="Promoción Bioaqua" 
+                  className="w-full h-auto block"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Urgencia con estilo elegante */}
+        {/* Urgencia */}
         <div className="mx-4 bg-slate-900 p-4 rounded-2xl flex items-center gap-3 shadow-lg border-b-4 border-orange-600">
           <Zap className="h-6 w-6 text-orange-500 animate-pulse" />
           <p className="text-[11px] font-black text-white uppercase leading-tight tracking-wide">
             ¡STOCK LIMITADO! <span className="text-orange-500">Quedan 12 unidades</span> para envío inmediato en Quito y Guayaquil.
           </p>
         </div>
+
+        {/* SECCIÓN DE REGALOS DÍA DE LA MUJER */}
+        <section className="py-12 bg-[#fff5f5] mt-10 border-y border-pink-100">
+          <div className="container px-4 text-center space-y-8">
+            <div className="space-y-2">
+              <div className="flex justify-center mb-4">
+                <div className="bg-pink-100 p-3 rounded-full">
+                  <Gift className="h-8 w-8 text-pink-600" />
+                </div>
+              </div>
+              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                💎 🎁 ELIGE TU <br /><span className="text-pink-600 italic">REGALO GRATIS</span>
+              </h2>
+              <p className="text-[12px] font-black text-pink-500 uppercase tracking-[0.2em]">
+                ✨ SOLO POR EL DÍA DE LA MUJER ✨
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4">
+              {GIFTS.map((gift, i) => (
+                <div key={i} className="bg-white rounded-[2rem] p-4 shadow-xl border border-pink-50 flex items-center gap-4 relative overflow-hidden group active:scale-95 transition-transform" onClick={openPopup}>
+                  <div className="absolute top-3 right-5 bg-pink-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">
+                    {gift.tag}
+                  </div>
+                  <div className="h-24 w-24 rounded-2xl overflow-hidden bg-slate-50 border border-pink-50 shrink-0 relative">
+                    <img src={gift.img} alt={gift.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="text-left flex-1 min-w-0 pr-10">
+                    <p className="text-[13px] font-black text-slate-900 uppercase leading-tight">{gift.name}</p>
+                    <p className="text-[10px] font-bold text-pink-400 mt-1 uppercase tracking-tight">{gift.desc}</p>
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="text-[10px] text-slate-300 line-through">ANTES $20</span>
+                      <span className="text-[12px] font-black text-green-600 uppercase tracking-tighter">HOY GRATIS</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* BLOQUE DE OFERTA EXTRA (UPSELL) */}
+            <div className="bg-slate-900 p-6 rounded-[2.5rem] border-2 border-orange-500 shadow-2xl relative overflow-hidden">
+               <div className="relative z-10 space-y-4">
+                  <p className="text-orange-500 font-black text-sm uppercase tracking-widest animate-pulse">💥 OFERTA EXTRA EXCLUSIVA</p>
+                  <h3 className="text-2xl font-black text-white uppercase leading-tight">
+                    ¿QUIERES OTRO <br />PRODUCTO ADICIONAL?
+                  </h3>
+                  <div className="inline-block bg-orange-600 px-6 py-2 rounded-full">
+                    <p className="text-white font-black text-lg uppercase italic">LLÉVALO POR SOLO +$8</p>
+                  </div>
+                  <p className="text-[10px] text-slate-400 font-medium uppercase tracking-widest">Válido solo al confirmar tu pedido hoy</p>
+               </div>
+               <div className="absolute -bottom-10 -right-10 opacity-20">
+                  <ShoppingCart className="h-40 w-40 text-white" />
+               </div>
+            </div>
+          </div>
+        </section>
 
         {/* Beneficios Profesionales */}
         <section className="py-10 bg-white">
