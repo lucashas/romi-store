@@ -8,7 +8,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -66,8 +66,8 @@ export default function BioaquaPage() {
                 alt="Bioaqua V7 Crema 7 Vitaminas"
                 className="w-full h-auto block"
               />
-              {/* Distintivo reposicionado a la izquierda para no obstruir */}
-              <div className="absolute top-3 left-3 bg-orange-600 text-white px-3 py-1.5 rounded-full font-black text-[10px] animate-pulse shadow-xl border-2 border-white uppercase tracking-tighter">
+              {/* Distintivo movido a la parte inferior izquierda para no obstruir el título */}
+              <div className="absolute bottom-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-full font-black text-[11px] animate-pulse shadow-2xl border-2 border-white uppercase tracking-tighter">
                 OFERTA MUJER ✨
               </div>
             </div>
