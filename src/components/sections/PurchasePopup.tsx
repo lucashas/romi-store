@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -11,7 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
 
@@ -73,7 +74,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const [whatsapp, setWhatsapp] = useState<string>("");
   const [selectedProduct, setSelectedProduct] = useState("");
   const { toast } = useToast();
-  const db = useFirestore();
+  const firestore = useFirestore();
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -108,20 +109,17 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
     const orderData = {
       name: `${nombre} ${apellido}`,
-      email: "cliente@tienda.com", // Campo requerido por esquema pero no pedido en UI
+      email: `${whatsapp}@tienda.com`, // Email dummy para el esquema LeadSubmission
       phoneNumber: whatsapp,
-      message: `Pedido de: ${product.name} ($${product.price})`,
-      provincia,
-      ciudad,
-      direccion,
+      message: `PRODUCTO: ${product.name} | PRECIO: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
-      landingPageContentId: "main-landing",
-      status: "pending"
+      landingPageContentId: "main-landing"
     };
 
-    // 1. Guardar en Base de Datos (Seguridad de lead)
-    const leadsRef = collection(db, "leadSubmissions");
-    addDoc(leadsRef, orderData).catch(err => {
+    // 1. Guardar en Base de Datos (Funnelish Mode)
+    // Esto asegura que si el cliente no envía el WhatsApp, tú ya tengas sus datos.
+    const leadsRef = collection(firestore, "leadSubmissions");
+    addDoc(leadsRef, orderData).catch((err) => {
       errorEmitter.emit("permission-error", new FirestorePermissionError({
         path: "leadSubmissions",
         operation: "create",
@@ -152,7 +150,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
       toast({
         title: "¡PEDIDO REGISTRADO!",
-        description: "Tu pedido ha sido guardado. Ahora abre WhatsApp para confirmarlo.",
+        description: "Tus datos han sido guardados. Ahora abre WhatsApp para el envío.",
       });
 
       // Limpiar campos
@@ -162,7 +160,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       setWhatsapp("");
       setProvincia("");
       setCiudad("");
-    }, 1000);
+    }, 800);
   };
 
   return (
@@ -249,7 +247,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 <Label htmlFor="nombre" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
                 <Input 
                   id="nombre" 
-                  placeholder="Juan" 
+                  placeholder="Ej: Juan" 
                   required 
                   value={nombre}
                   onChange={(e) => setNombre(e.target.value)}
@@ -260,7 +258,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 <Label htmlFor="apellido" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
                 <Input 
                   id="apellido" 
-                  placeholder="Pérez" 
+                  placeholder="Ej: Pérez" 
                   required 
                   value={apellido}
                   onChange={(e) => setApellido(e.target.value)}
@@ -334,7 +332,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               <span className="font-black text-[10px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</span>
             </div>
             <p className="text-[10px] font-medium text-amber-800/80 leading-snug italic">
-              *Al confirmar, tu pedido se registrará automáticamente y te redirigiremos a WhatsApp.
+              *Al confirmar, tu pedido se guardará y te redirigiremos a WhatsApp para finalizar.
             </p>
           </div>
 
