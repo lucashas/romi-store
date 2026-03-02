@@ -2,7 +2,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { CheckCircle2, Phone, Truck, Home, ShoppingBag, MessageCircle } from "lucide-react";
+import { CheckCircle2, Phone, Truck, Home, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -10,7 +10,7 @@ import { Suspense } from "react";
 function GraciasContent() {
   const searchParams = useSearchParams();
   const nombre = searchParams.get("nombre") || "Cliente";
-  const ciudad = searchParams.get("ciudad") || "tu ciudad";
+  const ciudad = searchParams.get("ciudad") || "Ecuador";
   const whatsapp = searchParams.get("whatsapp") || "";
 
   return (
@@ -39,14 +39,14 @@ function GraciasContent() {
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">1</div>
             <div className="space-y-1">
               <p className="font-black text-foreground text-sm uppercase">VALIDACIÓN DE DIRECCIÓN</p>
-              <p className="text-sm text-muted-foreground">Nuestro equipo está verificando la cobertura para <strong>{ciudad}</strong>.</p>
+              <p className="text-sm text-muted-foreground">Estamos verificando la cobertura para <strong>{ciudad}</strong>.</p>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">2</div>
             <div className="space-y-1">
-              <p className="font-black text-foreground text-sm uppercase">LLAMADA DE CONFIRMACIÓN</p>
+              <p className="font-black text-foreground text-sm uppercase">CONFIRMACIÓN POR WHATSAPP</p>
               <p className="text-sm text-muted-foreground">Te contactaremos al <strong>{whatsapp}</strong> para coordinar el despacho inmediato.</p>
             </div>
           </div>
@@ -55,7 +55,7 @@ function GraciasContent() {
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">3</div>
             <div className="space-y-1">
               <p className="font-black text-foreground text-sm uppercase">PAGO CONTRA ENTREGA</p>
-              <p className="text-sm text-muted-foreground">¡Prepara el efectivo! Pagas el valor total cuando el repartidor llegue a tu puerta.</p>
+              <p className="text-sm text-muted-foreground">Pagará el valor total cuando el repartidor llegue a su puerta.</p>
             </div>
           </div>
         </div>
