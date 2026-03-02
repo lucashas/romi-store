@@ -1,7 +1,9 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* Configuración crítica para Firebase App Hosting */
+  output: 'standalone',
+  
   typescript: {
     ignoreBuildErrors: true,
   },

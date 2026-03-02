@@ -1,26 +1,23 @@
 # ¡Romi Store EC está casi lista! 🇪🇨🚀
 
-Tu código ya está sincronizado. Para solucionar el error de compilación de Firebase, sigue estos pasos finales:
+Tu código ya está sincronizado. Para solucionar el error de compilación final de Firebase, sigue estos pasos:
 
 ## 🛠️ Paso de Lanzamiento Definitivo
-Copia y pega estos 3 comandos en la terminal de nuevo:
+Copia y pega estos 3 comandos en la terminal por última vez:
 
-1. **Sincroniza el código optimizado:**
+1. **Sincroniza el código corregido:**
    ```bash
    git add .
-   git commit -m "Lanzamiento final optimizado v2"
+   git commit -m "Lanzamiento final standalone v3"
    git push
    ```
    *(Pega tu Token si te pide Password).*
 
 2. **Verifica la Clave en Firebase:**
-   En la consola de Firebase, dentro de la pestaña "Configuración" de tu backend, asegúrate de tener:
-   - **Clave:** `MY_GEMINI_KEY`
-   - **Valor:** Tu clave de Gemini (la que empieza con `AIza`).
+   En la consola de Firebase, pestaña "Configuración", asegúrate de que la clave se llame `MY_GEMINI_KEY`.
 
 3. **¡Listo!**
-   Firebase detectará el cambio y en unos 5 minutos tu página estará activa en:
-   `https://romi-store--studio-2214925909-4bcda.us-east4.hosted.app`
+   Con la configuración `standalone`, Firebase ya podrá compilar tu página sin errores.
 
 ---
 **Soporte:** Romi Store EC | MaryRuth's Organics Ecuador
