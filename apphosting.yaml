@@ -1,7 +1,6 @@
-# Settings to manage and configure a Firebase App Hosting backend.
-# https://firebase.google.com/docs/app-hosting/configure
-
+# Configuración para Firebase App Hosting
 runConfig:
-  # Increase this value if you'd like to automatically spin up
-  # more instances in response to increased traffic.
+  # Mantener una instancia para asegurar rapidez en las respuestas de TikTok
   maxInstances: 1
+  # Memoria estándar para Next.js
+  memory: 512MiB
