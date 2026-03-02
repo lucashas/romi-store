@@ -12,7 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 
-// Definición de la interfaz para que sea fácil de reutilizar
+// Estructura de datos para los productos
 export interface Product {
   id: string;
   name: string;
@@ -22,6 +22,7 @@ export interface Product {
   description: string;
 }
 
+// Base de datos completa de Provincias y Ciudades (Cantones) de Ecuador
 const ecuadorData: Record<string, string[]> = {
   "AZUAY": ["CUENCA", "GUALACEO", "PAUTE", "CAMILO PONCE ENRIQUEZ", "SIGSIG", "CHORDELEG", "GIRON", "SANTA ISABEL", "NABON", "PUCARA", "OÑA", "SEVILLA DE ORO", "GUACHAPALA", "EL PAN"],
   "BOLIVAR": ["GUARANDA", "SAN MIGUEL", "CHILLANES", "ECHEANDIA", "CALUMA", "CHIMBO", "LAS NAVES"],
@@ -52,7 +53,7 @@ const ecuadorData: Record<string, string[]> = {
 interface PurchasePopupProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  products: Product[]; // Los productos ahora vienen de afuera
+  products: Product[];
 }
 
 export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupProps) {
@@ -63,7 +64,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const [selectedProduct, setSelectedProduct] = useState("");
   const { toast } = useToast();
 
-  // Seleccionar el primer producto por defecto cuando el popup se abre
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
       setSelectedProduct(products[0].id);
@@ -75,10 +75,9 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   }, [provincia]);
 
   const handleWhatsappChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, "");
-    if (value.length <= 10) {
-      setWhatsapp(value);
-    }
+    // Solo permitir números y máximo 10 dígitos
+    const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setWhatsapp(value);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -109,7 +108,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-[500px] w-[95%] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body">
         <DialogHeader className="bg-primary p-6 text-white text-center">
-          <DialogTitle className="text-xl font-black uppercase leading-tight tracking-tighter">
+          <DialogTitle className="text-lg font-black uppercase leading-tight tracking-tighter">
             INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
           </DialogTitle>
         </DialogHeader>
@@ -142,18 +141,18 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   <div className="flex items-center gap-3 w-full">
                     <RadioGroupItem value={product.id} id={product.id} className="shrink-0" />
                     
-                    <div className="h-16 w-16 rounded-2xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
+                    <div className="h-14 w-14 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
                       <Image 
                         src={product.image} 
                         alt={product.name} 
                         fill 
                         className="object-cover"
-                        sizes="64px"
+                        sizes="56px"
                       />
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <p className="font-black text-sm text-foreground uppercase leading-tight truncate">
+                      <p className="font-black text-[13px] text-foreground uppercase leading-tight truncate">
                         {product.name}
                       </p>
                       <p className="text-[10px] text-muted-foreground font-medium">
@@ -162,7 +161,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                     </div>
 
                     <div className="text-right">
-                      <p className="font-black text-primary text-lg">
+                      <p className="font-black text-primary text-base">
                         ${product.price.toFixed(2)}
                       </p>
                     </div>
@@ -218,7 +217,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   <SelectTrigger className="h-12 rounded-2xl bg-secondary/20 border-none ring-1 ring-border">
                     <SelectValue placeholder="Seleccione" />
                   </SelectTrigger>
-                  <SelectContent className="rounded-2xl">
+                  <SelectContent className="rounded-2xl max-h-[300px]">
                     {Object.keys(ecuadorData).sort().map((p) => (
                       <SelectItem key={p} value={p}>{p}</SelectItem>
                     ))}
@@ -231,7 +230,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   <SelectTrigger className="h-12 rounded-2xl bg-secondary/20 border-none ring-1 ring-border">
                     <SelectValue placeholder={provincia ? "Seleccione" : "---"} />
                   </SelectTrigger>
-                  <SelectContent className="rounded-2xl max-h-[200px]">
+                  <SelectContent className="rounded-2xl max-h-[250px]">
                     {ciudadesDisponibles.map((c) => (
                       <SelectItem key={c} value={c}>{c}</SelectItem>
                     ))}

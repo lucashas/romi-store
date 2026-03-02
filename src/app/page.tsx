@@ -14,32 +14,35 @@ import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 
-// CONFIGURACIÓN GLOBAL DE PRODUCTOS
-// Modifica este array para cambiar los productos del Checkout fácilmente.
+/**
+ * 🛠️ PANEL DE CONTROL DE PRODUCTOS (CHECKOUT)
+ * Modifica este array para cambiar los productos que aparecen en el Popup.
+ * Puedes cambiar: id, nombre, precio, imagen, etiqueta (badge) y descripción.
+ */
 const CUSTOM_PRODUCTS: Product[] = [
   {
-    id: "promo1",
+    id: "oferta_1",
     name: "1 Botella Multivitamínico",
     price: 35.00,
-    image: "https://i.imgur.com/XfmwUEJ.png",
-    badge: null,
-    description: "Suministro para 30 días"
+    image: "https://i.imgur.com/XfmwUEJ.png", // URL de la imagen del producto
+    badge: null, // Si no quieres etiqueta, pon: null
+    description: "Tratamiento básico para 30 días"
   },
   {
-    id: "promo2",
+    id: "oferta_2",
     name: "2 Botellas (Tratamiento Pro)",
     price: 60.00,
     image: "https://i.imgur.com/j8pwxGX.png",
-    badge: "Más Vendido",
-    description: "Envío Prioritario Gratis"
+    badge: "Más Vendido", // Aparece como una burbuja flotante
+    description: "Envío Prioritario Gratis a todo Ecuador"
   },
   {
-    id: "promo3",
+    id: "oferta_3",
     name: "3 Botellas (Ahorro Familiar)",
     price: 80.00,
     image: "https://i.imgur.com/WIgHnKZ.png",
     badge: "Mejor Valor",
-    description: "Máximo Descuento Aplicado"
+    description: "Máximo Descuento + Regalo Sorpresa"
   }
 ];
 
@@ -61,6 +64,7 @@ export default function Home() {
         </div>
       </main>
       
+      {/* Botón Flotante Inferior */}
       <div className="sticky-cta">
         <Button 
           onClick={openPopup}
@@ -72,7 +76,7 @@ export default function Home() {
         </Button>
       </div>
 
-      {/* El popup ahora recibe los productos como Prop */}
+      {/* Popup de Checkout Dinámico */}
       <PurchasePopup 
         open={isPopupOpen} 
         onOpenChange={setIsPopupOpen} 
