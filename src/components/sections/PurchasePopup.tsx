@@ -15,7 +15,6 @@ import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export interface Product {
   id: string;
@@ -71,8 +70,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const [selectedProduct, setSelectedProduct] = useState("");
   const { toast } = useToast();
   const firestore = useFirestore();
-
-  const checkoutLogo = PlaceHolderImages.find(img => img.id === "checkout-logo");
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -199,21 +196,15 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   Pago al recibir en casa • Envío 100% Seguro
                 </p>
                 
-                {checkoutLogo && (
-                  <div className="mt-4 flex justify-center">
-                    <div className="relative h-16 w-full max-w-[280px]">
-                      <Image 
-                        src={checkoutLogo.imageUrl} 
-                        alt="Garantía de Confianza" 
-                        fill 
-                        className="object-contain brightness-110 contrast-110"
-                        sizes="(max-width: 480px) 280px, 280px"
-                        data-ai-hint="trust logo"
-                        priority
-                      />
-                    </div>
+                <div className="mt-4 flex justify-center">
+                  <div className="relative h-14 w-full max-w-[320px]">
+                    <img 
+                      src="https://i.imgur.com/Jh61uYJ.png" 
+                      alt="Garantía de Confianza" 
+                      className="w-full h-full object-contain brightness-110 contrast-110"
+                    />
                   </div>
-                )}
+                </div>
               </div>
 
               <form onSubmit={handleSubmit} className="p-4 space-y-6 bg-white overflow-x-hidden">
