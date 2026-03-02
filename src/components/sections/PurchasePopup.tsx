@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,34 +12,15 @@ import { useToast } from "@/hooks/use-toast";
 import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 
-// CONFIGURACIÓN DE PRODUCTOS (PLANTILLA)
-// Aquí puedes cambiar las imágenes, nombres y precios para otros productos fácilmente.
-const PRODUCTS = [
-  {
-    id: "promo1",
-    name: "1 Botella Multivitamínico",
-    price: 35.00,
-    image: "https://i.imgur.com/XfmwUEJ.png", // Imagen del producto individual
-    badge: null,
-    description: "Suministro para 30 días"
-  },
-  {
-    id: "promo2",
-    name: "2 Botellas (Tratamiento Pro)",
-    price: 60.00,
-    image: "https://i.imgur.com/j8pwxGX.png", // Imagen del pack de 2
-    badge: "Más Vendido",
-    description: "Envío Prioritario Gratis"
-  },
-  {
-    id: "promo3",
-    name: "3 Botellas (Ahorro Familiar)",
-    price: 80.00,
-    image: "https://i.imgur.com/WIgHnKZ.png", // Imagen del pack de 3
-    badge: "Mejor Valor",
-    description: "Máximo Descuento Aplicado"
-  }
-];
+// Definición de la interfaz para que sea fácil de reutilizar
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  badge: string | null;
+  description: string;
+}
 
 const ecuadorData: Record<string, string[]> = {
   "AZUAY": ["CUENCA", "GUALACEO", "PAUTE", "CAMILO PONCE ENRIQUEZ", "SIGSIG", "CHORDELEG", "GIRON", "SANTA ISABEL", "NABON", "PUCARA", "OÑA", "SEVILLA DE ORO", "GUACHAPALA", "EL PAN"],
@@ -51,7 +32,7 @@ const ecuadorData: Record<string, string[]> = {
   "EL ORO": ["MACHALA", "PASAJE", "HUAQUILLAS", "SANTA ROSA", "ARENILLAS", "BALSAS", "CHILLA", "EL GUABO", "LAS LAJAS", "MARCABELI", "PIÑAS", "PORTOVELO", "ZARUMA", "ATAHUALPA"],
   "ESMERALDAS": ["ESMERALDAS", "QUININDE", "ATACAMES", "SAN LORENZO", "ELOY ALFARO", "MUISNE", "RIO VERDE"],
   "GALAPAGOS": ["PUERTO BAQUERIZO MORENO", "PUERTO AYORA", "PUERTO VILLAMIL"],
-  "GUAYAS": ["GUAYAQUIL", "SAMBORONDON", "DURAN", "DAULE", "MILAGRO", "PLAYAS", "NARANJAL", "EL EMPALME", "BALZAR", "BALAO", "COLIMES", "CORONEL MARCELINO MARIDUEÑA", "EL TRIUNFO", "GENERAL ANTONIO ELIZALDE", "ISIDRO AYORA", "LOMAS DE SARGENTILLO", "NARANJITO", "NOBOL", "PALESTINA", "PEDRO CARBO", "SANTA LUCIA", "SIMON BOLIVAR", "YAGUACHI", "SALITRE", "URBINA JADO"],
+  "GUAYAS": ["GUAYAQUIL", "SAMBORONDON", "DURAN", "DAULE", "MILAGRO", "PLAYAS", "NARANJAL", "EL EMPALME", "BALZAR", "BALAO", "COLIMES", "CORONEL MARCELINO MARIDUEÑA", "EL TRIUNFO", "GENERAL ANTONIO ELIZALDE", "ISIDRO AYORA", "LOMAS DE SARGENTILLO", "NARANJITO", "NOBOL", "PALESTINA", "PEDRO CHUNCHI", "SANTA LUCIA", "SIMON BOLIVAR", "YAGUACHI", "SALITRE"],
   "IMBABURA": ["IBARRA", "OTAVALO", "COTACACHI", "ANTONIO ANTE", "PIMAMPIRO", "URCUQUI"],
   "LOJA": ["LOJA", "CATAMAYO", "CALVAS", "SARAGURO", "MACARA", "CELICA", "CHAGUARPAMBA", "ESPINDOLA", "GONZANAMA", "PALTAS", "PUYANGO", "QUILANGA", "PINDAL", "SOZORANGA", "ZAPOTILLO", "OLMEDO"],
   "LOS RIOS": ["BABAHOYO", "QUEVEDO", "BABA", "VINCES", "VENTANAS", "MOCACHE", "BUENA FE", "PALENQUE", "PUEBLOVIEJO", "URDANETA", "VALENCIA", "QUINSALOMA", "MONTALVO"],
@@ -71,15 +52,23 @@ const ecuadorData: Record<string, string[]> = {
 interface PurchasePopupProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  products: Product[]; // Los productos ahora vienen de afuera
 }
 
-export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
+export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
   const [provincia, setProvincia] = useState<string>("");
   const [ciudad, setCiudad] = useState<string>("");
   const [whatsapp, setWhatsapp] = useState<string>("");
-  const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[1].id);
+  const [selectedProduct, setSelectedProduct] = useState("");
   const { toast } = useToast();
+
+  // Seleccionar el primer producto por defecto cuando el popup se abre
+  useEffect(() => {
+    if (open && products.length > 0 && !selectedProduct) {
+      setSelectedProduct(products[0].id);
+    }
+  }, [open, products, selectedProduct]);
 
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? ecuadorData[provincia].sort() : [];
@@ -118,7 +107,7 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[500px] w-[95%] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl">
+      <DialogContent className="max-w-[500px] w-[95%] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body">
         <DialogHeader className="bg-primary p-6 text-white text-center">
           <DialogTitle className="text-xl font-black uppercase leading-tight tracking-tighter">
             INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
@@ -134,7 +123,7 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
             </div>
             
             <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
-              {PRODUCTS.map((product) => (
+              {products.map((product) => (
                 <Label
                   key={product.id}
                   htmlFor={product.id}
@@ -145,7 +134,7 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
                   }`}
                 >
                   {product.badge && (
-                    <div className="absolute -top-3 right-6 bg-accent text-white text-[10px] px-4 py-1 rounded-full font-black uppercase shadow-lg animate-pulse">
+                    <div className="absolute -top-3 right-6 bg-accent text-white text-[10px] px-4 py-1 rounded-full font-black uppercase shadow-lg animate-pulse z-10">
                       {product.badge}
                     </div>
                   )}
@@ -153,7 +142,6 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
                   <div className="flex items-center gap-3 w-full">
                     <RadioGroupItem value={product.id} id={product.id} className="shrink-0" />
                     
-                    {/* IMAGEN DEL PRODUCTO */}
                     <div className="h-16 w-16 rounded-2xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
                       <Image 
                         src={product.image} 
@@ -262,7 +250,7 @@ export function PurchasePopup({ open, onOpenChange }: PurchasePopupProps) {
           <div className="bg-amber-50 border-2 border-amber-100 p-5 rounded-[2rem] space-y-2">
             <div className="flex items-center gap-2 text-amber-600">
               <AlertTriangle className="h-5 w-5" />
-              <span className="font-black text-xs uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
+              <span className="font-black text-xs uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</span>
             </div>
             <p className="text-[11px] font-medium text-amber-800/80 leading-relaxed italic">
               *Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
