@@ -6,8 +6,15 @@ Esta es la landing page oficial de **Romi Store EC** para la promoción de produ
 
 Para conectar este código con tu dominio `romi-store.com`, sigue estos pasos:
 
-### 1. Subir a GitHub
-Si aún no has subido el código, usa estos comandos en la **Terminal** (búscala en la parte inferior de esta pantalla):
+### 1. Configurar Identidad de Git (Solo la primera vez)
+Si recibes un error de "Author identity unknown", ejecuta esto en la **Terminal**:
+```bash
+git config --global user.email "tu-correo@ejemplo.com"
+git config --global user.name "Tu Nombre"
+```
+
+### 2. Subir a GitHub
+Usa estos comandos en la **Terminal**:
 ```bash
 git init
 git add .
@@ -16,9 +23,9 @@ git branch -M main
 git remote add origin https://github.com/TU_USUARIO/romi-store.git
 git push -u origin main
 ```
-*(Recuerda cambiar TU_USUARIO por tu nombre de usuario de GitHub)*
+*(Recuerda cambiar TU_USUARIO por tu nombre de usuario de GitHub y asegúrate de haber creado el repositorio en github.com primero)*
 
-### 2. Configurar en Firebase Console
+### 3. Configurar en Firebase Console
 1. Ve a **App Hosting** en la consola de Firebase.
 2. Crea un nuevo **Backend**.
 3. Conecta tu cuenta de GitHub y selecciona el repositorio `romi-store`.

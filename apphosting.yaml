@@ -1,6 +1,7 @@
 # Configuración para Firebase App Hosting
 runConfig:
-  # Mantener una instancia para asegurar rapidez en las respuestas de TikTok
+  # Mantener una instancia mínima para asegurar rapidez en las respuestas de TikTok
+  minInstances: 0
   maxInstances: 1
   # Memoria estándar para Next.js
   memory: 512MiB
