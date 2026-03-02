@@ -12,6 +12,7 @@ interface FeaturesProps {
 
 export function Features({ onOpenPopup }: FeaturesProps) {
   const featHairHero = PlaceHolderImages.find(img => img.id === "feature-hair-hero");
+  const featHairExtra = PlaceHolderImages.find(img => img.id === "feature-hair-extra");
   const featHair = PlaceHolderImages.find(img => img.id === "feature-hair");
 
   return (
@@ -41,7 +42,7 @@ export function Features({ onOpenPopup }: FeaturesProps) {
         </div>
       </div>
 
-      {/* Botón CTA Intermedio - ANTES de Resultados Comprobados */}
+      {/* Botón CTA Intermedio */}
       <div className="px-[5px] mt-[10px]">
         <Button 
           onClick={onOpenPopup}
@@ -51,6 +52,19 @@ export function Features({ onOpenPopup }: FeaturesProps) {
           <ShoppingCart className="h-5 w-5" />
           ¡QUIERO MI COMPRA!
         </Button>
+      </div>
+
+      {/* Imagen Extra antes de Resultados */}
+      <div className="px-[5px] mt-[10px]">
+        <div className="w-full overflow-hidden rounded-xl cursor-pointer" onClick={onOpenPopup}>
+          {featHairExtra && (
+            <img 
+              src={featHairExtra.imageUrl} 
+              alt="Resultados Extra MaryRuth's"
+              className="w-full h-auto block"
+            />
+          )}
+        </div>
       </div>
 
       {/* Detalles Resultados */}

@@ -19,6 +19,12 @@
       "imageHint": "hair results"
     },
     {
+      "id": "feature-hair-extra",
+      "description": "Imagen extra impacto MaryRuth's",
+      "imageUrl": "https://i.imgur.com/16ulc1H.png",
+      "imageHint": "hair results extra"
+    },
+    {
       "id": "hero-product",
       "description": "Botella de multivitamínico líquido MaryRuth's",
       "imageUrl": "https://images.unsplash.com/photo-1687200266857-764ef12cfdd1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dml0YW1pbiUyMGJvdHRsZXxlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
