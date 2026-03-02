@@ -66,6 +66,24 @@
       "description": "Omega-3 Líquido",
       "imageUrl": "https://images.unsplash.com/photo-1704694671399-7bfac37b3e1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvbWVnYSUyMDN8ZW58MHx8fHwxNzcyMzkyNjMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "omega 3"
+    },
+    {
+      "id": "testimonial-user-1",
+      "description": "Elena Rodríguez - Usuario Satisfecho",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&fit=crop",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "testimonial-user-2",
+      "description": "Sofía Martínez - Usuario Satisfecho",
+      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&h=200&fit=crop",
+      "imageHint": "young woman"
+    },
+    {
+      "id": "testimonial-user-3",
+      "description": "Marcos Santos - Usuario Satisfecho",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&h=200&fit=crop",
+      "imageHint": "man smiling"
     }
   ]
 }

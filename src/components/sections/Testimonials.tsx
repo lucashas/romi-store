@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Star } from "lucide-react";
@@ -11,21 +12,21 @@ const testimonialData = [
     city: "Guayaquil",
     role: "Cambio Total",
     quote: "Llevo 3 meses usando el multivitamínico líquido y mi cabello nunca ha estado tan fuerte. ¡Incluso mi peluquero lo notó!",
-    imageId: "testimonial-1"
+    imageId: "testimonial-user-1"
   },
   {
     name: "Sofía Martínez",
     city: "Quito",
     role: "Piel Radiante",
     quote: "El sabor Peach Mango es delicioso. Noto mi piel mucho más hidratada y luminosa desde que empecé.",
-    imageId: "testimonial-2"
+    imageId: "testimonial-user-2"
   },
   {
     name: "Marcos Santos",
     city: "Cuenca",
     role: "Energía Diaria",
     quote: "La absorción líquida es real. No más pastillas difíciles de tragar y mi energía está por las nubes.",
-    imageId: "testimonial-3"
+    imageId: "testimonial-user-3"
   }
 ];
 
