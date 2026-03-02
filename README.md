@@ -1,36 +1,21 @@
 
 # 🚀 Guía de Lanzamiento Final - Romi Store EC
 
-Para corregir el error de "No buildpack groups passed detection", sigue estos pasos exactos:
+Para corregir el error de "No buildpack groups passed detection", sigue estos pasos exactos en tu terminal:
 
-### 1. Encuentra tu carpeta en la terminal
-Si estás en la terminal de Firebase Studio, lo más probable es que ya estés en la carpeta correcta. Escribe:
+### 🛠️ COMANDO MAESTRO DE SOLUCIÓN
+Copia y pega este comando completo en tu terminal y presiona **Enter**. Este comando encontrará tu proyecto, generará el archivo necesario y subirá todo a GitHub automáticamente:
+
 ```bash
-ls -F
+PROJECT_DIR=$(find /home -name "package.json" -not -path "*/node_modules/*" -exec dirname {} \;) && cd $PROJECT_DIR && npm install && git add . && git commit -m "Solución: Generación de Lockfile y Standalone" && git push
 ```
-Si ves una lista que incluye `src/`, `package.json` y `app/`, **¡ESTÁS EN EL LUGAR CORRECTO!**
-
-Si no ves nada, prueba entrar aquí:
-```bash
-cd ~/studio/romi-store-ec
-```
-
-### 2. Genera el archivo de bloqueo (CRÍTICO)
-Una vez dentro de la carpeta donde ves el archivo `package.json`, ejecuta:
-```bash
-npm install
-```
-Esto creará el archivo `package-lock.json` **dentro** de la carpeta del proyecto.
-
-### 3. Sube los cambios a GitHub
-```bash
-git add .
-git commit -m "Solución definitiva: Standalone + Lockfile"
-git push
-```
-
-### 4. Verifica en Firebase
-La compilación debería detectar ahora automáticamente que es un proyecto de Next.js y ponerse en verde.
 
 ---
-**Soporte:** Romi Store EC | MaryRuth's Organics Ecuador
+
+### ¿Qué hace este comando?
+1. **Busca** en todo el servidor dónde está guardado tu archivo `package.json`.
+2. **Entra** a esa carpeta automáticamente (`cd`).
+3. **Crea** el archivo `package-lock.json` (`npm install`), que es el que Firebase necesita para no dar error.
+4. **Sube** los cambios a GitHub para que Firebase empiece a construir tu tienda.
+
+**Nota:** Si el comando te pide contraseña para GitHub, usa tu **Token de Acceso Personal**. Una vez que el comando termine, el círculo de carga en Firebase se pondrá en verde. ¡Felicidades!
