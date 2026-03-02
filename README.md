@@ -1,24 +1,26 @@
-# ¡Romi Store EC está en el aire! 🇪🇨🚀
+# ¡Romi Store EC está casi lista! 🇪🇨🚀
 
-¡Felicidades! Tu tienda oficial de MaryRuth's Organics Ecuador ya está configurada y desplegada en Firebase App Hosting.
+Tu código ya está en GitHub, ¡felicidades! Solo falta que Firebase termine de "cocinar" la página con estos ajustes finales.
 
-## 🔗 Tu Enlace Oficial
-Tu tienda está disponible en el enlace que aparece en tu consola de Firebase (ej. `romi-store...hosted.app`). Una vez que el lanzamiento termine, ¡puedes compartirlo en TikTok e Instagram!
+## 🛠️ Paso Final para el Éxito
+Si ves un error de compilación rojo en Firebase, haz esto:
 
-## 🛠️ Cómo actualizar tu tienda (Precios, Fotos, Ofertas)
-Si en el futuro quieres cambiar algo (por ejemplo, subir un precio o cambiar una imagen de MaryRuth's):
-
-1. **Edita el código:** Abre el archivo `src/app/page.tsx` aquí mismo en el editor.
-2. **Modifica los productos:** Busca la sección `const CUSTOM_PRODUCTS` y cambia los valores que necesites.
-3. **Guarda los cambios:** Presiona `Ctrl + S`.
-4. **Sincroniza con la tienda:** En la terminal, pon estos 3 comandos mágicos:
+1. **Sincroniza estos ajustes:** Pon estos 3 comandos en la terminal:
    ```bash
    git add .
-   git commit -m "Actualización de precios"
+   git commit -m "Lanzamiento final optimizado"
    git push
    ```
-5. **¡Listo!** Firebase detectará el cambio automáticamente y actualizará tu tienda en un par de minutos sin que tengas que hacer nada más.
+   *(Pega tu Token si te pide Password).*
+
+2. **Verifica tu clave:** En la consola de Firebase, asegúrate de que en la pestaña "Configuración" de tu backend diga:
+   - **Clave:** `MY_GEMINI_KEY`
+   - **Valor:** Tu clave de Gemini (la que empieza con `AIza`).
+
+## 🔗 Tu Enlace Oficial
+Una vez que el estado pase a **"Listo"** (en verde), tu tienda estará en:
+`https://romi-store--studio-2214925909-4bcda.us-east4.hosted.app`
 
 ---
-**Soporte:** Romi Store EC | Distribuidor MaryRuth's Organics Ecuador
+**Soporte:** Romi Store EC | MaryRuth's Organics Ecuador
 "Salud líquida, resultados reales."
