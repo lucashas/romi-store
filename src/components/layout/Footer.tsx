@@ -42,7 +42,7 @@ export function Footer() {
               Hecho para Ecuador con ❤️
             </p>
             <p className="text-[9px] text-muted-foreground/60 max-w-[250px] mx-auto leading-tight italic">
-              Este sitio es operado por Romi Store. MaryRuth's Organics es una marca registrada utilizada bajo autorización de distribución.
+              Este sitio es operado por Romi Store. MaryRuth's Organics es una marca registrada utilizada bajo autorización de distribución. Toda la gestión de pedidos se realiza de forma privada y segura a través de nuestra plataforma oficial.
             </p>
           </div>
         </div>
