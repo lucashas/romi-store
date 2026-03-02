@@ -8,7 +8,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
+import { ShoppingCart, Star, CheckCircle2, ShieldCheck, Zap, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -47,66 +47,66 @@ export default function BioaquaPage() {
   const showcaseImg = PlaceHolderImages.find(img => img.id === "bioaqua-showcase")?.imageUrl;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background pb-24 font-body">
+    <div className="min-h-screen flex flex-col bg-white pb-24 font-body">
       <TopMarquee />
       
       <main className="flex-1">
-        {/* Banner de Impacto Inmediato - Imagen de Imgur justo debajo de la marquesina */}
+        {/* Banner de Impacto Inmediato - Naranja/Blanco */}
         <section className="bg-white overflow-hidden">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
-            <div className="relative w-full overflow-hidden rounded-xl shadow-lg border-2 border-primary/10">
+            <div className="relative w-full overflow-hidden rounded-xl shadow-lg border-2 border-orange-100">
               <img 
                 src={bannerTopImg || "https://i.imgur.com/P4G3s0w.png"} 
                 alt="Bioaqua V7 Crema 7 Vitaminas"
                 className="w-full h-auto block"
               />
-              <div className="absolute top-4 right-4 bg-accent text-white px-4 py-2 rounded-full font-black text-xs animate-bounce shadow-xl">
-                ¡OFERTA TIKTOK!
+              <div className="absolute top-4 right-4 bg-[#f97316] text-white px-4 py-2 rounded-full font-black text-xs animate-bounce shadow-xl border-2 border-white">
+                ¡OFERTA EXCLUSIVA!
               </div>
             </div>
           </div>
           
           <div className="p-6 text-center space-y-4">
             <div className="flex justify-center gap-1 mb-2">
-              {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-primary text-primary" />)}
-              <span className="text-xs font-bold text-muted-foreground ml-2">(+2,400 reseñas)</span>
+              {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-orange-500 text-orange-500" />)}
+              <span className="text-xs font-bold text-slate-400 ml-2">(+2,400 clientes satisfechos)</span>
             </div>
-            <h1 className="text-4xl font-black text-foreground uppercase leading-none tracking-tighter">
-              CREMA V7 <span className="text-primary italic">BIOAQUA</span>
+            <h1 className="text-4xl font-black text-slate-900 uppercase leading-none tracking-tighter">
+              CREMA V7 <span className="text-orange-600 italic">BIOAQUA</span>
             </h1>
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-[0.2em] bg-secondary/30 py-2 rounded-full">
-              7 Vitaminas • Tono Parejo • Hidratación
+            <p className="text-[11px] font-black text-orange-600 uppercase tracking-[0.3em] bg-orange-50 py-2.5 rounded-full border border-orange-100">
+              7 Vitaminas • Aclarante • Anti-Manchas
             </p>
           </div>
         </section>
 
-        {/* Urgencia */}
-        <div className="bg-red-50 border-y border-red-100 p-4 flex items-center gap-3">
-          <Zap className="h-6 w-6 text-accent fill-accent animate-pulse" />
-          <p className="text-[12px] font-black text-accent uppercase leading-tight">
-            ¡ALERTA! Quedan menos de 15 unidades en stock para envío hoy mismo a todo Ecuador.
+        {/* Urgencia con colores Bioaqua */}
+        <div className="bg-orange-600 p-4 flex items-center gap-3">
+          <Zap className="h-6 w-6 text-white animate-pulse" />
+          <p className="text-[12px] font-black text-white uppercase leading-tight">
+            ¡ALERTA DE STOCK! Quedan menos de 12 unidades disponibles en la bodega de Quito.
           </p>
         </div>
 
-        {/* Beneficios */}
-        <section className="py-8 bg-white">
-          <div className="container px-4 space-y-6">
-            <h2 className="text-2xl font-black text-center uppercase tracking-tight leading-none">
-              ¿POR QUÉ ES <span className="text-primary">VIRAL EN TIKTOK?</span>
+        {/* Beneficios Profesionales */}
+        <section className="py-10 bg-slate-50">
+          <div className="container px-4 space-y-8">
+            <h2 className="text-2xl font-black text-center text-slate-900 uppercase tracking-tight leading-none">
+              RESULTADOS DE <span className="text-orange-600">CLÍNICA EN CASA</span>
             </h2>
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 gap-4">
               {[
-                { t: "ACLARA AL INSTANTE", d: "Efecto blanqueador natural y parejo desde la primera aplicación." },
-                { t: "PIEL DE PORCELANA", d: "Minimiza poros y cubre imperfecciones sin pesadez." },
-                { t: "NUTRICIÓN VITAMÍNICA", d: "Enriquecida con Vitaminas A, B12, C, E, F y H." }
+                { t: "ACLARA AL INSTANTE", d: "Tecnología de corrección de tono que unifica tu piel desde la primera aplicación." },
+                { t: "COCTEL DE VITAMINAS", d: "Enriquecida con Vitaminas A, B12, C, E, F, H y Pro-Vitamina B5 para nutrición profunda." },
+                { t: "PIEL DE SEDA", d: "Textura ligera no grasa que hidrata y suaviza poros dilatados." }
               ].map((b, i) => (
-                <div key={i} className="flex gap-4 items-start p-4 bg-secondary/20 rounded-2xl border border-secondary" onClick={openPopup}>
-                  <div className="h-10 w-10 bg-primary rounded-xl flex items-center justify-center shrink-0 shadow-sm">
-                    <CheckCircle2 className="h-6 w-6 text-white" />
+                <div key={i} className="flex gap-4 items-center p-5 bg-white rounded-[1.5rem] border border-slate-200 shadow-sm transition-transform active:scale-95" onClick={openPopup}>
+                  <div className="h-12 w-12 bg-orange-500 rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-orange-200">
+                    <Sparkles className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-black text-sm uppercase leading-tight">{b.t}</p>
-                    <p className="text-xs text-muted-foreground mt-1 font-medium">{b.d}</p>
+                    <p className="font-black text-[14px] text-slate-900 uppercase leading-tight">{b.t}</p>
+                    <p className="text-[12px] text-slate-500 mt-1 font-medium leading-tight">{b.d}</p>
                   </div>
                 </div>
               ))}
@@ -114,19 +114,19 @@ export default function BioaquaPage() {
           </div>
         </section>
 
-        {/* Visual de Textura */}
-        <section className="py-8 bg-secondary/10">
-          <div className="px-4 text-center space-y-4">
-             <div className="relative aspect-video w-full overflow-hidden rounded-[2rem] shadow-2xl border-4 border-white cursor-pointer" onClick={openPopup}>
+        {/* Visual de Calidad */}
+        <section className="py-10 bg-white">
+          <div className="px-4 text-center space-y-6">
+             <div className="relative aspect-video w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-8 border-slate-50 cursor-pointer group" onClick={openPopup}>
                 <Image 
-                  src={showcaseImg || "https://picsum.photos/seed/bio2/800/450"} 
+                  src={showcaseImg || "https://images.unsplash.com/photo-1611082216373-7c1bc0412822?q=80&w=1080"} 
                   alt="Textura Bioaqua"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-                  <p className="text-white font-black text-2xl uppercase italic leading-none">Textura tipo Yogurt</p>
-                  <p className="text-white/80 text-xs font-bold uppercase tracking-widest mt-2">Absorción inmediata sin grasa</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-900/80 via-transparent to-transparent flex flex-col justify-end p-8">
+                  <p className="text-white font-black text-3xl uppercase italic leading-none">HIDRATACIÓN PROFUNDA</p>
+                  <p className="text-orange-100 text-xs font-bold uppercase tracking-widest mt-2">Para todo tipo de piel, incluso sensible</p>
                 </div>
              </div>
           </div>
@@ -134,42 +134,43 @@ export default function BioaquaPage() {
 
         <Testimonials />
 
-        {/* Garantías */}
-        <section className="py-12 bg-white">
-          <div className="container px-4 text-center space-y-8">
+        {/* Garantías Premium */}
+        <section className="py-14 bg-white">
+          <div className="container px-4 text-center space-y-10">
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-green-50 rounded-2xl border border-green-100 flex flex-col items-center gap-2">
-                <ShieldCheck className="h-8 w-8 text-green-600" />
-                <p className="text-[10px] font-black uppercase">100% Original</p>
+              <div className="p-6 bg-orange-50 rounded-3xl border border-orange-100 flex flex-col items-center gap-3">
+                <ShieldCheck className="h-10 w-10 text-orange-600" />
+                <p className="text-[10px] font-black uppercase text-orange-800">100% Original</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100 flex flex-col items-center gap-2">
-                <ShoppingCart className="h-8 w-8 text-blue-600" />
-                <p className="text-[10px] font-black uppercase">Pagas al Recibir</p>
+              <div className="p-6 bg-slate-50 rounded-3xl border border-slate-200 flex flex-col items-center gap-3">
+                <ShoppingCart className="h-10 w-10 text-slate-600" />
+                <p className="text-[10px] font-black uppercase text-slate-800">Pago Contra Entrega</p>
               </div>
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-3xl font-black uppercase tracking-tighter leading-none">
-                ¿LISTA PARA LUCIR <br /><span className="text-primary italic">UNA PIEL RADIANTE?</span>
+              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+                ¿LISTA PARA TU <br /><span className="text-orange-600 italic underline decoration-orange-200 underline-offset-8">PIEL DE PORCELANA?</span>
               </h2>
               <Button 
                 onClick={openPopup}
                 size="lg" 
-                className="w-full h-20 text-2xl font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat"
+                className="w-full h-20 text-2xl font-black bg-orange-600 hover:bg-orange-700 shadow-[0_15px_35px_rgba(249,115,22,0.4)] rounded-3xl animate-heartbeat border-4 border-white"
               >
                 <ShoppingCart className="h-8 w-8 mr-2" />
-                ¡COMPRAR AHORA!
+                ¡ORDENAR AHORA!
               </Button>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Envíos rápidos a todo el Ecuador 🇪🇨</p>
             </div>
           </div>
         </section>
       </main>
       
-      <div className="sticky-cta">
+      <div className="sticky-cta px-4">
         <Button 
           onClick={openPopup}
           size="lg" 
-          className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-[0_10px_30px_rgba(239,68,68,0.4)] rounded-2xl animate-heartbeat"
+          className="w-full h-16 text-xl font-black bg-orange-600 hover:bg-orange-700 shadow-[0_15px_40px_rgba(249,115,22,0.5)] rounded-2xl animate-heartbeat border-2 border-white"
         >
           <ShoppingCart className="h-6 w-6 mr-2" />
           ¡COMPRAR AHORA!
@@ -180,6 +181,7 @@ export default function BioaquaPage() {
         open={isPopupOpen} 
         onOpenChange={setIsPopupOpen} 
         products={BIOAQUA_PRODUCTS}
+        themeColor="orange"
       />
       
       <Footer />

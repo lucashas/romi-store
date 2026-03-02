@@ -57,9 +57,10 @@ interface PurchasePopupProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   products: Product[];
+  themeColor?: "brown" | "orange";
 }
 
-export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupProps) {
+export function PurchasePopup({ open, onOpenChange, products, themeColor = "brown" }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -72,6 +73,17 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const firestore = useFirestore();
   const router = useRouter();
   const pathname = usePathname();
+
+  // Colores dinámicos según el producto
+  const colors = {
+    bg: themeColor === "orange" ? "bg-orange-600" : "bg-primary",
+    text: themeColor === "orange" ? "text-orange-600" : "text-primary",
+    border: themeColor === "orange" ? "border-orange-600" : "border-primary",
+    ring: themeColor === "orange" ? "ring-orange-600" : "ring-primary",
+    button: themeColor === "orange" ? "bg-orange-600 hover:bg-orange-700 shadow-orange-200" : "bg-accent hover:bg-accent/90 shadow-accent/20",
+    light: themeColor === "orange" ? "bg-orange-50" : "bg-primary/5",
+    borderLight: themeColor === "orange" ? "border-orange-100" : "border-primary/10",
+  };
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -119,9 +131,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
-      
-      // REDIRECCIÓN INTELIGENTE A LA PÁGINA DE GRACIAS UNIFICADA
-      // Pasamos el producto y la URL de retorno para que la página sea 100% dinámica
       router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product.name)}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);
@@ -136,7 +145,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="w-[98%] max-w-[480px] p-0 overflow-hidden rounded-[2rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]"
+        className="w-[98%] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]"
       >
         <DialogHeader className="sr-only">
           <DialogTitle>Formulario de Compra</DialogTitle>
@@ -144,29 +153,29 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
         </DialogHeader>
 
         <div className="max-h-[85vh] overflow-y-auto">
-          <div className="bg-primary p-6 text-white text-center">
-            <h2 className="text-[18px] font-black uppercase leading-tight tracking-tight px-4">
-              INGRESE SUS DATOS CORRECTAMENTE PARA ENVIAR SU PEDIDO
+          <div className={`${colors.bg} p-8 text-white text-center`}>
+            <h2 className="text-[20px] font-black uppercase leading-tight tracking-tight px-2">
+              ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
             </h2>
-            <div className="mt-4 flex justify-center">
-              <div className="relative h-14 w-full max-w-[320px]">
+            <div className="mt-5 flex justify-center">
+              <div className="relative h-14 w-full max-w-[300px]">
                 <Image 
                   src="https://i.imgur.com/Jh61uYJ.png" 
                   alt="Garantía de Confianza" 
                   fill
-                  className="object-contain"
-                  sizes="320px"
+                  className="object-contain brightness-0 invert"
+                  sizes="300px"
                   priority
                 />
               </div>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-4 space-y-6 bg-white">
+          <form onSubmit={handleSubmit} className="p-5 space-y-8 bg-white pb-10">
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-primary border-b border-primary/10 pb-1.5">
+              <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
                 <Package className="h-6 w-6" />
-                <h3 className="font-black uppercase text-[15px] tracking-widest text-primary">PASO 1: ELIGE TU OFERTA</h3>
+                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">PASO 1: ELIGE TU OFERTA</h3>
               </div>
               
               <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
@@ -174,29 +183,29 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   <Label
                     key={product.id}
                     htmlFor={product.id}
-                    className={`flex items-center gap-2 p-4 rounded-2xl border-2 transition-all cursor-pointer relative w-full ${
+                    className={`flex items-center gap-2 p-5 rounded-3xl border-2 transition-all cursor-pointer relative w-full ${
                       selectedProduct === product.id 
-                      ? "border-primary bg-primary/5 shadow-sm" 
-                      : "border-secondary bg-white hover:border-primary/20"
+                      ? `${colors.border} ${colors.light} shadow-md` 
+                      : "border-slate-100 bg-white hover:border-slate-200"
                     }`}
                   >
                     {product.badge && (
-                      <div className="absolute -top-3 right-3 bg-accent text-white text-[11px] px-3 py-1.5 rounded-full font-black uppercase shadow-sm z-10 animate-bounce">
+                      <div className={`absolute -top-3 right-5 ${themeColor === 'orange' ? 'bg-[#f97316]' : 'bg-accent'} text-white text-[10px] px-4 py-1.5 rounded-full font-black uppercase shadow-lg z-10 animate-pulse border-2 border-white`}>
                         {product.badge}
                       </div>
                     )}
                     
                     <div className="flex items-center gap-4 w-full">
                       <RadioGroupItem value={product.id} id={product.id} className="shrink-0 h-6 w-6" />
-                      <div className="h-14 w-14 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
-                        <Image src={product.image} alt={product.name} fill className="object-cover" sizes="56px" />
+                      <div className="h-16 w-16 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 shrink-0 relative">
+                        <Image src={product.image} alt={product.name} fill className="object-cover" sizes="64px" />
                       </div>
                       <div className="flex-1 min-w-0 text-left">
-                        <p className="font-black text-[15px] text-foreground uppercase leading-tight">{product.name}</p>
-                        <p className="text-[12px] text-muted-foreground font-medium mt-0.5">{product.description}</p>
+                        <p className="font-black text-[15px] text-slate-900 uppercase leading-tight">{product.name}</p>
+                        <p className="text-[11px] text-slate-400 font-bold mt-1 uppercase tracking-tight">{product.description}</p>
                       </div>
                       <div className="text-right shrink-0">
-                        <p className="font-black text-primary text-[22px]">${product.price.toFixed(0)}</p>
+                        <p className={`font-black ${colors.text} text-[24px]`}>${product.price.toFixed(0)}</p>
                       </div>
                     </div>
                   </Label>
@@ -204,54 +213,54 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               </RadioGroup>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 text-primary border-b border-primary/10 pb-1.5">
+            <div className="space-y-5">
+              <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
                 <Truck className="h-6 w-6" />
-                <h3 className="font-black uppercase text-[15px] tracking-widest text-primary">PASO 2: DATOS DE ENVÍO</h3>
+                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">PASO 2: DATOS DE ENVÍO</h3>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5 text-left">
-                  <Label htmlFor="nombre" className="text-[14px] font-black uppercase text-muted-foreground">Nombre</Label>
+                <div className="space-y-2 text-left">
+                  <Label htmlFor="nombre" className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Nombre</Label>
                   <Input 
                     id="nombre" placeholder="Juan" required value={nombre}
                     onChange={(e) => setNombre(e.target.value)}
-                    className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border" 
+                    className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 focus:border-orange-500 transition-all font-bold" 
                   />
                 </div>
-                <div className="space-y-1.5 text-left">
-                  <Label htmlFor="apellido" className="text-[14px] font-black uppercase text-muted-foreground">Apellido</Label>
+                <div className="space-y-2 text-left">
+                  <Label htmlFor="apellido" className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Apellido</Label>
                   <Input 
                     id="apellido" placeholder="Pérez" required value={apellido}
                     onChange={(e) => setApellido(e.target.value)}
-                    className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border" 
+                    className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 focus:border-orange-500 transition-all font-bold" 
                   />
                 </div>
               </div>
 
-              <div className="space-y-1.5 text-left">
-                <Label htmlFor="whatsapp" className="text-[14px] font-black uppercase text-muted-foreground">Número de WhatsApp</Label>
+              <div className="space-y-2 text-left">
+                <Label htmlFor="whatsapp" className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Número de WhatsApp</Label>
                 <Input 
-                  id="whatsapp" type="tel" placeholder="Ingresa tu celular" required value={whatsapp}
+                  id="whatsapp" type="tel" placeholder="0999999999" required value={whatsapp}
                   onChange={handleWhatsappChange}
-                  className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border" 
+                  className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 focus:border-orange-500 transition-all font-bold" 
                 />
               </div>
 
-              <div className="space-y-1.5 text-left">
-                <Label htmlFor="direccion" className="text-[14px] font-black uppercase text-muted-foreground">Dirección Entrega (2 calles y una referencia)</Label>
+              <div className="space-y-2 text-left">
+                <Label htmlFor="direccion" className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Dirección Exacta</Label>
                 <Input 
-                  id="direccion" placeholder="Calle, Nro de casa y referencia" required value={direccion}
+                  id="direccion" placeholder="Calle principal, secundaria y referencia" required value={direccion}
                   onChange={(e) => setDireccion(e.target.value)}
-                  className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border" 
+                  className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 focus:border-orange-500 transition-all font-bold" 
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5 text-left">
-                  <Label className="text-[14px] font-black uppercase text-muted-foreground">Provincia</Label>
+                <div className="space-y-2 text-left">
+                  <Label className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Provincia</Label>
                   <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                    <SelectTrigger className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border">
+                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold">
                       <SelectValue placeholder="Elegir" />
                     </SelectTrigger>
                     <SelectContent className="max-h-[250px]">
@@ -261,10 +270,10 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-1.5 text-left">
-                  <Label className="text-[14px] font-black uppercase text-muted-foreground">Ciudad</Label>
+                <div className="space-y-2 text-left">
+                  <Label className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Ciudad</Label>
                   <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                    <SelectTrigger className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border">
+                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold">
                       <SelectValue placeholder={provincia ? "Elegir" : "---"} />
                     </SelectTrigger>
                     <SelectContent className="max-h-[250px]">
@@ -280,20 +289,20 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
             <Button 
               type="submit" 
               disabled={loading} 
-              className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-xl rounded-[1rem] animate-heartbeat mt-2"
+              className={`w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat mt-4 border-4 border-white shadow-xl ${colors.button}`}
             >
-              {loading ? "REGISTRANDO..." : (
+              {loading ? "PROCESANDO..." : (
                 <>
-                  <ShoppingCart className="mr-2 h-6 w-6" />
-                  CONFIRMAR COMPRA
+                  <ShoppingCart className="mr-3 h-7 w-7" />
+                  CONFIRMAR PEDIDO
                 </>
               )}
             </Button>
 
-            <div className="flex justify-center items-center gap-6 pt-2 pb-6 opacity-60">
-              <ShieldCheck className="h-6 w-6" />
-              <Lock className="h-6 w-6" />
-              <Truck className="h-6 w-6" />
+            <div className="flex justify-center items-center gap-8 pt-4 pb-4 opacity-40">
+              <ShieldCheck className="h-7 w-7" />
+              <Lock className="h-7 w-7" />
+              <Truck className="h-7 w-7" />
             </div>
           </form>
         </div>
