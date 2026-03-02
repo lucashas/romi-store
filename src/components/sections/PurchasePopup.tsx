@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -120,7 +119,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     const leadsRef = collection(firestore, "leadSubmissions");
     addDoc(leadsRef, orderData)
       .then(() => {
-        setLoading(false);
+        setLoading(true);
         setSubmitted(true);
       })
       .catch((err) => {
@@ -247,7 +246,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                         </div>
 
                         <div className="text-right shrink-0">
-                          <p className="font-black text-primary text-[17px]">
+                          <p className="font-black text-primary text-[22px]">
                             ${product.price.toFixed(0)}
                           </p>
                         </div>
@@ -265,7 +264,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5 text-left">
-                    <Label htmlFor="nombre" className="text-[13px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
+                    <Label htmlFor="nombre" className="text-[14px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
                     <Input 
                       id="nombre" 
                       placeholder="Juan" 
@@ -276,7 +275,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                     />
                   </div>
                   <div className="space-y-1.5 text-left">
-                    <Label htmlFor="apellido" className="text-[13px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
+                    <Label htmlFor="apellido" className="text-[14px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
                     <Input 
                       id="apellido" 
                       placeholder="Pérez" 
@@ -289,7 +288,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </div>
 
                 <div className="space-y-1.5 text-left">
-                  <Label htmlFor="whatsapp" className="text-[13px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
+                  <Label htmlFor="whatsapp" className="text-[14px] font-black uppercase text-muted-foreground ml-1">WhatsApp (10 dígitos)</Label>
                   <div className="relative">
                     <Input 
                       id="whatsapp" 
@@ -305,7 +304,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 </div>
 
                 <div className="space-y-1.5 text-left">
-                  <Label htmlFor="direccion" className="text-[13px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
+                  <Label htmlFor="direccion" className="text-[14px] font-black uppercase text-muted-foreground ml-1">Dirección Exacta</Label>
                   <Input 
                     id="direccion" 
                     placeholder="Calle, Nro de casa y referencia" 
@@ -318,9 +317,9 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5 text-left">
-                    <Label className="text-[13px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
+                    <Label className="text-[14px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
                     <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                      <SelectTrigger className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4 focus:ring-primary">
+                      <SelectTrigger className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[15px] w-full px-4 focus:ring-primary">
                         <SelectValue placeholder="Elegir" />
                       </SelectTrigger>
                       <SelectContent className="rounded-xl max-h-[250px]">
@@ -331,9 +330,9 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                     </Select>
                   </div>
                   <div className="space-y-1.5 text-left">
-                    <Label className="text-[13px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
+                    <Label className="text-[14px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
                     <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                      <SelectTrigger className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full px-4 focus:ring-primary">
+                      <SelectTrigger className="h-14 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[15px] w-full px-4 focus:ring-primary">
                         <SelectValue placeholder={provincia ? "Elegir" : "---"} />
                       </SelectTrigger>
                       <SelectContent className="rounded-xl max-h-[250px]">
@@ -349,9 +348,9 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               <div className="bg-amber-50 border-2 border-amber-100 p-4 rounded-xl space-y-1.5 text-left">
                 <div className="flex items-center gap-2 text-amber-600">
                   <AlertTriangle className="h-5 w-5" />
-                  <span className="font-black text-[12px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
+                  <span className="font-black text-[13px] uppercase tracking-tighter">⚠️ VERIFICA TUS DATOS ⚠️</span>
                 </div>
-                <p className="text-[13px] font-medium text-amber-800/80 leading-tight italic">
+                <p className="text-[14px] font-medium text-amber-800/80 leading-tight italic">
                   Al confirmar, tu pedido se registrará y te llamaremos para coordinar la entrega.
                 </p>
               </div>
