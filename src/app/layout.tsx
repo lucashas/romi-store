@@ -1,11 +1,14 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
-  title: 'MaryRuth\'s Organics | Suplementos Líquidos Premium Ecuador',
-  description: 'Venta autorizada en Ecuador. Descubre el poder de la nutrición líquida con MaryRuth\'s. Vitaminas orgánicas y veganas con envío a todo el país.',
+  title: 'Romi Store EC | MaryRuth\'s Organics Ecuador',
+  description: 'Tienda oficial Romi Store. Descubre MaryRuth\'s Organics en Ecuador. Suplementos líquidos premium con envío gratis y pago contra entrega en todo el país.',
+  metadataBase: new URL('https://romi-store.com'),
+  alternates: {
+    canonical: '/',
+  },
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
 };
 
