@@ -96,14 +96,14 @@ export function Features({ onOpenPopup }: FeaturesProps) {
             )}
           </div>
 
-          <div className="grid grid-cols-1 gap-[10px]">
+          <div className="grid grid-cols-1 gap-[5px]">
             {[
               "Crecimiento 3x más rápido",
               "Reduce la caída notablemente",
               "Brillo natural sin químicos",
               "Uñas de acero"
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3 bg-secondary/10 p-3 rounded-xl border border-secondary/50">
+              <div key={i} className="flex items-center gap-3 bg-secondary/10 p-2 rounded-xl border border-secondary/50">
                 <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                 <span className="text-[12px] font-black text-foreground uppercase">{item}</span>
               </div>
