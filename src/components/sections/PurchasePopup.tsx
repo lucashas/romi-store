@@ -18,7 +18,7 @@ import { FirestorePermissionError } from "@/firebase/errors";
 
 /**
  * 📱 CONFIGURACIÓN DE RECEPCIÓN DE PEDIDOS
- * Tu número de WhatsApp Business (formato internacional sin el +)
+ * Tu número de WhatsApp Business (Ecuador: 593 + número sin el primer cero)
  */
 const VENDEDOR_WHATSAPP = "593959461399"; 
 
@@ -109,15 +109,14 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
     const orderData = {
       name: `${nombre} ${apellido}`,
-      email: `${whatsapp}@tienda.com`, // Email dummy para el esquema LeadSubmission
+      email: `${whatsapp}@tienda.com`, 
       phoneNumber: whatsapp,
       message: `PRODUCTO: ${product.name} | PRECIO: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
       landingPageContentId: "main-landing"
     };
 
-    // 1. Guardar en Base de Datos (Funnelish Mode)
-    // Esto asegura que si el cliente no envía el WhatsApp, tú ya tengas sus datos.
+    // 1. Guardar en Base de Datos al instante (Tu seguro)
     const leadsRef = collection(firestore, "leadSubmissions");
     addDoc(leadsRef, orderData).catch((err) => {
       errorEmitter.emit("permission-error", new FirestorePermissionError({
@@ -128,7 +127,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     });
 
     // 2. Construcción del mensaje para WhatsApp
-    const message = `¡Hola! Acabo de realizar un pedido desde la tienda:\n\n` +
+    const messageText = `¡Hola! Acabo de realizar un pedido desde la tienda:\n\n` +
       `📦 *PRODUCTO:* ${product.name}\n` +
       `💰 *PRECIO:* $${product.price.toFixed(2)}\n\n` +
       `👤 *CLIENTE:* ${nombre} ${apellido}\n` +
@@ -138,14 +137,14 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
       `🏠 *DIRECCIÓN:* ${direccion}\n\n` +
       `*PAGO AL RECIBIR*`;
 
-    const whatsappUrl = `https://wa.me/${VENDEDOR_WHATSAPP}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${VENDEDOR_WHATSAPP}?text=${encodeURIComponent(messageText)}`;
 
-    // Pequeño delay para asegurar que el usuario vea el éxito antes de redirigir
+    // Pequeño delay para simular procesamiento
     setTimeout(() => {
       setLoading(false);
       onOpenChange(false);
       
-      // Redirigir a WhatsApp
+      // Redirigir a WhatsApp (La alerta que te llegará al celular)
       window.open(whatsappUrl, '_blank');
 
       toast({
@@ -166,14 +165,14 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="w-[95%] max-w-[450px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto translate-x-[-50%] left-[50%]"
+        className="w-[95%] max-w-[450px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto translate-x-[-50%] left-[50%] overflow-x-hidden"
       >
         <DialogHeader className="bg-primary p-5 text-white text-center">
           <DialogTitle className="text-[14px] font-black uppercase leading-tight tracking-tighter">
             INGRESE SUS DATOS DE FORMA CORRECTA PARA ENVIAR SU PEDIDO
           </DialogTitle>
-          <DialogDescription className="sr-only">
-            Formulario de pedido para pago al recibir en toda la puerta de tu casa.
+          <DialogDescription className="text-[11px] font-medium opacity-90 mt-1">
+            Pago al recibir en la puerta de tu casa. Envío 100% seguro.
           </DialogDescription>
         </DialogHeader>
 
@@ -192,7 +191,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   htmlFor={product.id}
                   className={`flex items-center gap-2 p-3 rounded-2xl border-2 transition-all cursor-pointer relative w-full box-border ${
                     selectedProduct === product.id 
-                    ? "border-primary bg-primary/5 shadow-sm scale-[1.02]" 
+                    ? "border-primary bg-primary/5 shadow-sm scale-[1.01]" 
                     : "border-secondary bg-white hover:border-primary/20"
                   }`}
                 >
@@ -205,27 +204,27 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   <div className="flex items-center gap-3 w-full overflow-hidden">
                     <RadioGroupItem value={product.id} id={product.id} className="shrink-0" />
                     
-                    <div className="h-12 w-12 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
+                    <div className="h-10 w-10 rounded-xl overflow-hidden bg-secondary/20 border border-secondary shrink-0 relative">
                       <Image 
                         src={product.image} 
                         alt={product.name} 
                         fill 
                         className="object-cover"
-                        sizes="48px"
+                        sizes="40px"
                       />
                     </div>
 
                     <div className="flex-1 min-w-0 overflow-hidden">
-                      <p className="font-black text-[12px] text-foreground uppercase leading-tight truncate">
+                      <p className="font-black text-[11px] text-foreground uppercase leading-tight truncate">
                         {product.name}
                       </p>
-                      <p className="text-[10px] text-muted-foreground font-medium truncate">
+                      <p className="text-[9px] text-muted-foreground font-medium truncate">
                         {product.description}
                       </p>
                     </div>
 
                     <div className="text-right shrink-0">
-                      <p className="font-black text-primary text-[14px]">
+                      <p className="font-black text-primary text-[13px]">
                         ${product.price.toFixed(2)}
                       </p>
                     </div>
@@ -247,22 +246,22 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 <Label htmlFor="nombre" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Nombre</Label>
                 <Input 
                   id="nombre" 
-                  placeholder="Ej: Juan" 
+                  placeholder="Juan" 
                   required 
                   value={nombre}
                   onChange={(e) => setNombre(e.target.value)}
-                  className="h-11 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full" 
+                  className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
                 />
               </div>
               <div className="space-y-1">
                 <Label htmlFor="apellido" className="text-[10px] font-black uppercase text-muted-foreground ml-1">Apellido</Label>
                 <Input 
                   id="apellido" 
-                  placeholder="Ej: Pérez" 
+                  placeholder="Pérez" 
                   required 
                   value={apellido}
                   onChange={(e) => setApellido(e.target.value)}
-                  className="h-11 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full" 
+                  className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
                 />
               </div>
             </div>
@@ -277,9 +276,9 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   required 
                   value={whatsapp}
                   onChange={handleWhatsappChange}
-                  className="h-11 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] pl-3 w-full" 
+                  className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] pl-3 w-full" 
                 />
-                {whatsapp.length === 10 && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-green-500" />}
+                {whatsapp.length === 10 && <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-green-500" />}
               </div>
             </div>
 
@@ -291,7 +290,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                 required 
                 value={direccion}
                 onChange={(e) => setDireccion(e.target.value)}
-                className="h-11 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[14px] w-full" 
+                className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[13px] w-full" 
               />
             </div>
 
@@ -299,10 +298,10 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               <div className="space-y-1">
                 <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Provincia</Label>
                 <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                  <SelectTrigger className="h-11 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[12px] w-full">
+                  <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
                     <SelectValue placeholder="Elegir" />
                   </SelectTrigger>
-                  <SelectContent className="rounded-xl max-h-[200px]">
+                  <SelectContent className="rounded-xl max-h-[180px]">
                     {Object.keys(ecuadorData).sort().map((p) => (
                       <SelectItem key={p} value={p}>{p}</SelectItem>
                     ))}
@@ -312,10 +311,10 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
               <div className="space-y-1">
                 <Label className="text-[10px] font-black uppercase text-muted-foreground ml-1">Ciudad</Label>
                 <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                  <SelectTrigger className="h-11 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[12px] w-full">
+                  <SelectTrigger className="h-10 rounded-xl bg-secondary/20 border-none ring-1 ring-border text-[11px] w-full">
                     <SelectValue placeholder={provincia ? "Elegir" : "---"} />
                   </SelectTrigger>
-                  <SelectContent className="rounded-xl max-h-[180px]">
+                  <SelectContent className="rounded-xl max-h-[160px]">
                     {ciudadesDisponibles.map((c) => (
                       <SelectItem key={c} value={c}>{c}</SelectItem>
                     ))}
@@ -326,24 +325,24 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
           </div>
 
           {/* ADVERTENCIA */}
-          <div className="bg-amber-50 border border-amber-100 p-4 rounded-2xl space-y-1">
+          <div className="bg-amber-50 border border-amber-100 p-3 rounded-2xl space-y-1">
             <div className="flex items-center gap-2 text-amber-600">
-              <AlertTriangle className="h-4 w-4" />
-              <span className="font-black text-[10px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</span>
+              <AlertTriangle className="h-3 w-3" />
+              <span className="font-black text-[9px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</span>
             </div>
-            <p className="text-[10px] font-medium text-amber-800/80 leading-snug italic">
-              *Al confirmar, tu pedido se guardará y te redirigiremos a WhatsApp para finalizar.
+            <p className="text-[9px] font-medium text-amber-800/80 leading-tight italic">
+              Al confirmar, tu pedido se guardará y te abriremos WhatsApp para finalizar el envío.
             </p>
           </div>
 
           <Button 
             type="submit" 
             disabled={loading} 
-            className="w-full h-16 text-xl font-black uppercase bg-accent hover:bg-accent/90 shadow-2xl rounded-[1.5rem] animate-heartbeat"
+            className="w-full h-14 text-lg font-black uppercase bg-accent hover:bg-accent/90 shadow-2xl rounded-[1.2rem] animate-heartbeat"
           >
-            {loading ? "REGISTRANDO..." : (
+            {loading ? "PROCESANDO..." : (
               <>
-                <ShoppingCart className="mr-2 h-6 w-6" />
+                <ShoppingCart className="mr-2 h-5 w-5" />
                 CONFIRMAR COMPRA
               </>
             )}
