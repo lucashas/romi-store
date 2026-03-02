@@ -9,13 +9,32 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: 'https://i.imgur.com/XfmwUEJ.png', // Esta imagen aparecerá en la pestaña del navegador
+    shortcut: 'https://i.imgur.com/XfmwUEJ.png',
+    apple: 'https://i.imgur.com/XfmwUEJ.png',
+  },
   openGraph: {
     title: 'Romi Store EC | MaryRuth\'s Organics',
-    description: 'Suplementos orgánicos premium con envío gratis a todo Ecuador.',
-    url: 'https://romi-store.com',
+    description: 'Suplementos orgánicos premium con envío gratis a todo Ecuador. ¡Paga al recibir!',
+    url: 'https://romi-store.com/mary-ruth',
     siteName: 'Romi Store EC',
+    images: [
+      {
+        url: 'https://i.imgur.com/XfmwUEJ.png', // Esta es la foto que se ve al compartir el link
+        width: 800,
+        height: 600,
+        alt: 'MaryRuth\'s Organics Ecuador',
+      },
+    ],
     locale: 'es_ES',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Romi Store EC | MaryRuth\'s Organics',
+    description: 'Suplementos orgánicos premium con envío gratis a todo Ecuador.',
+    images: ['https://i.imgur.com/XfmwUEJ.png'],
   },
 };
 
