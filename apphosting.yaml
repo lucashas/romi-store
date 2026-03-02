@@ -1,8 +1,12 @@
-# Configuración de Producción Romi Store
+# Configuración de App Hosting para Romi Store
+kind: "AppHostingConfig"
+schemaVersion: "v1"
+
 runConfig:
   minInstances: 0
   maxInstances: 1
   memory: 1GiB
+
 env:
   - variable: MY_GEMINI_KEY
     availability:
