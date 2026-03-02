@@ -126,7 +126,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     addDoc(leadsRef, orderData)
       .then(() => {
         setLoading(false);
-        // Redirección a la página de agradecimiento con parámetros para personalización
         router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
       })
       .catch((err) => {
@@ -164,7 +163,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   src="https://i.imgur.com/Jh61uYJ.png" 
                   alt="Garantía de Confianza" 
                   fill
-                  className="object-contain brightness-110 contrast-110"
+                  className="object-contain"
                   sizes="320px"
                   priority
                 />
