@@ -1,35 +1,34 @@
 
-# 🚀 Guía Final de Lanzamiento - Romi Store EC
+# 🚀 Guía de Lanzamiento Final - Romi Store EC
 
-Para que Firebase detecte tu tienda, sigue estos pasos exactos en tu terminal:
+Para corregir el error de "No buildpack groups passed detection", sigue estos pasos exactos:
 
 ### 1. Encuentra la carpeta de tu proyecto
-Si `cd romi-store` no funciona, usa este comando para saber dónde estás:
+En tu terminal, escribe:
 ```bash
 ls -F
 ```
-Busca una carpeta que tenga el archivo `package.json`. Cuando la veas, entra en ella:
+Busca una carpeta que termine en `/` (por ejemplo `romi-store/`). Si no la ves, intenta entrar a la carpeta de entorno de Firebase:
 ```bash
-cd NOMBRE_DE_LA_CARPETA
+cd ~/studio
 ```
 
-### 2. Genera el archivo de bloqueo (Crítico)
-Una vez dentro de la carpeta, ejecuta:
+### 2. Genera el archivo de bloqueo (CRÍTICO)
+Una vez estés en la carpeta donde ves el archivo `package.json`, ejecuta:
 ```bash
 npm install
 ```
-Esto creará el archivo `package-lock.json` que Firebase necesita para no dar error.
+Esto creará el archivo `package-lock.json` **dentro** de la carpeta del proyecto.
 
-### 3. Sube todo a GitHub
+### 3. Sube los cambios a GitHub
 ```bash
 git add .
 git commit -m "Solución definitiva: Standalone + Lockfile"
 git push
 ```
 
-### 4. Verifica la Clave en Firebase
-En la consola de Firebase, pestaña "Configuración", la clave debe llamarse `MY_GEMINI_KEY`.
+### 4. Verifica en Firebase
+La compilación debería detectar ahora automáticamente que es un proyecto de Next.js y ponerse en verde.
 
 ---
 **Soporte:** Romi Store EC | MaryRuth's Organics Ecuador
-"Salud líquida, resultados reales."
