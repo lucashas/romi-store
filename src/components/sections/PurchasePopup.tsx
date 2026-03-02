@@ -74,7 +74,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const router = useRouter();
   const pathname = usePathname();
 
-  // Colores dinámicos según el producto
   const colors = {
     bg: themeColor === "orange" ? "bg-orange-600" : "bg-primary",
     text: themeColor === "orange" ? "text-orange-600" : "text-primary",

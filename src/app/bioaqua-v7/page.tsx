@@ -123,6 +123,7 @@ export default function BioaquaPage() {
                   alt="Textura Bioaqua"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  data-ai-hint="face cream"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-orange-900/80 via-transparent to-transparent flex flex-col justify-end p-8">
                   <p className="text-white font-black text-3xl uppercase italic leading-none">HIDRATACIÓN PROFUNDA</p>
