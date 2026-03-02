@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -94,11 +93,22 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // VALIDACIÓN ESTRICTA DE CAMPOS OBLIGATORIOS
+    if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
+      toast({
+        variant: "destructive",
+        title: "DATOS FALTANTES",
+        description: "Por favor complete todos los campos obligatorios para confirmar su pedido.",
+      });
+      return;
+    }
+
     if (whatsapp.length !== 10) {
       toast({
         variant: "destructive",
         title: "NÚMERO INVÁLIDO",
-        description: "El WhatsApp debe tener exactamente 10 dígitos.",
+        description: "El WhatsApp debe tener 10 dígitos (ej: 09XXXXXXXX).",
       });
       return;
     }
@@ -109,7 +119,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     setLoading(true);
 
     const orderData = {
-      name: `${nombre} ${apellido}`,
+      name: `${nombre.trim()} ${apellido.trim()}`,
       email: `${whatsapp}@romistore.com`, 
       phoneNumber: whatsapp,
       message: `PRODUCTO: ${product.name} | PRECIO: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
@@ -196,6 +206,7 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
                   Pago al recibir en casa • Envío 100% Seguro
                 </p>
                 
+                {/* Logo de Confianza Centrado y Visible */}
                 <div className="mt-4 flex justify-center">
                   <div className="relative h-14 w-full max-w-[320px]">
                     <img 
