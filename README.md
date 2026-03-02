@@ -1,32 +1,24 @@
-# Romi Store EC - ¡Casi en vivo! 🚀
+# ¡Romi Store EC está en el aire! 🇪🇨🚀
 
-¡Felicidades! Ya subiste el código a GitHub. Ahora solo falta el último paso en la Consola de Firebase.
+¡Felicidades! Tu tienda oficial de MaryRuth's Organics Ecuador ya está configurada y desplegada en Firebase App Hosting.
 
-## Pasos Finales en la Consola (App Hosting)
+## 🔗 Tu Enlace Oficial
+Tu tienda está disponible en el enlace que aparece en tu consola de Firebase (ej. `romi-store...hosted.app`). Una vez que el lanzamiento termine, ¡puedes compartirlo en TikTok e Instagram!
 
-### 1. ID del Backend
-- Deja `romi-store` tal como está.
+## 🛠️ Cómo actualizar tu tienda (Precios, Fotos, Ofertas)
+Si en el futuro quieres cambiar algo (por ejemplo, subir un precio o cambiar una imagen de MaryRuth's):
 
-### 2. Configurar la IA (Variables de Entorno)
-Para que las funciones de IA funcionen, necesitas tu clave de Gemini:
-1. **Consigue tu clave:** Ve a [Google AI Studio](https://aistudio.google.com/app/apikey) y haz clic en **"Create API key"**.
-2. **Copia la clave:** Es un código largo que empieza con `AIza...`.
-3. **Regresa a Firebase:**
-   - En **Clave**, pon: `MY_GEMINI_KEY`
-   - En **Valor**, pega tu clave `AIza...`.
-4. Haz clic en **"Finalizar"**.
-
-## Cómo actualizar tu tienda en el futuro
-Si quieres cambiar precios o fotos:
-1. Edita el archivo `src/app/page.tsx` en este editor.
-2. Guarda los cambios.
-3. Ejecuta estos comandos en la terminal:
+1. **Edita el código:** Abre el archivo `src/app/page.tsx` aquí mismo en el editor.
+2. **Modifica los productos:** Busca la sección `const CUSTOM_PRODUCTS` y cambia los valores que necesites.
+3. **Guarda los cambios:** Presiona `Ctrl + S`.
+4. **Sincroniza con la tienda:** En la terminal, pon estos 3 comandos mágicos:
    ```bash
    git add .
-   git commit -m "Cambios en mi tienda"
+   git commit -m "Actualización de precios"
    git push
    ```
-4. ¡Firebase detectará el cambio y actualizará la página automáticamente!
+5. **¡Listo!** Firebase detectará el cambio automáticamente y actualizará tu tienda en un par de minutos sin que tengas que hacer nada más.
 
 ---
-**Soporte:** Romi Store EC | MaryRuth's Organics Ecuador
+**Soporte:** Romi Store EC | Distribuidor MaryRuth's Organics Ecuador
+"Salud líquida, resultados reales."
