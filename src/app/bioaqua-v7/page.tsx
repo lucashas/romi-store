@@ -3,19 +3,16 @@
 
 import { useState } from "react";
 import { TopMarquee } from "@/components/layout/TopMarquee";
-import { Hero } from "@/components/sections/Hero";
-import { Benefits } from "@/components/sections/Benefits";
-import { ProductShowcase } from "@/components/sections/ProductShowcase";
-import { Features } from "@/components/sections/Features";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Sparkles, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Star, Sparkles, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
+// CONFIGURACIÓN DE TUS OFERTAS PARA BIOAQUA
 const BIOAQUA_PRODUCTS: Product[] = [
   {
     id: "bioaqua_1",
@@ -49,14 +46,13 @@ export default function BioaquaPage() {
 
   const heroImg = PlaceHolderImages.find(img => img.id === "bioaqua-hero")?.imageUrl;
   const showcaseImg = PlaceHolderImages.find(img => img.id === "bioaqua-showcase")?.imageUrl;
-  const resultsImg = PlaceHolderImages.find(img => img.id === "bioaqua-results")?.imageUrl;
 
   return (
     <div className="min-h-screen flex flex-col bg-background pb-24 font-body">
       <TopMarquee />
       
       <main className="flex-1">
-        {/* Custom Hero for Bioaqua */}
+        {/* Hero Section - Impacto Visual Inmediato */}
         <section className="bg-white border-b overflow-hidden">
           <div className="px-1 pt-1 cursor-pointer" onClick={openPopup}>
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-lg border-2 border-primary/10">
@@ -74,38 +70,48 @@ export default function BioaquaPage() {
           </div>
           
           <div className="p-6 text-center space-y-4">
-            <h1 className="text-3xl font-black text-foreground uppercase leading-none tracking-tighter">
+            <div className="flex justify-center gap-1 mb-2">
+              {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-primary text-primary" />)}
+              <span className="text-xs font-bold text-muted-foreground ml-2">(+2,400 reseñas)</span>
+            </div>
+            <h1 className="text-4xl font-black text-foreground uppercase leading-none tracking-tighter">
               CREMA V7 <span className="text-primary italic">BIOAQUA</span>
             </h1>
-            <p className="text-sm font-bold text-muted-foreground uppercase tracking-[0.2em]">
-              7 Vitaminas • Hidratación • Efecto Aclarante
+            <p className="text-sm font-bold text-muted-foreground uppercase tracking-[0.2em] bg-secondary/30 py-2 rounded-full">
+              7 Vitaminas • Tono Parejo • Hidratación
             </p>
-            <div className="flex justify-center gap-1">
-              {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-primary text-primary" />)}
-            </div>
           </div>
         </section>
 
-        {/* Benefits Section */}
-        <section className="py-8 bg-secondary/10">
+        {/* Alerta de Urgencia */}
+        <div className="bg-red-50 border-y border-red-100 p-4 flex items-center gap-3">
+          <Zap className="h-6 w-6 text-accent fill-accent animate-pulse" />
+          <p className="text-[12px] font-black text-accent uppercase leading-tight">
+            ¡ALERTA! Quedan menos de 15 unidades en stock para envío hoy mismo a todo Ecuador.
+          </p>
+        </div>
+
+        {/* Beneficios Destacados */}
+        <section className="py-8 bg-white">
           <div className="container px-4 space-y-6">
-            <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-primary/5 space-y-4">
-              <h2 className="text-xl font-black text-center uppercase tracking-tight">7 Beneficios en 1 Sola Crema</h2>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-black text-center uppercase tracking-tight leading-none">
+                ¿POR QUÉ ES <span className="text-primary">VIRAL EN TIKTOK?</span>
+              </h2>
               <div className="grid grid-cols-1 gap-3">
                 {[
-                  { t: "Hidratación Instantánea", d: "Piel suave y fresca todo el día." },
-                  { t: "Efecto Tono Parejo", d: "Aclara visualmente manchas y pecas." },
-                  { t: "Nutrición Multivitamínica", d: "Vitaminas A, B12, C, E, F y H." },
-                  { t: "Control de Grasa", d: "Adiós al brillo facial molesto." },
-                  { t: "Base de Maquillaje", d: "Prepara tu piel para un acabado perfecto." },
-                  { t: "Textura Ligera", d: "No deja sensación grasosa ni pegajosa." },
-                  { t: "Poros Invisibles", d: "Minimiza la apariencia de poros abiertos." }
+                  { t: "ACLARA AL INSTANTE", d: "Efecto blanqueador natural y parejo desde la primera aplicación." },
+                  { t: "PIEL DE PORCELANA", d: "Minimiza poros y cubre imperfecciones sin pesadez." },
+                  { t: "NUTRICIÓN VITAMÍNICA", d: "Enriquecida con Vitaminas A, B12, C, E, F y H." },
+                  { t: "CONTROL DE BRILLO", d: "Acabado mate y sedoso, ideal para el clima de Ecuador." }
                 ].map((b, i) => (
-                  <div key={i} className="flex gap-4 items-start p-3 bg-white rounded-xl border border-secondary">
-                    <CheckCircle2 className="h-6 w-6 text-primary shrink-0" />
+                  <div key={i} className="flex gap-4 items-start p-4 bg-secondary/20 rounded-2xl border border-secondary transition-transform active:scale-95 cursor-pointer" onClick={openPopup}>
+                    <div className="h-10 w-10 bg-primary rounded-xl flex items-center justify-center shrink-0 shadow-sm">
+                      <CheckCircle2 className="h-6 w-6 text-white" />
+                    </div>
                     <div>
                       <p className="font-black text-sm uppercase leading-tight">{b.t}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{b.d}</p>
+                      <p className="text-xs text-muted-foreground mt-1 font-medium">{b.d}</p>
                     </div>
                   </div>
                 ))}
@@ -114,53 +120,69 @@ export default function BioaquaPage() {
           </div>
         </section>
 
-        {/* Showcase Bioaqua */}
-        <section className="py-8 bg-white">
-          <div className="px-2 cursor-pointer" onClick={openPopup}>
-             <div className="relative aspect-video w-full overflow-hidden rounded-[2rem] shadow-xl">
+        {/* Visual de Textura */}
+        <section className="py-8 bg-secondary/10">
+          <div className="px-4 text-center space-y-4">
+             <div className="relative aspect-video w-full overflow-hidden rounded-[2rem] shadow-2xl border-4 border-white cursor-pointer" onClick={openPopup}>
                 <Image 
                   src={showcaseImg || "https://picsum.photos/seed/bio2/800/450"} 
                   alt="Textura Bioaqua"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                  <p className="text-white font-black text-xl uppercase italic">"Textura tipo yogurt que tu piel amará"</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                  <p className="text-white font-black text-2xl uppercase italic leading-none">Textura tipo Yogurt</p>
+                  <p className="text-white/80 text-xs font-bold uppercase tracking-widest mt-2">Absorción inmediata sin grasa</p>
                 </div>
              </div>
           </div>
         </section>
 
-        {/* Testimonials Special */}
+        {/* Testimonios */}
         <Testimonials />
 
-        {/* CTA Bottom Section */}
-        <section className="py-12 px-6 text-center space-y-6 bg-primary text-white">
-          <Sparkles className="h-12 w-12 mx-auto animate-pulse" />
-          <h2 className="text-3xl font-black uppercase tracking-tighter leading-none">
-            ¿LISTA PARA UNA PIEL DE PORCELANA?
-          </h2>
-          <p className="text-sm font-medium opacity-90 uppercase tracking-widest">
-            Envíos gratis y pago contra entrega en todo el país
-          </p>
-          <Button 
-            onClick={openPopup}
-            size="lg" 
-            className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-2xl rounded-2xl animate-heartbeat"
-          >
-            <ShoppingCart className="h-6 w-6" />
-            ¡COMPRAR CON DESCUENTO!
-          </Button>
+        {/* Garantías */}
+        <section className="py-12 bg-white">
+          <div className="container px-4 text-center space-y-8">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 bg-green-50 rounded-2xl border border-green-100 flex flex-col items-center gap-2">
+                <ShieldCheck className="h-8 w-8 text-green-600" />
+                <p className="text-[10px] font-black uppercase">100% Original</p>
+              </div>
+              <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100 flex flex-col items-center gap-2">
+                <ShoppingCart className="h-8 w-8 text-blue-600" />
+                <p className="text-[10px] font-black uppercase">Pagas al Recibir</p>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <h2 className="text-3xl font-black uppercase tracking-tighter leading-none">
+                ¿LISTA PARA LUCIR <br /><span className="text-primary italic">UNA PIEL RADIANTE?</span>
+              </h2>
+              <Button 
+                onClick={openPopup}
+                size="lg" 
+                className="w-full h-20 text-2xl font-black bg-accent hover:bg-accent/90 shadow-[0_10px_40px_rgba(239,68,68,0.4)] rounded-2xl animate-heartbeat"
+              >
+                <ShoppingCart className="h-8 w-8 mr-2" />
+                ¡COMPRAR CON DESCUENTO!
+              </Button>
+              <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
+                Envíos gratis a todo el Ecuador 🇪🇨
+              </p>
+            </div>
+          </div>
         </section>
       </main>
       
+      {/* Botón Flotante Pegajoso */}
       <div className="sticky-cta">
         <Button 
           onClick={openPopup}
           size="lg" 
           className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-[0_10px_30px_rgba(239,68,68,0.4)] rounded-2xl animate-heartbeat"
         >
-          <ShoppingCart className="h-6 w-6" />
+          <ShoppingCart className="h-6 w-6 mr-2" />
           ¡COMPRAR AHORA!
         </Button>
       </div>
