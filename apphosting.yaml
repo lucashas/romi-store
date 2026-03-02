@@ -6,7 +6,7 @@ runConfig:
   # Memoria recomendada para Next.js con Genkit
   memory: 512MiB
 env:
-  - variable: GOOGLE_GENAI_API_KEY
+  - variable: MY_GEMINI_KEY
     availability:
       - BUILD
       - RUNTIME
