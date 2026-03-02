@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2, Phone } from "lucide-react";
+import { ShoppingCart, Package, Truck, AlertTriangle, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
