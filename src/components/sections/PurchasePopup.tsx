@@ -90,7 +90,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validar campos indispensables
     if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
       toast({
         variant: "destructive",
@@ -127,7 +126,6 @@ export function PurchasePopup({ open, onOpenChange, products }: PurchasePopupPro
     addDoc(leadsRef, orderData)
       .then(() => {
         setLoading(false);
-        // Redirección profesional a la página de Gracias
         router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}`);
       })
       .catch((err) => {
