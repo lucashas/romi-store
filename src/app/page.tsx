@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -16,6 +17,7 @@ import { ShoppingCart } from "lucide-react";
 /**
  * 🛠️ PANEL DE CONTROL DE PRODUCTOS (CHECKOUT)
  * Versión de Seguridad: 15.1.9 - Memoria: 2GB
+ * Despliegue Final Forzado para Ecuador
  */
 const CUSTOM_PRODUCTS: Product[] = [
   {
