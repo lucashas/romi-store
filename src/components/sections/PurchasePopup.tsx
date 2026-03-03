@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -26,13 +27,12 @@ export interface Product {
   description: string;
 }
 
-// Mapeo exacto solicitado por Stalin con IDs consistentes
 const GIFTS = [
   { id: "gift_salicilico", name: "Ácido Salicílico The Ordinary", img: "https://imgur.com/OfmNXS4.png", desc: "Acné y manchas" },
-  { id: "gift_hialuronico", name: "Ácido Hialurónico The Ordinary", img: "https://imgur.com/I5qe7G7.png", desc: "Hidratación profunda" },
-  { id: "gift_capilar", name: "Multipeptido Capilar The Ordinary", img: "https://imgur.com/0C9znXt.png", desc: "Fortalece y nutre el cabello" },
   { id: "gift_base", name: "Base Bioaqua", img: "https://imgur.com/pm0vI4d.png", desc: "Acabado perfecto y natural" },
-  { id: "gift_cejas", name: "Kit x3 Alargadores de Cejas", img: "https://imgur.com/1BJoaQw.png", desc: "Mirada más intensa y definida" }
+  { id: "gift_cejas", name: "Kit x3 Alargadores de Cejas", img: "https://imgur.com/1BJoaQw.png", desc: "Mirada más intensa y definida" },
+  { id: "gift_hialuronico", name: "Ácido Hialurónico The Ordinary", img: "https://imgur.com/I5qe7G7.png", desc: "Hidratación profunda" },
+  { id: "gift_capilar", name: "Multipeptido Capilar The Ordinary", img: "https://imgur.com/0C9znXt.png", desc: "Fortalece y nutre el cabello" }
 ];
 
 const ecuadorData: Record<string, string[]> = {
@@ -79,8 +79,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const [whatsapp, setWhatsapp] = useState<string>("");
   const [selectedProduct, setSelectedProduct] = useState("");
   const [selectedGift, setSelectedGift] = useState("");
-  
-  // Upsell State
   const [wantsUpsell, setWantsUpsell] = useState(false);
   const [selectedUpsellProduct, setSelectedUpsellProduct] = useState("");
   
@@ -101,18 +99,18 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
-      setSelectedProduct(products[0].id);
+      setSelectedProduct(products[1]?.id || products[0].id); // Default a la oferta de 2 que tiene regalo
     }
-    if (open && !selectedGift) {
+  }, [open, products, selectedProduct]);
+
+  // Si cambia a producto 1 (sin regalo), reseteamos el regalo
+  useEffect(() => {
+    if (selectedProduct === "bioaqua_v7_1") {
+      setSelectedGift("");
+    } else if (selectedProduct === "bioaqua_v7_2" && !selectedGift) {
       setSelectedGift(GIFTS[0].id);
     }
-  }, [open, products, selectedProduct, selectedGift]);
-
-  useEffect(() => {
-    if (selectedGift === selectedUpsellProduct) {
-      setSelectedUpsellProduct("");
-    }
-  }, [selectedGift, selectedUpsellProduct]);
+  }, [selectedProduct, selectedGift]);
 
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? ecuadorData[provincia].sort() : [];
@@ -127,6 +125,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const gift = useMemo(() => GIFTS.find(g => g.id === selectedGift), [selectedGift]);
   const upsellProduct = useMemo(() => GIFTS.find(g => g.id === selectedUpsellProduct), [selectedUpsellProduct]);
 
+  const hasGift = selectedProduct === "bioaqua_v7_2";
+
   const totalPrice = useMemo(() => {
     return (product?.price || 0) + (wantsUpsell && selectedUpsellProduct ? 8 : 0);
   }, [product, wantsUpsell, selectedUpsellProduct]);
@@ -134,37 +134,33 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad || !selectedGift) {
-      toast({
-        variant: "destructive",
-        title: "DATOS FALTANTES",
-        description: "Por favor complete todos los campos obligatorios.",
-      });
+    if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
+      toast({ variant: "destructive", title: "DATOS FALTANTES", description: "Por favor complete todos los campos obligatorios." });
+      return;
+    }
+
+    if (hasGift && !selectedGift) {
+      toast({ variant: "destructive", title: "ELIGE TU REGALO", description: "Esta oferta incluye un regalo, por favor selecciónalo." });
       return;
     }
 
     if (wantsUpsell && !selectedUpsellProduct) {
-      toast({
-        variant: "destructive",
-        title: "ELIGE PRODUCTO EXTRA",
-        description: "Has marcado que quieres un producto adicional, por favor selecciónalo.",
-      });
+      toast({ variant: "destructive", title: "ELIGE PRODUCTO EXTRA", description: "Selecciona el producto adicional de $8." });
       return;
     }
 
-    if (!product || !gift) return;
-
     setLoading(true);
 
+    const giftMsg = hasGift && gift ? ` | REGALO: ${gift.name}` : " | SIN REGALO";
     const upsellMsg = wantsUpsell && upsellProduct ? ` | EXTRA (+8$): ${upsellProduct.name}` : "";
 
     const orderData = {
       name: `${nombre.trim()} ${apellido.trim()}`,
       email: `${whatsapp}@romistore.com`, 
       phoneNumber: whatsapp,
-      message: `PRODUCTO: ${product.name} | REGALO: ${gift.name}${upsellMsg} | TOTAL: $${totalPrice.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
+      message: `PRODUCTO: ${product?.name}${giftMsg}${upsellMsg} | TOTAL: $${totalPrice.toFixed(2)} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
-      landingPageContentId: pathname.replace("/", "") || "principal"
+      landingPageContentId: pathname.replace("/", "") || "bioaqua"
     };
 
     try {
@@ -172,22 +168,18 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
-      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product.name)}&regalo=${encodeURIComponent(gift.name)}&total=${totalPrice}&back=${encodeURIComponent(pathname)}`);
+      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&regalo=${encodeURIComponent(gift?.name || "Sin regalo")}&total=${totalPrice}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);
       errorEmitter.emit("permission-error", new FirestorePermissionError({
-        path: "leadSubmissions",
-        operation: "create",
-        requestResourceData: orderData
+        path: "leadSubmissions", operation: "create", requestResourceData: orderData
       }));
     }
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent 
-        className="w-[95vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]"
-      >
+      <DialogContent className="w-[95vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]">
         <DialogHeader className="sr-only">
           <DialogTitle>Formulario de Compra</DialogTitle>
           <DialogDescription>Ingresa tus datos para registrar tu pedido pago contra entrega.</DialogDescription>
@@ -198,116 +190,93 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             <h2 className="text-[20px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
             </h2>
-            <div className="mt-5 flex justify-center">
-              <div className="relative h-14 w-full max-w-[300px]">
-                <Image 
-                  src="https://i.imgur.com/Jh61uYJ.png" 
-                  alt="Garantía de Confianza" 
-                  fill
-                  className="object-contain brightness-0 invert"
-                  sizes="300px"
-                  priority
-                  unoptimized
-                />
-              </div>
-            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="p-5 space-y-8 bg-white pb-10">
-            {/* PRODUCTO PRINCIPAL */}
+            {/* SELECCIÓN DE PRODUCTO */}
             <div className="space-y-4">
               <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
                 <Package className="h-6 w-6" />
-                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">TU PRODUCTO</h3>
+                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">ELIGE TU OFERTA</h3>
               </div>
               
-              {product && (
-                <div className={`flex items-center gap-4 p-5 rounded-3xl border-2 ${colors.border} ${colors.light} shadow-md`}>
-                  <div className="h-16 w-16 rounded-2xl overflow-hidden bg-white border border-slate-100 shrink-0 relative">
-                    <Image src={product.image} alt={product.name} fill className="object-cover" sizes="64px" unoptimized />
-                  </div>
-                  <div className="flex-1 min-w-0 text-left">
-                    <p className="font-black text-[15px] text-slate-900 uppercase leading-tight">{product.name}</p>
-                    <p className="text-[11px] text-slate-400 font-bold mt-1 uppercase tracking-tight">{product.description}</p>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <p className={`font-black ${colors.text} text-[24px]`}>${product.price.toFixed(0)}</p>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* SELECCIÓN DE REGALO */}
-            <div className="space-y-4">
-              <div className={`flex items-center gap-2 text-pink-600 border-b-2 border-pink-100 pb-3`}>
-                <Gift className="h-6 w-6" />
-                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">ESCOGE SOLO UN REGALO</h3>
-              </div>
-              
-              <RadioGroup value={selectedGift} onValueChange={setSelectedGift} className="grid gap-3">
-                {GIFTS.map((g, index) => (
+              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
+                {products.map((p) => (
                   <Label
-                    key={g.id}
-                    htmlFor={g.id}
-                    className={`flex items-center gap-3 p-3.5 rounded-2xl border-2 transition-all cursor-pointer relative w-full ${
-                      selectedGift === g.id 
-                      ? "border-pink-500 bg-pink-50 shadow-sm" 
-                      : "border-slate-100 bg-white hover:border-slate-200"
+                    key={p.id}
+                    htmlFor={p.id}
+                    className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all cursor-pointer ${
+                      selectedProduct === p.id ? `border-orange-500 bg-orange-50` : "border-slate-100 bg-white"
                     }`}
                   >
-                    <div className="flex items-center gap-3 w-full">
-                      <RadioGroupItem value={g.id} id={g.id} className="shrink-0 h-5 w-5 text-pink-600" />
-                      <div className="h-12 w-12 rounded-xl overflow-hidden bg-white border border-slate-100 shrink-0 relative">
-                        <Image src={g.img} alt={g.name} fill className="object-cover" sizes="48px" unoptimized />
-                      </div>
-                      <div className="flex-1 min-w-0 text-left">
-                        <p className="font-black text-[12px] text-slate-900 uppercase leading-tight">{g.name}</p>
-                        <p className="text-[10px] text-slate-400 font-bold uppercase">{g.desc}</p>
-                        {g.id === "gift_base" && (
-                          <span className="inline-block mt-1 bg-pink-100 text-pink-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase">MÁS PEDIDO</span>
-                        )}
-                      </div>
-                      <div className="text-right shrink-0">
-                        <p className="font-black text-green-600 text-[14px] uppercase italic">GRATIS</p>
-                      </div>
+                    <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5 text-orange-600" />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-black text-[14px] text-slate-900 uppercase leading-tight">{p.name}</p>
+                      <p className="text-[10px] text-slate-400 font-bold uppercase">{p.description}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-black text-orange-600 text-[20px] leading-none">${p.price.toFixed(0)}</p>
                     </div>
                   </Label>
                 ))}
               </RadioGroup>
             </div>
 
+            {/* SELECCIÓN DE REGALO (Solo si elige pack de 2) */}
+            {hasGift && (
+              <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
+                <div className={`flex items-center gap-2 text-pink-600 border-b-2 border-pink-100 pb-3`}>
+                  <Gift className="h-6 w-6" />
+                  <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">ESCOGE TU REGALO GRATIS</h3>
+                </div>
+                
+                <RadioGroup value={selectedGift} onValueChange={setSelectedGift} className="grid gap-3">
+                  {GIFTS.map((g) => (
+                    <Label
+                      key={g.id}
+                      htmlFor={g.id}
+                      className={`flex items-center gap-3 p-3 rounded-2xl border-2 transition-all cursor-pointer ${
+                        selectedGift === g.id ? "border-pink-500 bg-pink-50" : "border-slate-100 bg-white"
+                      }`}
+                    >
+                      <RadioGroupItem value={g.id} id={g.id} className="h-4 w-4 text-pink-600" />
+                      <div className="h-10 w-10 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
+                        <Image src={g.img} alt={g.name} fill className="object-cover" sizes="40px" unoptimized />
+                      </div>
+                      <p className="font-black text-[11px] text-slate-900 uppercase flex-1 leading-tight">{g.name}</p>
+                      <p className="font-black text-green-600 text-[12px] uppercase">GRATIS</p>
+                    </Label>
+                  ))}
+                </RadioGroup>
+              </div>
+            )}
+
             {/* OFERTA EXTRA (UPSELL) */}
             <div className="space-y-4">
               <div className="bg-slate-900 p-6 rounded-[2.5rem] border-2 border-orange-500 shadow-xl space-y-4">
                 <div className="flex items-center gap-3">
                   <Checkbox 
-                    id="upsell" 
-                    checked={wantsUpsell} 
-                    onCheckedChange={(checked) => setWantsUpsell(!!checked)}
+                    id="upsell" checked={wantsUpsell} onCheckedChange={(checked) => setWantsUpsell(!!checked)}
                     className="h-6 w-6 border-2 border-orange-500 data-[state=checked]:bg-orange-500"
                   />
                   <Label htmlFor="upsell" className="cursor-pointer">
                     <p className="text-orange-500 font-black text-[11px] uppercase tracking-widest animate-pulse">💥 OFERTA EXTRA EXCLUSIVA</p>
                     <p className="text-white font-black text-[14px] uppercase leading-tight">¿QUIERES OTRO PRODUCTO ADICIONAL?</p>
-                    <p className="text-white font-black text-[16px] uppercase italic mt-1 text-orange-500">LLÉVALO POR SOLO +$8</p>
+                    <p className="text-white font-black text-[16px] uppercase italic mt-1 text-orange-500">POR SOLO +$8</p>
                   </Label>
                 </div>
 
                 {wantsUpsell && (
                   <div className="pt-4 border-t border-white/10 space-y-3">
-                    <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest text-center">SELECCIONA TU PRODUCTO EXTRA:</p>
                     <RadioGroup value={selectedUpsellProduct} onValueChange={setSelectedUpsellProduct} className="grid gap-2">
                       {GIFTS.filter(g => g.id !== selectedGift).map((g) => (
                         <Label
-                          key={`upsell_${g.id}`}
-                          htmlFor={`upsell_${g.id}`}
-                          className={`flex items-center gap-3 p-3 rounded-xl border-2 transition-all cursor-pointer relative ${
-                            selectedUpsellProduct === g.id 
-                            ? "border-orange-500 bg-orange-500/10" 
-                            : "border-white/5 bg-white/5"
+                          key={`upsell_${g.id}`} htmlFor={`upsell_${g.id}`}
+                          className={`flex items-center gap-3 p-3 rounded-xl border-2 transition-all cursor-pointer ${
+                            selectedUpsellProduct === g.id ? "border-orange-500 bg-orange-500/10" : "border-white/5 bg-white/5"
                           }`}
                         >
-                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className="shrink-0 h-4 w-4 border-orange-500 text-orange-500" />
+                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className="h-4 w-4 border-orange-500 text-orange-500" />
                           <div className="h-10 w-10 rounded-lg overflow-hidden shrink-0 relative">
                             <Image src={g.img} alt={g.name} fill className="object-cover" sizes="40px" unoptimized />
                           </div>
@@ -316,7 +285,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                         </Label>
                       ))}
                     </RadioGroup>
-                    <p className="text-[9px] text-slate-500 font-bold uppercase text-center mt-2 italic">Válido solo al confirmar tu pedido hoy</p>
                   </div>
                 )}
               </div>
@@ -330,124 +298,55 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2 text-left">
-                  <Label htmlFor="nombre" className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Nombre</Label>
-                  <Input 
-                    id="nombre" placeholder="Juan" required value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
-                    className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 focus:border-orange-500 transition-all font-bold" 
-                  />
-                </div>
-                <div className="space-y-2 text-left">
-                  <Label htmlFor="apellido" className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Apellido</Label>
-                  <Input 
-                    id="apellido" placeholder="Pérez" required value={apellido}
-                    onChange={(e) => setApellido(e.target.value)}
-                    className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 focus:border-orange-500 transition-all font-bold" 
-                  />
-                </div>
+                <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold" />
+                <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold" />
               </div>
 
-              <div className="space-y-2 text-left">
-                <Label htmlFor="whatsapp" className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Número de WhatsApp</Label>
-                <Input 
-                  id="whatsapp" type="tel" placeholder="0999999999" required value={whatsapp}
-                  onChange={handleWhatsappChange}
-                  className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 focus:border-orange-500 transition-all font-bold" 
-                />
-              </div>
-
-              <div className="space-y-2 text-left">
-                <Label htmlFor="direccion" className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Dirección Exacta</Label>
-                <Input 
-                  id="direccion" placeholder="Calle principal, secundaria y referencia" required value={direccion}
-                  onChange={(e) => setDireccion(e.target.value)}
-                  className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 focus:border-orange-500 transition-all font-bold" 
-                />
-              </div>
+              <Input placeholder="WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold" />
+              <Input placeholder="Dirección Exacta" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold" />
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2 text-left">
-                  <Label className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Provincia</Label>
-                  <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold">
-                      <SelectValue placeholder="Elegir" />
-                    </SelectTrigger>
-                    <SelectContent className="max-h-[250px]">
-                      {Object.keys(ecuadorData).sort().map((p) => (
-                        <SelectItem key={p} value={p}>{p}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2 text-left">
-                  <Label className="text-[12px] font-black uppercase text-slate-400 tracking-widest">Ciudad</Label>
-                  <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold">
-                      <SelectValue placeholder={provincia ? "Elegir" : "---"} />
-                    </SelectTrigger>
-                    <SelectContent className="max-h-[250px]">
-                      {ciudadesDisponibles.map((c) => (
-                        <SelectItem key={c} value={c}>{c}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
+                  <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold"><SelectValue placeholder="Provincia" /></SelectTrigger>
+                  <SelectContent className="max-h-[200px]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
+                </Select>
+                <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
+                  <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold"><SelectValue placeholder="Ciudad" /></SelectTrigger>
+                  <SelectContent className="max-h-[200px]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
+                </Select>
               </div>
             </div>
 
             {/* RESUMEN DE TOTAL */}
             <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">SUBTOTAL: 1 CREMA V7 BIOAQUA</span>
-                <span className="text-white font-black">$30.00</span>
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">SUBTOTAL: {product?.name}</span>
+                <span className="text-white font-black">${product?.price.toFixed(2)}</span>
               </div>
               
-              <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">Regalo:</span>
-                  <span className="text-pink-400 text-[10px] font-black uppercase truncate max-w-[150px]">{gift?.name}</span>
+              {hasGift && (
+                <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">REGALO SELECCIONADO</span>
+                  <span className="text-green-400 font-black text-[12px] uppercase">GRATIS</span>
                 </div>
-                <span className="text-green-400 font-black text-[12px] uppercase">GRATIS</span>
-              </div>
+              )}
 
               {wantsUpsell && upsellProduct && (
-                <div className="flex justify-between items-center border-b border-white/10 pb-3 animate-in slide-in-from-top-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">EXTRA:</span>
-                    <span className="text-orange-400 text-[10px] font-black uppercase truncate max-w-[150px]">{upsellProduct.name}</span>
-                  </div>
-                  <span className="text-orange-500 font-black text-[12px] uppercase">+$8.00</span>
+                <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">PRODUCTO EXTRA</span>
+                  <span className="text-orange-500 font-black text-[12px]">+$8.00</span>
                 </div>
               )}
 
               <div className="flex justify-between items-center pt-2">
                 <span className="text-white text-[16px] font-black uppercase tracking-tighter">TOTAL A PAGAR</span>
-                <div className="text-right">
-                  <p className="text-orange-500 text-[32px] font-black leading-none">${totalPrice.toFixed(2)}</p>
-                  <p className="text-white/40 text-[9px] font-bold uppercase mt-1">Pago Contra Entrega</p>
-                </div>
+                <p className="text-orange-500 text-[32px] font-black leading-none">${totalPrice.toFixed(2)}</p>
               </div>
             </div>
 
-            <Button 
-              type="submit" 
-              disabled={loading} 
-              className={`w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat mt-4 border-4 border-white shadow-xl ${colors.button}`}
-            >
-              {loading ? "PROCESANDO..." : (
-                <>
-                  <ShoppingCart className="mr-3 h-7 w-7" />
-                  CONFIRMAR PEDIDO
-                </>
-              )}
+            <Button type="submit" disabled={loading} className={`w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat mt-4 border-4 border-white shadow-xl ${colors.button}`}>
+              {loading ? "PROCESANDO..." : "CONFIRMAR PEDIDO"}
             </Button>
-
-            <div className="flex justify-center items-center gap-8 pt-4 pb-4 opacity-40">
-              <ShieldCheck className="h-7 w-7" />
-              <Lock className="h-7 w-7" />
-              <Truck className="h-7 w-7" />
-            </div>
           </form>
         </div>
       </DialogContent>

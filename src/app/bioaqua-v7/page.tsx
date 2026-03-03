@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -13,16 +14,23 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const BIOAQUA_PRODUCTS: Product[] = [
   {
-    id: "bioaqua_v7_unica",
+    id: "bioaqua_v7_1",
     name: "1 Crema V7 Bioaqua",
-    price: 30.00,
+    price: 16.00,
+    image: "https://i.imgur.com/P4G3s0w.png",
+    badge: "BÁSICO",
+    description: "Efecto aclarante (Sin regalo)"
+  },
+  {
+    id: "bioaqua_v7_2",
+    name: "2 Cremas V7 Bioaqua",
+    price: 26.00,
     image: "https://i.imgur.com/P4G3s0w.png",
     badge: "OFERTA HOY",
     description: "Efecto aclarante instantáneo + Regalo a elegir"
   }
 ];
 
-// Mapeo exacto verificado por Stalin
 const GIFTS = [
   {
     name: "Ácido Salicílico The Ordinary",
@@ -136,7 +144,7 @@ export default function BioaquaPage() {
                 💎 🎁 ELIGE TU <br /><span className="text-pink-600 italic">REGALO GRATIS</span>
               </h2>
               <p className="text-[12px] font-black text-pink-500 uppercase tracking-[0.2em]">
-                ✨ SOLO POR EL DÍA DE LA MUJER ✨
+                ✨ SOLO AL LLEVAR TU PACK DE 2 UNIDADES ✨
               </p>
             </div>
 
