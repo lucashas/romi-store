@@ -8,7 +8,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck, Gift, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck, Gift } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -174,7 +174,7 @@ export default function BioaquaPage() {
                     {gift.tag}
                   </div>
                   <div className="h-24 w-24 rounded-2xl overflow-hidden bg-slate-50 border border-pink-50 shrink-0 relative">
-                    <img src={gift.img} alt={gift.name} className="w-full h-full object-cover" />
+                    <Image src={gift.img} alt={gift.name} fill className="object-cover" />
                   </div>
                   <div className="text-left flex-1 min-w-0 pr-10">
                     <p className="text-[13px] font-black text-slate-900 uppercase leading-tight">{gift.name}</p>
