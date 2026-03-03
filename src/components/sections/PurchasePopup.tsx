@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, ShieldCheck, Lock, Gift, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Package, Truck, Gift, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -99,16 +99,16 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
-      setSelectedProduct(products[1]?.id || products[0].id); // Default a la oferta de 2 que tiene regalo
+      setSelectedProduct(products[1]?.id || products[0].id);
     }
   }, [open, products, selectedProduct]);
 
-  // Si cambia a producto 1 (sin regalo), reseteamos el regalo
+  // Lógica de reset de regalos según el producto
   useEffect(() => {
     if (selectedProduct === "bioaqua_v7_1") {
-      setSelectedGift("");
+      setSelectedGift(""); // No hay regalo para la opción de 1 crema
     } else if (selectedProduct === "bioaqua_v7_2" && !selectedGift) {
-      setSelectedGift(GIFTS[0].id);
+      setSelectedGift(GIFTS[0].id); // Por defecto el primero si elige la opción de 2 cremas
     }
   }, [selectedProduct, selectedGift]);
 
@@ -125,7 +125,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const gift = useMemo(() => GIFTS.find(g => g.id === selectedGift), [selectedGift]);
   const upsellProduct = useMemo(() => GIFTS.find(g => g.id === selectedUpsellProduct), [selectedUpsellProduct]);
 
-  const hasGift = selectedProduct === "bioaqua_v7_2";
+  const hasGiftEnabled = selectedProduct === "bioaqua_v7_2";
 
   const totalPrice = useMemo(() => {
     return (product?.price || 0) + (wantsUpsell && selectedUpsellProduct ? 8 : 0);
@@ -139,7 +139,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       return;
     }
 
-    if (hasGift && !selectedGift) {
+    if (hasGiftEnabled && !selectedGift) {
       toast({ variant: "destructive", title: "ELIGE TU REGALO", description: "Esta oferta incluye un regalo, por favor selecciónalo." });
       return;
     }
@@ -151,7 +151,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
     setLoading(true);
 
-    const giftMsg = hasGift && gift ? ` | REGALO: ${gift.name}` : " | SIN REGALO";
+    const giftMsg = hasGiftEnabled && gift ? ` | REGALO: ${gift.name}` : " | SIN REGALO";
     const upsellMsg = wantsUpsell && upsellProduct ? ` | EXTRA (+8$): ${upsellProduct.name}` : "";
 
     const orderData = {
@@ -179,20 +179,20 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[95vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]">
+      <DialogContent className="w-[95vw] max-w-[480px] p-0 overflow-x-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]">
         <DialogHeader className="sr-only">
           <DialogTitle>Formulario de Compra</DialogTitle>
           <DialogDescription>Ingresa tus datos para registrar tu pedido pago contra entrega.</DialogDescription>
         </DialogHeader>
 
-        <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden">
+        <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden w-full">
           <div className={`${colors.bg} p-8 text-white text-center`}>
             <h2 className="text-[20px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
             </h2>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-5 space-y-8 bg-white pb-10">
+          <form onSubmit={handleSubmit} className="p-5 space-y-8 bg-white pb-10 w-full">
             {/* SELECCIÓN DE PRODUCTO */}
             <div className="space-y-4">
               <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
@@ -222,8 +222,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </RadioGroup>
             </div>
 
-            {/* SELECCIÓN DE REGALO (Solo si elige pack de 2) */}
-            {hasGift && (
+            {/* SELECCIÓN DE REGALO (Condicional) */}
+            {hasGiftEnabled && (
               <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                 <div className={`flex items-center gap-2 text-pink-600 border-b-2 border-pink-100 pb-3`}>
                   <Gift className="h-6 w-6" />
@@ -320,11 +320,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             {/* RESUMEN DE TOTAL */}
             <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">SUBTOTAL: {product?.name}</span>
-                <span className="text-white font-black">${product?.price.toFixed(2)}</span>
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-tight pr-2">SUBTOTAL: {product?.name?.toUpperCase()}</span>
+                <span className="text-white font-black shrink-0">${product?.price.toFixed(2)}</span>
               </div>
               
-              {hasGift && (
+              {hasGiftEnabled && (
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">REGALO SELECCIONADO</span>
                   <span className="text-green-400 font-black text-[12px] uppercase">GRATIS</span>

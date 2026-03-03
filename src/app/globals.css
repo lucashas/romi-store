@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,7 +30,7 @@
 
 @layer base {
   html {
-    @apply overflow-x-hidden scroll-smooth;
+    @apply overflow-x-hidden scroll-smooth w-full;
   }
   * {
     @apply border-border;
@@ -77,5 +78,12 @@
 
 /* Evitar que el modal cree scroll lateral extra */
 [data-radix-popper-content-wrapper] {
-  @apply !z-[100];
+  @apply !z-[100] !w-full max-w-[500px];
+}
+
+/* Fix for mobile horizontal scroll */
+.dialog-content-full {
+    width: 100vw;
+    max-width: 500px;
+    margin: 0 auto;
 }

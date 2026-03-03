@@ -74,15 +74,15 @@ export default function BioaquaPage() {
   const womenDayMessage = "🌸 ¡FELIZ DÍA DE LA MUJER! 🌸 - ✨ REGÁLATE UNA PIEL DE PORCELANA HOY - 📦 PAGO CONTRA ENTREGA EN TODO ECUADOR - ";
 
   return (
-    <div className="min-h-screen flex flex-col bg-white pb-24 font-body">
+    <div className="min-h-screen flex flex-col bg-white pb-24 font-body overflow-x-hidden">
       <TopMarquee 
         text={womenDayMessage} 
         className="bg-orange-600 text-white border-orange-500" 
       />
       
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {/* Banner de Impacto Inmediato */}
-        <section className="bg-white overflow-hidden">
+        <section className="bg-white overflow-hidden w-full">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-xl shadow-lg border-2 border-orange-100">
               <img 
@@ -132,7 +132,7 @@ export default function BioaquaPage() {
         </div>
 
         {/* SECCIÓN DE REGALOS DÍA DE LA MUJER (Informativa) */}
-        <section className="py-12 bg-[#fff5f5] mt-10 border-y border-pink-100">
+        <section className="py-12 bg-[#fff5f5] mt-10 border-y border-pink-100 w-full overflow-hidden">
           <div className="container px-4 text-center space-y-8">
             <div className="space-y-2">
               <div className="flex justify-center mb-4">
@@ -191,7 +191,7 @@ export default function BioaquaPage() {
         </section>
 
         {/* Beneficios Profesionales */}
-        <section className="py-10 bg-white">
+        <section className="py-10 bg-white w-full overflow-hidden">
           <div className="container px-4 space-y-8">
             <h2 className="text-2xl font-black text-center text-slate-900 uppercase tracking-tighter leading-none">
               RESULTADOS DE <span className="text-orange-600 underline decoration-orange-200 underline-offset-4">CLÍNICA EN TU PIEL</span>
@@ -217,7 +217,7 @@ export default function BioaquaPage() {
         </section>
 
         {/* Visual de Calidad */}
-        <section className="py-10 bg-slate-50 rounded-t-[3rem]">
+        <section className="py-10 bg-slate-50 rounded-t-[3rem] w-full overflow-hidden">
           <div className="px-4 text-center space-y-6">
              <div className="relative aspect-[4/5] w-full max-w-[400px] mx-auto overflow-hidden rounded-[3rem] shadow-2xl border-8 border-white cursor-pointer group" onClick={openPopup}>
                 <Image 
@@ -240,7 +240,7 @@ export default function BioaquaPage() {
         <Testimonials />
 
         {/* Garantías Premium */}
-        <section className="py-14 bg-white">
+        <section className="py-14 bg-white w-full overflow-hidden">
           <div className="container px-4 text-center space-y-10">
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 bg-slate-50 rounded-[2.5rem] border border-slate-100 flex flex-col items-center gap-3 shadow-sm">
