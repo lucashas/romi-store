@@ -28,13 +28,16 @@
 }
 
 @layer base {
+  html {
+    @apply overflow-x-hidden scroll-smooth;
+  }
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
-    /* Forzar vista móvil de TikTok Funnel */
-    @apply max-w-[500px] mx-auto shadow-2xl min-h-screen bg-white relative;
+    /* Forzar vista móvil de TikTok Funnel sin scroll lateral */
+    @apply w-full max-w-[500px] mx-auto shadow-2xl min-h-screen bg-white relative overflow-x-hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline font-black tracking-tight uppercase;
@@ -70,4 +73,9 @@
   display: flex;
   width: max-content;
   animation: marquee 25s linear infinite;
+}
+
+/* Evitar que el modal cree scroll lateral extra */
+[data-radix-popper-content-wrapper] {
+  @apply !z-[100];
 }

@@ -26,13 +26,13 @@ export interface Product {
   description: string;
 }
 
-// Mapeo exacto solicitado por Stalin
+// Mapeo exacto solicitado por Stalin con IDs consistentes
 const GIFTS = [
   { id: "gift_salicilico", name: "Ácido Salicílico The Ordinary", img: "https://imgur.com/OfmNXS4.png", desc: "Acné y manchas" },
-  { id: "gift_base", name: "Base Bioaqua", img: "https://imgur.com/pm0vI4d.png", desc: "Acabado perfecto y natural" },
-  { id: "gift_cejas", name: "Kit x3 Alargadores de Cejas", img: "https://imgur.com/1BJoaQw.png", desc: "Mirada más intensa y definida" },
   { id: "gift_hialuronico", name: "Ácido Hialurónico The Ordinary", img: "https://imgur.com/I5qe7G7.png", desc: "Hidratación profunda" },
-  { id: "gift_capilar", name: "Multipeptido Capilar The Ordinary", img: "https://imgur.com/0C9znXt.png", desc: "Fortalece y nutre el cabello" }
+  { id: "gift_capilar", name: "Multipeptido Capilar The Ordinary", img: "https://imgur.com/0C9znXt.png", desc: "Fortalece y nutre el cabello" },
+  { id: "gift_base", name: "Base Bioaqua", img: "https://imgur.com/pm0vI4d.png", desc: "Acabado perfecto y natural" },
+  { id: "gift_cejas", name: "Kit x3 Alargadores de Cejas", img: "https://imgur.com/1BJoaQw.png", desc: "Mirada más intensa y definida" }
 ];
 
 const ecuadorData: Record<string, string[]> = {
@@ -108,7 +108,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     }
   }, [open, products, selectedProduct, selectedGift]);
 
-  // Si el regalo es igual al producto de upsell, reiniciamos el upsell para evitar duplicados
   useEffect(() => {
     if (selectedGift === selectedUpsellProduct) {
       setSelectedUpsellProduct("");
@@ -187,14 +186,14 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="w-[98%] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]"
+        className="w-[95vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] border-none shadow-2xl font-body bg-white mx-auto !translate-x-[-50%] !left-[50%]"
       >
         <DialogHeader className="sr-only">
           <DialogTitle>Formulario de Compra</DialogTitle>
           <DialogDescription>Ingresa tus datos para registrar tu pedido pago contra entrega.</DialogDescription>
         </DialogHeader>
 
-        <div className="max-h-[85vh] overflow-y-auto">
+        <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden">
           <div className={`${colors.bg} p-8 text-white text-center`}>
             <h2 className="text-[20px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
@@ -264,7 +263,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                       <div className="flex-1 min-w-0 text-left">
                         <p className="font-black text-[12px] text-slate-900 uppercase leading-tight">{g.name}</p>
                         <p className="text-[10px] text-slate-400 font-bold uppercase">{g.desc}</p>
-                        {index === 1 && (
+                        {g.id === "gift_base" && (
                           <span className="inline-block mt-1 bg-pink-100 text-pink-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase">MÁS PEDIDO</span>
                         )}
                       </div>
