@@ -8,7 +8,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck, Gift } from "lucide-react";
+import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck, Gift, Trophy } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -138,7 +138,6 @@ export default function BioaquaPage() {
               </p>
             </div>
 
-            {/* Nueva Sección de Imágenes Side-by-Side y Texto Informativo */}
             <div className="grid grid-cols-2 gap-3 mt-6">
               <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-slate-100 bg-slate-50 aspect-square">
                 <img 
@@ -199,6 +198,56 @@ export default function BioaquaPage() {
                   </p>
                 </div>
               </div>
+
+              {/* NUEVA SECCIÓN DE PRECIOS Y PROMOCIONES */}
+              <section className="py-6 space-y-8">
+                <div className="space-y-2">
+                  <h3 className="text-[22px] font-black text-slate-900 text-center uppercase leading-tight tracking-tight">
+                    💎 ELIGE TU <span className="text-orange-600">PROMOCIÓN EXCLUSIVA</span> 💎
+                  </h3>
+                  <p className="text-[12px] font-black text-slate-400 text-center uppercase tracking-widest">⚠️ STOCK LIMITADO EN ECUADOR 🇪🇨</p>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3 px-1">
+                  {/* Tarjeta 1: Pack Básico */}
+                  <div 
+                    onClick={openPopup}
+                    className="bg-white p-5 rounded-[2.5rem] border-2 border-slate-100 shadow-xl flex flex-col items-center text-center space-y-4 relative overflow-hidden cursor-pointer transition-transform active:scale-95"
+                  >
+                    <div className="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full uppercase absolute top-4">BÁSICO</div>
+                    <div className="pt-8 space-y-2">
+                      <p className="text-[15px] font-black text-slate-900 uppercase leading-none">1 Crema V7</p>
+                      <p className="text-[32px] font-black text-slate-900 leading-none">$16</p>
+                      <div className="h-px w-8 bg-slate-200 mx-auto" />
+                      <p className="text-[11px] font-bold text-slate-400 uppercase leading-tight italic">Efecto Aclarante <br />(Sin Regalo)</p>
+                    </div>
+                  </div>
+
+                  {/* Tarjeta 2: Pack Porcelana */}
+                  <div 
+                    onClick={openPopup}
+                    className="bg-orange-50 p-5 rounded-[2.5rem] border-2 border-orange-500 shadow-[0_15px_30px_rgba(249,115,22,0.2)] flex flex-col items-center text-center space-y-4 relative overflow-hidden cursor-pointer animate-in zoom-in duration-500 transition-transform active:scale-95"
+                  >
+                    <div className="bg-orange-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase absolute top-4 animate-pulse">RECOMENDADO</div>
+                    <div className="pt-8 space-y-2">
+                      <p className="text-[15px] font-black text-orange-700 uppercase leading-none">2 Cremas V7</p>
+                      <p className="text-[32px] font-black text-orange-600 leading-none">$26</p>
+                      <div className="h-px w-8 bg-orange-200 mx-auto" />
+                      <p className="text-[11px] font-black text-orange-600 uppercase leading-tight italic">Efecto Porcelana <br />+ REGALO GRATIS</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-slate-50 p-6 rounded-3xl border-2 border-dashed border-slate-200 text-center relative overflow-hidden">
+                  <div className="absolute -top-3 -left-3 bg-orange-600 p-2 rounded-full text-white shadow-lg">
+                    <Trophy className="h-4 w-4" />
+                  </div>
+                  <p className="text-[14px] font-black text-slate-700 uppercase tracking-tight leading-relaxed">
+                    🔥 <span className="text-orange-600 italic">OFERTA EXTRA:</span> Agrega cualquier producto de regalo adicional a tu pedido por solo <br />
+                    <span className="text-[18px] text-orange-600 underline decoration-orange-200 underline-offset-4 decoration-4">+$8 DÓLARES C/U</span>
+                  </p>
+                </div>
+              </section>
             </div>
           </div>
         </section>
