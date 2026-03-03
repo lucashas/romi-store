@@ -47,18 +47,6 @@ const GIFTS = [
     tag: "TOP"
   },
   {
-    name: "Ácido Hialurónico The Ordinary",
-    desc: "Hidratación profunda",
-    img: "https://i.imgur.com/pm0vI4d.png",
-    tag: "TOP"
-  },
-  {
-    name: "Multipeptido Capilar The Ordinary",
-    desc: "Fortalece y nutre el cabello",
-    img: "https://i.imgur.com/1BJoaQw.png",
-    tag: "RECOMENDADO"
-  },
-  {
     name: "Base Bioaqua",
     desc: "Acabado perfecto y natural",
     img: "https://i.imgur.com/I5qe7G7.png",
@@ -68,6 +56,18 @@ const GIFTS = [
     name: "Kit x3 Alargadores de Cejas",
     desc: "Mirada más intensa y definida",
     img: "https://i.imgur.com/0C9znXt.png",
+    tag: "RECOMENDADO"
+  },
+  {
+    name: "Ácido Hialurónico The Ordinary",
+    desc: "Hidratación profunda",
+    img: "https://i.imgur.com/pm0vI4d.png",
+    tag: "TOP"
+  },
+  {
+    name: "Multipeptido Capilar The Ordinary",
+    desc: "Fortalece y nutre el cabello",
+    img: "https://i.imgur.com/1BJoaQw.png",
     tag: "RECOMENDADO"
   }
 ];
