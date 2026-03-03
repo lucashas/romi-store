@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, Gift, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Package, Truck, Gift, CheckCircle2, AlertTriangle } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -322,22 +322,89 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold" />
-                <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold" />
+                <div className="space-y-2">
+                  <Label className="font-black text-[12px] uppercase text-slate-700">Nombre</Label>
+                  <Input 
+                    placeholder="Nombre" 
+                    required 
+                    value={nombre} 
+                    onChange={(e) => setNombre(e.target.value)} 
+                    className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label className="font-black text-[12px] uppercase text-slate-700">Apellido</Label>
+                  <Input 
+                    placeholder="Apellido" 
+                    required 
+                    value={apellido} 
+                    onChange={(e) => setApellido(e.target.value)} 
+                    className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
+                  />
+                </div>
               </div>
 
-              <Input placeholder="WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold" />
-              <Input placeholder="Dirección Exacta" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold" />
+              <div className="space-y-2">
+                <Label className="font-black text-[12px] uppercase text-slate-700">Número de WhatsApp (para notificaciones de envío)</Label>
+                <Input 
+                  placeholder="ingresa tu celular" 
+                  type="tel" 
+                  required 
+                  value={whatsapp} 
+                  onChange={handleWhatsappChange} 
+                  className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label className="font-black text-[12px] uppercase text-slate-700">Dirección Entrega: (2 calles y una referencia para el envío a domicilio)</Label>
+                <Input 
+                  placeholder="calle principal y secundaria referencia domicilio" 
+                  required 
+                  value={direccion} 
+                  onChange={(e) => setDireccion(e.target.value)} 
+                  className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
+                />
+                <p className="text-[11px] text-slate-500 font-medium italic pl-1 leading-tight">
+                  Ejemplo: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, color.. , # casa
+                </p>
+              </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                  <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold"><SelectValue placeholder="Provincia" /></SelectTrigger>
-                  <SelectContent className="max-h-[200px]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
-                </Select>
-                <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                  <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-50 font-bold"><SelectValue placeholder="Ciudad" /></SelectTrigger>
-                  <SelectContent className="max-h-[200px]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
-                </Select>
+                <div className="space-y-2">
+                  <Label className="font-black text-[12px] uppercase text-slate-700">Provincia</Label>
+                  <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
+                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Seleccionar" /></SelectTrigger>
+                    <SelectContent className="max-h-[200px]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label className="font-black text-[12px] uppercase text-slate-700">Ciudad</Label>
+                  <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
+                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Seleccionar" /></SelectTrigger>
+                    <SelectContent className="max-h-[200px]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label className="font-black text-[12px] uppercase text-slate-700">País</Label>
+                <Input 
+                  value="Ecuador" 
+                  readOnly 
+                  className="h-14 rounded-2xl bg-slate-200 border-2 border-slate-200 font-bold text-slate-600" 
+                />
+              </div>
+
+              {/* TARJETA DE ADVERTENCIA */}
+              <div className="bg-orange-50 border-2 border-orange-200 p-6 rounded-[2rem] text-center space-y-2">
+                <div className="flex justify-center">
+                  <AlertTriangle className="h-8 w-8 text-orange-600" />
+                </div>
+                <p className="font-black text-orange-700 text-[14px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</p>
+                <p className="text-[12px] font-bold text-orange-900 leading-relaxed italic">
+                  Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
+                </p>
               </div>
             </div>
 
