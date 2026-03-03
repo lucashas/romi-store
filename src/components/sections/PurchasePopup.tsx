@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -9,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, ShieldCheck, Lock } from "lucide-react";
+import { ShoppingCart, Package, Truck, ShieldCheck, Lock, Gift, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -25,6 +24,14 @@ export interface Product {
   badge: string | null;
   description: string;
 }
+
+const GIFTS = [
+  { id: "gift_salicilico", name: "Ácido Salicílico The Ordinary", img: "https://imgur.com/OfmNXS4.png", desc: "Acné y manchas" },
+  { id: "gift_base", name: "Base Bioaqua", img: "https://imgur.com/pm0vI4d.png", desc: "Acabado natural" },
+  { id: "gift_cejas", name: "Kit x3 Alargadores de Cejas", img: "https://imgur.com/1BJoaQw.png", desc: "Mirada intensa" },
+  { id: "gift_hialuronico", name: "Ácido Hialurónico The Ordinary", img: "https://imgur.com/I5qe7G7.png", desc: "Hidratación" },
+  { id: "gift_capilar", name: "Multipeptido Capilar The Ordinary", img: "https://imgur.com/0C9znXt.png", desc: "Fortalecedor" }
+];
 
 const ecuadorData: Record<string, string[]> = {
   "AZUAY": ["CUENCA", "GUALACEO", "PAUTE", "CAMILO PONCE ENRIQUEZ", "SIGSIG", "CHORDELEG", "GIRON", "SANTA ISABEL", "NABON", "PUCARA", "OÑA", "SEVILLA DE ORO", "GUACHAPALA", "EL PAN"],
@@ -69,6 +76,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const [ciudad, setCiudad] = useState<string>("");
   const [whatsapp, setWhatsapp] = useState<string>("");
   const [selectedProduct, setSelectedProduct] = useState("");
+  const [selectedGift, setSelectedGift] = useState("");
+  
   const { toast } = useToast();
   const firestore = useFirestore();
   const router = useRouter();
@@ -88,7 +97,10 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     if (open && products.length > 0 && !selectedProduct) {
       setSelectedProduct(products[0].id);
     }
-  }, [open, products, selectedProduct]);
+    if (open && !selectedGift) {
+      setSelectedGift(GIFTS[0].id);
+    }
+  }, [open, products, selectedProduct, selectedGift]);
 
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? ecuadorData[provincia].sort() : [];
@@ -99,10 +111,13 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     setWhatsapp(value);
   };
 
+  const product = useMemo(() => products.find(p => p.id === selectedProduct), [products, selectedProduct]);
+  const gift = useMemo(() => GIFTS.find(g => g.id === selectedGift), [selectedGift]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
+    if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad || !selectedGift) {
       toast({
         variant: "destructive",
         title: "DATOS FALTANTES",
@@ -111,8 +126,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       return;
     }
 
-    const product = products.find(p => p.id === selectedProduct);
-    if (!product) return;
+    if (!product || !gift) return;
 
     setLoading(true);
 
@@ -120,7 +134,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       name: `${nombre.trim()} ${apellido.trim()}`,
       email: `${whatsapp}@romistore.com`, 
       phoneNumber: whatsapp,
-      message: `PRODUCTO: ${product.name} | PRECIO: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
+      message: `PRODUCTO: ${product.name} | REGALO: ${gift.name} | TOTAL: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
       landingPageContentId: pathname.replace("/", "") || "principal"
     };
@@ -130,7 +144,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
-      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product.name)}&back=${encodeURIComponent(pathname)}`);
+      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product.name)}&regalo=${encodeURIComponent(gift.name)}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);
       errorEmitter.emit("permission-error", new FirestorePermissionError({
@@ -165,46 +179,65 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                   className="object-contain brightness-0 invert"
                   sizes="300px"
                   priority
+                  unoptimized
                 />
               </div>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="p-5 space-y-8 bg-white pb-10">
+            {/* PRODUCTO PRINCIPAL */}
             <div className="space-y-4">
               <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
                 <Package className="h-6 w-6" />
-                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">PASO 1: ELIGE TU OFERTA</h3>
+                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">TU PRODUCTO</h3>
               </div>
               
-              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
-                {products.map((product) => (
+              {product && (
+                <div className={`flex items-center gap-4 p-5 rounded-3xl border-2 ${colors.border} ${colors.light} shadow-md`}>
+                  <div className="h-16 w-16 rounded-2xl overflow-hidden bg-white border border-slate-100 shrink-0 relative">
+                    <Image src={product.image} alt={product.name} fill className="object-cover" sizes="64px" unoptimized />
+                  </div>
+                  <div className="flex-1 min-w-0 text-left">
+                    <p className="font-black text-[15px] text-slate-900 uppercase leading-tight">{product.name}</p>
+                    <p className="text-[11px] text-slate-400 font-bold mt-1 uppercase tracking-tight">{product.description}</p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <p className={`font-black ${colors.text} text-[24px]`}>${product.price.toFixed(0)}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* SELECCIÓN DE REGALO */}
+            <div className="space-y-4">
+              <div className={`flex items-center gap-2 text-pink-600 border-b-2 border-pink-100 pb-3`}>
+                <Gift className="h-6 w-6" />
+                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">ESCOGE SOLO UN REGALO</h3>
+              </div>
+              
+              <RadioGroup value={selectedGift} onValueChange={setSelectedGift} className="grid gap-3">
+                {GIFTS.map((g) => (
                   <Label
-                    key={product.id}
-                    htmlFor={product.id}
-                    className={`flex items-center gap-2 p-5 rounded-3xl border-2 transition-all cursor-pointer relative w-full ${
-                      selectedProduct === product.id 
-                      ? `${colors.border} ${colors.light} shadow-md` 
+                    key={g.id}
+                    htmlFor={g.id}
+                    className={`flex items-center gap-3 p-3.5 rounded-2xl border-2 transition-all cursor-pointer relative w-full ${
+                      selectedGift === g.id 
+                      ? "border-pink-500 bg-pink-50 shadow-sm" 
                       : "border-slate-100 bg-white hover:border-slate-200"
                     }`}
                   >
-                    {product.badge && (
-                      <div className={`absolute -top-3 right-5 ${themeColor === 'orange' ? 'bg-[#f97316]' : 'bg-accent'} text-white text-[10px] px-4 py-1.5 rounded-full font-black uppercase shadow-lg z-10 animate-pulse border-2 border-white`}>
-                        {product.badge}
-                      </div>
-                    )}
-                    
-                    <div className="flex items-center gap-4 w-full">
-                      <RadioGroupItem value={product.id} id={product.id} className="shrink-0 h-6 w-6" />
-                      <div className="h-16 w-16 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 shrink-0 relative">
-                        <Image src={product.image} alt={product.name} fill className="object-cover" sizes="64px" />
+                    <div className="flex items-center gap-3 w-full">
+                      <RadioGroupItem value={g.id} id={g.id} className="shrink-0 h-5 w-5 text-pink-600" />
+                      <div className="h-12 w-12 rounded-xl overflow-hidden bg-white border border-slate-100 shrink-0 relative">
+                        <Image src={g.img} alt={g.name} fill className="object-cover" sizes="48px" unoptimized />
                       </div>
                       <div className="flex-1 min-w-0 text-left">
-                        <p className="font-black text-[15px] text-slate-900 uppercase leading-tight">{product.name}</p>
-                        <p className="text-[11px] text-slate-400 font-bold mt-1 uppercase tracking-tight">{product.description}</p>
+                        <p className="font-black text-[12px] text-slate-900 uppercase leading-tight">{g.name}</p>
+                        <p className="text-[10px] text-slate-400 font-bold uppercase">{g.desc}</p>
                       </div>
                       <div className="text-right shrink-0">
-                        <p className={`font-black ${colors.text} text-[24px]`}>${product.price.toFixed(0)}</p>
+                        <p className="font-black text-green-600 text-[14px] uppercase italic">GRATIS</p>
                       </div>
                     </div>
                   </Label>
@@ -212,10 +245,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </RadioGroup>
             </div>
 
+            {/* DATOS DE ENVÍO */}
             <div className="space-y-5">
               <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
                 <Truck className="h-6 w-6" />
-                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">PASO 2: DATOS DE ENVÍO</h3>
+                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">DATOS DE ENVÍO</h3>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -281,6 +315,28 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                       ))}
                     </SelectContent>
                   </Select>
+                </div>
+              </div>
+            </div>
+
+            {/* RESUMEN DE TOTAL */}
+            <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
+              <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">Subtotal Crema</span>
+                <span className="text-white font-black">$30.00</span>
+              </div>
+              <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">Regalo:</span>
+                  <span className="text-pink-400 text-[10px] font-black uppercase truncate max-w-[150px]">{gift?.name}</span>
+                </div>
+                <span className="text-green-400 font-black text-[12px] uppercase">GRATIS</span>
+              </div>
+              <div className="flex justify-between items-center pt-2">
+                <span className="text-white text-[16px] font-black uppercase tracking-tighter">TOTAL A PAGAR</span>
+                <div className="text-right">
+                  <p className="text-orange-500 text-[32px] font-black leading-none">$30.00</p>
+                  <p className="text-white/40 text-[9px] font-bold uppercase mt-1">Pago Contra Entrega</p>
                 </div>
               </div>
             </div>
