@@ -128,17 +128,6 @@ export default function BioaquaPage() {
                 7 Vitaminas • Aclarante • Efecto Porcelana
               </p>
             </div>
-
-            {/* IMAGEN DEBAJO DEL TEXTO ACLARANTE */}
-            <div className="px-2 pt-2 cursor-pointer" onClick={openPopup}>
-              <div className="relative w-full rounded-2xl overflow-hidden shadow-md border-2 border-orange-50">
-                <img 
-                  src="https://i.imgur.com/0C9znXt.png" 
-                  alt="Promoción Bioaqua" 
-                  className="w-full h-auto block"
-                />
-              </div>
-            </div>
           </div>
         </section>
 
