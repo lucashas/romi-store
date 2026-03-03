@@ -8,13 +8,14 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, ShieldCheck, Lock, Gift, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Package, Truck, ShieldCheck, Lock, Gift, CheckCircle2, PlusCircle, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
 import { useRouter, usePathname } from "next/navigation";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export interface Product {
   id: string;
@@ -78,6 +79,10 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const [selectedProduct, setSelectedProduct] = useState("");
   const [selectedGift, setSelectedGift] = useState("");
   
+  // Upsell State
+  const [wantsUpsell, setWantsUpsell] = useState(false);
+  const [selectedUpsellProduct, setSelectedUpsellProduct] = useState("");
+  
   const { toast } = useToast();
   const firestore = useFirestore();
   const router = useRouter();
@@ -102,6 +107,13 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     }
   }, [open, products, selectedProduct, selectedGift]);
 
+  // Si el regalo es igual al producto de upsell, reiniciamos el upsell
+  useEffect(() => {
+    if (selectedGift === selectedUpsellProduct) {
+      setSelectedUpsellProduct("");
+    }
+  }, [selectedGift, selectedUpsellProduct]);
+
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? ecuadorData[provincia].sort() : [];
   }, [provincia]);
@@ -113,6 +125,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
   const product = useMemo(() => products.find(p => p.id === selectedProduct), [products, selectedProduct]);
   const gift = useMemo(() => GIFTS.find(g => g.id === selectedGift), [selectedGift]);
+  const upsellProduct = useMemo(() => GIFTS.find(g => g.id === selectedUpsellProduct), [selectedUpsellProduct]);
+
+  const totalPrice = useMemo(() => {
+    return (product?.price || 0) + (wantsUpsell && selectedUpsellProduct ? 8 : 0);
+  }, [product, wantsUpsell, selectedUpsellProduct]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -126,15 +143,26 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       return;
     }
 
+    if (wantsUpsell && !selectedUpsellProduct) {
+      toast({
+        variant: "destructive",
+        title: "ELIGE PRODUCTO EXTRA",
+        description: "Has marcado que quieres un producto adicional, por favor selecciónalo.",
+      });
+      return;
+    }
+
     if (!product || !gift) return;
 
     setLoading(true);
+
+    const upsellMsg = wantsUpsell && upsellProduct ? ` | EXTRA (+8$): ${upsellProduct.name}` : "";
 
     const orderData = {
       name: `${nombre.trim()} ${apellido.trim()}`,
       email: `${whatsapp}@romistore.com`, 
       phoneNumber: whatsapp,
-      message: `PRODUCTO: ${product.name} | REGALO: ${gift.name} | TOTAL: $${product.price.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
+      message: `PRODUCTO: ${product.name} | REGALO: ${gift.name}${upsellMsg} | TOTAL: $${totalPrice.toFixed(2)} | CIUDAD: ${ciudad} | PROVINCIA: ${provincia} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
       landingPageContentId: pathname.replace("/", "") || "principal"
     };
@@ -144,7 +172,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
-      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product.name)}&regalo=${encodeURIComponent(gift.name)}&back=${encodeURIComponent(pathname)}`);
+      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product.name)}&regalo=${encodeURIComponent(gift.name)}&total=${totalPrice}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);
       errorEmitter.emit("permission-error", new FirestorePermissionError({
@@ -245,6 +273,52 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </RadioGroup>
             </div>
 
+            {/* OFERTA EXTRA (UPSELL) */}
+            <div className="space-y-4">
+              <div className="bg-slate-900 p-6 rounded-[2.5rem] border-2 border-orange-500 shadow-xl space-y-4">
+                <div className="flex items-center gap-3">
+                  <Checkbox 
+                    id="upsell" 
+                    checked={wantsUpsell} 
+                    onCheckedChange={(checked) => setWantsUpsell(!!checked)}
+                    className="h-6 w-6 border-2 border-orange-500 data-[state=checked]:bg-orange-500"
+                  />
+                  <Label htmlFor="upsell" className="cursor-pointer">
+                    <p className="text-orange-500 font-black text-[11px] uppercase tracking-widest animate-pulse">💥 OFERTA EXTRA EXCLUSIVA</p>
+                    <p className="text-white font-black text-[14px] uppercase leading-tight">¿QUIERES OTRO PRODUCTO ADICIONAL?</p>
+                    <p className="text-white font-black text-[16px] uppercase italic mt-1 text-orange-500">LLÉVALO POR SOLO +$8</p>
+                  </Label>
+                </div>
+
+                {wantsUpsell && (
+                  <div className="pt-4 border-t border-white/10 space-y-3">
+                    <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest text-center">SELECCIONA TU PRODUCTO EXTRA:</p>
+                    <RadioGroup value={selectedUpsellProduct} onValueChange={setSelectedUpsellProduct} className="grid gap-2">
+                      {GIFTS.filter(g => g.id !== selectedGift).map((g) => (
+                        <Label
+                          key={`upsell_${g.id}`}
+                          htmlFor={`upsell_${g.id}`}
+                          className={`flex items-center gap-3 p-3 rounded-xl border-2 transition-all cursor-pointer relative ${
+                            selectedUpsellProduct === g.id 
+                            ? "border-orange-500 bg-orange-500/10" 
+                            : "border-white/5 bg-white/5"
+                          }`}
+                        >
+                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className="shrink-0 h-4 w-4 border-orange-500 text-orange-500" />
+                          <div className="h-10 w-10 rounded-lg overflow-hidden shrink-0 relative">
+                            <Image src={g.img} alt={g.name} fill className="object-cover" sizes="40px" unoptimized />
+                          </div>
+                          <p className="font-black text-[10px] text-white uppercase flex-1 leading-tight">{g.name}</p>
+                          <p className="font-black text-orange-500 text-[12px]">+$8</p>
+                        </Label>
+                      ))}
+                    </RadioGroup>
+                    <p className="text-[9px] text-slate-500 font-bold uppercase text-center mt-2 italic">Válido solo al confirmar tu pedido hoy</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
             {/* DATOS DE ENVÍO */}
             <div className="space-y-5">
               <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
@@ -322,20 +396,32 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             {/* RESUMEN DE TOTAL */}
             <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">SUBTOTAL: 1 CREMA V7 BIOAQUA</span>
+                <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">SUBTOTAL: 1 CREMA V7 BIOAQUA</span>
                 <span className="text-white font-black">$30.00</span>
               </div>
+              
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">Regalo:</span>
+                  <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">Regalo:</span>
                   <span className="text-pink-400 text-[10px] font-black uppercase truncate max-w-[150px]">{gift?.name}</span>
                 </div>
                 <span className="text-green-400 font-black text-[12px] uppercase">GRATIS</span>
               </div>
+
+              {wantsUpsell && upsellProduct && (
+                <div className="flex justify-between items-center border-b border-white/10 pb-3 animate-in slide-in-from-top-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">EXTRA:</span>
+                    <span className="text-orange-400 text-[10px] font-black uppercase truncate max-w-[150px]">{upsellProduct.name}</span>
+                  </div>
+                  <span className="text-orange-500 font-black text-[12px] uppercase">+$8.00</span>
+                </div>
+              )}
+
               <div className="flex justify-between items-center pt-2">
                 <span className="text-white text-[16px] font-black uppercase tracking-tighter">TOTAL A PAGAR</span>
                 <div className="text-right">
-                  <p className="text-orange-500 text-[32px] font-black leading-none">$30.00</p>
+                  <p className="text-orange-500 text-[32px] font-black leading-none">${totalPrice.toFixed(2)}</p>
                   <p className="text-white/40 text-[9px] font-bold uppercase mt-1">Pago Contra Entrega</p>
                 </div>
               </div>
