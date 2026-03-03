@@ -37,21 +37,21 @@ const BIOAQUA_TESTIMONIALS: TestimonialItem[] = [
     city: "Quito",
     role: "Piel de Porcelana",
     quote: "¡Es mágica! Mi piel se ve mucho más clara y luminosa desde el primer día. El jabón de arroz de regalo es el complemento perfecto para mi rutina.",
-    imageId: "testimonial-user-2"
+    imageId: "testimonial-user-1"
   },
   {
     name: "Valentina Ruiz",
     city: "Cuenca",
     role: "Adiós Manchas",
     quote: "Tenía manchas por el sol y esta crema V7 las ha difuminado increíblemente en solo dos semanas. No salgo de casa sin ella, me encanta su olor.",
-    imageId: "testimonial-user-1"
+    imageId: "testimonial-user-4"
   },
   {
     name: "Gabriela Mendoza",
     city: "Loja",
     role: "Rostro Radiante",
     quote: "El efecto aclarante es instantáneo y muy natural. Me encanta que no deja sensación grasosa, ideal para el clima de acá. ¡100% recomendada!",
-    imageId: "testimonial-user-2" // Corregido a imagen femenina
+    imageId: "testimonial-user-2"
   }
 ];
 
