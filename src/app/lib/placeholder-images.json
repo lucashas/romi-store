@@ -38,6 +38,18 @@
       "imageHint": "bioaqua v7"
     },
     {
+      "id": "bioaqua-benefit-side-1",
+      "description": "Beneficio Bioaqua V7 Imagen 1",
+      "imageUrl": "https://i.imgur.com/RAj8Ar4.png",
+      "imageHint": "skincare benefits 1"
+    },
+    {
+      "id": "bioaqua-benefit-side-2",
+      "description": "Beneficio Bioaqua V7 Imagen 2",
+      "imageUrl": "https://i.imgur.com/zv8hWi4.png",
+      "imageHint": "skincare benefits 2"
+    },
+    {
       "id": "bioaqua-hero",
       "description": "Crema V7 Bioaqua - Imagen Principal",
       "imageUrl": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1080",

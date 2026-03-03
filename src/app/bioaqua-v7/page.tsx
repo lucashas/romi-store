@@ -85,6 +85,8 @@ export default function BioaquaPage() {
   }, []);
 
   const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-banner-top")?.imageUrl;
+  const sideImg1 = PlaceHolderImages.find(img => img.id === "bioaqua-benefit-side-1")?.imageUrl;
+  const sideImg2 = PlaceHolderImages.find(img => img.id === "bioaqua-benefit-side-2")?.imageUrl;
 
   const womenDayMessage = "🌸 ¡OFERTA ESPECIAL BELLEZA! 🌸 - ✨ REGÁLATE UNA PIEL DE PORCELANA HOY - 📦 PAGO CONTRA ENTREGA EN TODO ECUADOR - ";
 
@@ -131,18 +133,81 @@ export default function BioaquaPage() {
             </div>
 
             <div className="bg-orange-50 py-4 rounded-2xl border border-orange-100 px-4">
-              <p className="text-[13px] font-black text-orange-700 uppercase tracking-[0.15em] leading-tight">
+              <p className="text-[14px] font-black text-orange-700 uppercase tracking-[0.15em] leading-tight">
                 7 Vitaminas • Aclarante • Efecto Porcelana
               </p>
+            </div>
+
+            {/* Nueva Sección de Imágenes Side-by-Side y Texto Informativo */}
+            <div className="grid grid-cols-2 gap-3 mt-6">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-slate-100 bg-slate-50 aspect-square">
+                <img 
+                  src={sideImg1 || "https://i.imgur.com/RAj8Ar4.png"} 
+                  alt="Bioaqua Beneficios 1" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-slate-100 bg-slate-50 aspect-square">
+                <img 
+                  src={sideImg2 || "https://i.imgur.com/zv8hWi4.png"} 
+                  alt="Bioaqua Beneficios 2" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="mt-8 text-left space-y-6">
+              <h3 className="text-[20px] font-black text-slate-900 text-center uppercase leading-tight tracking-tight px-4">
+                💙🩷 CREMA VEGANA <br /><span className="text-orange-600 underline decoration-orange-200 decoration-4 underline-offset-4">7 BENEFICIOS</span> 💙🩷
+              </h3>
+              
+              <div className="space-y-4 text-[15px] text-slate-600 font-medium leading-relaxed">
+                <p>
+                  La Crema Hidratante 7 Vegana Ácido Hialurónico de Bioaqua es un producto de cuidado de la piel diseñado para hidratar y mejorar la apariencia de la piel.
+                </p>
+                <p>
+                  La crema hidratante está formulada con una mezcla de ingredientes naturales y veganos, como el ácido hialurónico, la manteca de karité, el aceite de jojoba, el aceite de almendras y la vitamina E. Estos ingredientes trabajan juntos para proporcionar una hidratación profunda y duradera, mientras que también suavizan y nutren la piel.
+                </p>
+              </div>
+
+              <div className="bg-slate-900 p-8 rounded-[2.5rem] border-b-4 border-orange-500 shadow-xl">
+                <h4 className="text-[17px] font-black text-orange-500 text-center uppercase mb-6 tracking-widest">
+                  🩷 BENEFICIOS 💙
+                </h4>
+                <ul className="grid grid-cols-1 gap-4">
+                  {[
+                    "Hidratación profunda",
+                    "Nutre y revitaliza",
+                    "Brinda Suavidad y tersura",
+                    "Aporta elasticidad y firmeza",
+                    "Combate los radicales libres",
+                    "Ayuda a reponer la humedad",
+                    "Regula la producción de grasa"
+                  ].map((benefit, idx) => (
+                    <li key={idx} className="flex items-center gap-4">
+                      <div className="h-8 w-8 rounded-full bg-orange-500 text-white flex items-center justify-center text-[13px] font-black shrink-0 shadow-lg">
+                        {idx + 1}
+                      </div>
+                      <span className="text-[14px] font-black text-white uppercase leading-tight tracking-tight">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
+                  <h4 className="text-[16px] font-black text-orange-500 uppercase tracking-tight">¿Cómo usarla?</h4>
+                  <p className="text-[14px] text-white/80 font-medium leading-relaxed italic border-l-4 border-orange-500 pl-4">
+                    Se puede aplicar en el rostro y cuello tanto de día como de noche, preferiblemente sobre la piel limpia, como último paso de la rutina de cuidado de la piel.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Urgencia */}
-        <div className="mx-4 bg-slate-900 p-5 rounded-2xl flex items-center gap-4 shadow-lg border-b-4 border-orange-600">
-          <Zap className="h-7 w-7 text-orange-500 animate-pulse shrink-0" />
-          <p className="text-[13px] font-black text-white uppercase leading-tight tracking-wide">
-            ¡STOCK LIMITADO! <br /><span className="text-orange-500">Quedan pocas unidades</span>
+        <div className="mx-4 mt-8 bg-slate-900 p-6 rounded-2xl flex items-center gap-4 shadow-lg border-b-4 border-orange-600">
+          <Zap className="h-8 w-8 text-orange-500 animate-pulse shrink-0" />
+          <p className="text-[14px] font-black text-white uppercase leading-tight tracking-wide">
+            ¡STOCK LIMITADO! <br /><span className="text-orange-500">Quedan pocas unidades en bodega</span>
           </p>
         </div>
 
@@ -152,13 +217,13 @@ export default function BioaquaPage() {
             <div className="space-y-3">
               <div className="flex justify-center mb-4">
                 <div className="bg-pink-100 p-4 rounded-full">
-                  <Gift className="h-10 w-10 text-pink-600" />
+                  <Gift className="h-12 w-12 text-pink-600" />
                 </div>
               </div>
               <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-none">
                 💎 🎁 ELIGE TU <br /><span className="text-pink-600 italic">REGALO GRATIS</span>
               </h2>
-              <p className="text-[14px] font-black text-pink-500 uppercase tracking-[0.2em]">
+              <p className="text-[15px] font-black text-pink-500 uppercase tracking-[0.2em]">
                 ✨ SOLO EN TU PACK DE 2 ✨
               </p>
             </div>
@@ -167,7 +232,7 @@ export default function BioaquaPage() {
               {GIFTS.map((gift, i) => (
                 <div key={i} className="bg-white rounded-[2rem] p-5 shadow-xl border border-pink-50 flex items-center gap-4 relative overflow-hidden pointer-events-none">
                   {gift.tag && (
-                    <div className="absolute top-3 right-5 bg-pink-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">
+                    <div className="absolute top-3 right-5 bg-pink-500 text-white text-[11px] font-black px-4 py-1.5 rounded-full uppercase">
                       {gift.tag}
                     </div>
                   )}
@@ -175,11 +240,11 @@ export default function BioaquaPage() {
                     <Image src={gift.img} alt={gift.name} fill className="object-cover" unoptimized />
                   </div>
                   <div className="text-left flex-1 min-w-0 pr-8">
-                    <p className="text-[15px] font-black text-slate-900 uppercase leading-tight">{gift.name}</p>
-                    <p className="text-[12px] font-bold text-pink-400 mt-1 uppercase tracking-tight">{gift.desc}</p>
+                    <p className="text-[16px] font-black text-slate-900 uppercase leading-tight">{gift.name}</p>
+                    <p className="text-[13px] font-bold text-pink-400 mt-1 uppercase tracking-tight">{gift.desc}</p>
                     <div className="mt-2 flex items-center gap-3">
-                      <span className="text-[11px] text-slate-300 line-through">ANTES $20</span>
-                      <span className="text-[14px] font-black text-green-600 uppercase tracking-tighter">HOY GRATIS</span>
+                      <span className="text-[12px] text-slate-300 line-through">ANTES $20</span>
+                      <span className="text-[15px] font-black text-green-600 uppercase tracking-tighter">HOY GRATIS</span>
                     </div>
                   </div>
                 </div>
@@ -205,8 +270,8 @@ export default function BioaquaPage() {
                     <Sparkles className="h-8 w-8" />
                   </div>
                   <div>
-                    <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{b.t}</p>
-                    <p className="text-[14px] text-slate-500 mt-1 font-medium leading-tight">{b.d}</p>
+                    <p className="font-black text-[17px] text-slate-900 uppercase leading-tight">{b.t}</p>
+                    <p className="text-[15px] text-slate-500 mt-1 font-medium leading-tight">{b.d}</p>
                   </div>
                 </div>
               ))}
@@ -225,11 +290,11 @@ export default function BioaquaPage() {
             <div className="grid grid-cols-2 gap-5">
               <div className="p-7 bg-slate-50 rounded-[2.5rem] border border-slate-100 flex flex-col items-center gap-4 shadow-sm">
                 <ShieldCheck className="h-12 w-12 text-orange-600" />
-                <p className="text-[12px] font-black uppercase text-slate-800 tracking-tighter">100% Original</p>
+                <p className="text-[13px] font-black uppercase text-slate-800 tracking-tighter">100% Original</p>
               </div>
               <div className="p-7 bg-slate-50 rounded-[2.5rem] border border-slate-100 flex flex-col items-center gap-4 shadow-sm">
                 <ShoppingCart className="h-12 w-12 text-orange-600" />
-                <p className="text-[12px] font-black uppercase text-slate-800 tracking-tighter">Pagas al Recibir</p>
+                <p className="text-[13px] font-black uppercase text-slate-800 tracking-tighter">Pagas al Recibir</p>
               </div>
             </div>
 
@@ -245,7 +310,7 @@ export default function BioaquaPage() {
                 <ShoppingCart className="h-8 w-8 mr-3" />
                 ¡ORDENAR AHORA!
               </Button>
-              <p className="text-[12px] font-bold text-slate-400 uppercase tracking-widest">Envíos seguros a todo el Ecuador 🇪🇨</p>
+              <p className="text-[13px] font-bold text-slate-400 uppercase tracking-widest">Envíos seguros a todo el Ecuador 🇪🇨</p>
             </div>
           </div>
         </section>
