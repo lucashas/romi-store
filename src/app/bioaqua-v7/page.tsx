@@ -22,6 +22,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
   }
 ];
 
+// Mapeo exacto solicitado por Stalin
 const GIFTS = [
   {
     name: "Ácido Salicílico The Ordinary",
