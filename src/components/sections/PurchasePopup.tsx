@@ -180,7 +180,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       name: `${nombre.trim()} ${apellido.trim()}`,
       email: `${whatsapp}@romistore.com`, 
       phoneNumber: whatsapp,
-      message: `PRODUCTO: ${product?.name}${giftMsg}${upsellMsg} | TOTAL: $${totalPrice.toFixed(2)} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
+      // SE CORRIGE: Se incluye provincia en el mensaje detallado del pedido
+      message: `PRODUCTO: ${product?.name}${giftMsg}${upsellMsg} | TOTAL: $${totalPrice.toFixed(2)} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
       landingPageContentId: pathname.replace("/", "") || "bioaqua"
     };
@@ -190,7 +191,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
-      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&regalo=${encodeURIComponent(gift?.name || "Sin regalo")}&total=${totalPrice}&extra=${encodeURIComponent(extraInfo)}&back=${encodeURIComponent(pathname)}`);
+      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&regalo=${encodeURIComponent(gift?.name || "Sin regalo")}&total=${totalPrice}&extra=${encodeURIComponent(extraInfo)}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);
       errorEmitter.emit("permission-error", new FirestorePermissionError({
