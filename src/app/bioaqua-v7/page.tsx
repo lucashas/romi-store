@@ -22,7 +22,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
   }
 ];
 
-// Mapeo exacto solicitado por Stalin
+// Mapeo exacto verificado por Stalin
 const GIFTS = [
   {
     name: "Ácido Salicílico The Ordinary",
@@ -123,7 +123,7 @@ export default function BioaquaPage() {
           </p>
         </div>
 
-        {/* SECCIÓN DE REGALOS DÍA DE LA MUJER */}
+        {/* SECCIÓN DE REGALOS DÍA DE LA MUJER (Informativa) */}
         <section className="py-12 bg-[#fff5f5] mt-10 border-y border-pink-100">
           <div className="container px-4 text-center space-y-8">
             <div className="space-y-2">
@@ -143,9 +143,11 @@ export default function BioaquaPage() {
             <div className="grid grid-cols-1 gap-4">
               {GIFTS.map((gift, i) => (
                 <div key={i} className="bg-white rounded-[2rem] p-4 shadow-xl border border-pink-50 flex items-center gap-4 relative overflow-hidden pointer-events-none">
-                  <div className="absolute top-3 right-5 bg-pink-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">
-                    {gift.tag}
-                  </div>
+                  {gift.tag && (
+                    <div className="absolute top-3 right-5 bg-pink-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">
+                      {gift.tag}
+                    </div>
+                  )}
                   <div className="h-24 w-24 rounded-2xl overflow-hidden bg-slate-50 border border-pink-50 shrink-0 relative">
                     <Image src={gift.img} alt={gift.name} fill className="object-cover" unoptimized />
                   </div>

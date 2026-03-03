@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ShoppingCart, Package, Truck, ShieldCheck, Lock, Gift, CheckCircle2, PlusCircle, Sparkles } from "lucide-react";
+import { ShoppingCart, Package, Truck, ShieldCheck, Lock, Gift, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -397,7 +397,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
             </div>
 
-            {/* RESUMEN DE TOTAL SOLICITADO POR STALIN */}
+            {/* RESUMEN DE TOTAL */}
             <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">SUBTOTAL: 1 CREMA V7 BIOAQUA</span>
