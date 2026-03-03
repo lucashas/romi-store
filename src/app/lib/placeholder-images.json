@@ -54,6 +54,24 @@
       "description": "Logo de confianza para checkout",
       "imageUrl": "https://i.imgur.com/Jh61uYJ.png",
       "imageHint": "trust logo"
+    },
+    {
+      "id": "gift-contorno",
+      "description": "Contorno de ojos Bioaqua",
+      "imageUrl": "https://i.imgur.com/15gxrJI.png",
+      "imageHint": "eye cream"
+    },
+    {
+      "id": "gift-jabon-arroz",
+      "description": "Jabón de arroz Bioaqua",
+      "imageUrl": "https://i.imgur.com/k2LgSRh.png",
+      "imageHint": "rice soap"
+    },
+    {
+      "id": "gift-serum-pestanas",
+      "description": "Serum de pestañas Bioaqua",
+      "imageUrl": "https://i.imgur.com/NdEF1tQ.png",
+      "imageHint": "eyelash serum"
     }
   ]
 }
