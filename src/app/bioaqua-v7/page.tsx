@@ -83,7 +83,7 @@ export default function BioaquaPage() {
   const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-banner-top")?.imageUrl;
   const sideImg1 = PlaceHolderImages.find(img => img.id === "bioaqua-benefit-side-1")?.imageUrl;
   const sideImg2 = PlaceHolderImages.find(img => img.id === "bioaqua-benefit-side-2")?.imageUrl;
-  const extraInfoImg = PlaceHolderImages.find(img => img.id === "bioaqua-extra-info")?.imageUrl;
+  const extraInfoImg = PlaceHolderImages.find(img => img.id === "bioaqua-extra-info")?.imageUrl || "https://i.imgur.com/ICjJPPO.png";
   const trustBadgeImg = PlaceHolderImages.find(img => img.id === "shipping-trust-badge")?.imageUrl;
 
   const womenDayMessage = "🌸 ¡OFERTA ESPECIAL BELLEZA! 🌸 - ✨ REGÁLATE UNA PIEL DE PORCELANA HOY - 📦 PAGO CONTRA ENTREGA EN TODO ECUADOR - ";
@@ -198,17 +198,15 @@ export default function BioaquaPage() {
               </div>
 
               {/* Imagen estratégica debajo de beneficios - Asegurada y Centrada */}
-              {extraInfoImg && (
-                <div className="mt-6 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
-                  <div className="relative w-full max-w-[440px] overflow-hidden rounded-2xl shadow-xl border-2 border-slate-100 bg-slate-50">
-                    <img 
-                      src={extraInfoImg} 
-                      alt="Información adicional de producto Bioaqua" 
-                      className="w-full h-auto block"
-                    />
-                  </div>
+              <div className="mt-6 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
+                <div className="relative w-full max-w-[440px] overflow-hidden rounded-2xl shadow-xl border-2 border-slate-100 bg-slate-50">
+                  <img 
+                    src={extraInfoImg} 
+                    alt="Información adicional de producto Bioaqua" 
+                    className="w-full h-auto block"
+                  />
                 </div>
-              )}
+              </div>
 
               <section className="py-4 space-y-6">
                 <div className="space-y-1">

@@ -25,52 +25,58 @@
       "imageHint": "hair results extra"
     },
     {
-      "id": "hero-product",
-      "description": "Botella de multivitamínico líquido MaryRuth's",
-      "imageUrl": "https://images.unsplash.com/photo-1687200266857-764ef12cfdd1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dml0YW1pbiUyMGJvdHRsZXxlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "vitamin bottle"
+      "id": "bioaqua-banner-top",
+      "description": "Banner principal Bioaqua V7",
+      "imageUrl": "https://i.imgur.com/P4G3s0w.png",
+      "imageHint": "bioaqua banner"
     },
     {
-      "id": "healthy-lifestyle",
-      "description": "Estilo de vida saludable y radiante",
-      "imageUrl": "https://images.unsplash.com/photo-1761495520593-7aa2bd28bdba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFsdGh5JTIwY291cGxlfGVufDB8fHx8MTc3MjM5MzE1OXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "healthy couple"
+      "id": "bioaqua-product-v7",
+      "description": "Crema V7 Bioaqua - Producto Formulario",
+      "imageUrl": "https://i.imgur.com/bUaJbMD.png",
+      "imageHint": "bioaqua v7"
     },
     {
-      "id": "feature-hair",
-      "description": "Cabello saludable y fuerte",
-      "imageUrl": "https://images.unsplash.com/photo-1556229165-8aa0ceaa93a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFsdGh5JTIwaGFpcnxlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "healthy hair"
+      "id": "bioaqua-benefit-side-1",
+      "description": "Beneficio Bioaqua V7 Imagen 1",
+      "imageUrl": "https://i.imgur.com/RAj8Ar4.png",
+      "imageHint": "skincare benefits 1"
     },
     {
-      "id": "feature-kids",
-      "description": "Niños felices y saludables",
-      "imageUrl": "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw8fHxoYXBweSUyMGNoaWxkfGVufDB8fHx8MTc3MjM4MzQ2MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "happy child"
+      "id": "bioaqua-benefit-side-2",
+      "description": "Beneficio Bioaqua V7 Imagen 2",
+      "imageUrl": "https://i.imgur.com/zv8hWi4.png",
+      "imageHint": "skincare benefits 2"
     },
     {
-      "id": "supplement-d3",
-      "description": "Vitamina D3 Líquida",
-      "imageUrl": "https://images.unsplash.com/photo-1648139347040-857f024f8da4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx2aXRhbWluJTIwRDN8ZW58MHx8fHwxNzcyMzkyNjM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "vitamin D3"
-    },
-    {
-      "id": "supplement-complex-b",
-      "description": "Complejo B Líquido",
-      "imageUrl": "https://images.unsplash.com/photo-1729704166757-7f8bed2adc62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxlbmVyZ3klMjB2aXRhbWluc3xlbnwwfHx8fDE3NzIzOTI2MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "energy vitamins"
-    },
-    {
-      "id": "supplement-omega",
-      "description": "Omega-3 Líquido",
-      "imageUrl": "https://images.unsplash.com/photo-1704694671399-7bfac37b3e1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvbWVnYSUyMDN8ZW58MHx8fHwxNzcyMzkyNjMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "omega 3"
+      "id": "bioaqua-extra-info",
+      "description": "Imagen informativa adicional Bioaqua",
+      "imageUrl": "https://i.imgur.com/ICjJPPO.png",
+      "imageHint": "skincare info"
     },
     {
       "id": "checkout-logo",
       "description": "Logo de confianza para checkout",
       "imageUrl": "https://i.imgur.com/Jh61uYJ.png",
       "imageHint": "trust logo"
+    },
+    {
+      "id": "gift-contorno",
+      "description": "Contorno de ojos Bioaqua",
+      "imageUrl": "https://i.imgur.com/15gxrJI.png",
+      "imageHint": "eye cream"
+    },
+    {
+      "id": "gift-jabon-arroz",
+      "description": "Jabón de arroz Bioaqua",
+      "imageUrl": "https://i.imgur.com/k2LgSRh.png",
+      "imageHint": "rice soap"
+    },
+    {
+      "id": "gift-serum-pestanas",
+      "description": "Serum de pestañas Bioaqua",
+      "imageUrl": "https://i.imgur.com/NdEF1tQ.png",
+      "imageHint": "eyelash serum"
     },
     {
       "id": "shipping-trust-badge",
