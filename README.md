@@ -1,3 +1,4 @@
+
 # 🇪🇨 ROMI STORE EC - MANUAL DE OPERACIONES
 
 ¡Felicidades Stalin! Tu tienda oficial de **MaryRuth's Organics** ya está en órbita. 🚀
