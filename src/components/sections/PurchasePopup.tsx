@@ -87,6 +87,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const pathname = usePathname();
 
   const productImg = PlaceHolderImages.find(img => img.id === "bioaqua-product-v7")?.imageUrl;
+  const checkoutLogo = PlaceHolderImages.find(img => img.id === "checkout-logo")?.imageUrl;
 
   const colors = {
     bg: themeColor === "orange" ? "bg-orange-600" : "bg-primary",
@@ -186,10 +187,21 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
         </DialogHeader>
 
         <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden w-full">
-          <div className={`${colors.bg} p-8 text-white text-center`}>
+          <div className={`${colors.bg} p-8 text-white text-center flex flex-col items-center gap-4`}>
             <h2 className="text-[20px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
             </h2>
+            {checkoutLogo && (
+              <div className="relative w-24 h-8">
+                <Image 
+                  src={checkoutLogo} 
+                  alt="Sello de Confianza" 
+                  fill 
+                  className="object-contain" 
+                  unoptimized 
+                />
+              </div>
+            )}
           </div>
 
           <form onSubmit={handleSubmit} className="p-5 space-y-8 bg-white pb-10 w-full">
