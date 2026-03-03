@@ -64,7 +64,7 @@ const GIFTS = [
   },
   {
     name: "1 Jabon Liquido De Arroz Bioaqua",
-    desc: "Limpieza profunda y brillo natural",
+    desc: "Hidratación y brillo natural",
     img: "https://i.imgur.com/k2LgSRh.png",
     tag: "MÁS PEDIDO"
   },
@@ -83,6 +83,7 @@ export default function BioaquaPage() {
   const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-banner-top")?.imageUrl;
   const sideImg1 = PlaceHolderImages.find(img => img.id === "bioaqua-benefit-side-1")?.imageUrl;
   const sideImg2 = PlaceHolderImages.find(img => img.id === "bioaqua-benefit-side-2")?.imageUrl;
+  const extraInfoImg = PlaceHolderImages.find(img => img.id === "bioaqua-extra-info")?.imageUrl;
   const trustBadgeImg = PlaceHolderImages.find(img => img.id === "shipping-trust-badge")?.imageUrl;
 
   const womenDayMessage = "🌸 ¡OFERTA ESPECIAL BELLEZA! 🌸 - ✨ REGÁLATE UNA PIEL DE PORCELANA HOY - 📦 PAGO CONTRA ENTREGA EN TODO ECUADOR - ";
@@ -136,14 +137,14 @@ export default function BioaquaPage() {
             </div>
 
             <div className="grid grid-cols-2 gap-2 mt-4">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-slate-100 bg-slate-50 aspect-square">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-slate-100 bg-slate-50 aspect-square cursor-pointer" onClick={openPopup}>
                 <img 
                   src={sideImg1 || "https://i.imgur.com/RAj8Ar4.png"} 
                   alt="Bioaqua Beneficios 1" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-slate-100 bg-slate-50 aspect-square">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-slate-100 bg-slate-50 aspect-square cursor-pointer" onClick={openPopup}>
                 <img 
                   src={sideImg2 || "https://i.imgur.com/zv8hWi4.png"} 
                   alt="Bioaqua Beneficios 2" 
@@ -166,7 +167,7 @@ export default function BioaquaPage() {
                 </p>
               </div>
 
-              <div className="bg-slate-900 p-6 rounded-[2.5rem] border-b-4 border-orange-500 shadow-xl">
+              <div className="bg-slate-900 p-6 rounded-[2.5rem] border-b-4 border-orange-500 shadow-xl relative">
                 <h4 className="text-[16px] font-black text-orange-500 text-center uppercase mb-5 tracking-widest">
                   🩷 BENEFICIOS 💙
                 </h4>
@@ -195,6 +196,19 @@ export default function BioaquaPage() {
                   </p>
                 </div>
               </div>
+
+              {/* Imagen estratégica debajo de beneficios */}
+              {extraInfoImg && (
+                <div className="mt-4 px-1 cursor-pointer" onClick={openPopup}>
+                  <div className="relative w-full overflow-hidden rounded-2xl shadow-lg border-2 border-slate-100 bg-slate-50">
+                    <img 
+                      src={extraInfoImg} 
+                      alt="Información extra Bioaqua V7" 
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                </div>
+              )}
 
               <section className="py-4 space-y-6">
                 <div className="space-y-1">

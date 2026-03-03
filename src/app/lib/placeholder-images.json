@@ -50,6 +50,12 @@
       "imageHint": "skincare benefits 2"
     },
     {
+      "id": "bioaqua-extra-info",
+      "description": "Imagen informativa adicional Bioaqua",
+      "imageUrl": "https://i.imgur.com/ICjJPPO.png",
+      "imageHint": "skincare info"
+    },
+    {
       "id": "bioaqua-hero",
       "description": "Crema V7 Bioaqua - Imagen Principal",
       "imageUrl": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1080",
@@ -90,6 +96,12 @@
       "description": "Serum de pestañas Bioaqua",
       "imageUrl": "https://i.imgur.com/NdEF1tQ.png",
       "imageHint": "eyelash serum"
+    },
+    {
+      "id": "shipping-trust-badge",
+      "description": "Sello de confianza envío Ecuador",
+      "imageUrl": "https://i.imgur.com/bk1DAl0.png",
+      "imageHint": "shipping trust"
     },
     {
       "id": "testimonial-user-1",
