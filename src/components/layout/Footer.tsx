@@ -53,14 +53,14 @@ export function Footer() {
           
           <div className="text-center space-y-2">
             <div className="space-y-0.5">
-              <p className="text-[12px] text-muted-foreground font-medium">
+              <p className="text-[14px] text-muted-foreground font-medium">
                 © {year ?? "..."} Romi Store EC.
               </p>
-              <p className="text-[15px] font-black text-slate-900 uppercase tracking-tight">
+              <p className="text-[16px] font-black text-slate-900 uppercase tracking-tight">
                 Hecho para Ecuador con ❤️
               </p>
             </div>
-            <p className="text-[9px] text-muted-foreground/60 max-w-[320px] mx-auto leading-tight italic border-t border-primary/5 pt-3">
+            <p className="text-[11px] text-muted-foreground/70 max-w-[340px] mx-auto leading-tight italic border-t border-primary/5 pt-3">
               Bioaqua es una marca registrada. Esta página no está afiliada con TikTok o Facebook.
             </p>
           </div>
