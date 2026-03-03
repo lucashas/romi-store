@@ -113,6 +113,15 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     }
   }, [selectedProduct, selectedGift]);
 
+  useEffect(() => {
+    if (wantsUpsell && !selectedUpsellProduct) {
+      const available = GIFTS.filter(g => g.id !== selectedGift);
+      if (available.length > 0) {
+        setSelectedUpsellProduct(available[0].id);
+      }
+    }
+  }, [wantsUpsell, selectedGift, selectedUpsellProduct]);
+
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? ecuadorData[provincia].sort() : [];
   }, [provincia]);
@@ -334,24 +343,30 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
             {/* RESUMEN DE TOTAL */}
             <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
-              <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-tight pr-2">
+              <div className="flex justify-between items-start border-b border-white/10 pb-3 gap-2">
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-tight">
                   SUBTOTAL: {product?.name?.toUpperCase()}
                 </span>
-                <span className="text-white font-black shrink-0">${product?.price.toFixed(2)}</span>
+                <span className="text-white font-black shrink-0 text-sm">${product?.price.toFixed(2)}</span>
               </div>
               
-              {hasGiftEnabled && (
-                <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">REGALO SELECCIONADO</span>
-                  <span className="text-green-400 font-black text-[12px] uppercase">GRATIS</span>
+              {hasGiftEnabled && gift && (
+                <div className="flex justify-between items-start border-b border-white/10 pb-3 gap-2">
+                  <div className="flex flex-col">
+                    <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">REGALO SELECCIONADO:</span>
+                    <span className="text-pink-400 text-[11px] font-black uppercase leading-tight mt-1">{gift.name}</span>
+                  </div>
+                  <span className="text-green-400 font-black text-[12px] uppercase shrink-0">GRATIS</span>
                 </div>
               )}
 
               {wantsUpsell && upsellProduct && (
-                <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">PRODUCTO EXTRA</span>
-                  <span className="text-orange-500 font-black text-[12px]">+$8.00</span>
+                <div className="flex justify-between items-start border-b border-white/10 pb-3 gap-2">
+                  <div className="flex flex-col">
+                    <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">PRODUCTO ADICIONAL:</span>
+                    <span className="text-orange-400 text-[11px] font-black uppercase leading-tight mt-1">{upsellProduct.name}</span>
+                  </div>
+                  <span className="text-orange-500 font-black text-[12px] shrink-0">+$8.00</span>
                 </div>
               )}
 
