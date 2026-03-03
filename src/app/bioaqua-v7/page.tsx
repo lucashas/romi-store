@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { TopMarquee } from "@/components/layout/TopMarquee";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { Testimonials, type TestimonialItem } from "@/components/sections/Testimonials";
 import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
@@ -19,7 +19,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
     price: 16.00,
     image: "https://i.imgur.com/P4G3s0w.png",
     badge: "ECONÓMICO",
-    description: "Efecto aclarante (Sin regalo)"
+    description: "Efecto aclarante instantáneo (Sin regalo)"
   },
   {
     id: "bioaqua_v7_2",
@@ -27,7 +27,31 @@ const BIOAQUA_PRODUCTS: Product[] = [
     price: 26.00,
     image: "https://i.imgur.com/P4G3s0w.png",
     badge: "OFERTA HOY",
-    description: "Efecto aclarante instantáneo + Regalo a elegir"
+    description: "Efecto porcelana + Regalo a elegir"
+  }
+];
+
+const BIOAQUA_TESTIMONIALS: TestimonialItem[] = [
+  {
+    name: "Andrea Castro",
+    city: "Quito",
+    role: "Piel de Porcelana",
+    quote: "¡Es mágica! Mi piel se ve mucho más clara y luminosa desde el primer día. El jabón de arroz de regalo es el complemento perfecto para mi rutina.",
+    imageId: "testimonial-user-2"
+  },
+  {
+    name: "Valentina Ruiz",
+    city: "Cuenca",
+    role: "Adiós Manchas",
+    quote: "Tenía manchas por el sol y esta crema V7 las ha difuminado increíblemente en solo dos semanas. No salgo de casa sin ella, me encanta su olor.",
+    imageId: "testimonial-user-1"
+  },
+  {
+    name: "Gabriela Mendoza",
+    city: "Loja",
+    role: "Rostro Radiante",
+    quote: "El efecto aclarante es instantáneo y muy natural. Me encanta que no deja sensación grasosa, ideal para el clima de acá. ¡100% recomendada!",
+    imageId: "testimonial-user-3"
   }
 ];
 
@@ -48,7 +72,7 @@ const GIFTS = [
     name: "1 Serum De Pestanas Bioaqua",
     desc: "Crecimiento y nutrición intensa",
     img: "https://i.imgur.com/NdEF1tQ.png",
-    tag: "RECOMENDADO"
+    tag: "OFERTA"
   }
 ];
 
@@ -59,7 +83,7 @@ export default function BioaquaPage() {
   const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-banner-top")?.imageUrl;
   const showcaseImg = PlaceHolderImages.find(img => img.id === "bioaqua-showcase")?.imageUrl;
 
-  const womenDayMessage = "🌸 ¡FELIZ DÍA DE LA MUJER! 🌸 - ✨ REGÁLATE UNA PIEL DE PORCELANA HOY - 📦 PAGO CONTRA ENTREGA EN TODO ECUADOR - ";
+  const womenDayMessage = "🌸 ¡OFERTA ESPECIAL BELLEZA! 🌸 - ✨ REGÁLATE UNA PIEL DE PORCELANA HOY - 📦 PAGO CONTRA ENTREGA EN TODO ECUADOR - ";
 
   return (
     <div className="min-h-screen flex flex-col bg-white pb-24 font-body overflow-x-hidden w-full max-w-[500px] mx-auto shadow-2xl relative">
@@ -79,7 +103,7 @@ export default function BioaquaPage() {
                 className="w-full h-auto block"
               />
               <div className="absolute bottom-4 left-4 bg-orange-600 text-white px-4 py-1.5 rounded-full font-black text-[10px] animate-pulse shadow-2xl border-2 border-white uppercase tracking-tighter">
-                OFERTA MUJER ✨
+                OFERTA EXCLUSIVA ✨
               </div>
             </div>
           </div>
@@ -95,7 +119,7 @@ export default function BioaquaPage() {
             <div className="space-y-1">
               <p className="text-[12px] font-black text-orange-600 uppercase tracking-[0.2em] flex items-center justify-center gap-2">
                 <Heart className="h-3 w-3 fill-orange-600" />
-                Celebrando tu Belleza Natural
+                Tu Piel, Tu Mejor Versión
                 <Heart className="h-3 w-3 fill-orange-600" />
               </p>
               <h1 className="text-4xl font-black text-slate-900 uppercase leading-none tracking-tighter">
@@ -115,7 +139,7 @@ export default function BioaquaPage() {
         <div className="mx-4 bg-slate-900 p-4 rounded-2xl flex items-center gap-3 shadow-lg border-b-4 border-orange-600">
           <Zap className="h-6 w-6 text-orange-500 animate-pulse" />
           <p className="text-[11px] font-black text-white uppercase leading-tight tracking-wide">
-            ¡STOCK LIMITADO! <span className="text-orange-500">Quedan 12 unidades</span> para envío inmediato en Quito y Guayaquil.
+            ¡STOCK LIMITADO! <span className="text-orange-500">Quedan pocas unidades</span> para envío inmediato a todo el país.
           </p>
         </div>
 
@@ -187,28 +211,10 @@ export default function BioaquaPage() {
           </div>
         </section>
 
-        {/* Visual de Calidad */}
-        <section className="py-10 bg-slate-50 rounded-t-[3rem] w-full overflow-hidden">
-          <div className="px-4 text-center space-y-6">
-             <div className="relative aspect-[4/5] w-full max-w-[400px] mx-auto overflow-hidden rounded-[3rem] shadow-2xl border-8 border-white cursor-pointer group" onClick={openPopup}>
-                <Image 
-                  src={showcaseImg || "https://images.unsplash.com/photo-1611082216373-7c1bc0412822?q=80&w=1080"} 
-                  alt="Textura Bioaqua"
-                  fill
-                  unoptimized
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  data-ai-hint="skincare woman"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-orange-950/90 via-transparent to-transparent flex flex-col justify-end p-8 text-left">
-                  <div className="bg-orange-600 w-fit px-3 py-1 rounded-full text-[10px] font-black text-white uppercase mb-2">Piel Perfecta</div>
-                  <p className="text-white font-black text-3xl uppercase italic leading-none">HIDRATACIÓN <br />EXTREMA</p>
-                  <p className="text-orange-200 text-[10px] font-bold uppercase tracking-widest mt-2 border-l-2 border-orange-500 pl-3">Para todo tipo de piel, incluso sensible</p>
-                </div>
-             </div>
-          </div>
-        </section>
-
-        <Testimonials />
+        <Testimonials 
+          title="CLIENTAS FELICES EN ECUADOR" 
+          items={BIOAQUA_TESTIMONIALS} 
+        />
 
         {/* Garantías Premium */}
         <section className="py-14 bg-white w-full overflow-hidden">
