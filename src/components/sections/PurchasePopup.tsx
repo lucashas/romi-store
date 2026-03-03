@@ -106,9 +106,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   }, [open, products, selectedProduct]);
 
   useEffect(() => {
+    // Si cambia a la opción de 1 crema (id: bioaqua_v7_1), quitamos el regalo.
     if (selectedProduct === "bioaqua_v7_1") {
       setSelectedGift(""); 
     } else if (selectedProduct === "bioaqua_v7_2" && !selectedGift) {
+      // Si cambia a 2 cremas, por defecto seleccionamos el primero si no hay ninguno.
       setSelectedGift(GIFTS[0].id); 
     }
   }, [selectedProduct, selectedGift]);
@@ -144,18 +146,31 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Verificación de campos obligatorios
     if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
-      toast({ variant: "destructive", title: "DATOS FALTANTES", description: "Por favor complete todos los campos obligatorios." });
+      toast({
+        variant: "destructive",
+        title: "DATOS FALTANTES",
+        description: "Por favor complete todos los campos obligatorios para el envío."
+      });
       return;
     }
 
     if (hasGiftEnabled && !selectedGift) {
-      toast({ variant: "destructive", title: "ELIGE TU REGALO", description: "Esta oferta incluye un regalo, por favor selecciónalo." });
+      toast({
+        variant: "destructive",
+        title: "ELIGE TU REGALO",
+        description: "Esta oferta incluye un regalo, por favor selecciónalo."
+      });
       return;
     }
 
     if (wantsUpsell && !selectedUpsellProduct) {
-      toast({ variant: "destructive", title: "ELIGE PRODUCTO EXTRA", description: "Selecciona el producto adicional de $8." });
+      toast({
+        variant: "destructive",
+        title: "ELIGE PRODUCTO EXTRA",
+        description: "Has marcado la oferta extra, por favor selecciona el producto adicional."
+      });
       return;
     }
 
@@ -182,7 +197,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     } catch (err) {
       setLoading(false);
       errorEmitter.emit("permission-error", new FirestorePermissionError({
-        path: "leadSubmissions", operation: "create", requestResourceData: orderData
+        path: "leadSubmissions",
+        operation: "create",
+        requestResourceData: orderData
       }));
     }
   };
@@ -196,6 +213,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
         </DialogHeader>
 
         <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden w-full">
+          {/* Header del Modal */}
           <div className={`${colors.bg} p-8 text-white text-center flex flex-col items-center gap-4`}>
             <h2 className="text-[20px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
@@ -227,12 +245,21 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     key={p.id}
                     htmlFor={p.id}
                     className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all cursor-pointer ${
-                      selectedProduct === p.id ? `border-orange-500 bg-orange-50` : "border-slate-100 bg-white"
+                      selectedProduct === p.id 
+                        ? `border-orange-500 bg-orange-50` 
+                        : "border-slate-100 bg-white"
                     }`}
                   >
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5 text-orange-600" />
                     <div className="h-14 w-14 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
-                      <Image src={productImg || p.image} alt={p.name} fill className="object-cover" sizes="56px" unoptimized />
+                      <Image 
+                        src={productImg || p.image} 
+                        alt={p.name} 
+                        fill 
+                        className="object-cover" 
+                        sizes="56px"
+                        unoptimized
+                      />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-black text-[14px] text-slate-900 uppercase leading-tight">{p.name}</p>
@@ -246,7 +273,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </RadioGroup>
             </div>
 
-            {/* SELECCIÓN DE REGALO (Solo si elige 2 cremas) */}
+            {/* SELECCIÓN DE REGALO (Condicional) */}
             {hasGiftEnabled && (
               <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                 <div className={`flex items-center gap-2 text-pink-600 border-b-2 border-pink-100 pb-3`}>
@@ -265,7 +292,14 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     >
                       <RadioGroupItem value={g.id} id={g.id} className="h-4 w-4 text-pink-600" />
                       <div className="h-10 w-10 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
-                        <Image src={g.img} alt={g.name} fill className="object-cover" sizes="40px" unoptimized />
+                        <Image 
+                          src={g.img} 
+                          alt={g.name} 
+                          fill 
+                          className="object-cover" 
+                          sizes="40px"
+                          unoptimized
+                        />
                       </div>
                       <p className="font-black text-[11px] text-slate-900 uppercase flex-1 leading-tight">{g.name}</p>
                       <p className="font-black text-green-600 text-[12px] uppercase">GRATIS</p>
@@ -280,7 +314,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               <div className="bg-slate-900 p-6 rounded-[2.5rem] border-2 border-orange-500 shadow-xl space-y-4">
                 <div className="flex items-center gap-3">
                   <Checkbox 
-                    id="upsell" checked={wantsUpsell} onCheckedChange={(checked) => setWantsUpsell(!!checked)}
+                    id="upsell" 
+                    checked={wantsUpsell} 
+                    onCheckedChange={(checked) => setWantsUpsell(!!checked)}
                     className="h-6 w-6 border-2 border-orange-500 data-[state=checked]:bg-orange-500"
                   />
                   <Label htmlFor="upsell" className="cursor-pointer">
@@ -295,9 +331,12 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     <RadioGroup value={selectedUpsellProduct} onValueChange={setSelectedUpsellProduct} className="grid gap-2">
                       {GIFTS.filter(g => g.id !== selectedGift).map((g) => (
                         <Label
-                          key={`upsell_${g.id}`} htmlFor={`upsell_${g.id}`}
+                          key={`upsell_${g.id}`}
+                          htmlFor={`upsell_${g.id}`}
                           className={`flex items-center gap-3 p-3 rounded-xl border-2 transition-all cursor-pointer ${
-                            selectedUpsellProduct === g.id ? "border-orange-500 bg-orange-500/10" : "border-white/5 bg-white/5"
+                            selectedUpsellProduct === g.id 
+                              ? "border-orange-500 bg-orange-500/10" 
+                              : "border-white/5 bg-white/5"
                           }`}
                         >
                           <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className="h-4 w-4 border-orange-500 text-orange-500" />
@@ -314,7 +353,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
             </div>
 
-            {/* DATOS DE ENVÍO */}
+            {/* DATOS DE ENVÍO - REVISADO Y OBLIGATORIO */}
             <div className="space-y-5">
               <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
                 <Truck className="h-6 w-6" />
@@ -374,15 +413,27 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                 <div className="space-y-2">
                   <Label className="font-black text-[12px] uppercase text-slate-700">Provincia</Label>
                   <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Seleccionar" /></SelectTrigger>
-                    <SelectContent className="max-h-[200px]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
+                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold">
+                      <SelectValue placeholder="Seleccionar" />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-[200px]">
+                      {Object.keys(ecuadorData).sort().map(p => (
+                        <SelectItem key={p} value={p}>{p}</SelectItem>
+                      ))}
+                    </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
                   <Label className="font-black text-[12px] uppercase text-slate-700">Ciudad</Label>
                   <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Seleccionar" /></SelectTrigger>
-                    <SelectContent className="max-h-[200px]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
+                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold">
+                      <SelectValue placeholder="Seleccionar" />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-[200px]">
+                      {ciudadesDisponibles.map(c => (
+                        <SelectItem key={c} value={c}>{c}</SelectItem>
+                      ))}
+                    </SelectContent>
                   </Select>
                 </div>
               </div>
@@ -396,7 +447,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                 />
               </div>
 
-              {/* TARJETA DE ADVERTENCIA */}
+              {/* TARJETA DE ADVERTENCIA RESALTADA */}
               <div className="bg-orange-50 border-2 border-orange-200 p-6 rounded-[2rem] text-center space-y-2">
                 <div className="flex justify-center">
                   <AlertTriangle className="h-8 w-8 text-orange-600" />
@@ -443,7 +494,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
             </div>
 
-            <Button type="submit" disabled={loading} className={`w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat mt-4 border-4 border-white shadow-xl ${colors.button}`}>
+            <Button 
+              type="submit" 
+              disabled={loading} 
+              className={`w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat mt-4 border-4 border-white shadow-xl ${colors.button}`}
+            >
               {loading ? "PROCESANDO..." : "CONFIRMAR PEDIDO"}
             </Button>
           </form>
