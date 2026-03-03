@@ -230,14 +230,25 @@ export default function BioaquaPage() {
                   </div>
                 </div>
 
-                <div className="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-slate-200 text-center relative overflow-hidden">
-                  <div className="absolute -top-3 -left-3 bg-orange-600 p-1.5 rounded-full text-white shadow-lg">
-                    <Trophy className="h-3 w-3" />
+                <div className="space-y-4">
+                  <div className="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-slate-200 text-center relative overflow-hidden">
+                    <div className="absolute -top-3 -left-3 bg-orange-600 p-1.5 rounded-full text-white shadow-lg">
+                      <Trophy className="h-3 w-3" />
+                    </div>
+                    <p className="text-[13px] font-black text-slate-700 uppercase tracking-tight leading-relaxed">
+                      🔥 <span className="text-orange-600 italic">OFERTA:</span> Agrega un regalo adicional por solo <br />
+                      <span className="text-[16px] text-orange-600 underline decoration-orange-200 decoration-4 underline-offset-4">+$8 DÓLARES C/U</span>
+                    </p>
                   </div>
-                  <p className="text-[13px] font-black text-slate-700 uppercase tracking-tight leading-relaxed">
-                    🔥 <span className="text-orange-600 italic">OFERTA:</span> Agrega un regalo adicional por solo <br />
-                    <span className="text-[16px] text-orange-600 underline decoration-orange-200 decoration-4 underline-offset-4">+$8 DÓLARES C/U</span>
-                  </p>
+                  
+                  <Button 
+                    onClick={openPopup}
+                    size="lg" 
+                    className="w-full h-16 text-lg font-black bg-orange-600 hover:bg-orange-700 shadow-xl rounded-2xl animate-heartbeat border-2 border-white uppercase"
+                  >
+                    <ShoppingCart className="h-6 w-6 mr-3" />
+                    ¡ORDENAR AHORA!
+                  </Button>
                 </div>
               </section>
             </div>
