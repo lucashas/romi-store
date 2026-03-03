@@ -10,6 +10,7 @@ function GraciasContent() {
   const searchParams = useSearchParams();
   const [nombre, setNombre] = useState("Cliente");
   const [ciudad, setCiudad] = useState("Ecuador");
+  const [provincia, setProvincia] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [producto, setProducto] = useState("su pedido");
   const [extraProduct, setExtraProduct] = useState("");
@@ -18,6 +19,7 @@ function GraciasContent() {
   useEffect(() => {
     // Extraemos los datos de la URL para personalizar la página de forma dinámica
     setNombre(searchParams.get("nombre") || "Cliente");
+    setProvincia(searchParams.get("provincia") || "");
     setCiudad(searchParams.get("ciudad") || "Ecuador");
     setWhatsapp(searchParams.get("whatsapp") || "");
     setProducto(searchParams.get("producto") || "su pedido");
@@ -25,7 +27,8 @@ function GraciasContent() {
     setVolverUrl(searchParams.get("back") || "/");
   }, [searchParams]);
 
-  const whatsappMessage = `Hola, soy ${nombre}. Acabo de pedir ${producto} para ${ciudad}.${extraProduct ? ' También agregué el producto adicional: ' + extraProduct + ' por $8.' : ''}`;
+  const ubicacionCompleta = provincia ? `${ciudad}, ${provincia}` : ciudad;
+  const whatsappMessage = `Hola, soy ${nombre}. Acabo de pedir ${producto} para ${ubicacionCompleta}.${extraProduct ? ' También agregué el producto adicional: ' + extraProduct + ' por $8.' : ''}`;
   const whatsappUrl = `https://wa.me/593959461399?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
@@ -46,7 +49,7 @@ function GraciasContent() {
       </h1>
       
       <p className="text-lg text-muted-foreground font-medium leading-relaxed mb-8">
-        Hola <strong>{nombre}</strong>, tu solicitud para <strong>{ciudad}</strong> ha sido recibida en Romi Store EC.
+        Hola <strong>{nombre}</strong>, tu solicitud para <strong>{ubicacionCompleta}</strong> ha sido recibida en Romi Store EC.
       </p>
 
       <div className="w-full bg-secondary/20 p-6 rounded-[2rem] border border-secondary/50 text-left space-y-6 mb-8 shadow-sm">

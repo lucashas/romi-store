@@ -180,7 +180,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       name: `${nombre.trim()} ${apellido.trim()}`,
       email: `${whatsapp}@romistore.com`, 
       phoneNumber: whatsapp,
-      // SE CORRIGE: Se incluye provincia en el mensaje detallado del pedido
       message: `PRODUCTO: ${product?.name}${giftMsg}${upsellMsg} | TOTAL: $${totalPrice.toFixed(2)} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
       landingPageContentId: pathname.replace("/", "") || "bioaqua"
