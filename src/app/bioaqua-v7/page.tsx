@@ -14,28 +14,12 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const BIOAQUA_PRODUCTS: Product[] = [
   {
-    id: "bioaqua_1",
+    id: "bioaqua_v7_unica",
     name: "1 Crema V7 Bioaqua",
-    price: 15.00,
+    price: 30.00,
     image: "https://i.imgur.com/P4G3s0w.png",
-    badge: null,
-    description: "Efecto aclarante instantáneo"
-  },
-  {
-    id: "bioaqua_2",
-    name: "2 Cremas (Dúo Piel Perfecta)",
-    price: 25.00,
-    image: "https://i.imgur.com/P4G3s0w.png",
-    badge: "Más Vendido",
-    description: "Envío Gratis a todo Ecuador"
-  },
-  {
-    id: "bioaqua_3",
-    name: "3 Cremas (Tratamiento Completo)",
-    price: 32.00,
-    image: "https://i.imgur.com/P4G3s0w.png",
-    badge: "Mejor Precio",
-    description: "Máximo ahorro + Regalo sorpresa"
+    badge: "OFERTA HOY",
+    description: "Efecto aclarante instantáneo + Regalo a elegir"
   }
 ];
 
@@ -43,31 +27,31 @@ const GIFTS = [
   {
     name: "Ácido Salicílico The Ordinary",
     desc: "Ideal para acné y manchas",
-    img: "https://i.imgur.com/OfmNXS4.png",
+    img: "https://imgur.com/OfmNXS4.png",
     tag: "TOP"
   },
   {
     name: "Base Bioaqua",
     desc: "Acabado perfecto y natural",
-    img: "https://i.imgur.com/pm0vI4d.png",
+    img: "https://imgur.com/pm0vI4d.png",
     tag: "MÁS PEDIDO"
   },
   {
     name: "Kit x3 Alargadores de Cejas",
     desc: "Mirada más intensa y definida",
-    img: "https://i.imgur.com/1BJoaQw.png",
+    img: "https://imgur.com/1BJoaQw.png",
     tag: "RECOMENDADO"
   },
   {
     name: "Ácido Hialurónico The Ordinary",
     desc: "Hidratación profunda",
-    img: "https://i.imgur.com/I5qe7G7.png",
+    img: "https://imgur.com/I5qe7G7.png",
     tag: "TOP"
   },
   {
     name: "Multipeptido Capilar The Ordinary",
     desc: "Fortalece y nutre el cabello",
-    img: "https://i.imgur.com/0C9znXt.png",
+    img: "https://imgur.com/0C9znXt.png",
     tag: "RECOMENDADO"
   }
 ];
@@ -158,7 +142,7 @@ export default function BioaquaPage() {
 
             <div className="grid grid-cols-1 gap-4">
               {GIFTS.map((gift, i) => (
-                <div key={i} className="bg-white rounded-[2rem] p-4 shadow-xl border border-pink-50 flex items-center gap-4 relative overflow-hidden">
+                <div key={i} className="bg-white rounded-[2rem] p-4 shadow-xl border border-pink-50 flex items-center gap-4 relative overflow-hidden pointer-events-none">
                   <div className="absolute top-3 right-5 bg-pink-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">
                     {gift.tag}
                   </div>
