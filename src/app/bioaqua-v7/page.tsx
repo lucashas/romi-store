@@ -158,7 +158,7 @@ export default function BioaquaPage() {
 
             <div className="grid grid-cols-1 gap-4">
               {GIFTS.map((gift, i) => (
-                <div key={i} className="bg-white rounded-[2rem] p-4 shadow-xl border border-pink-50 flex items-center gap-4 relative overflow-hidden group active:scale-95 transition-transform" onClick={openPopup}>
+                <div key={i} className="bg-white rounded-[2rem] p-4 shadow-xl border border-pink-50 flex items-center gap-4 relative overflow-hidden">
                   <div className="absolute top-3 right-5 bg-pink-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">
                     {gift.tag}
                   </div>
@@ -208,7 +208,7 @@ export default function BioaquaPage() {
                 { t: "COCTEL DE VITAMINAS", d: "Enriquecida con Vitaminas A, B12, C, E, F y H para nutrición celular profunda." },
                 { t: "CERO GRASA", d: "Textura ligera de rápida absorción. Ideal para el clima de Ecuador." }
               ].map((b, i) => (
-                <div key={i} className="flex gap-4 items-center p-5 bg-slate-50 rounded-[2rem] border border-slate-100 shadow-sm transition-transform active:scale-95" onClick={openPopup}>
+                <div key={i} className="flex gap-4 items-center p-5 bg-slate-50 rounded-[2rem] border border-slate-100 shadow-sm transition-transform active:scale-95 cursor-pointer" onClick={openPopup}>
                   <div className="h-12 w-12 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-md border border-orange-100 text-orange-600">
                     <Sparkles className="h-6 w-6" />
                   </div>
