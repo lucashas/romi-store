@@ -3,28 +3,28 @@ import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
-  title: 'Romi Store EC | MaryRuth\'s Organics Ecuador',
-  description: 'Tienda oficial Romi Store. Descubre MaryRuth\'s Organics en Ecuador. Suplementos líquidos premium con envío gratis y pago contra entrega en todo el país.',
+  title: 'Romi Store EC | Crema V7 Bioaqua Ecuador',
+  description: 'Tienda oficial Romi Store. Descubre la Crema V7 Bioaqua en Ecuador. Efecto porcelana instantáneo con 7 vitaminas. Pago contra entrega en todo el país.',
   metadataBase: new URL('https://romi-store.com'),
   alternates: {
     canonical: '/',
   },
   icons: {
-    icon: 'https://i.imgur.com/XfmwUEJ.png', // Esta imagen aparecerá en la pestaña del navegador (Favicon)
-    shortcut: 'https://i.imgur.com/XfmwUEJ.png',
-    apple: 'https://i.imgur.com/XfmwUEJ.png',
+    icon: 'https://i.imgur.com/bUaJbMD.png', // Imagen del producto Bioaqua V7 en la pestaña
+    shortcut: 'https://i.imgur.com/bUaJbMD.png',
+    apple: 'https://i.imgur.com/bUaJbMD.png',
   },
   openGraph: {
-    title: 'Romi Store EC | MaryRuth\'s Organics',
-    description: 'Suplementos orgánicos premium con envío gratis a todo Ecuador. ¡Paga al recibir!',
-    url: 'https://romi-store.com/mary-ruth',
+    title: 'Romi Store EC | Crema V7 Bioaqua',
+    description: 'Piel de porcelana al instante con la Crema V7 de 7 Vitaminas. Envío a todo Ecuador y ¡Pagas al recibir!',
+    url: 'https://romi-store.com/bioaqua-v7',
     siteName: 'Romi Store EC',
     images: [
       {
-        url: 'https://i.imgur.com/XfmwUEJ.png', // Foto que se ve al compartir el link en WhatsApp/TikTok
+        url: 'https://i.imgur.com/bUaJbMD.png', // Foto que se ve al compartir el link
         width: 800,
         height: 600,
-        alt: 'MaryRuth\'s Organics Ecuador',
+        alt: 'Crema V7 Bioaqua Ecuador',
       },
     ],
     locale: 'es_ES',
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Romi Store EC | MaryRuth\'s Organics',
-    description: 'Suplementos orgánicos premium con envío gratis a todo Ecuador.',
-    images: ['https://i.imgur.com/XfmwUEJ.png'],
+    title: 'Romi Store EC | Crema V7 Bioaqua',
+    description: 'Piel de porcelana al instante. Envío a todo Ecuador.',
+    images: ['https://i.imgur.com/bUaJbMD.png'],
   },
 };
 
