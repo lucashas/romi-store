@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -13,6 +12,7 @@ function GraciasContent() {
   const [ciudad, setCiudad] = useState("Ecuador");
   const [whatsapp, setWhatsapp] = useState("");
   const [producto, setProducto] = useState("su pedido");
+  const [extraProduct, setExtraProduct] = useState("");
   const [volverUrl, setVolverUrl] = useState("/");
 
   useEffect(() => {
@@ -21,8 +21,12 @@ function GraciasContent() {
     setCiudad(searchParams.get("ciudad") || "Ecuador");
     setWhatsapp(searchParams.get("whatsapp") || "");
     setProducto(searchParams.get("producto") || "su pedido");
+    setExtraProduct(searchParams.get("extra") || "");
     setVolverUrl(searchParams.get("back") || "/");
   }, [searchParams]);
+
+  const whatsappMessage = `Hola, soy ${nombre}. Acabo de pedir ${producto} para ${ciudad}.${extraProduct ? ' También agregué el producto adicional: ' + extraProduct + ' por $8.' : ''}`;
+  const whatsappUrl = `https://wa.me/593959461399?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center p-6 text-center animate-in fade-in duration-700">
@@ -79,7 +83,7 @@ function GraciasContent() {
 
       <div className="w-full space-y-4 mb-12">
         <Button asChild className="w-full h-16 text-lg font-black uppercase bg-green-600 hover:bg-green-700 shadow-xl rounded-2xl transition-transform active:scale-95">
-          <a href={`https://wa.me/593959461399?text=Hola,%20soy%20${nombre}.%20Acabo%20de%20pedir%20${producto}%20para%20${ciudad}.`} target="_blank">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
             <MessageCircle className="mr-2 h-6 w-6" />
             CONFIRMAR POR WHATSAPP
           </a>

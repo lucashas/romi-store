@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -174,7 +173,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     setLoading(true);
 
     const giftMsg = hasGiftEnabled && gift ? ` | REGALO: ${gift.name}` : " | SIN REGALO";
-    const upsellMsg = wantsUpsell && upsellProduct ? ` | EXTRA (+8$): ${upsellProduct.name}` : "";
+    const extraInfo = wantsUpsell && upsellProduct ? upsellProduct.name : "";
+    const upsellMsg = extraInfo ? ` | EXTRA (+8$): ${extraInfo}` : "";
 
     const orderData = {
       name: `${nombre.trim()} ${apellido.trim()}`,
@@ -190,7 +190,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       await addDoc(leadsRef, orderData);
       setLoading(false);
       onOpenChange(false);
-      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&regalo=${encodeURIComponent(gift?.name || "Sin regalo")}&total=${totalPrice}&back=${encodeURIComponent(pathname)}`);
+      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&regalo=${encodeURIComponent(gift?.name || "Sin regalo")}&total=${totalPrice}&extra=${encodeURIComponent(extraInfo)}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);
       errorEmitter.emit("permission-error", new FirestorePermissionError({
