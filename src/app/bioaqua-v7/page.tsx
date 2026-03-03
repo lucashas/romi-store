@@ -236,7 +236,7 @@ export default function BioaquaPage() {
                       <Trophy className="h-3 w-3" />
                     </div>
                     <p className="text-[13px] font-black text-slate-700 uppercase tracking-tight leading-relaxed">
-                      🔥 <span className="text-orange-600 italic">OFERTA:</span> Agrega un regalo adicional por solo <br />
+                      🔥 <span className="text-orange-600 italic">OFERTA EXTRA:</span> Agrega cualquier producto de regalo adicional a tu pedido por solo <br />
                       <span className="text-[16px] text-orange-600 underline decoration-orange-200 decoration-4 underline-offset-4">+$8 DÓLARES C/U</span>
                     </p>
                   </div>
