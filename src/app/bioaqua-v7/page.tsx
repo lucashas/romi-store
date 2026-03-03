@@ -174,7 +174,7 @@ export default function BioaquaPage() {
                     {gift.tag}
                   </div>
                   <div className="h-24 w-24 rounded-2xl overflow-hidden bg-slate-50 border border-pink-50 shrink-0 relative">
-                    <Image src={gift.img} alt={gift.name} fill className="object-cover" />
+                    <Image src={gift.img} alt={gift.name} fill className="object-cover" unoptimized />
                   </div>
                   <div className="text-left flex-1 min-w-0 pr-10">
                     <p className="text-[13px] font-black text-slate-900 uppercase leading-tight">{gift.name}</p>
