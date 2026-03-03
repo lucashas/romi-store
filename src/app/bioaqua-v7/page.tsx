@@ -51,7 +51,7 @@ const BIOAQUA_TESTIMONIALS: TestimonialItem[] = [
     city: "Loja",
     role: "Rostro Radiante",
     quote: "El efecto aclarante es instantáneo y muy natural. Me encanta que no deja sensación grasosa, ideal para el clima de acá. ¡100% recomendada!",
-    imageId: "testimonial-user-3"
+    imageId: "testimonial-user-2" // Corregido a imagen femenina
   }
 ];
 
@@ -81,7 +81,6 @@ export default function BioaquaPage() {
   const openPopup = () => setIsPopupOpen(true);
 
   const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-banner-top")?.imageUrl;
-  const showcaseImg = PlaceHolderImages.find(img => img.id === "bioaqua-showcase")?.imageUrl;
 
   const womenDayMessage = "🌸 ¡OFERTA ESPECIAL BELLEZA! 🌸 - ✨ REGÁLATE UNA PIEL DE PORCELANA HOY - 📦 PAGO CONTRA ENTREGA EN TODO ECUADOR - ";
 
