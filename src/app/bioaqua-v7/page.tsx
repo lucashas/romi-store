@@ -197,13 +197,13 @@ export default function BioaquaPage() {
                 </div>
               </div>
 
-              {/* Imagen estratégica debajo de beneficios */}
+              {/* Imagen estratégica debajo de beneficios - Asegurada y Centrada */}
               {extraInfoImg && (
-                <div className="mt-4 px-1 cursor-pointer" onClick={openPopup}>
-                  <div className="relative w-full overflow-hidden rounded-2xl shadow-lg border-2 border-slate-100 bg-slate-50">
+                <div className="mt-6 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
+                  <div className="relative w-full max-w-[440px] overflow-hidden rounded-2xl shadow-xl border-2 border-slate-100 bg-slate-50">
                     <img 
                       src={extraInfoImg} 
-                      alt="Información extra Bioaqua V7" 
+                      alt="Información adicional de producto Bioaqua" 
                       className="w-full h-auto block"
                     />
                   </div>
