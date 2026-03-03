@@ -47,18 +47,6 @@ const GIFTS = [
     tag: "TOP"
   },
   {
-    name: "Base Bioaqua",
-    desc: "Acabado perfecto y natural",
-    img: "https://i.imgur.com/I5qe7G7.png",
-    tag: "MÁS PEDIDO"
-  },
-  {
-    name: "Kit x3 Alargadores de Cejas",
-    desc: "Mirada más intensa y definida",
-    img: "https://i.imgur.com/0C9znXt.png",
-    tag: "RECOMENDADO"
-  },
-  {
     name: "Ácido Hialurónico The Ordinary",
     desc: "Hidratación profunda",
     img: "https://i.imgur.com/pm0vI4d.png",
@@ -68,6 +56,18 @@ const GIFTS = [
     name: "Multipeptido Capilar The Ordinary",
     desc: "Fortalece y nutre el cabello",
     img: "https://i.imgur.com/1BJoaQw.png",
+    tag: "RECOMENDADO"
+  },
+  {
+    name: "Base Bioaqua",
+    desc: "Acabado perfecto y natural",
+    img: "https://i.imgur.com/I5qe7G7.png",
+    tag: "MÁS PEDIDO"
+  },
+  {
+    name: "Kit x3 Alargadores de Cejas",
+    desc: "Mirada más intensa y definida",
+    img: "https://i.imgur.com/0C9znXt.png",
     tag: "RECOMENDADO"
   }
 ];
@@ -98,7 +98,7 @@ export default function BioaquaPage() {
                 alt="Bioaqua V7 Crema 7 Vitaminas"
                 className="w-full h-auto block"
               />
-              <div className="absolute bottom-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-full font-black text-[11px] animate-pulse shadow-2xl border-2 border-white uppercase tracking-tighter">
+              <div className="absolute bottom-4 left-4 bg-orange-600 text-white px-4 py-1.5 rounded-full font-black text-[10px] animate-pulse shadow-2xl border-2 border-white uppercase tracking-tighter">
                 OFERTA MUJER ✨
               </div>
             </div>
