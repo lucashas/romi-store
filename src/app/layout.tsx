@@ -4,13 +4,13 @@ import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
   title: 'Romi Store EC | Crema V7 Bioaqua Ecuador',
-  description: 'Tienda oficial Romi Store. Descubre la Crema V7 Bioaqua en Ecuador. Efecto porcelana instantáneo con 7 vitaminas. Pago contra entrega en todo el país.',
+  description: 'Piel de porcelana al instante con la Crema V7 de 7 Vitaminas. Envío a todo Ecuador y ¡Pagas al recibir! Descubre el secreto de un rostro radiante con Bioaqua.',
   metadataBase: new URL('https://romi-store.com'),
   alternates: {
-    canonical: '/',
+    canonical: '/bioaqua-v7',
   },
   icons: {
-    icon: 'https://i.imgur.com/bUaJbMD.png', // Imagen del producto Bioaqua V7 en la pestaña
+    icon: 'https://i.imgur.com/bUaJbMD.png',
     shortcut: 'https://i.imgur.com/bUaJbMD.png',
     apple: 'https://i.imgur.com/bUaJbMD.png',
   },
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     siteName: 'Romi Store EC',
     images: [
       {
-        url: 'https://i.imgur.com/bUaJbMD.png', // Foto que se ve al compartir el link
+        url: 'https://i.imgur.com/bUaJbMD.png',
         width: 800,
-        height: 600,
+        height: 800,
         alt: 'Crema V7 Bioaqua Ecuador',
       },
     ],
