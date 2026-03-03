@@ -26,12 +26,13 @@ export interface Product {
   description: string;
 }
 
+// Mapeo exacto solicitado por Stalin
 const GIFTS = [
   { id: "gift_salicilico", name: "Ácido Salicílico The Ordinary", img: "https://imgur.com/OfmNXS4.png", desc: "Acné y manchas" },
-  { id: "gift_base", name: "Base Bioaqua", img: "https://imgur.com/pm0vI4d.png", desc: "Acabado natural" },
-  { id: "gift_cejas", name: "Kit x3 Alargadores de Cejas", img: "https://imgur.com/1BJoaQw.png", desc: "Mirada intensa" },
-  { id: "gift_hialuronico", name: "Ácido Hialurónico The Ordinary", img: "https://imgur.com/I5qe7G7.png", desc: "Hidratación" },
-  { id: "gift_capilar", name: "Multipeptido Capilar The Ordinary", img: "https://imgur.com/0C9znXt.png", desc: "Fortalecedor" }
+  { id: "gift_base", name: "Base Bioaqua", img: "https://imgur.com/pm0vI4d.png", desc: "Acabado perfecto y natural" },
+  { id: "gift_cejas", name: "Kit x3 Alargadores de Cejas", img: "https://imgur.com/1BJoaQw.png", desc: "Mirada más intensa y definida" },
+  { id: "gift_hialuronico", name: "Ácido Hialurónico The Ordinary", img: "https://imgur.com/I5qe7G7.png", desc: "Hidratación profunda" },
+  { id: "gift_capilar", name: "Multipeptido Capilar The Ordinary", img: "https://imgur.com/0C9znXt.png", desc: "Fortalece y nutre el cabello" }
 ];
 
 const ecuadorData: Record<string, string[]> = {
@@ -107,7 +108,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     }
   }, [open, products, selectedProduct, selectedGift]);
 
-  // Si el regalo es igual al producto de upsell, reiniciamos el upsell
+  // Si el regalo es igual al producto de upsell, reiniciamos el upsell para evitar duplicados
   useEffect(() => {
     if (selectedGift === selectedUpsellProduct) {
       setSelectedUpsellProduct("");
@@ -245,7 +246,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
               
               <RadioGroup value={selectedGift} onValueChange={setSelectedGift} className="grid gap-3">
-                {GIFTS.map((g) => (
+                {GIFTS.map((g, index) => (
                   <Label
                     key={g.id}
                     htmlFor={g.id}
@@ -263,6 +264,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                       <div className="flex-1 min-w-0 text-left">
                         <p className="font-black text-[12px] text-slate-900 uppercase leading-tight">{g.name}</p>
                         <p className="text-[10px] text-slate-400 font-bold uppercase">{g.desc}</p>
+                        {index === 1 && (
+                          <span className="inline-block mt-1 bg-pink-100 text-pink-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase">MÁS PEDIDO</span>
+                        )}
                       </div>
                       <div className="text-right shrink-0">
                         <p className="font-black text-green-600 text-[14px] uppercase italic">GRATIS</p>
@@ -393,7 +397,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
             </div>
 
-            {/* RESUMEN DE TOTAL */}
+            {/* RESUMEN DE TOTAL SOLICITADO POR STALIN */}
             <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
                 <span className="text-white/60 text-[11px] font-bold uppercase tracking-widest">SUBTOTAL: 1 CREMA V7 BIOAQUA</span>
