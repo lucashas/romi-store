@@ -74,14 +74,14 @@ function GraciasContent() {
 
       <div className="w-full space-y-4 mb-12">
         <Button asChild className="w-full h-16 text-lg font-black uppercase bg-green-600 hover:bg-green-700 shadow-xl rounded-2xl transition-transform active:scale-95">
-          <a href={`https://wa.me/593999999999?text=Hola,%20soy%20${nombre}.%20Acabo%20de%20hacer%20un%20pedido%20para%20${ciudad}.`} target="_blank">
+          <a href={`https://wa.me/593959461399?text=Hola,%20soy%20${nombre}.%20Acabo%20de%20hacer%20un%20pedido%20para%20${ciudad}.`} target="_blank">
             <MessageCircle className="mr-2 h-6 w-6" />
             CONFIRMAR POR WHATSAPP
           </a>
         </Button>
         
         <Button asChild variant="outline" className="w-full h-14 text-sm font-bold uppercase border-2 rounded-2xl">
-          <Link href="/mary-ruth">
+          <Link href="/bioaqua-v7">
             <Home className="mr-2 h-4 w-4" />
             VOLVER A LA TIENDA
           </Link>
