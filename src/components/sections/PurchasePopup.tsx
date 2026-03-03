@@ -322,7 +322,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             {/* RESUMEN DE TOTAL */}
             <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">Subtotal Crema</span>
+                <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">SUBTOTAL: 1 CREMA V7 BIOAQUA</span>
                 <span className="text-white font-black">$30.00</span>
               </div>
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
