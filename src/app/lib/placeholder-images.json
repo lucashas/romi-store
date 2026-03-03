@@ -32,6 +32,12 @@
       "imageHint": "bioaqua banner"
     },
     {
+      "id": "bioaqua-product-v7",
+      "description": "Crema V7 Bioaqua - Producto Formulario",
+      "imageUrl": "https://i.imgur.com/bUaJbMD.png",
+      "imageHint": "bioaqua v7"
+    },
+    {
       "id": "bioaqua-hero",
       "description": "Crema V7 Bioaqua - Imagen Principal",
       "imageUrl": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1080",

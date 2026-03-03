@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TopMarquee } from "@/components/layout/TopMarquee";
 import { Testimonials, type TestimonialItem } from "@/components/sections/Testimonials";
 import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup";
@@ -17,7 +17,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
     id: "bioaqua_v7_1",
     name: "1 Crema V7 Bioaqua",
     price: 16.00,
-    image: "https://i.imgur.com/P4G3s0w.png",
+    image: "https://i.imgur.com/bUaJbMD.png",
     badge: "ECONÓMICO",
     description: "Efecto aclarante instantáneo (Sin regalo)"
   },
@@ -25,7 +25,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
     id: "bioaqua_v7_2",
     name: "2 Cremas V7 Bioaqua",
     price: 26.00,
-    image: "https://i.imgur.com/P4G3s0w.png",
+    image: "https://i.imgur.com/bUaJbMD.png",
     badge: "OFERTA HOY",
     description: "Efecto porcelana + Regalo a elegir"
   }
@@ -79,6 +79,11 @@ const GIFTS = [
 export default function BioaquaPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
+
+  // Efecto para actualizar el título de la pestaña del navegador
+  useEffect(() => {
+    document.title = "Crema V7 Bioaqua | Romi Store EC";
+  }, []);
 
   const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-banner-top")?.imageUrl;
 

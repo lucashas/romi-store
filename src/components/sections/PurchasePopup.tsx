@@ -17,6 +17,7 @@ import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
 import { useRouter, usePathname } from "next/navigation";
 import { Checkbox } from "@/components/ui/checkbox";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export interface Product {
   id: string;
@@ -84,6 +85,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const firestore = useFirestore();
   const router = useRouter();
   const pathname = usePathname();
+
+  const productImg = PlaceHolderImages.find(img => img.id === "bioaqua-product-v7")?.imageUrl;
 
   const colors = {
     bg: themeColor === "orange" ? "bg-orange-600" : "bg-primary",
@@ -207,6 +210,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     }`}
                   >
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5 text-orange-600" />
+                    <div className="h-14 w-14 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
+                      <Image src={productImg || p.image} alt={p.name} fill className="object-cover" sizes="56px" unoptimized />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-black text-[14px] text-slate-900 uppercase leading-tight">{p.name}</p>
                       <p className="text-[10px] text-slate-400 font-bold uppercase">{p.description}</p>
