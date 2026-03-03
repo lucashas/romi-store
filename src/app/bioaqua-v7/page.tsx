@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -18,7 +17,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
     name: "1 Crema V7 Bioaqua",
     price: 16.00,
     image: "https://i.imgur.com/P4G3s0w.png",
-    badge: "BÁSICO",
+    badge: "ECONÓMICO",
     description: "Efecto aclarante (Sin regalo)"
   },
   {
@@ -74,13 +73,13 @@ export default function BioaquaPage() {
   const womenDayMessage = "🌸 ¡FELIZ DÍA DE LA MUJER! 🌸 - ✨ REGÁLATE UNA PIEL DE PORCELANA HOY - 📦 PAGO CONTRA ENTREGA EN TODO ECUADOR - ";
 
   return (
-    <div className="min-h-screen flex flex-col bg-white pb-24 font-body overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white pb-24 font-body overflow-x-hidden w-full max-w-[500px] mx-auto shadow-2xl relative">
       <TopMarquee 
         text={womenDayMessage} 
         className="bg-orange-600 text-white border-orange-500" 
       />
       
-      <main className="flex-1 w-full max-w-full overflow-x-hidden">
+      <main className="flex-1 w-full overflow-x-hidden">
         {/* Banner de Impacto Inmediato */}
         <section className="bg-white overflow-hidden w-full">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
@@ -131,7 +130,7 @@ export default function BioaquaPage() {
           </p>
         </div>
 
-        {/* SECCIÓN DE REGALOS DÍA DE LA MUJER (Informativa) */}
+        {/* SECCIÓN DE REGALOS (Informativa - No clickeable) */}
         <section className="py-12 bg-[#fff5f5] mt-10 border-y border-pink-100 w-full overflow-hidden">
           <div className="container px-4 text-center space-y-8">
             <div className="space-y-2">
@@ -169,23 +168,6 @@ export default function BioaquaPage() {
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* BLOQUE DE OFERTA EXTRA (UPSELL) */}
-            <div className="bg-slate-900 p-6 rounded-[2.5rem] border-2 border-orange-500 shadow-2xl relative overflow-hidden">
-               <div className="relative z-10 space-y-4">
-                  <p className="text-orange-500 font-black text-sm uppercase tracking-widest animate-pulse">💥 OFERTA EXTRA EXCLUSIVA</p>
-                  <h3 className="text-2xl font-black text-white uppercase leading-tight">
-                    ¿QUIERES OTRO <br />PRODUCTO ADICIONAL?
-                  </h3>
-                  <div className="inline-block bg-orange-600 px-6 py-2 rounded-full">
-                    <p className="text-white font-black text-lg uppercase italic">LLÉVALO POR SOLO +$8</p>
-                  </div>
-                  <p className="text-[10px] text-slate-400 font-medium uppercase tracking-widest">Válido solo al confirmar tu pedido hoy</p>
-               </div>
-               <div className="absolute -bottom-10 -right-10 opacity-20">
-                  <ShoppingCart className="h-40 w-40 text-white" />
-               </div>
             </div>
           </div>
         </section>

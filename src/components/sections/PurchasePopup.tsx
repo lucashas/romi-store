@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -103,12 +102,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     }
   }, [open, products, selectedProduct]);
 
-  // Lógica de reset de regalos según el producto
   useEffect(() => {
     if (selectedProduct === "bioaqua_v7_1") {
-      setSelectedGift(""); // No hay regalo para la opción de 1 crema
+      setSelectedGift(""); 
     } else if (selectedProduct === "bioaqua_v7_2" && !selectedGift) {
-      setSelectedGift(GIFTS[0].id); // Por defecto el primero si elige la opción de 2 cremas
+      setSelectedGift(GIFTS[0].id); 
     }
   }, [selectedProduct, selectedGift]);
 
@@ -222,7 +220,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </RadioGroup>
             </div>
 
-            {/* SELECCIÓN DE REGALO (Condicional) */}
+            {/* SELECCIÓN DE REGALO (Solo si elige 2 cremas) */}
             {hasGiftEnabled && (
               <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
                 <div className={`flex items-center gap-2 text-pink-600 border-b-2 border-pink-100 pb-3`}>
@@ -320,7 +318,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             {/* RESUMEN DE TOTAL */}
             <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
               <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-tight pr-2">SUBTOTAL: {product?.name?.toUpperCase()}</span>
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-tight pr-2">
+                  SUBTOTAL: {product?.name?.toUpperCase()}
+                </span>
                 <span className="text-white font-black shrink-0">${product?.price.toFixed(2)}</span>
               </div>
               
