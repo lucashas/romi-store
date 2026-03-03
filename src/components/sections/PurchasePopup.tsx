@@ -106,11 +106,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   }, [open, products, selectedProduct]);
 
   useEffect(() => {
-    // Si cambia a la opción de 1 crema (id: bioaqua_v7_1), quitamos el regalo.
     if (selectedProduct === "bioaqua_v7_1") {
       setSelectedGift(""); 
     } else if (selectedProduct === "bioaqua_v7_2" && !selectedGift) {
-      // Si cambia a 2 cremas, por defecto seleccionamos el primero si no hay ninguno.
       setSelectedGift(GIFTS[0].id); 
     }
   }, [selectedProduct, selectedGift]);
@@ -146,7 +144,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Verificación de campos obligatorios
     if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
       toast({
         variant: "destructive",
@@ -213,13 +210,12 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
         </DialogHeader>
 
         <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden w-full">
-          {/* Header del Modal */}
-          <div className={`${colors.bg} p-8 text-white text-center flex flex-col items-center gap-4`}>
-            <h2 className="text-[20px] font-black uppercase leading-tight tracking-tight px-2">
+          <div className={`${colors.bg} p-8 text-white text-center flex flex-col items-center gap-5`}>
+            <h2 className="text-[22px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
             </h2>
             {checkoutLogo && (
-              <div className="relative w-24 h-8">
+              <div className="relative w-28 h-10">
                 <Image 
                   src={checkoutLogo} 
                   alt="Sello de Confianza" 
@@ -231,120 +227,117 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             )}
           </div>
 
-          <form onSubmit={handleSubmit} className="p-5 space-y-8 bg-white pb-10 w-full">
-            {/* SELECCIÓN DE PRODUCTO */}
-            <div className="space-y-4">
-              <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
-                <Package className="h-6 w-6" />
-                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">ELIGE TU OFERTA</h3>
+          <form onSubmit={handleSubmit} className="p-6 space-y-10 bg-white pb-12 w-full">
+            <div className="space-y-5">
+              <div className={`flex items-center gap-3 ${colors.text} border-b-2 ${colors.borderLight} pb-4`}>
+                <Package className="h-7 w-7" />
+                <h3 className="font-black uppercase text-[17px] tracking-[0.15em]">ELIGE TU OFERTA</h3>
               </div>
               
-              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
+              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
                 {products.map((p) => (
                   <Label
                     key={p.id}
                     htmlFor={p.id}
-                    className={`flex items-center gap-3 p-4 rounded-2xl border-2 transition-all cursor-pointer ${
+                    className={`flex items-center gap-4 p-5 rounded-2xl border-2 transition-all cursor-pointer ${
                       selectedProduct === p.id 
                         ? `border-orange-500 bg-orange-50` 
                         : "border-slate-100 bg-white"
                     }`}
                   >
-                    <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5 text-orange-600" />
-                    <div className="h-14 w-14 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
+                    <RadioGroupItem value={p.id} id={p.id} className="h-6 w-6 text-orange-600" />
+                    <div className="h-16 w-16 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
                       <Image 
                         src={productImg || p.image} 
                         alt={p.name} 
                         fill 
                         className="object-cover" 
-                        sizes="56px"
+                        sizes="64px"
                         unoptimized
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-black text-[14px] text-slate-900 uppercase leading-tight">{p.name}</p>
-                      <p className="text-[10px] text-slate-400 font-bold uppercase">{p.description}</p>
+                      <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{p.name}</p>
+                      <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-black text-orange-600 text-[20px] leading-none">${p.price.toFixed(0)}</p>
+                      <p className="font-black text-orange-600 text-[24px] leading-none">${p.price.toFixed(0)}</p>
                     </div>
                   </Label>
                 ))}
               </RadioGroup>
             </div>
 
-            {/* SELECCIÓN DE REGALO (Condicional) */}
             {hasGiftEnabled && (
-              <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
-                <div className={`flex items-center gap-2 text-pink-600 border-b-2 border-pink-100 pb-3`}>
-                  <Gift className="h-6 w-6" />
-                  <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">ESCOGE TU REGALO GRATIS</h3>
+              <div className="space-y-5 animate-in fade-in slide-in-from-top-4 duration-500">
+                <div className={`flex items-center gap-3 text-pink-600 border-b-2 border-pink-100 pb-4`}>
+                  <Gift className="h-7 w-7" />
+                  <h3 className="font-black uppercase text-[17px] tracking-[0.15em]">ESCOGE TU REGALO GRATIS</h3>
                 </div>
                 
-                <RadioGroup value={selectedGift} onValueChange={setSelectedGift} className="grid gap-3">
+                <RadioGroup value={selectedGift} onValueChange={setSelectedGift} className="grid gap-4">
                   {GIFTS.map((g) => (
                     <Label
                       key={g.id}
                       htmlFor={g.id}
-                      className={`flex items-center gap-3 p-3 rounded-2xl border-2 transition-all cursor-pointer ${
+                      className={`flex items-center gap-4 p-4 rounded-2xl border-2 transition-all cursor-pointer ${
                         selectedGift === g.id ? "border-pink-500 bg-pink-50" : "border-slate-100 bg-white"
                       }`}
                     >
-                      <RadioGroupItem value={g.id} id={g.id} className="h-4 w-4 text-pink-600" />
-                      <div className="h-10 w-10 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
+                      <RadioGroupItem value={g.id} id={g.id} className="h-5 w-5 text-pink-600" />
+                      <div className="h-12 w-12 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
                         <Image 
                           src={g.img} 
                           alt={g.name} 
                           fill 
                           className="object-cover" 
-                          sizes="40px"
+                          sizes="48px"
                           unoptimized
                         />
                       </div>
-                      <p className="font-black text-[11px] text-slate-900 uppercase flex-1 leading-tight">{g.name}</p>
-                      <p className="font-black text-green-600 text-[12px] uppercase">GRATIS</p>
+                      <p className="font-black text-[13px] text-slate-900 uppercase flex-1 leading-tight">{g.name}</p>
+                      <p className="font-black text-green-600 text-[14px] uppercase">GRATIS</p>
                     </Label>
                   ))}
                 </RadioGroup>
               </div>
             )}
 
-            {/* OFERTA EXTRA (UPSELL) */}
-            <div className="space-y-4">
-              <div className="bg-slate-900 p-6 rounded-[2.5rem] border-2 border-orange-500 shadow-xl space-y-4">
-                <div className="flex items-center gap-3">
+            <div className="space-y-5">
+              <div className="bg-slate-900 p-8 rounded-[2.5rem] border-2 border-orange-500 shadow-xl space-y-6">
+                <div className="flex items-center gap-4">
                   <Checkbox 
                     id="upsell" 
                     checked={wantsUpsell} 
                     onCheckedChange={(checked) => setWantsUpsell(!!checked)}
-                    className="h-6 w-6 border-2 border-orange-500 data-[state=checked]:bg-orange-500"
+                    className="h-7 w-7 border-2 border-orange-500 data-[state=checked]:bg-orange-500"
                   />
                   <Label htmlFor="upsell" className="cursor-pointer">
-                    <p className="text-orange-500 font-black text-[11px] uppercase tracking-widest animate-pulse">💥 OFERTA EXTRA EXCLUSIVA</p>
-                    <p className="text-white font-black text-[14px] uppercase leading-tight">¿QUIERES OTRO PRODUCTO ADICIONAL?</p>
-                    <p className="text-white font-black text-[16px] uppercase italic mt-1 text-orange-500">POR SOLO +$8</p>
+                    <p className="text-orange-500 font-black text-[12px] uppercase tracking-widest animate-pulse">💥 OFERTA EXTRA EXCLUSIVA</p>
+                    <p className="text-white font-black text-[15px] uppercase leading-tight">¿QUIERES OTRO PRODUCTO ADICIONAL?</p>
+                    <p className="text-white font-black text-[18px] uppercase italic mt-1 text-orange-500">POR SOLO +$8</p>
                   </Label>
                 </div>
 
                 {wantsUpsell && (
-                  <div className="pt-4 border-t border-white/10 space-y-3">
-                    <RadioGroup value={selectedUpsellProduct} onValueChange={setSelectedUpsellProduct} className="grid gap-2">
+                  <div className="pt-6 border-t border-white/10 space-y-4">
+                    <RadioGroup value={selectedUpsellProduct} onValueChange={setSelectedUpsellProduct} className="grid gap-3">
                       {GIFTS.filter(g => g.id !== selectedGift).map((g) => (
                         <Label
                           key={`upsell_${g.id}`}
                           htmlFor={`upsell_${g.id}`}
-                          className={`flex items-center gap-3 p-3 rounded-xl border-2 transition-all cursor-pointer ${
+                          className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all cursor-pointer ${
                             selectedUpsellProduct === g.id 
                               ? "border-orange-500 bg-orange-500/10" 
                               : "border-white/5 bg-white/5"
                           }`}
                         >
-                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className="h-4 w-4 border-orange-500 text-orange-500" />
-                          <div className="h-10 w-10 rounded-lg overflow-hidden shrink-0 relative">
-                            <Image src={g.img} alt={g.name} fill className="object-cover" sizes="40px" unoptimized />
+                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className="h-5 w-5 border-orange-500 text-orange-500" />
+                          <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 relative">
+                            <Image src={g.img} alt={g.name} fill className="object-cover" sizes="48px" unoptimized />
                           </div>
-                          <p className="font-black text-[10px] text-white uppercase flex-1 leading-tight">{g.name}</p>
-                          <p className="font-black text-orange-500 text-[12px]">+$8</p>
+                          <p className="font-black text-[12px] text-white uppercase flex-1 leading-tight">{g.name}</p>
+                          <p className="font-black text-orange-500 text-[14px]">+$8</p>
                         </Label>
                       ))}
                     </RadioGroup>
@@ -353,83 +346,82 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
             </div>
 
-            {/* DATOS DE ENVÍO - REVISADO Y OBLIGATORIO */}
-            <div className="space-y-5">
-              <div className={`flex items-center gap-2 ${colors.text} border-b-2 ${colors.borderLight} pb-3`}>
-                <Truck className="h-6 w-6" />
-                <h3 className="font-black uppercase text-[15px] tracking-[0.15em]">DATOS DE ENVÍO</h3>
+            <div className="space-y-6">
+              <div className={`flex items-center gap-3 ${colors.text} border-b-2 ${colors.borderLight} pb-4`}>
+                <Truck className="h-7 w-7" />
+                <h3 className="font-black uppercase text-[17px] tracking-[0.15em]">DATOS DE ENVÍO</h3>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="font-black text-[12px] uppercase text-slate-700">Nombre</Label>
+                <div className="space-y-3">
+                  <Label className="font-black text-[14px] uppercase text-slate-700">Nombre</Label>
                   <Input 
                     placeholder="Nombre" 
                     required 
                     value={nombre} 
                     onChange={(e) => setNombre(e.target.value)} 
-                    className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
+                    className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label className="font-black text-[12px] uppercase text-slate-700">Apellido</Label>
+                <div className="space-y-3">
+                  <Label className="font-black text-[14px] uppercase text-slate-700">Apellido</Label>
                   <Input 
                     placeholder="Apellido" 
                     required 
                     value={apellido} 
                     onChange={(e) => setApellido(e.target.value)} 
-                    className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
+                    className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label className="font-black text-[12px] uppercase text-slate-700">Número de WhatsApp (para notificaciones de envío)</Label>
+              <div className="space-y-3">
+                <Label className="font-black text-[14px] uppercase text-slate-700">Número de WhatsApp (para notificaciones de envío)</Label>
                 <Input 
                   placeholder="ingresa tu celular" 
                   type="tel" 
                   required 
                   value={whatsapp} 
                   onChange={handleWhatsappChange} 
-                  className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
+                  className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label className="font-black text-[12px] uppercase text-slate-700">Dirección Entrega: (2 calles y una referencia para el envío a domicilio)</Label>
+              <div className="space-y-3">
+                <Label className="font-black text-[14px] uppercase text-slate-700">Dirección Entrega: (2 calles y una referencia)</Label>
                 <Input 
                   placeholder="calle principal y secundaria referencia domicilio" 
                   required 
                   value={direccion} 
                   onChange={(e) => setDireccion(e.target.value)} 
-                  className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
+                  className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
                 />
-                <p className="text-[11px] text-slate-500 font-medium italic pl-1 leading-tight">
+                <p className="text-[12px] text-slate-500 font-medium italic pl-1 leading-tight">
                   Ejemplo: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, color.. , # casa
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="font-black text-[12px] uppercase text-slate-700">Provincia</Label>
+                <div className="space-y-3">
+                  <Label className="font-black text-[14px] uppercase text-slate-700">Provincia</Label>
                   <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold">
+                    <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold">
                       <SelectValue placeholder="Seleccionar" />
                     </SelectTrigger>
-                    <SelectContent className="max-h-[200px]">
+                    <SelectContent className="max-h-[250px]">
                       {Object.keys(ecuadorData).sort().map(p => (
                         <SelectItem key={p} value={p}>{p}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
-                  <Label className="font-black text-[12px] uppercase text-slate-700">Ciudad</Label>
+                <div className="space-y-3">
+                  <Label className="font-black text-[14px] uppercase text-slate-700">Ciudad</Label>
                   <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                    <SelectTrigger className="h-14 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold">
+                    <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold">
                       <SelectValue placeholder="Seleccionar" />
                     </SelectTrigger>
-                    <SelectContent className="max-h-[200px]">
+                    <SelectContent className="max-h-[250px]">
                       {ciudadesDisponibles.map(c => (
                         <SelectItem key={c} value={c}>{c}</SelectItem>
                       ))}
@@ -438,66 +430,64 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label className="font-black text-[12px] uppercase text-slate-700">País</Label>
+              <div className="space-y-3">
+                <Label className="font-black text-[14px] uppercase text-slate-700">País</Label>
                 <Input 
                   value="Ecuador" 
                   readOnly 
-                  className="h-14 rounded-2xl bg-slate-200 border-2 border-slate-200 font-bold text-slate-600" 
+                  className="h-16 rounded-2xl bg-slate-200 border-2 border-slate-200 font-bold text-slate-600" 
                 />
               </div>
 
-              {/* TARJETA DE ADVERTENCIA RESALTADA */}
-              <div className="bg-orange-50 border-2 border-orange-200 p-6 rounded-[2rem] text-center space-y-2">
+              <div className="bg-orange-50 border-2 border-orange-200 p-8 rounded-[2.5rem] text-center space-y-3 shadow-sm">
                 <div className="flex justify-center">
-                  <AlertTriangle className="h-8 w-8 text-orange-600" />
+                  <AlertTriangle className="h-10 w-10 text-orange-600" />
                 </div>
-                <p className="font-black text-orange-700 text-[14px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</p>
-                <p className="text-[12px] font-bold text-orange-900 leading-relaxed italic">
+                <p className="font-black text-orange-700 text-[16px] uppercase tracking-tighter">⚠️ ATENCIÓN ⚠️</p>
+                <p className="text-[14px] font-bold text-orange-900 leading-relaxed italic px-2">
                   Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
                 </p>
               </div>
             </div>
 
-            {/* RESUMEN DE TOTAL */}
-            <div className="bg-slate-900 rounded-[2rem] p-6 space-y-4 shadow-2xl border-b-4 border-orange-500">
-              <div className="flex justify-between items-start border-b border-white/10 pb-3 gap-2">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-tight">
+            <div className="bg-slate-900 rounded-[2rem] p-8 space-y-6 shadow-2xl border-b-4 border-orange-500">
+              <div className="flex justify-between items-start border-b border-white/10 pb-4 gap-2">
+                <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest leading-tight">
                   SUBTOTAL: {product?.name?.toUpperCase()}
                 </span>
-                <span className="text-white font-black shrink-0 text-sm">${product?.price.toFixed(2)}</span>
+                <span className="text-white font-black shrink-0 text-base">${product?.price.toFixed(2)}</span>
               </div>
               
               {hasGiftEnabled && gift && (
-                <div className="flex justify-between items-start border-b border-white/10 pb-3 gap-2">
+                <div className="flex justify-between items-start border-b border-white/10 pb-4 gap-2">
                   <div className="flex flex-col">
-                    <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">REGALO SELECCIONADO:</span>
-                    <span className="text-pink-400 text-[11px] font-black uppercase leading-tight mt-1">{gift.name}</span>
+                    <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">REGALO SELECCIONADO:</span>
+                    <span className="text-pink-400 text-[13px] font-black uppercase leading-tight mt-1">{gift.name}</span>
                   </div>
-                  <span className="text-green-400 font-black text-[12px] uppercase shrink-0">GRATIS</span>
+                  <span className="text-green-400 font-black text-[14px] uppercase shrink-0">GRATIS</span>
                 </div>
               )}
 
               {wantsUpsell && upsellProduct && (
-                <div className="flex justify-between items-start border-b border-white/10 pb-3 gap-2">
+                <div className="flex justify-between items-start border-b border-white/10 pb-4 gap-2">
                   <div className="flex flex-col">
-                    <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest">PRODUCTO ADICIONAL:</span>
-                    <span className="text-orange-400 text-[11px] font-black uppercase leading-tight mt-1">{upsellProduct.name}</span>
+                    <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">PRODUCTO ADICIONAL:</span>
+                    <span className="text-orange-400 text-[13px] font-black uppercase leading-tight mt-1">{upsellProduct.name}</span>
                   </div>
-                  <span className="text-orange-500 font-black text-[12px] shrink-0">+$8.00</span>
+                  <span className="text-orange-500 font-black text-[14px] shrink-0">+$8.00</span>
                 </div>
               )}
 
-              <div className="flex justify-between items-center pt-2">
-                <span className="text-white text-[16px] font-black uppercase tracking-tighter">TOTAL A PAGAR</span>
-                <p className="text-orange-500 text-[32px] font-black leading-none">${totalPrice.toFixed(2)}</p>
+              <div className="flex justify-between items-center pt-3">
+                <span className="text-white text-[20px] font-black uppercase tracking-tighter">TOTAL A PAGAR</span>
+                <p className="text-orange-500 text-[36px] font-black leading-none">${totalPrice.toFixed(2)}</p>
               </div>
             </div>
 
             <Button 
               type="submit" 
               disabled={loading} 
-              className={`w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat mt-4 border-4 border-white shadow-xl ${colors.button}`}
+              className={`w-full h-24 text-2xl font-black uppercase rounded-3xl animate-heartbeat mt-6 border-4 border-white shadow-xl ${colors.button}`}
             >
               {loading ? "PROCESANDO..." : "CONFIRMAR PEDIDO"}
             </Button>
