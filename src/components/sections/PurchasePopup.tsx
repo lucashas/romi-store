@@ -27,11 +27,9 @@ export interface Product {
 }
 
 const GIFTS = [
-  { id: "gift_salicilico", name: "Ácido Salicílico The Ordinary", img: "https://imgur.com/OfmNXS4.png", desc: "Acné y manchas" },
-  { id: "gift_base", name: "Base Bioaqua", img: "https://imgur.com/pm0vI4d.png", desc: "Acabado perfecto y natural" },
-  { id: "gift_cejas", name: "Kit x3 Alargadores de Cejas", img: "https://imgur.com/1BJoaQw.png", desc: "Mirada más intensa y definida" },
-  { id: "gift_hialuronico", name: "Ácido Hialurónico The Ordinary", img: "https://imgur.com/I5qe7G7.png", desc: "Hidratación profunda" },
-  { id: "gift_capilar", name: "Multipeptido Capilar The Ordinary", img: "https://imgur.com/0C9znXt.png", desc: "Fortalece y nutre el cabello" }
+  { id: "gift_contorno", name: "1 Contorno De Ojos Bioaqua Hyalooligo Aci", img: "https://i.imgur.com/15gxrJI.png", desc: "Hidratación profunda" },
+  { id: "gift_arroz", name: "1 Jabon Liquido De Arroz Bioaqua", img: "https://i.imgur.com/k2LgSRh.png", desc: "Limpieza y brillo" },
+  { id: "gift_pestanas", name: "1 Serum De Pestanas Bioaqua", img: "https://i.imgur.com/NdEF1tQ.png", desc: "Crecimiento intenso" }
 ];
 
 const ecuadorData: Record<string, string[]> = {

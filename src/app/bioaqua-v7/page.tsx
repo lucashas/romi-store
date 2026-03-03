@@ -32,33 +32,21 @@ const BIOAQUA_PRODUCTS: Product[] = [
 
 const GIFTS = [
   {
-    name: "Ácido Salicílico The Ordinary",
-    desc: "Ideal para acné y manchas",
-    img: "https://imgur.com/OfmNXS4.png",
-    tag: "TOP"
+    name: "1 Contorno De Ojos Bioaqua Hyalooligo Aci",
+    desc: "Hidratación y firmeza profunda",
+    img: "https://i.imgur.com/15gxrJI.png",
+    tag: "NUEVO"
   },
   {
-    name: "Base Bioaqua",
-    desc: "Acabado perfecto y natural",
-    img: "https://imgur.com/pm0vI4d.png",
+    name: "1 Jabon Liquido De Arroz Bioaqua",
+    desc: "Limpieza profunda y brillo natural",
+    img: "https://i.imgur.com/k2LgSRh.png",
     tag: "MÁS PEDIDO"
   },
   {
-    name: "Kit x3 Alargadores de Cejas",
-    desc: "Mirada más intensa y definida",
-    img: "https://imgur.com/1BJoaQw.png",
-    tag: "RECOMENDADO"
-  },
-  {
-    name: "Ácido Hialurónico The Ordinary",
-    desc: "Hidratación profunda",
-    img: "https://imgur.com/I5qe7G7.png",
-    tag: "TOP"
-  },
-  {
-    name: "Multipeptido Capilar The Ordinary",
-    desc: "Fortalece y nutre el cabello",
-    img: "https://imgur.com/0C9znXt.png",
+    name: "1 Serum De Pestanas Bioaqua",
+    desc: "Crecimiento y nutrición intensa",
+    img: "https://i.imgur.com/NdEF1tQ.png",
     tag: "RECOMENDADO"
   }
 ];
