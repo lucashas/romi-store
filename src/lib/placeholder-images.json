@@ -55,6 +55,24 @@
       "imageHint": "skincare info"
     },
     {
+      "id": "bioaqua-rice-banner-top",
+      "description": "Banner principal Kit de Arroz Bioaqua",
+      "imageUrl": "https://i.imgur.com/tHUWnzw.png",
+      "imageHint": "bioaqua rice banner"
+    },
+    {
+      "id": "bioaqua-rice-hero",
+      "description": "Kit de Arroz Bioaqua - Banner Principal",
+      "imageUrl": "https://i.imgur.com/W2P6V5x.png",
+      "imageHint": "rice skincare set"
+    },
+    {
+      "id": "bioaqua-rice-product",
+      "description": "Kit de Arroz Bioaqua - Producto Individual",
+      "imageUrl": "https://i.imgur.com/W2P6V5x.png",
+      "imageHint": "rice beauty kit"
+    },
+    {
       "id": "checkout-logo",
       "description": "Logo de confianza para checkout",
       "imageUrl": "https://i.imgur.com/Jh61uYJ.png",
