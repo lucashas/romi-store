@@ -102,7 +102,7 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
-        {/* Sección de testimonios: Estrellas y título arriba, sin tarjetas */}
+        {/* Sección de testimonios rediseñada */}
         <Testimonials title="CLIENTAS FELICES" subtitle="Resultados que hablan por sí solos" themeColor="gold" />
 
         <section className="py-14 text-center space-y-12 bg-white">
