@@ -122,15 +122,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
           <div className={cn("p-8 text-white text-center flex flex-col items-center gap-4", styles.header)}>
             <div className="text-[24px] font-black uppercase leading-[0.9] tracking-tighter">¡SÍ, QUIERO MI PIEL DE PORCELANA!</div>
-            <div className="relative w-40 h-10 mt-1">
-              <Image 
-                src="https://i.imgur.com/Jh61uYJ.png" 
-                alt="Confianza Ecuador" 
-                fill 
-                className="object-contain invert brightness-0" 
-                unoptimized 
-              />
-            </div>
+            <img 
+              src="https://i.imgur.com/Jh61uYJ.png" 
+              alt="Confianza Ecuador" 
+              className="w-40 h-auto object-contain brightness-0 invert" 
+            />
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-14">
