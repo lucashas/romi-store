@@ -106,7 +106,7 @@ export default function BioaquaRicePage() {
           title="CLIENTAS FELICES" 
           subtitle="Resultados que hablan por sí solos" 
           themeColor="gold" 
-          testimonialImageUrl="https://i.imgur.com/qOmlzPP.png" 
+          testimonialImageUrl="https://i.imgur.com/PTsQyWM.png" 
         />
 
         <section className="py-14 text-center space-y-12 bg-white">
