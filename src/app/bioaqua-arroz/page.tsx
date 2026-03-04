@@ -8,9 +8,8 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Sparkles, Heart, Zap, ShieldCheck, Gift, Trophy } from "lucide-react";
+import { ShoppingCart, Star, Heart, Zap, ShieldCheck, Gift, Trophy } from "lucide-react";
 import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const RICE_PRODUCTS: Product[] = [
   {
@@ -18,7 +17,7 @@ const RICE_PRODUCTS: Product[] = [
     name: "1 Kit de Arroz Bioaqua (6 piezas)",
     price: 28.00,
     image: "https://i.imgur.com/tHUWnzw.png",
-    badge: "MÁS VENDIDO",
+    badge: "BÁSICO",
     description: "Tratamiento completo de 6 pasos"
   },
   {
@@ -27,7 +26,7 @@ const RICE_PRODUCTS: Product[] = [
     price: 48.00,
     image: "https://i.imgur.com/tHUWnzw.png",
     badge: "OFERTA HOY",
-    description: "Ahorro total + Regalo a elegir"
+    description: "Piel de Porcelana + Regalo Gratis"
   }
 ];
 
