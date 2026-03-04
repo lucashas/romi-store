@@ -102,7 +102,6 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
-        {/* Sección de testimonios rediseñada: Estrellas y Título arriba, Imagen debajo */}
         <Testimonials 
           title="CLIENTAS FELICES" 
           subtitle="Resultados que hablan por sí solos" 
