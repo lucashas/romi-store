@@ -7,7 +7,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Benefits } from "@/components/sections/Benefits";
 import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { Features } from "@/components/sections/Features";
-import { Testimonials, type TestimonialItem } from "@/components/sections/Testimonials";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
@@ -41,30 +41,6 @@ const CUSTOM_PRODUCTS: Product[] = [
   }
 ];
 
-const MARYRUTH_TESTIMONIALS: TestimonialItem[] = [
-  {
-    name: "Elena Rodríguez",
-    city: "Guayaquil",
-    role: "Cambio Total",
-    quote: "Llevo 3 meses usando el multivitamínico líquido y mi cabello nunca ha estado tan fuerte. ¡Incluso mi peluquero lo notó!",
-    imageId: "testimonial-user-1"
-  },
-  {
-    name: "Sofía Martínez",
-    city: "Quito",
-    role: "Piel Radiante",
-    quote: "El sabor Peach Mango es delicioso. Noto mi piel mucho más hidratada y luminosa desde que empecé.",
-    imageId: "testimonial-user-2"
-  },
-  {
-    name: "Marcos Santos",
-    city: "Cuenca",
-    role: "Energía Diaria",
-    quote: "La absorción líquida es real. No más pastillas difíciles de tragar y mi energía está por las nubes.",
-    imageId: "testimonial-user-3"
-  }
-];
-
 export default function MaryRuthPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -79,7 +55,7 @@ export default function MaryRuthPage() {
           <Benefits onOpenPopup={openPopup} />
           <ProductShowcase onOpenPopup={openPopup} />
           <Features onOpenPopup={openPopup} />
-          <Testimonials items={MARYRUTH_TESTIMONIALS} />
+          <Testimonials title="RESULTADOS REALES" themeColor="slate" />
         </div>
       </main>
       
