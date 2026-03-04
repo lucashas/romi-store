@@ -87,7 +87,6 @@ export default function BioaquaV7Page() {
               </p>
             </div>
 
-            {/* SECCIÓN DE 6 REGALOS RESTAURADA - 3:00 AM STATE */}
             <section className="bg-slate-50 rounded-[2.5rem] p-6 border border-slate-100 space-y-4">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <Gift className="h-5 w-5 text-orange-600" />
@@ -132,6 +131,11 @@ export default function BioaquaV7Page() {
                   <p className="text-[38px] font-black text-orange-600 leading-none">$26</p>
                   <p className="text-[12px] font-black text-orange-600 uppercase italic">+ 6 REGALOS</p>
                 </div>
+              </div>
+
+              {/* Imagen de Garantía solicitada */}
+              <div className="px-2 mt-4 cursor-pointer" onClick={openPopup}>
+                <img src="https://i.imgur.com/qOmlzPP.png" alt="Garantía de Satisfacción" className="w-full h-auto rounded-2xl shadow-lg border border-slate-100" />
               </div>
 
               <Button onClick={openPopup} size="lg" className="w-full h-24 text-2xl font-black bg-orange-600 hover:bg-orange-700 text-white shadow-xl rounded-[2rem] animate-heartbeat border-4 border-white uppercase">
