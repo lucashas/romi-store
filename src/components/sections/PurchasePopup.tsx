@@ -17,6 +17,7 @@ import { FirestorePermissionError } from "@/firebase/errors";
 import { useRouter, usePathname } from "next/navigation";
 import { Checkbox } from "@/components/ui/checkbox";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { cn } from "@/lib/utils";
 
 export interface Product {
   id: string;
@@ -85,12 +86,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const router = useRouter();
   const pathname = usePathname();
 
-  const productImg = pathname.includes("rice") || pathname.includes("arroz") 
-    ? "https://i.imgur.com/tHUWnzw.png" 
-    : PlaceHolderImages.find(img => img.id === "bioaqua-product-v7")?.imageUrl;
-    
-  const checkoutLogo = PlaceHolderImages.find(img => img.id === "checkout-logo")?.imageUrl;
-
+  // Color Mapping explícito para evitar fallos de JIT en Tailwind
   const colors = {
     bg: themeColor === "amber" ? "bg-amber-600" : themeColor === "orange" ? "bg-orange-600" : "bg-primary",
     text: themeColor === "amber" ? "text-amber-600" : themeColor === "orange" ? "text-orange-600" : "text-primary",
@@ -100,7 +96,14 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     light: themeColor === "amber" ? "bg-amber-50" : themeColor === "orange" ? "bg-orange-50" : "bg-primary/5",
     borderLight: themeColor === "amber" ? "border-amber-100" : themeColor === "orange" ? "border-orange-100" : "border-primary/10",
     check: themeColor === "amber" ? "text-amber-600" : themeColor === "orange" ? "text-orange-600" : "text-primary",
+    checkboxBg: themeColor === "amber" ? "data-[state=checked]:bg-amber-600" : themeColor === "orange" ? "data-[state=checked]:bg-orange-600" : "data-[state=checked]:bg-primary",
   };
+
+  const productImg = pathname.includes("rice") || pathname.includes("arroz") 
+    ? "https://i.imgur.com/tHUWnzw.png" 
+    : PlaceHolderImages.find(img => img.id === "bioaqua-product-v7")?.imageUrl;
+    
+  const checkoutLogo = PlaceHolderImages.find(img => img.id === "checkout-logo")?.imageUrl;
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -214,7 +217,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
         </DialogHeader>
 
         <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden w-full">
-          <div className={`${colors.bg} p-8 text-white text-center flex flex-col items-center gap-5`}>
+          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", colors.bg)}>
             <h2 className="text-[22px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
             </h2>
@@ -233,7 +236,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
           <form onSubmit={handleSubmit} className="p-6 space-y-10 bg-white pb-12 w-full">
             <div className="space-y-5">
-              <div className={`flex items-center gap-3 ${colors.text} border-b-2 ${colors.borderLight} pb-4`}>
+              <div className={cn("flex items-center gap-3 border-b-2 pb-4", colors.text, colors.borderLight)}>
                 <Package className="h-7 w-7" />
                 <h3 className="font-black uppercase text-[17px] tracking-[0.15em]">ELIGE TU OFERTA</h3>
               </div>
@@ -243,13 +246,14 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                   <Label
                     key={p.id}
                     htmlFor={p.id}
-                    className={`flex items-center gap-4 p-5 rounded-2xl border-2 transition-all cursor-pointer ${
+                    className={cn(
+                      "flex items-center gap-4 p-5 rounded-2xl border-2 transition-all cursor-pointer",
                       selectedProduct === p.id 
-                        ? `${colors.border} ${colors.light}` 
+                        ? cn(colors.border, colors.light) 
                         : "border-slate-100 bg-white"
-                    }`}
+                    )}
                   >
-                    <RadioGroupItem value={p.id} id={p.id} className={`h-6 w-6 ${colors.check}`} />
+                    <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", colors.check)} />
                     <div className="h-16 w-16 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
                       <Image 
                         src={productImg || p.image} 
@@ -265,7 +269,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                       <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
                     </div>
                     <div className="text-right">
-                      <p className={`font-black ${colors.text} text-[24px] leading-none`}>${p.price.toFixed(0)}</p>
+                      <p className={cn("font-black text-[24px] leading-none", colors.text)}>${p.price.toFixed(0)}</p>
                     </div>
                   </Label>
                 ))}
@@ -308,18 +312,18 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             )}
 
             <div className="space-y-5">
-              <div className={`bg-slate-900 p-8 rounded-[2.5rem] border-2 ${colors.border} shadow-xl space-y-6`}>
+              <div className={cn("bg-slate-900 p-8 rounded-[2.5rem] border-2 shadow-xl space-y-6", colors.border)}>
                 <div className="flex items-center gap-4">
                   <Checkbox 
                     id="upsell" 
                     checked={wantsUpsell} 
                     onCheckedChange={(checked) => setWantsUpsell(!!checked)}
-                    className={`h-7 w-7 border-2 ${colors.border} data-[state=checked]:${colors.bg}`}
+                    className={cn("h-7 w-7 border-2", colors.border, colors.checkboxBg)}
                   />
                   <Label htmlFor="upsell" className="cursor-pointer">
-                    <p className={`${colors.text} font-black text-[12px] uppercase tracking-widest animate-pulse`}>💥 OFERTA EXTRA EXCLUSIVA</p>
+                    <p className={cn("font-black text-[12px] uppercase tracking-widest animate-pulse", colors.text)}>💥 OFERTA EXTRA EXCLUSIVA</p>
                     <p className="text-white font-black text-[15px] uppercase leading-tight">¿QUIERES OTRO PRODUCTO ADICIONAL?</p>
-                    <p className={`text-white font-black text-[18px] uppercase italic mt-1 ${colors.text}`}>POR SOLO +$8</p>
+                    <p className={cn("font-black text-[18px] uppercase italic mt-1", colors.text)}>POR SOLO +$8</p>
                   </Label>
                 </div>
 
@@ -330,18 +334,19 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                         <Label
                           key={`upsell_${g.id}`}
                           htmlFor={`upsell_${g.id}`}
-                          className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all cursor-pointer ${
+                          className={cn(
+                            "flex items-center gap-4 p-4 rounded-xl border-2 transition-all cursor-pointer",
                             selectedUpsellProduct === g.id 
-                              ? `${colors.border} bg-white/10` 
+                              ? cn(colors.border, "bg-white/10") 
                               : "border-white/5 bg-white/5"
-                          }`}
+                          )}
                         >
-                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className={`h-5 w-5 border-white/20 ${colors.check}`} />
+                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className={cn("h-5 w-5 border-white/20", colors.check)} />
                           <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 relative">
                             <Image src={g.img} alt={g.name} fill className="object-cover" sizes="48px" unoptimized />
                           </div>
                           <p className="font-black text-[12px] text-white uppercase flex-1 leading-tight">{g.name}</p>
-                          <p className={`font-black ${colors.text} text-[14px]`}>+$8</p>
+                          <p className={cn("font-black text-[14px]", colors.text)}>+$8</p>
                         </Label>
                       ))}
                     </RadioGroup>
@@ -351,7 +356,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             </div>
 
             <div className="space-y-6">
-              <div className={`flex items-center gap-3 ${colors.text} border-b-2 ${colors.borderLight} pb-4`}>
+              <div className={cn("flex items-center gap-3 border-b-2 pb-4", colors.text, colors.borderLight)}>
                 <Truck className="h-7 w-7" />
                 <h3 className="font-black uppercase text-[17px] tracking-[0.15em]">DATOS DE ENVÍO</h3>
               </div>
@@ -380,7 +385,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
 
               <div className="space-y-3">
-                <Label className="font-black text-[14px] uppercase text-slate-700">Número de WhatsApp (para notificaciones de envío)</Label>
+                <Label className="font-black text-[14px] uppercase text-slate-700">Número de WhatsApp (notificaciones envío)</Label>
                 <Input 
                   placeholder="ingresa tu celular" 
                   type="tel" 
@@ -392,7 +397,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
 
               <div className="space-y-3">
-                <Label className="font-black text-[14px] uppercase text-slate-700">Dirección Entrega: (2 calles y una referencia)</Label>
+                <Label className="font-black text-[14px] uppercase text-slate-700">Dirección Entrega: (2 calles y referencia)</Label>
                 <Input 
                   placeholder="calle principal y secundaria referencia domicilio" 
                   required 
@@ -400,9 +405,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                   onChange={(e) => setDireccion(e.target.value)} 
                   className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
                 />
-                <p className="text-[12px] text-slate-500 font-medium italic pl-1 leading-tight">
-                  Ejemplo: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, color.. , # casa
-                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -434,64 +436,28 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <Label className="font-black text-[14px] uppercase text-slate-700">País</Label>
-                <Input 
-                  value="Ecuador" 
-                  readOnly 
-                  className="h-16 rounded-2xl bg-slate-200 border-2 border-slate-200 font-bold text-slate-600" 
-                />
-              </div>
-
-              <div className={`${colors.light} border-2 ${colors.borderLight} p-8 rounded-[2.5rem] text-center space-y-3 shadow-sm`}>
+              <div className={cn("border-2 p-8 rounded-[2.5rem] text-center space-y-3 shadow-sm", colors.light, colors.borderLight)}>
                 <div className="flex justify-center">
-                  <AlertTriangle className={`h-10 w-10 ${colors.text}`} />
+                  <AlertTriangle className={cn("h-10 w-10", colors.text)} />
                 </div>
-                <p className={`font-black ${colors.text} text-[16px] uppercase tracking-tighter`}>⚠️ ATENCIÓN ⚠️</p>
+                <p className={cn("font-black text-[16px] uppercase tracking-tighter", colors.text)}>⚠️ ATENCIÓN ⚠️</p>
                 <p className="text-[14px] font-bold text-slate-800 leading-relaxed italic px-2">
-                  Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
+                  Tu pedido únicamente podrá salir de la bodega si tus datos están completos.
                 </p>
               </div>
             </div>
 
             <div className="bg-slate-900 rounded-[2rem] p-8 space-y-6 shadow-2xl border-b-4 border-amber-500">
-              <div className="flex justify-between items-start border-b border-white/10 pb-4 gap-2">
-                <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest leading-tight">
-                  SUBTOTAL: {product?.name?.toUpperCase()}
-                </span>
-                <span className="text-white font-black shrink-0 text-base">${product?.price.toFixed(2)}</span>
-              </div>
-              
-              {hasGiftEnabled && gift && (
-                <div className="flex justify-between items-start border-b border-white/10 pb-4 gap-2">
-                  <div className="flex flex-col">
-                    <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">REGALO SELECCIONADO:</span>
-                    <span className="text-pink-400 text-[13px] font-black uppercase leading-tight mt-1">{gift.name}</span>
-                  </div>
-                  <span className="text-green-400 font-black text-[14px] uppercase shrink-0">GRATIS</span>
-                </div>
-              )}
-
-              {wantsUpsell && upsellProduct && (
-                <div className="flex justify-between items-start border-b border-white/10 pb-4 gap-2">
-                  <div className="flex flex-col">
-                    <span className="text-white/60 text-[12px] font-bold uppercase tracking-widest">PRODUCTO ADICIONAL:</span>
-                    <span className={`text-amber-400 text-[13px] font-black uppercase leading-tight mt-1`}>{upsellProduct.name}</span>
-                  </div>
-                  <span className={`${colors.text} font-black text-[14px] shrink-0`}>+$8.00</span>
-                </div>
-              )}
-
               <div className="flex justify-between items-center pt-3">
                 <span className="text-white text-[20px] font-black uppercase tracking-tighter">TOTAL A PAGAR</span>
-                <p className={`${colors.text} text-[36px] font-black leading-none`}>${totalPrice.toFixed(2)}</p>
+                <p className={cn("text-[36px] font-black leading-none", colors.text)}>${totalPrice.toFixed(2)}</p>
               </div>
             </div>
 
             <Button 
               type="submit" 
               disabled={loading} 
-              className={`w-full h-24 text-2xl font-black uppercase rounded-3xl animate-heartbeat mt-6 border-4 border-white shadow-xl ${colors.button}`}
+              className={cn("w-full h-24 text-2xl font-black uppercase rounded-3xl animate-heartbeat mt-6 border-4 border-white shadow-xl", colors.button)}
             >
               {loading ? "PROCESANDO..." : "CONFIRMAR PEDIDO"}
             </Button>
