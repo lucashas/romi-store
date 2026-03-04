@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -78,6 +79,7 @@ export default function BioaquaRicePage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
 
+  // URL de imagen forzada por el usuario
   const bannerTopImg = "https://i.imgur.com/tHUWnzw.png";
   const infoImg = "https://i.imgur.com/ICjJPPO.png";
   const trustBadgeImg = "https://i.imgur.com/bk1DAl0.png";
@@ -142,10 +144,6 @@ export default function BioaquaRicePage() {
                 <p>
                   Descubre el poder del extracto de arroz puro. Este kit completo de 6 piezas está diseñado para
                   transformar tu piel, devolviéndole su brillo natural y suavidad de porcelana.
-                </p>
-                <p>
-                  Incluye: Limpiador, Tónico, Loción, Serum, Crema Facial y Crema de Ojos. Una rutina completa en un solo
-                  set.
                 </p>
               </div>
 
@@ -271,40 +269,6 @@ export default function BioaquaRicePage() {
           </p>
         </div>
 
-        {/* SECCIÓN DE REGALOS */}
-        <section className="py-10 bg-[#fffdf5] mt-8 border-y border-amber-100 w-full overflow-hidden">
-          <div className="container px-4 text-center space-y-8">
-            <div className="space-y-3">
-              <div className="flex justify-center mb-3">
-                <div className="bg-amber-100 p-4 rounded-full">
-                  <Gift className="h-10 w-10 text-amber-600" />
-                </div>
-              </div>
-              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-                🎁 REGALO EXTRA <br />
-                <span className="text-amber-600 italic">CON TU PACK DE 2</span>
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4">
-              {GIFTS.map((gift, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-2xl p-5 shadow-md border border-amber-50 flex items-center gap-5 relative overflow-hidden pointer-events-none"
-                >
-                  <div className="h-24 w-24 rounded-xl overflow-hidden bg-slate-50 border border-amber-50 shrink-0 relative">
-                    <Image src={gift.img} alt={gift.name} fill className="object-cover" unoptimized />
-                  </div>
-                  <div className="text-left flex-1 min-w-0 pr-8">
-                    <p className="text-[17px] font-black text-slate-900 uppercase leading-tight">{gift.name}</p>
-                    <p className="text-[14px] font-bold text-amber-400 mt-1 uppercase tracking-tight">{gift.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <Testimonials title="CLIENTAS FELICES" items={RICE_TESTIMONIALS} />
 
         {/* Garantías */}
@@ -336,14 +300,6 @@ export default function BioaquaRicePage() {
                 <ShoppingCart className="h-8 w-8 mr-3" />
                 ¡ORDENAR AHORA!
               </Button>
-              <div className="space-y-6">
-                <p className="text-[16px] font-bold text-slate-400 uppercase tracking-widest">
-                  Envíos seguros a todo Ecuador 🇪🇨
-                </p>
-                <div className="flex justify-center">
-                  <img src={trustBadgeImg} alt="Sellos de confianza Ecuador" className="w-[280px] h-auto opacity-90" />
-                </div>
-              </div>
             </div>
           </div>
         </section>

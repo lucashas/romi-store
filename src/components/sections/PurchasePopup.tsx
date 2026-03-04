@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -44,14 +45,13 @@ const ecuadorData: Record<string, string[]> = {
   "EL ORO": ["MACHALA", "PASAJE", "HUAQUILLAS", "SANTA ROSA", "ARENILLAS", "BALSAS", "CHILLA", "EL GUABO", "LAS LAJAS", "MARCABELI", "PIÑAS", "PORTOVELO", "ZARUMA", "ATAHUALPA"],
   "ESMERALDAS": ["ESMERALDAS", "QUININDE", "ATACAMES", "SAN LORENZO", "ELOY ALFARO", "MUISNE", "RIO VERDE"],
   "GALAPAGOS": ["PUERTO BAQUERIZO MORENO", "PUERTO AYORA", "PUERTO VILLAMIL"],
-  "GUAYAS": ["GUAYAQUIL", "SAMBORONDON", "DURAN", "DAULE", "MILAGRO", "PLAYAS", "NARANJAL", "EL EMPALME", "BALZAR", "BALAO", "COLIMES", "CORONEL MARCELINO MARIDUEÑA", "EL TRIUNFO", "GENERAL ANTONIO ELIZALDE", "ISIDRO AYORA", "LOMAS DE SARGENTILLO", "NARANJITO", "NOBOL", "PALESTINA", "PEDRO CHUNCHI", "SANTA LUCIA", "SIMON BOLIVAR", "YAGUACHI", "SALITRE"],
+  "GUAYAS": ["GUAYAQUIL", "SAMBORONDON", "DAULE", "DURAN", "MILAGRO", "PLAYAS", "NARANJAL", "EL EMPALME", "BALZAR", "BALAO", "COLIMES", "CORONEL MARCELINO MARIDUEÑA", "EL TRIUNFO", "GENERAL ANTONIO ELIZALDE", "ISIDRO AYORA", "LOMAS DE SARGENTILLO", "NARANJITO", "NOBOL", "PALESTINA", "PEDRO CHUNCHI", "SANTA LUCIA", "SIMON BOLIVAR", "YAGUACHI", "SALITRE"],
   "IMBABURA": ["IBARRA", "OTAVALO", "COTACACHI", "ANTONIO ANTE", "PIMAMPIRO", "URCUQUI"],
   "LOJA": ["LOJA", "CATAMAYO", "CALVAS", "SARAGURO", "MACARA", "CELICA", "CHAGUARPAMBA", "ESPINDOLA", "GONZANAMA", "PALTAS", "PUYANGO", "QUILANGA", "PINDAL", "SOZORANGA", "ZAPOTILLO", "OLMEDO"],
   "LOS RIOS": ["BABAHOYO", "QUEVEDO", "BABA", "VINCES", "VENTANAS", "MOCACHE", "BUENA FE", "PALENQUE", "PUEBLOVIEJO", "URDANETA", "VALENCIA", "QUINSALOMA", "MONTALVO"],
   "MANABI": ["PORTOVIEJO", "MANTA", "CHONE", "MONTECRISTI", "JIPIJAPA", "BAHIA DE CARAQUEZ", "BOLIVAR", "EL CARMEN", "FLAVIO ALFARO", "JAMA", "JARAMIJO", "JUNIN", "OLMEDO", "PAJAN", "PEDERNALES", "PICHINCHA", "ROCAFUERTE", "SANTA ANA", "SUCRE", "TOSAGUA", "24 DE MAYO", "PUERTO LOPEZ"],
   "MORONA SANTIAGO": ["MACAS", "GUALAQUIZA", "SUCUA", "SANTIAGO", "HUAMBOYA", "LIMON INDANZA", "LOGROÑO", "PABLO SEXTO", "PALORA", "SAN JUAN BOSCO", "TAISHA", "TIWINTZA"],
   "NAPO": ["TENA", "ARCHIDONA", "EL CHACO", "QUIJOS", "CARLOS JULIO AROSEMENA TOLA"],
-  "ORELLANA": ["PUERTO FRANCISCO DE ORELLANA", "LA JOYA DE LOS SACHAS", "LORETO", "AGUARICO"],
   "ORELLANA": ["PUERTO FRANCISCO DE ORELLANA", "LA JOYA DE LOS SACHAS", "LORETO", "AGUARICO"],
   "PASTAZA": ["PUYO", "MERA", "SANTA CLARA", "ARAJUNO"],
   "PICHINCHA": ["QUITO", "SANGOLQUI", "MACHACHI", "CAYAMBE", "TABACUNDO", "PEDRO MONCAYO", "PEDRO VICENTE MALDONADO", "PUERTO QUITO", "SAN MIGUEL DE LOS BANCOS"],
@@ -87,7 +87,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const router = useRouter();
   const pathname = usePathname();
 
-  const getThemeClasses = () => {
+  // Definición explícita de temas para evitar fallos de renderizado dinámico
+  const theme = useMemo(() => {
     if (themeColor === "amber") {
       return {
         bg: "bg-amber-600",
@@ -125,15 +126,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       button: "bg-accent hover:bg-accent/90 shadow-accent/20",
       checkbox: "data-[state=checked]:bg-primary",
     };
-  };
-
-  const theme = getThemeClasses();
-
-  const productImg = pathname.includes("rice") || pathname.includes("arroz") 
-    ? "https://i.imgur.com/tHUWnzw.png" 
-    : PlaceHolderImages.find(img => img.id === "bioaqua-product-v7")?.imageUrl;
-    
-  const checkoutLogo = PlaceHolderImages.find(img => img.id === "checkout-logo")?.imageUrl;
+  }, [themeColor]);
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -148,15 +141,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       setSelectedGift(GIFTS[0].id); 
     }
   }, [selectedProduct, selectedGift]);
-
-  useEffect(() => {
-    if (wantsUpsell && !selectedUpsellProduct) {
-      const available = GIFTS.filter(g => g.id !== selectedGift);
-      if (available.length > 0) {
-        setSelectedUpsellProduct(available[0].id);
-      }
-    }
-  }, [wantsUpsell, selectedGift, selectedUpsellProduct]);
 
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? ecuadorData[provincia].sort() : [];
@@ -185,24 +169,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
         variant: "destructive",
         title: "DATOS FALTANTES",
         description: "Por favor complete todos los campos obligatorios para el envío."
-      });
-      return;
-    }
-
-    if (hasGiftEnabled && !selectedGift) {
-      toast({
-        variant: "destructive",
-        title: "ELIGE TU REGALO",
-        description: "Esta oferta incluye un regalo, por favor selecciónalo."
-      });
-      return;
-    }
-
-    if (wantsUpsell && !selectedUpsellProduct) {
-      toast({
-        variant: "destructive",
-        title: "ELIGE PRODUCTO EXTRA",
-        description: "Has marcado la oferta extra, por favor selecciona el producto adicional."
       });
       return;
     }
@@ -251,17 +217,15 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             <h2 className="text-[22px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
             </h2>
-            {checkoutLogo && (
-              <div className="relative w-28 h-10">
+            <div className="relative w-28 h-10">
                 <Image 
-                  src={checkoutLogo} 
+                  src="https://i.imgur.com/Jh61uYJ.png" 
                   alt="Sello de Confianza" 
                   fill 
                   className="object-contain" 
                   unoptimized 
                 />
-              </div>
-            )}
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 space-y-10 bg-white pb-12 w-full">
@@ -286,7 +250,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", theme.text)} />
                     <div className="h-16 w-16 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
                       <Image 
-                        src={productImg || p.image} 
+                        src={p.image} 
                         alt={p.name} 
                         fill 
                         className="object-cover" 
@@ -307,7 +271,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             </div>
 
             {hasGiftEnabled && (
-              <div className="space-y-5 animate-in fade-in slide-in-from-top-4 duration-500">
+              <div className="space-y-5">
                 <div className={`flex items-center gap-3 text-pink-600 border-b-2 border-pink-100 pb-4`}>
                   <Gift className="h-7 w-7" />
                   <h3 className="font-black uppercase text-[17px] tracking-[0.15em]">ESCOGE TU REGALO GRATIS</h3>
@@ -341,50 +305,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
               </div>
             )}
 
-            <div className="space-y-5">
-              <div className={cn("bg-slate-900 p-8 rounded-[2.5rem] border-2 shadow-xl space-y-6", theme.border)}>
-                <div className="flex items-center gap-4">
-                  <Checkbox 
-                    id="upsell" 
-                    checked={wantsUpsell} 
-                    onCheckedChange={(checked) => setWantsUpsell(!!checked)}
-                    className={cn("h-7 w-7 border-2", theme.border, theme.checkbox)}
-                  />
-                  <Label htmlFor="upsell" className="cursor-pointer">
-                    <p className={cn("font-black text-[12px] uppercase tracking-widest animate-pulse", theme.text)}>💥 OFERTA EXTRA EXCLUSIVA</p>
-                    <p className="text-white font-black text-[15px] uppercase leading-tight">¿QUIERES OTRO PRODUCTO ADICIONAL?</p>
-                    <p className={cn("font-black text-[18px] uppercase italic mt-1", theme.text)}>POR SOLO +$8</p>
-                  </Label>
-                </div>
-
-                {wantsUpsell && (
-                  <div className="pt-6 border-t border-white/10 space-y-4">
-                    <RadioGroup value={selectedUpsellProduct} onValueChange={setSelectedUpsellProduct} className="grid gap-3">
-                      {GIFTS.filter(g => g.id !== selectedGift).map((g) => (
-                        <Label
-                          key={`upsell_${g.id}`}
-                          htmlFor={`upsell_${g.id}`}
-                          className={cn(
-                            "flex items-center gap-4 p-4 rounded-xl border-2 transition-all cursor-pointer",
-                            selectedUpsellProduct === g.id 
-                              ? cn(theme.border, "bg-white/10") 
-                              : "border-white/5 bg-white/5"
-                          )}
-                        >
-                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className={cn("h-5 w-5 border-white/20", theme.text)} />
-                          <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 relative">
-                            <Image src={g.img} alt={g.name} fill className="object-cover" sizes="48px" unoptimized />
-                          </div>
-                          <p className="font-black text-[12px] text-white uppercase flex-1 leading-tight">{g.name}</p>
-                          <p className={cn("font-black text-[14px]", theme.text)}>+$8</p>
-                        </Label>
-                      ))}
-                    </RadioGroup>
-                  </div>
-                )}
-              </div>
-            </div>
-
             <div className="space-y-6">
               <div className={cn("flex items-center gap-3 border-b-2 pb-4", theme.text, theme.borderLight)}>
                 <Truck className="h-7 w-7" />
@@ -399,7 +319,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     required 
                     value={nombre} 
                     onChange={(e) => setNombre(e.target.value)} 
-                    className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
+                    className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
                   />
                 </div>
                 <div className="space-y-3">
@@ -409,31 +329,31 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     required 
                     value={apellido} 
                     onChange={(e) => setApellido(e.target.value)} 
-                    className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
+                    className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
                   />
                 </div>
               </div>
 
               <div className="space-y-3">
-                <Label className="font-black text-[14px] uppercase text-slate-700">Número de WhatsApp (notificaciones envío)</Label>
+                <Label className="font-black text-[14px] uppercase text-slate-700">Número de WhatsApp</Label>
                 <Input 
-                  placeholder="ingresa tu celular" 
+                  placeholder="099..." 
                   type="tel" 
                   required 
                   value={whatsapp} 
                   onChange={handleWhatsappChange} 
-                  className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
+                  className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
                 />
               </div>
 
               <div className="space-y-3">
-                <Label className="font-black text-[14px] uppercase text-slate-700">Dirección Entrega: (2 calles y referencia)</Label>
+                <Label className="font-black text-[14px] uppercase text-slate-700">Dirección Exacta</Label>
                 <Input 
-                  placeholder="calle principal y secundaria referencia domicilio" 
+                  placeholder="Calle principal, secundaria y referencia" 
                   required 
                   value={direccion} 
                   onChange={(e) => setDireccion(e.target.value)} 
-                  className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-base" 
+                  className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" 
                 />
               </div>
 
@@ -444,7 +364,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold">
                       <SelectValue placeholder="Seleccionar" />
                     </SelectTrigger>
-                    <SelectContent className="max-h-[250px]">
+                    <SelectContent>
                       {Object.keys(ecuadorData).sort().map(p => (
                         <SelectItem key={p} value={p}>{p}</SelectItem>
                       ))}
@@ -457,7 +377,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold">
                       <SelectValue placeholder="Seleccionar" />
                     </SelectTrigger>
-                    <SelectContent className="max-h-[250px]">
+                    <SelectContent>
                       {ciudadesDisponibles.map(c => (
                         <SelectItem key={c} value={c}>{c}</SelectItem>
                       ))}
@@ -465,22 +385,12 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                   </Select>
                 </div>
               </div>
-
-              <div className={cn("border-2 p-8 rounded-[2.5rem] text-center space-y-3 shadow-sm", theme.light, theme.borderLight)}>
-                <div className="flex justify-center">
-                  <AlertTriangle className={cn("h-10 w-10", theme.text)} />
-                </div>
-                <p className={cn("font-black text-[16px] uppercase tracking-tighter", theme.text)}>⚠️ ATENCIÓN ⚠️</p>
-                <p className="text-[14px] font-bold text-slate-800 leading-relaxed italic px-2">
-                  Tu pedido únicamente podrá salir de la bodega si tus datos están completos.
-                </p>
-              </div>
             </div>
 
-            <div className="bg-slate-900 rounded-[2rem] p-8 space-y-6 shadow-2xl border-b-4 border-amber-500">
-              <div className="flex justify-between items-center pt-3">
-                <span className="text-white text-[20px] font-black uppercase tracking-tighter">TOTAL A PAGAR</span>
-                <p className={cn("text-[36px] font-black leading-none", theme.text)}>${totalPrice.toFixed(2)}</p>
+            <div className="bg-slate-900 rounded-[2rem] p-8 space-y-4 shadow-2xl">
+              <div className="flex justify-between items-center">
+                <span className="text-white text-[20px] font-black uppercase">TOTAL</span>
+                <p className={cn("text-[36px] font-black", theme.text)}>${totalPrice.toFixed(2)}</p>
               </div>
             </div>
 
