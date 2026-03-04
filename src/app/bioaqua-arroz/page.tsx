@@ -13,15 +13,15 @@ import { ShoppingCart, Star, ShieldCheck } from "lucide-react";
 const RICE_PRODUCTS: Product[] = [
   {
     id: "bioaqua_rice_1",
-    name: "1 Kit de Arroz Bioaqua (6 piezas)",
+    name: "1 Kit de Arroz Bioaqua (6 productos)",
     price: 35.0,
     image: "https://i.imgur.com/tHUWnzw.png",
     badge: "BÁSICO",
-    description: "Tratamiento completo de 6 pasos",
+    description: "Tratamiento completo",
   },
   {
     id: "bioaqua_rice_2",
-    name: "2 Kits de Arroz Bioaqua (12 piezas)",
+    name: "2 Kits de Arroz Bioaqua (12 productos)",
     price: 55.0,
     image: "https://i.imgur.com/tHUWnzw.png",
     badge: "OFERTA HOY",
@@ -78,15 +78,15 @@ export default function BioaquaRicePage() {
 
               <div className="grid grid-cols-2 gap-4 px-1">
                 <div onClick={openPopup} className="bg-white p-6 rounded-[2.5rem] border-2 border-slate-100 shadow-xl text-center space-y-3 cursor-pointer transition-transform active:scale-95">
-                  <p className="text-[14px] font-black text-slate-900 uppercase">1 Kit (6 piezas)</p>
+                  <p className="text-[14px] font-black text-slate-900 uppercase">1 Kit (6 productos)</p>
                   <p className="text-[38px] font-black text-slate-900 leading-none">$35</p>
                   <p className="text-[12px] font-bold text-slate-400 uppercase italic">Envío Gratis</p>
                 </div>
 
                 <div onClick={openPopup} className="bg-yellow-50 p-6 rounded-[2.5rem] border-2 border-yellow-600 shadow-xl text-center space-y-3 cursor-pointer transition-transform active:scale-95">
-                  <p className="text-[14px] font-black text-yellow-700 uppercase">2 Kits (12 piezas)</p>
+                  <p className="text-[14px] font-black text-yellow-700 uppercase">2 Kits (12 productos)</p>
                   <p className="text-[38px] font-black text-yellow-600 leading-none">$55</p>
-                  <p className="text-[12px] font-black text-yellow-600 uppercase italic">Envío Prioritario</p>
+                  <p className="text-[12px] font-black text-yellow-600 uppercase italic">PIEL DE PORCELANA</p>
                 </div>
               </div>
 
