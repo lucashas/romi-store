@@ -119,7 +119,7 @@ export default function BioaquaRicePage() {
                 </p>
               </div>
 
-              {/* Imagen de Beneficios Reemplazando la Tarjeta */}
+              {/* Imagen de Beneficios Reemplazando la Tarjeta (CAMBIO SOLICITADO) */}
               <div className="mt-8 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-yellow-100 bg-slate-50">
                   <img src={benefitsImg} alt="Beneficios Kit de Arroz" className="w-full h-auto block" />
