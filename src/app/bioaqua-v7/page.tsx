@@ -16,7 +16,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
     price: 16.00,
     image: "https://i.imgur.com/bUaJbMD.png",
     badge: "ECONÓMICO",
-    description: "Efecto aclarante instantáneo (Sin regalo)"
+    description: "Efecto aclarante instantáneo"
   },
   {
     id: "bioaqua_v7_2",
@@ -24,7 +24,7 @@ const BIOAQUA_PRODUCTS: Product[] = [
     price: 26.00,
     image: "https://i.imgur.com/bUaJbMD.png",
     badge: "OFERTA HOY",
-    description: "Efecto porcelana + Regalo a elegir"
+    description: "Efecto porcelana + Regalo Gratis"
   }
 ];
 
@@ -33,21 +33,21 @@ const BIOAQUA_TESTIMONIALS: TestimonialItem[] = [
     name: "Andrea Castro",
     city: "Quito",
     role: "Piel de Porcelana",
-    quote: "¡Es mágica! Mi piel se ve mucho más clara y luminosa desde el primer día. El jabón de arroz de regalo es el complemento perfecto para mi rutina.",
+    quote: "¡Es mágica! Mi piel se ve mucho más clara y luminosa desde el primer día. El jabón de arroz de regalo es el complemento perfecto.",
     imageId: "testimonial-user-1"
   },
   {
     name: "Valentina Ruiz",
     city: "Cuenca",
     role: "Adiós Manchas",
-    quote: "Tenía manchas por el sol y esta crema V7 las ha difuminado increíblemente en solo dos semanas. No salgo de casa sin ella, me encanta su olor.",
+    quote: "Tenía manchas por el sol y esta crema V7 las ha difuminado increíblemente en solo dos semanas. ¡100% recomendada!",
     imageId: "testimonial-user-4"
   },
   {
     name: "Gabriela Mendoza",
     city: "Loja",
     role: "Rostro Radiante",
-    quote: "El efecto aclarante es instantáneo y muy natural. Me encanta que no deja sensación grasosa, ideal para el clima de acá. ¡100% recomendada!",
+    quote: "El efecto aclarante es instantáneo y muy natural. Me encanta que no deja sensación grasosa. ¡Es mi favorita!",
     imageId: "testimonial-user-2"
   }
 ];
@@ -65,9 +65,6 @@ export default function BioaquaV7Page() {
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-orange-100">
               <img src="https://i.imgur.com/P4G3s0w.png" alt="Bioaqua V7" className="w-full h-auto block" />
-              <div className="absolute bottom-4 left-4 bg-orange-600 text-white px-5 py-2 rounded-full font-black text-[13px] animate-pulse shadow-2xl border-2 border-white uppercase">
-                OFERTA EXCLUSIVA ✨
-              </div>
             </div>
           </div>
           

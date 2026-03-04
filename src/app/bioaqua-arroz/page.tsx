@@ -33,7 +33,7 @@ const RICE_TESTIMONIALS: TestimonialItem[] = [
     name: "Mariana Vélez",
     city: "Guayaquil",
     role: "Piel Suave",
-    quote: "Este kit de arroz es increíble. Mi cara se siente como seda y mis poros se han reducido muchísimo. ¡El empaque es hermoso!",
+    quote: "Este kit de arroz es increíble. Mi cara se siente como seda y mis poros se han reducido muchísimo. ¡Lo recomiendo!",
     imageId: "testimonial-user-1",
   },
   {
@@ -60,7 +60,7 @@ export default function BioaquaRicePage() {
     <div className="min-h-screen flex flex-col bg-white pb-10 font-body overflow-x-hidden w-full max-w-[500px] mx-auto shadow-2xl relative border-x border-slate-100">
       <TopMarquee text="🌾 ¡OFERTA LANZAMIENTO KIT DE ARROZ! 🌾 - ✨ HIDRATACIÓN PROFUNDA - 📦 ENVÍOS A TODO ECUADOR - " className="bg-yellow-600 text-white border-yellow-700" />
 
-      <main className="flex-1 w-full overflow-x-hidden">
+      <main className="flex-1 w-full">
         <section className="bg-white overflow-hidden w-full">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-yellow-100">
@@ -89,7 +89,7 @@ export default function BioaquaRicePage() {
             </div>
 
             <div className="mt-8 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
-              <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-yellow-100 bg-slate-50">
+              <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-2 border-slate-100 bg-white">
                 <img src="https://i.imgur.com/HYiuNZy.png" alt="Beneficios Kit de Arroz" className="w-full h-auto block" />
               </div>
             </div>
