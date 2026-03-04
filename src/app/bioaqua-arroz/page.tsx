@@ -80,7 +80,7 @@ export default function BioaquaRicePage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
 
-  const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-rice-banner-top")?.imageUrl || "https://i.imgur.com/tHUWnzw.png";
+  const bannerTopImg = "https://i.imgur.com/tHUWnzw.png";
   const infoImg = "https://i.imgur.com/ICjJPPO.png";
   const trustBadgeImg = "https://i.imgur.com/bk1DAl0.png";
 
