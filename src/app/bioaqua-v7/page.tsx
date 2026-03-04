@@ -7,7 +7,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, ShieldCheck } from "lucide-react";
+import { ShoppingCart, Star, ShieldCheck, CheckCircle2, Gift } from "lucide-react";
 
 const BIOAQUA_PRODUCTS: Product[] = [
   {
@@ -86,6 +86,29 @@ export default function BioaquaV7Page() {
               </p>
             </div>
 
+            {/* LISTA DE 6 REGALOS - RESTAURADA */}
+            <section className="bg-slate-50 rounded-[2.5rem] p-6 border border-slate-100 space-y-4">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Gift className="h-5 w-5 text-orange-600" />
+                <h2 className="text-[18px] font-black text-slate-900 uppercase tracking-tight">¡COMPRA HOY Y RECIBE GRATIS!</h2>
+              </div>
+              <div className="grid grid-cols-2 gap-3 text-left">
+                {[
+                  "Jabón de Arroz",
+                  "Serum Vitamina C",
+                  "Mascarilla Facial",
+                  "Crema de Manos",
+                  "Contorno Ojos",
+                  "Cintillo Spa"
+                ].map((gift, i) => (
+                  <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+                    <CheckCircle2 className="h-4 w-4 text-orange-500 shrink-0" />
+                    <span className="text-[11px] font-black text-slate-700 uppercase leading-none">{gift}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             <div className="grid grid-cols-2 gap-4 mt-8 px-1">
               <img src="https://i.imgur.com/RAj8Ar4.png" className="rounded-[2rem] shadow-xl border-2 border-slate-100 aspect-square object-cover" onClick={openPopup} />
               <img src="https://i.imgur.com/zv8hWi4.png" className="rounded-[2rem] shadow-xl border-2 border-slate-100 aspect-square object-cover" onClick={openPopup} />
@@ -106,7 +129,7 @@ export default function BioaquaV7Page() {
                 <div onClick={openPopup} className="bg-orange-50 p-6 rounded-[2.5rem] border-2 border-orange-600 shadow-xl text-center space-y-3 cursor-pointer transition-transform active:scale-95">
                   <p className="text-[14px] font-black text-orange-700 uppercase">2 Cremas V7</p>
                   <p className="text-[38px] font-black text-orange-600 leading-none">$26</p>
-                  <p className="text-[12px] font-black text-orange-600 uppercase italic">+ REGALO GRATIS</p>
+                  <p className="text-[12px] font-black text-orange-600 uppercase italic">+ 6 REGALOS</p>
                 </div>
               </div>
 
