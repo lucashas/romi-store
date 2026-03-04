@@ -86,18 +86,48 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const router = useRouter();
   const pathname = usePathname();
 
-  // Mapeo de colores inmutables para forzar el tema visual
-  const colors = {
-    bg: themeColor === "amber" ? "bg-amber-600" : themeColor === "orange" ? "bg-orange-600" : "bg-primary",
-    text: themeColor === "amber" ? "text-amber-600" : themeColor === "orange" ? "text-orange-600" : "text-primary",
-    border: themeColor === "amber" ? "border-amber-600" : themeColor === "orange" ? "border-orange-600" : "border-primary",
-    ring: themeColor === "amber" ? "ring-amber-600" : themeColor === "orange" ? "ring-orange-600" : "ring-primary",
-    button: themeColor === "amber" ? "bg-amber-600 hover:bg-amber-700 shadow-amber-200" : themeColor === "orange" ? "bg-orange-600 hover:bg-orange-700 shadow-orange-200" : "bg-accent hover:bg-accent/90 shadow-accent/20",
-    light: themeColor === "amber" ? "bg-amber-50" : themeColor === "orange" ? "bg-orange-50" : "bg-primary/5",
-    borderLight: themeColor === "amber" ? "border-amber-100" : themeColor === "orange" ? "border-orange-100" : "border-primary/10",
-    check: themeColor === "amber" ? "text-amber-600" : themeColor === "orange" ? "text-orange-600" : "text-primary",
-    checkboxBg: themeColor === "amber" ? "data-[state=checked]:bg-amber-600" : themeColor === "orange" ? "data-[state=checked]:bg-orange-600" : "data-[state=checked]:bg-primary",
+  // Mapeo de colores estáticos para asegurar que Tailwind no purgue las clases
+  const getThemeClasses = () => {
+    if (themeColor === "amber") {
+      return {
+        bg: "bg-amber-600",
+        bgHover: "hover:bg-amber-700",
+        text: "text-amber-600",
+        border: "border-amber-600",
+        borderLight: "border-amber-100",
+        ring: "ring-amber-600",
+        light: "bg-amber-50",
+        button: "bg-amber-600 hover:bg-amber-700 shadow-amber-200",
+        checkbox: "data-[state=checked]:bg-amber-600",
+      };
+    }
+    if (themeColor === "orange") {
+      return {
+        bg: "bg-orange-600",
+        bgHover: "hover:bg-orange-700",
+        text: "text-orange-600",
+        border: "border-orange-600",
+        borderLight: "border-orange-100",
+        ring: "ring-orange-600",
+        light: "bg-orange-50",
+        button: "bg-orange-600 hover:bg-orange-700 shadow-orange-200",
+        checkbox: "data-[state=checked]:bg-orange-600",
+      };
+    }
+    return {
+      bg: "bg-primary",
+      bgHover: "hover:bg-primary/90",
+      text: "text-primary",
+      border: "border-primary",
+      borderLight: "border-primary/10",
+      ring: "ring-primary",
+      light: "bg-primary/5",
+      button: "bg-accent hover:bg-accent/90 shadow-accent/20",
+      checkbox: "data-[state=checked]:bg-primary",
+    };
   };
+
+  const theme = getThemeClasses();
 
   const productImg = pathname.includes("rice") || pathname.includes("arroz") 
     ? "https://i.imgur.com/tHUWnzw.png" 
@@ -217,7 +247,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
         </DialogHeader>
 
         <div className="max-h-[85vh] overflow-y-auto overflow-x-hidden w-full">
-          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", colors.bg)}>
+          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", theme.bg)}>
             <h2 className="text-[22px] font-black uppercase leading-tight tracking-tight px-2">
               ESTÁS A UN PASO DE <br />TU PIEL DE PORCELANA
             </h2>
@@ -236,7 +266,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
           <form onSubmit={handleSubmit} className="p-6 space-y-10 bg-white pb-12 w-full">
             <div className="space-y-5">
-              <div className={cn("flex items-center gap-3 border-b-2 pb-4", colors.text, colors.borderLight)}>
+              <div className={cn("flex items-center gap-3 border-b-2 pb-4", theme.text, theme.borderLight)}>
                 <Package className="h-7 w-7" />
                 <h3 className="font-black uppercase text-[17px] tracking-[0.15em]">ELIGE TU OFERTA</h3>
               </div>
@@ -249,11 +279,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                     className={cn(
                       "flex items-center gap-4 p-5 rounded-2xl border-2 transition-all cursor-pointer",
                       selectedProduct === p.id 
-                        ? cn(colors.border, colors.light) 
+                        ? cn(theme.border, theme.light) 
                         : "border-slate-100 bg-white"
                     )}
                   >
-                    <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", colors.check)} />
+                    <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", theme.text)} />
                     <div className="h-16 w-16 rounded-lg overflow-hidden bg-white border border-slate-100 shrink-0 relative">
                       <Image 
                         src={productImg || p.image} 
@@ -269,7 +299,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                       <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
                     </div>
                     <div className="text-right">
-                      <p className={cn("font-black text-[24px] leading-none", colors.text)}>${p.price.toFixed(0)}</p>
+                      <p className={cn("font-black text-[24px] leading-none", theme.text)}>${p.price.toFixed(0)}</p>
                     </div>
                   </Label>
                 ))}
@@ -312,18 +342,18 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             )}
 
             <div className="space-y-5">
-              <div className={cn("bg-slate-900 p-8 rounded-[2.5rem] border-2 shadow-xl space-y-6", colors.border)}>
+              <div className={cn("bg-slate-900 p-8 rounded-[2.5rem] border-2 shadow-xl space-y-6", theme.border)}>
                 <div className="flex items-center gap-4">
                   <Checkbox 
                     id="upsell" 
                     checked={wantsUpsell} 
                     onCheckedChange={(checked) => setWantsUpsell(!!checked)}
-                    className={cn("h-7 w-7 border-2", colors.border, colors.checkboxBg)}
+                    className={cn("h-7 w-7 border-2", theme.border, theme.checkbox)}
                   />
                   <Label htmlFor="upsell" className="cursor-pointer">
-                    <p className={cn("font-black text-[12px] uppercase tracking-widest animate-pulse", colors.text)}>💥 OFERTA EXTRA EXCLUSIVA</p>
+                    <p className={cn("font-black text-[12px] uppercase tracking-widest animate-pulse", theme.text)}>💥 OFERTA EXTRA EXCLUSIVA</p>
                     <p className="text-white font-black text-[15px] uppercase leading-tight">¿QUIERES OTRO PRODUCTO ADICIONAL?</p>
-                    <p className={cn("font-black text-[18px] uppercase italic mt-1", colors.text)}>POR SOLO +$8</p>
+                    <p className={cn("font-black text-[18px] uppercase italic mt-1", theme.text)}>POR SOLO +$8</p>
                   </Label>
                 </div>
 
@@ -337,16 +367,16 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                           className={cn(
                             "flex items-center gap-4 p-4 rounded-xl border-2 transition-all cursor-pointer",
                             selectedUpsellProduct === g.id 
-                              ? cn(colors.border, "bg-white/10") 
+                              ? cn(theme.border, "bg-white/10") 
                               : "border-white/5 bg-white/5"
                           )}
                         >
-                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className={cn("h-5 w-5 border-white/20", colors.check)} />
+                          <RadioGroupItem value={g.id} id={`upsell_${g.id}`} className={cn("h-5 w-5 border-white/20", theme.text)} />
                           <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 relative">
                             <Image src={g.img} alt={g.name} fill className="object-cover" sizes="48px" unoptimized />
                           </div>
                           <p className="font-black text-[12px] text-white uppercase flex-1 leading-tight">{g.name}</p>
-                          <p className={cn("font-black text-[14px]", colors.text)}>+$8</p>
+                          <p className={cn("font-black text-[14px]", theme.text)}>+$8</p>
                         </Label>
                       ))}
                     </RadioGroup>
@@ -356,7 +386,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             </div>
 
             <div className="space-y-6">
-              <div className={cn("flex items-center gap-3 border-b-2 pb-4", colors.text, colors.borderLight)}>
+              <div className={cn("flex items-center gap-3 border-b-2 pb-4", theme.text, theme.borderLight)}>
                 <Truck className="h-7 w-7" />
                 <h3 className="font-black uppercase text-[17px] tracking-[0.15em]">DATOS DE ENVÍO</h3>
               </div>
@@ -436,11 +466,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
                 </div>
               </div>
 
-              <div className={cn("border-2 p-8 rounded-[2.5rem] text-center space-y-3 shadow-sm", colors.light, colors.borderLight)}>
+              <div className={cn("border-2 p-8 rounded-[2.5rem] text-center space-y-3 shadow-sm", theme.light, theme.borderLight)}>
                 <div className="flex justify-center">
-                  <AlertTriangle className={cn("h-10 w-10", colors.text)} />
+                  <AlertTriangle className={cn("h-10 w-10", theme.text)} />
                 </div>
-                <p className={cn("font-black text-[16px] uppercase tracking-tighter", colors.text)}>⚠️ ATENCIÓN ⚠️</p>
+                <p className={cn("font-black text-[16px] uppercase tracking-tighter", theme.text)}>⚠️ ATENCIÓN ⚠️</p>
                 <p className="text-[14px] font-bold text-slate-800 leading-relaxed italic px-2">
                   Tu pedido únicamente podrá salir de la bodega si tus datos están completos.
                 </p>
@@ -450,14 +480,14 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             <div className="bg-slate-900 rounded-[2rem] p-8 space-y-6 shadow-2xl border-b-4 border-amber-500">
               <div className="flex justify-between items-center pt-3">
                 <span className="text-white text-[20px] font-black uppercase tracking-tighter">TOTAL A PAGAR</span>
-                <p className={cn("text-[36px] font-black leading-none", colors.text)}>${totalPrice.toFixed(2)}</p>
+                <p className={cn("text-[36px] font-black leading-none", theme.text)}>${totalPrice.toFixed(2)}</p>
               </div>
             </div>
 
             <Button 
               type="submit" 
               disabled={loading} 
-              className={cn("w-full h-24 text-2xl font-black uppercase rounded-3xl animate-heartbeat mt-6 border-4 border-white shadow-xl", colors.button)}
+              className={cn("w-full h-24 text-2xl font-black uppercase rounded-3xl animate-heartbeat mt-6 border-4 border-white shadow-xl", theme.button)}
             >
               {loading ? "PROCESANDO..." : "CONFIRMAR PEDIDO"}
             </Button>
