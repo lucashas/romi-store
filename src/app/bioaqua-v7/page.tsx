@@ -86,7 +86,7 @@ export default function BioaquaV7Page() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mt-8">
+            <div className="grid grid-cols-2 gap-4 mt-8 px-1">
               <img src="https://i.imgur.com/RAj8Ar4.png" className="rounded-[2rem] shadow-xl border-2 border-slate-100 aspect-square object-cover" onClick={openPopup} />
               <img src="https://i.imgur.com/zv8hWi4.png" className="rounded-[2rem] shadow-xl border-2 border-slate-100 aspect-square object-cover" onClick={openPopup} />
             </div>
