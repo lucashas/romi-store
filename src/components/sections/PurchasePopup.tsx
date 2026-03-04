@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -121,10 +120,16 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
           <DialogTitle className="sr-only">Finalizar Pedido - Romi Store EC</DialogTitle>
         </DialogHeader>
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", styles.header)}>
-            <div className="text-[24px] font-black uppercase leading-none tracking-tighter">¡SÍ, QUIERO MI PIEL DE PORCELANA!</div>
-            <div className="relative w-32 h-10">
-                <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Confianza" fill className="object-contain invert brightness-0" unoptimized />
+          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-4", styles.header)}>
+            <div className="text-[24px] font-black uppercase leading-[0.9] tracking-tighter">¡SÍ, QUIERO MI PIEL DE PORCELANA!</div>
+            <div className="relative w-40 h-10 mt-1">
+              <Image 
+                src="https://i.imgur.com/Jh61uYJ.png" 
+                alt="Confianza Ecuador" 
+                fill 
+                className="object-contain invert brightness-0" 
+                unoptimized 
+              />
             </div>
           </div>
 
