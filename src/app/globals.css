@@ -5,30 +5,30 @@
 @layer base {
   :root {
     /* DORADO PURO (GOLD) - CERO NARANJA */
-    --background: 60 30% 99%;
+    --background: 0 0% 100%;
     --foreground: 20 50% 5%;
     --card: 0 0% 100%;
     --card-foreground: 20 50% 5%;
     --popover: 0 0% 100%;
     --popover-foreground: 20 50% 5%;
     
-    /* Dorado Real (Amarillo Oro) - Hue 51 para evitar el naranja */
-    --primary: 51 100% 45%; 
-    --primary-foreground: 51 50% 10%;
+    /* Dorado Real (Amarillo Oro) - Hue 48 para evitar el naranja totalmente */
+    --primary: 48 100% 45%; 
+    --primary-foreground: 48 50% 10%;
     
-    --secondary: 51 40% 96%;
-    --secondary-foreground: 51 60% 15%;
-    --muted: 51 10% 95%;
+    --secondary: 48 40% 96%;
+    --secondary-foreground: 48 60% 15%;
+    --muted: 48 10% 95%;
     --muted-foreground: 20 20% 40%;
     
-    --accent: 51 100% 50%; 
+    --accent: 48 100% 50%; 
     --accent-foreground: 0 0% 0%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 51 20% 90%;
-    --input: 51 20% 90%;
-    --ring: 51 100% 42%;
+    --border: 48 20% 90%;
+    --input: 48 20% 90%;
+    --ring: 48 100% 42%;
     --radius: 1.5rem;
   }
 }

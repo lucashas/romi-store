@@ -119,17 +119,10 @@ export default function BioaquaRicePage() {
                 </p>
               </div>
 
-              {/* IMAGEN DE BENEFICIOS - REEMPLAZANDO TOTALMENTE EL TEXTO */}
+              {/* IMAGEN DE BENEFICIOS - LIMPIA SIN ICONOS NARANJAS ENCIMA */}
               <div className="mt-8 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-primary/10 bg-slate-50">
                   <img src={benefitsImg} alt="Beneficios Kit de Arroz" className="w-full h-auto block" />
-                </div>
-              </div>
-
-              {/* Imagen Informativa Secundaria */}
-              <div className="mt-10 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
-                <div className="relative w-full overflow-hidden rounded-[2rem] shadow-2xl border-2 border-primary/10 bg-slate-50">
-                  <img src="https://i.imgur.com/ICjJPPO.png" alt="Info Kit de Arroz" className="w-full h-auto block" />
                 </div>
               </div>
 
