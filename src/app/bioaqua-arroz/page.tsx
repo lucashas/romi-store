@@ -59,6 +59,11 @@ export default function BioaquaRicePage() {
               KIT DE ARROZ <br /><span className="text-yellow-600 italic">BIOAQUA</span>
             </h1>
 
+            <div className="grid grid-cols-2 gap-2 px-1">
+              <img src="https://i.imgur.com/XFQg77J.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
+              <img src="https://i.imgur.com/aSjVyM2.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
+            </div>
+
             <div className="bg-yellow-50 py-4 rounded-3xl border border-yellow-200 px-6">
               <p className="text-[16px] font-black text-yellow-700 uppercase leading-tight">
                 6 Pasos • Hidratación • Poros Invisibles
@@ -90,7 +95,6 @@ export default function BioaquaRicePage() {
                 </div>
               </div>
 
-              {/* Garantía ubicada exactamente debajo de los precios */}
               <div className="px-2 mt-4 cursor-pointer" onClick={openPopup}>
                 <img src="https://i.imgur.com/qOmlzPP.png" alt="Garantía de Satisfacción" className="w-full h-auto rounded-2xl shadow-lg border border-slate-100" />
               </div>
@@ -103,7 +107,6 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
-        {/* Sección de testimonios actualizada con la nueva imagen */}
         <Testimonials 
           title="CLIENTAS FELICES" 
           subtitle="Resultados que hablan por sí solos" 
