@@ -14,7 +14,7 @@ const RICE_PRODUCTS: Product[] = [
   {
     id: "bioaqua_rice_1",
     name: "1 Kit de Arroz Bioaqua (6 piezas)",
-    price: 28.0,
+    price: 35.0,
     image: "https://i.imgur.com/tHUWnzw.png",
     badge: "BÁSICO",
     description: "Tratamiento completo de 6 pasos",
@@ -22,10 +22,10 @@ const RICE_PRODUCTS: Product[] = [
   {
     id: "bioaqua_rice_2",
     name: "2 Kits de Arroz Bioaqua (12 piezas)",
-    price: 48.0,
+    price: 55.0,
     image: "https://i.imgur.com/tHUWnzw.png",
     badge: "OFERTA HOY",
-    description: "Piel de Porcelana + Regalo Gratis",
+    description: "Piel de Porcelana • Envío Gratis",
   },
 ];
 
@@ -79,14 +79,14 @@ export default function BioaquaRicePage() {
               <div className="grid grid-cols-2 gap-4 px-1">
                 <div onClick={openPopup} className="bg-white p-6 rounded-[2.5rem] border-2 border-slate-100 shadow-xl text-center space-y-3 cursor-pointer transition-transform active:scale-95">
                   <p className="text-[14px] font-black text-slate-900 uppercase">1 Kit (6 piezas)</p>
-                  <p className="text-[38px] font-black text-slate-900 leading-none">$28</p>
+                  <p className="text-[38px] font-black text-slate-900 leading-none">$35</p>
                   <p className="text-[12px] font-bold text-slate-400 uppercase italic">Envío Gratis</p>
                 </div>
 
                 <div onClick={openPopup} className="bg-yellow-50 p-6 rounded-[2.5rem] border-2 border-yellow-600 shadow-xl text-center space-y-3 cursor-pointer transition-transform active:scale-95">
                   <p className="text-[14px] font-black text-yellow-700 uppercase">2 Kits (12 piezas)</p>
-                  <p className="text-[38px] font-black text-yellow-600 leading-none">$48</p>
-                  <p className="text-[12px] font-black text-yellow-600 uppercase italic">+ REGALO GRATIS</p>
+                  <p className="text-[38px] font-black text-yellow-600 leading-none">$55</p>
+                  <p className="text-[12px] font-black text-yellow-600 uppercase italic">Envío Prioritario</p>
                 </div>
               </div>
 
@@ -103,7 +103,7 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
-        {/* Nueva imagen de testimonios solicitada */}
+        {/* Sección de testimonios actualizada con la nueva imagen */}
         <Testimonials 
           title="CLIENTAS FELICES" 
           subtitle="Resultados que hablan por sí solos" 

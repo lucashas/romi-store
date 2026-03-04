@@ -37,7 +37,7 @@ const CUSTOM_PRODUCTS: Product[] = [
     price: 80.00,
     image: "https://i.imgur.com/WIgHnKZ.png",
     badge: "Mejor Valor",
-    description: "Máximo Descuento + Regalo Sorpresa"
+    description: "Máximo Descuento"
   }
 ];
 
