@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* DORADO PURO (GOLD) - ELIMINACIÓN TOTAL DE NARANJA */
-    --background: 45 30% 99%;
+    --background: 60 30% 99%;
     --foreground: 20 50% 5%;
     --card: 0 0% 100%;
     --card-foreground: 20 50% 5%;
@@ -13,7 +13,7 @@
     --popover-foreground: 20 50% 5%;
     
     /* Dorado Real (Yellow-600) */
-    --primary: 45 100% 42%; 
+    --primary: 45 93% 47%; 
     --primary-foreground: 45 50% 98%;
     
     --secondary: 45 40% 96%;

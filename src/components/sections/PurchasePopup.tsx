@@ -45,14 +45,7 @@ const ecuadorData: Record<string, string[]> = {
   "TUNGURAHUA": ["AMBATO", "BAÑOS", "PELILEO", "PILLARO", "CEVALLOS", "MOCHA", "QUERO", "TISALEO", "PATATE"],
 };
 
-interface PurchasePopupProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  products: Product[];
-  themeColor?: "amber" | "orange";
-}
-
-export function PurchasePopup({ open, onOpenChange, products, themeColor = "amber" }: PurchasePopupProps) {
+export function PurchasePopup({ open, onOpenChange, products }: { open: boolean, onOpenChange: (open: boolean) => void, products: Product[] }) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -67,8 +60,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
   const router = useRouter();
   const pathname = usePathname();
 
-  // FORZAR COLORES DORADOS PUROS SIEMPRE PARA ESTE POPUP
-  const amberStyles = {
+  // FORZAR COLORES DORADOS PUROS SIEMPRE
+  const goldStyles = {
     header: "bg-yellow-600",
     borderActive: "border-yellow-600 bg-yellow-50",
     textActive: "text-yellow-600",
@@ -123,7 +116,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", amberStyles.header)}>
+          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", goldStyles.header)}>
             <h2 className="text-[24px] font-black uppercase leading-none tracking-tighter">FINALIZAR PEDIDO</h2>
             <div className="relative w-32 h-10">
                 <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Confianza" fill className="object-contain invert brightness-0" unoptimized />
@@ -133,25 +126,25 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
           <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-14">
             <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
               {products.map((p) => (
-                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? amberStyles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
-                  <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", selectedProduct === p.id ? amberStyles.textActive : "")} />
+                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? goldStyles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
+                  <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", selectedProduct === p.id ? goldStyles.textActive : "")} />
                   <div className="flex-1 min-w-0">
                     <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{p.name}</p>
                     <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
                   </div>
-                  <p className={cn("font-black text-[24px] tracking-tighter", amberStyles.textActive)}>${p.price.toFixed(0)}</p>
+                  <p className={cn("font-black text-[24px] tracking-tighter", goldStyles.textActive)}>${p.price.toFixed(0)}</p>
                 </Label>
               ))}
             </RadioGroup>
 
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", amberStyles.ring)} />
-                <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", amberStyles.ring)} />
+                <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", goldStyles.ring)} />
+                <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", goldStyles.ring)} />
               </div>
 
-              <Input placeholder="Número de WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", amberStyles.ring)} />
-              <Input placeholder="Dirección Exacta (Calle y Nro Casa)" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", amberStyles.ring)} />
+              <Input placeholder="Número de WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", goldStyles.ring)} />
+              <Input placeholder="Dirección Exacta (Calle y Nro Casa)" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", goldStyles.ring)} />
 
               <div className="grid grid-cols-2 gap-4">
                 <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
@@ -165,7 +158,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
               </div>
             </div>
 
-            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white", amberStyles.button)}>
+            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white", goldStyles.button)}>
               {loading ? "PROCESANDO..." : "¡CONFIRMAR PEDIDO!"}
             </Button>
             

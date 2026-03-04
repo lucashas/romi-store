@@ -65,7 +65,7 @@ export default function BioaquaRicePage() {
       <TopMarquee text={promoMessage} className="bg-yellow-600 text-white border-yellow-500" />
 
       <main className="flex-1 w-full overflow-x-hidden">
-        {/* Banner Principal */}
+        {/* Banner Principal Fijo */}
         <section className="bg-white overflow-hidden w-full">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-yellow-100">
@@ -113,19 +113,16 @@ export default function BioaquaRicePage() {
                 </span>
               </h3>
 
-              <div className="space-y-4 text-[17px] text-slate-600 font-medium leading-relaxed px-2">
-                <p className="text-center">
-                  Descubre el poder del extracto de arroz puro. Este kit profesional de 6 pasos transforma tu piel desde la primera aplicación, devolviéndole su brillo natural y suavidad extrema.
+              <div className="space-y-4 text-[17px] text-slate-600 font-medium leading-relaxed px-2 text-center">
+                <p>
+                  Descubre el poder del extracto de arroz puro. Este kit profesional de 6 pasos transforma tu piel desde la primera aplicación.
                 </p>
               </div>
 
-              {/* Imagen de Beneficios Reemplazando la Tarjeta (CAMBIO SOLICITADO) */}
+              {/* IMAGEN DE BENEFICIOS REEMPLAZANDO TARJETA (INSTRUCCIÓN EXACTA) */}
               <div className="mt-8 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-yellow-100 bg-slate-50">
                   <img src={benefitsImg} alt="Beneficios Kit de Arroz" className="w-full h-auto block" />
-                  <div className="absolute top-4 right-4 bg-yellow-600 text-white p-2 rounded-full shadow-lg">
-                    <Zap className="h-5 w-5 fill-white" />
-                  </div>
                 </div>
               </div>
 
@@ -191,13 +188,6 @@ export default function BioaquaRicePage() {
                         +$8 DÓLARES
                       </span>
                     </p>
-                    <Button
-                      onClick={openPopup}
-                      size="sm"
-                      className="mt-6 bg-yellow-600 hover:bg-yellow-700 text-white font-black uppercase text-[13px] px-8 rounded-full h-12 shadow-lg"
-                    >
-                      ¡AGREGAR AL PEDIDO!
-                    </Button>
                   </div>
 
                   <Button
@@ -270,7 +260,7 @@ export default function BioaquaRicePage() {
         </Button>
       </div>
 
-      <PurchasePopup open={isPopupOpen} onOpenChange={setIsPopupOpen} products={RICE_PRODUCTS} themeColor="amber" />
+      <PurchasePopup open={isPopupOpen} onOpenChange={setIsPopupOpen} products={RICE_PRODUCTS} />
 
       <Footer />
       <Toaster />
