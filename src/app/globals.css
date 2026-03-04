@@ -10,19 +10,19 @@
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 48 100% 45%; 
-    --primary-foreground: 48 50% 10%;
+    --primary: 24 95% 53%; /* Naranja por defecto para V7 */
+    --primary-foreground: 0 0% 100%;
     --secondary: 210 40% 96%;
     --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
-    --accent: 48 100% 50%; 
-    --accent-foreground: 0 0% 0%;
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 48 100% 45%;
+    --ring: 24 95% 53%;
     --radius: 1.5rem;
   }
 }
@@ -69,4 +69,13 @@
 
 [data-radix-popper-content-wrapper] {
   @apply !z-[110] !w-full max-w-[500px];
+}
+
+/* Ocultar scrollbar en el modal */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
