@@ -25,7 +25,7 @@ const RICE_PRODUCTS: Product[] = [
     price: 55.0,
     image: "https://i.imgur.com/tHUWnzw.png",
     badge: "OFERTA HOY",
-    description: "Piel de Porcelana • Envío Gratis",
+    description: "PIEL DE PORCELANA • Envío Gratis",
   },
 ];
 
@@ -55,13 +55,32 @@ export default function BioaquaRicePage() {
               <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest">(+1.200 VENTAS)</span>
             </div>
 
-            <h1 className="text-4xl font-black text-slate-900 uppercase leading-[0.9] tracking-tighter">
-              KIT DE ARROZ <br /><span className="text-yellow-600 italic">BIOAQUA</span>
-            </h1>
+            <div className="space-y-4">
+              <h1 className="text-4xl font-black text-slate-900 uppercase leading-[0.9] tracking-tighter">
+                KIT DE ARROZ <br /><span className="text-yellow-600 italic">BIOAQUA</span>
+              </h1>
+              
+              <div className="space-y-1">
+                <h2 className="text-2xl font-black text-slate-800 uppercase tracking-tight leading-none">BIOAQUA Rice Raw Pulp:</h2>
+                <p className="text-lg font-bold text-yellow-600">🌾✨ ¡Tu piel merece brillar!</p>
+              </div>
+            </div>
 
             <div className="grid grid-cols-2 gap-2 px-1">
               <img src="https://i.imgur.com/XFQg77J.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
               <img src="https://i.imgur.com/aSjVyM2.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
+            </div>
+
+            <div className="text-left px-2 space-y-3">
+              <p className="text-[15px] font-medium text-slate-700 leading-relaxed">
+                Con el kit <span className="font-black text-slate-900">BIOAQUA Rice Raw Pulp</span> disfruta de una rutina completa que limpia, hidrata y nutre tu rostro con el poder del arroz y ácido hialurónico. 💧🌸
+              </p>
+              <p className="text-[15px] font-black text-yellow-700 leading-relaxed">
+                👉 Piel más suave, luminosa y saludable en cada aplicación.
+              </p>
+              <p className="text-[15px] font-medium text-slate-700 leading-relaxed italic">
+                📦 ¡Transforma tu cuidado diario en un ritual de belleza!
+              </p>
             </div>
 
             <div className="bg-yellow-50 py-4 rounded-3xl border border-yellow-200 px-6">
