@@ -126,9 +126,24 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
-        <div className="grid grid-cols-2 gap-2 px-6 mb-4">
+        <div className="p-8 text-center space-y-3">
+          <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+            Belleza natural, <span className="text-yellow-600">resultados visibles</span>
+          </h2>
+          <p className="text-[16px] font-bold text-yellow-700 uppercase tracking-tight">
+            Nutrición y frescura con cada aplicación.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2 px-6 mb-6">
           <img src="https://i.imgur.com/1izaYPo.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" onClick={openPopup} />
           <img src="https://i.imgur.com/FdpmjYk.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" onClick={openPopup} />
+        </div>
+
+        <div className="px-8 mb-10">
+          <p className="text-[15px] font-medium text-slate-700 leading-relaxed text-center italic">
+            Descubre el poder del arroz en tu piel. El kit BIOAQUA Rice Raw Pulp ofrece limpieza profunda, hidratación duradera y un acabado luminoso que realza tu belleza natural. 🌾🌟
+          </p>
         </div>
 
         <Testimonials 
