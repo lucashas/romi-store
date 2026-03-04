@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { TopMarquee } from "@/components/layout/TopMarquee";
-import { Testimonials, type TestimonialItem } from "@/components/sections/Testimonials";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
@@ -26,30 +26,6 @@ const RICE_PRODUCTS: Product[] = [
     image: "https://i.imgur.com/tHUWnzw.png",
     badge: "OFERTA HOY",
     description: "Piel de Porcelana + Regalo Gratis",
-  },
-];
-
-const RICE_TESTIMONIALS: TestimonialItem[] = [
-  {
-    name: "Mariana Vélez",
-    city: "Guayaquil",
-    role: "Piel Suave",
-    quote: "Este kit de arroz es increíble. Mi cara se siente como seda y mis poros se han reducido muchísimo. ¡Lo recomiendo!",
-    imageId: "testimonial-user-1",
-  },
-  {
-    name: "Isabel Torres",
-    city: "Quito",
-    role: "Adiós Brillo",
-    quote: "Tengo piel mixta y este kit controla la grasa sin resecar. Lo uso todos los días y mi piel se ve mucho más clara.",
-    imageId: "testimonial-user-2",
-  },
-  {
-    name: "Camila Loor",
-    city: "Portoviejo",
-    role: "Rutina Perfecta",
-    quote: "Me encanta que traiga los 6 pasos. Es súper fácil de usar y el aroma es muy sutil y rico. ¡Vale totalmente la pena!",
-    imageId: "testimonial-user-4",
   },
 ];
 
@@ -127,7 +103,7 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
-        <Testimonials title="CLIENTAS FELICES" items={RICE_TESTIMONIALS} />
+        <Testimonials themeColor="gold" />
 
         <section className="py-14 text-center space-y-12 bg-white">
           <div className="grid grid-cols-2 gap-6 px-4">

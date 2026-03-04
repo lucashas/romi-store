@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { TopMarquee } from "@/components/layout/TopMarquee";
-import { Testimonials, type TestimonialItem } from "@/components/sections/Testimonials";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
@@ -26,30 +26,6 @@ const BIOAQUA_PRODUCTS: Product[] = [
     image: "https://i.imgur.com/bUaJbMD.png",
     badge: "OFERTA HOY",
     description: "Efecto porcelana + 6 Regalos"
-  }
-];
-
-const BIOAQUA_TESTIMONIALS: TestimonialItem[] = [
-  {
-    name: "Andrea Castro",
-    city: "Quito",
-    role: "Piel de Porcelana",
-    quote: "¡Es mágica! Mi piel se ve mucho más clara y luminosa desde el primer día. El jabón de arroz de regalo es el complemento perfecto.",
-    imageId: "testimonial-user-1"
-  },
-  {
-    name: "Valentina Ruiz",
-    city: "Cuenca",
-    role: "Adiós Manchas",
-    quote: "Tenía manchas por el sol y esta crema V7 las ha difuminado increíblemente en solo dos semanas. ¡100% recomendada!",
-    imageId: "testimonial-user-4"
-  },
-  {
-    name: "Gabriela Mendoza",
-    city: "Loja",
-    role: "Rostro Radiante",
-    quote: "El efecto aclarante es instantáneo y muy natural. Me encanta que no deja sensación grasosa. ¡Es mi favorita!",
-    imageId: "testimonial-user-2"
   }
 ];
 
@@ -146,7 +122,7 @@ export default function BioaquaV7Page() {
           </div>
         </section>
 
-        <Testimonials title="CLIENTAS FELICES" items={BIOAQUA_TESTIMONIALS} />
+        <Testimonials themeColor="orange" />
 
         <section className="py-14 text-center space-y-12 bg-white">
           <div className="grid grid-cols-2 gap-6 px-4">

@@ -122,7 +122,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
         </DialogHeader>
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
           <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", styles.header)}>
-            <h2 className="text-[24px] font-black uppercase leading-none tracking-tighter">FINALIZAR PEDIDO</h2>
+            <DialogTitle className="text-[24px] font-black uppercase leading-none tracking-tighter">FINALIZAR PEDIDO</DialogTitle>
             <div className="relative w-32 h-10">
                 <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Confianza" fill className="object-contain invert brightness-0" unoptimized />
             </div>
