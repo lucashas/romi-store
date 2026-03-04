@@ -120,11 +120,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
             <DialogTitle className="text-[24px] font-black uppercase leading-[0.9] tracking-tighter">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full mt-2">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
-                className="w-40 h-auto object-contain brightness-0 invert" 
+                className="w-40 h-auto object-contain brightness-0 invert opacity-90" 
               />
             </div>
           </div>
