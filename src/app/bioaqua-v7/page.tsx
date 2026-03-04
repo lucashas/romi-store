@@ -87,7 +87,7 @@ export default function BioaquaV7Page() {
               </p>
             </div>
 
-            {/* SECCIÓN DE 6 REGALOS RESTAURADA */}
+            {/* SECCIÓN DE 6 REGALOS RESTAURADA - 3:00 AM STATE */}
             <section className="bg-slate-50 rounded-[2.5rem] p-6 border border-slate-100 space-y-4">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <Gift className="h-5 w-5 text-orange-600" />
