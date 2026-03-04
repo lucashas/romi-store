@@ -45,7 +45,7 @@ const ecuadorData: Record<string, string[]> = {
   "TUNGURAHUA": ["AMBATO", "BAÑOS", "PELILEO", "PILLARO", "CEVALLOS", "MOCHA", "QUERO", "TISALEO", "PATATE"],
 };
 
-export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold" }: { open: boolean, onOpenChange: (open: boolean) => void, products: Product[], themeColor?: "gold" | "orange" }) {
+export function PurchasePopup({ open, onOpenChange, products, themeColor = "orange" }: { open: boolean, onOpenChange: (open: boolean) => void, products: Product[], themeColor?: "gold" | "orange" }) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -100,7 +100,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       phoneNumber: whatsapp,
       message: `PRODUCTO: ${product?.name} | TOTAL: $${product?.price} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
-      landingPageContentId: pathname.replace("/", "") || "bioaqua-arroz"
+      landingPageContentId: pathname.replace("/", "") || "bioaqua-v7"
     };
     try {
       await addDoc(collection(firestore, "leadSubmissions"), orderData);

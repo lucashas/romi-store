@@ -71,7 +71,6 @@
   @apply !z-[110] !w-full max-w-[500px];
 }
 
-/* Ocultar scrollbar en el modal */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
