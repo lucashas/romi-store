@@ -52,6 +52,7 @@ const ecuadorData: Record<string, string[]> = {
   "MORONA SANTIAGO": ["MACAS", "GUALAQUIZA", "SUCUA", "SANTIAGO", "HUAMBOYA", "LIMON INDANZA", "LOGROÑO", "PABLO SEXTO", "PALORA", "SAN JUAN BOSCO", "TAISHA", "TIWINTZA"],
   "NAPO": ["TENA", "ARCHIDONA", "EL CHACO", "QUIJOS", "CARLOS JULIO AROSEMENA TOLA"],
   "ORELLANA": ["PUERTO FRANCISCO DE ORELLANA", "LA JOYA DE LOS SACHAS", "LORETO", "AGUARICO"],
+  "ORELLANA": ["PUERTO FRANCISCO DE ORELLANA", "LA JOYA DE LOS SACHAS", "LORETO", "AGUARICO"],
   "PASTAZA": ["PUYO", "MERA", "SANTA CLARA", "ARAJUNO"],
   "PICHINCHA": ["QUITO", "SANGOLQUI", "MACHACHI", "CAYAMBE", "TABACUNDO", "PEDRO MONCAYO", "PEDRO VICENTE MALDONADO", "PUERTO QUITO", "SAN MIGUEL DE LOS BANCOS"],
   "SANTA ELENA": ["SANTA ELENA", "SALINAS", "LA LIBERTAD"],
@@ -86,7 +87,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const router = useRouter();
   const pathname = usePathname();
 
-  // Mapeo de colores estáticos para asegurar que Tailwind no purgue las clases
   const getThemeClasses = () => {
     if (themeColor === "amber") {
       return {
