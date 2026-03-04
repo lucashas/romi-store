@@ -86,7 +86,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const router = useRouter();
   const pathname = usePathname();
 
-  // Color Mapping explícito e inmutable para evitar fallos de renderizado
+  // Mapeo de colores inmutables para forzar el tema visual
   const colors = {
     bg: themeColor === "amber" ? "bg-amber-600" : themeColor === "orange" ? "bg-orange-600" : "bg-primary",
     text: themeColor === "amber" ? "text-amber-600" : themeColor === "orange" ? "text-orange-600" : "text-primary",
