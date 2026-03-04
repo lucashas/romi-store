@@ -67,7 +67,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
   const router = useRouter();
   const pathname = usePathname();
 
-  // FORZAR COLORES AMBER SIEMPRE PARA ESTE POPUP SEGÚN SOLICITUD DE STALIN
+  // FORZAR COLORES AMBER SIEMPRE PARA ESTE POPUP
   const amberStyles = {
     header: "bg-amber-600",
     borderActive: "border-amber-600 bg-amber-50",

@@ -57,6 +57,7 @@ export default function BioaquaRicePage() {
   const openPopup = () => setIsPopupOpen(true);
 
   const bannerTopImg = "https://i.imgur.com/tHUWnzw.png";
+  const benefitsImg = "https://i.imgur.com/HYiuNZy.png";
   const infoImg = "https://i.imgur.com/ICjJPPO.png";
   const promoMessage = "🌾 ¡OFERTA LANZAMIENTO KIT DE ARROZ! 🌾 - ✨ HIDRATACIÓN PROFUNDA Y PIEL DE PORCELANA - 📦 ENVÍOS A TODO ECUADOR - PAGAS AL RECIBIR - ";
 
@@ -65,7 +66,7 @@ export default function BioaquaRicePage() {
       <TopMarquee text={promoMessage} className="bg-amber-600 text-white border-amber-500" />
 
       <main className="flex-1 w-full overflow-x-hidden">
-        {/* Banner Principal Forzado */}
+        {/* Banner Principal */}
         <section className="bg-white overflow-hidden w-full">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-amber-100">
@@ -114,41 +115,22 @@ export default function BioaquaRicePage() {
               </h3>
 
               <div className="space-y-4 text-[17px] text-slate-600 font-medium leading-relaxed px-2">
-                <p>
+                <p className="text-center">
                   Descubre el poder del extracto de arroz puro. Este kit profesional de 6 pasos transforma tu piel desde la primera aplicación, devolviéndole su brillo natural y suavidad extrema.
                 </p>
               </div>
 
-              {/* TARJETA DE BENEFICIOS ÁMBAR PREMIUM */}
-              <div className="bg-slate-900 p-8 rounded-[3rem] border-b-8 border-amber-600 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10">
-                   <Zap className="h-24 w-24 text-white" />
+              {/* Imagen de Beneficios Reemplazando la Tarjeta */}
+              <div className="mt-8 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
+                <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-amber-100 bg-slate-50">
+                  <img src={benefitsImg} alt="Beneficios Kit de Arroz" className="w-full h-auto block" />
+                  <div className="absolute top-4 right-4 bg-amber-600 text-white p-2 rounded-full shadow-lg">
+                    <Zap className="h-5 w-5 fill-white" />
+                  </div>
                 </div>
-                <h4 className="text-[22px] font-black text-amber-500 text-center uppercase mb-8 tracking-widest">
-                  🌾 BENEFICIOS 🌾
-                </h4>
-                <ul className="grid grid-cols-1 gap-5 relative z-10">
-                  {[
-                    "Hidratación intensiva 24h",
-                    "Minimiza poros abiertos",
-                    "Aclara manchas gradualmente",
-                    "Suaviza la textura de la piel",
-                    "Controla el exceso de grasa",
-                    "Efecto rejuvenecedor natural",
-                  ].map((benefit, idx) => (
-                    <li key={idx} className="flex items-center gap-4">
-                      <div className="h-8 w-8 rounded-full bg-amber-600 text-white flex items-center justify-center text-[14px] font-black shrink-0 shadow-lg border-2 border-white/20">
-                        {idx + 1}
-                      </div>
-                      <span className="text-[16px] font-black text-white uppercase leading-tight tracking-tight">
-                        {benefit}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
-              {/* Imagen Informativa */}
+              {/* Imagen Informativa Secundaria */}
               <div className="mt-10 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full overflow-hidden rounded-[2rem] shadow-2xl border-2 border-amber-100 bg-slate-50">
                   <img src={infoImg} alt="Info Kit de Arroz" className="w-full h-auto block" />
