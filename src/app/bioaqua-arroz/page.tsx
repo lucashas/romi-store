@@ -90,7 +90,7 @@ export default function BioaquaRicePage() {
                 </div>
               </div>
 
-              {/* Imagen de Garantía */}
+              {/* Imagen de Garantía - RESTAURADA ABAJO DE TARJETAS */}
               <div className="px-2 mt-4 cursor-pointer" onClick={openPopup}>
                 <img src="https://i.imgur.com/qOmlzPP.png" alt="Garantía de Satisfacción" className="w-full h-auto rounded-2xl shadow-lg border border-slate-100" />
               </div>
