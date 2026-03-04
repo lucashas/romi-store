@@ -126,6 +126,11 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
+        <div className="grid grid-cols-2 gap-2 px-6 mb-4">
+          <img src="https://i.imgur.com/1izaYPo.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" onClick={openPopup} />
+          <img src="https://i.imgur.com/FdpmjYk.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" onClick={openPopup} />
+        </div>
+
         <Testimonials 
           title="CLIENTAS FELICES" 
           subtitle="Resultados que hablan por sí solos" 
