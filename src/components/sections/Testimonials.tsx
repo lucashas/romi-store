@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Star } from "lucide-react";
@@ -12,7 +13,7 @@ interface TestimonialsProps {
 export function Testimonials({ 
   title = "CLIENTAS FELICES", 
   subtitle = "Resultados que hablan por sí solos",
-  testimonialImageUrl = "https://i.imgur.com/qOmlzPP.png", 
+  testimonialImageUrl = "https://i.imgur.com/PTsQyWM.png", 
   themeColor = "orange"
 }: TestimonialsProps) {
   const isGold = themeColor === "gold";
