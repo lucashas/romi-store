@@ -66,7 +66,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
     header: isGold ? "bg-yellow-600" : "bg-orange-600",
     borderActive: isGold ? "border-yellow-600 bg-yellow-50" : "border-orange-600 bg-orange-50",
     textActive: isGold ? "text-yellow-700" : "text-orange-700",
-    button: isGold ? "bg-yellow-600 hover:bg-yellow-700 shadow-yellow-200" : "bg-orange-600 hover:bg-orange-700 shadow-orange-200",
+    button: isGold ? "bg-yellow-600 hover:bg-yellow-700" : "bg-orange-600 hover:bg-orange-700",
     ring: isGold ? "focus:border-yellow-600" : "focus:border-orange-600"
   };
 
