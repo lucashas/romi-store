@@ -60,13 +60,13 @@ export function PurchasePopup({ open, onOpenChange, products }: { open: boolean,
   const router = useRouter();
   const pathname = usePathname();
 
-  // FORZAR COLORES DORADOS PUROS SIEMPRE
+  // FORZAR DORADO ORO REAL (SIN NARANJA)
   const goldStyles = {
-    header: "bg-yellow-600",
-    borderActive: "border-yellow-600 bg-yellow-50",
-    textActive: "text-yellow-600",
-    button: "bg-yellow-600 hover:bg-yellow-700 shadow-[0_8px_25px_rgba(202,138,4,0.3)]",
-    ring: "focus:border-yellow-400"
+    header: "bg-primary",
+    borderActive: "border-primary bg-primary/5",
+    textActive: "text-primary",
+    button: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_8px_25px_rgba(var(--primary),0.3)]",
+    ring: "focus:border-primary/50"
   };
 
   useEffect(() => {
@@ -117,7 +117,7 @@ export function PurchasePopup({ open, onOpenChange, products }: { open: boolean,
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
           <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", goldStyles.header)}>
-            <h2 className="text-[24px] font-black uppercase leading-none tracking-tighter">FINALIZAR PEDIDO</h2>
+            <h2 className="text-[24px] font-black uppercase leading-none tracking-tighter text-primary-foreground">FINALIZAR PEDIDO</h2>
             <div className="relative w-32 h-10">
                 <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Confianza" fill className="object-contain invert brightness-0" unoptimized />
             </div>
@@ -127,7 +127,7 @@ export function PurchasePopup({ open, onOpenChange, products }: { open: boolean,
             <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
               {products.map((p) => (
                 <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? goldStyles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
-                  <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", selectedProduct === p.id ? goldStyles.textActive : "")} />
+                  <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6")} />
                   <div className="flex-1 min-w-0">
                     <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{p.name}</p>
                     <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
