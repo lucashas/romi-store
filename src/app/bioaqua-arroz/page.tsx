@@ -89,7 +89,7 @@ export default function BioaquaRicePage() {
             </div>
 
             <div className="space-y-3">
-              <p className="text-[15px] font-black text-amber-600 uppercase tracking-[0.25em] flex items-center justify-center gap-2">
+              <p className="text-[15px] font-black text-amber-600 uppercase tracking-[0.2em] flex items-center justify-center gap-2">
                 <Sparkles className="h-4 w-4 fill-amber-600" />
                 EFECTO PIEL DE PORCELANA
                 <Sparkles className="h-4 w-4 fill-amber-600" />
@@ -107,11 +107,10 @@ export default function BioaquaRicePage() {
 
             <div className="mt-8 text-left space-y-8">
               <h3 className="text-[24px] font-black text-slate-900 text-center uppercase leading-tight tracking-tighter">
-                🌾 TU SECRETO DE <br />
-                <span className="text-amber-600 underline decoration-amber-200 decoration-8 underline-offset-4">
-                  BELLEZA ASIÁTICA
-                </span>{" "}
-                🌾
+                Tu Secreto de <br />
+                <span className="text-amber-600 underline decoration-amber-200 decoration-8 underline-offset-4 italic">
+                  Belleza Asiática
+                </span>
               </h3>
 
               <div className="space-y-4 text-[17px] text-slate-600 font-medium leading-relaxed px-2">

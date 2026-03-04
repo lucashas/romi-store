@@ -49,7 +49,7 @@ interface PurchasePopupProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   products: Product[];
-  themeColor?: "brown" | "orange" | "amber";
+  themeColor?: "amber" | "orange";
 }
 
 export function PurchasePopup({ open, onOpenChange, products, themeColor = "amber" }: PurchasePopupProps) {
@@ -66,17 +66,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
   const firestore = useFirestore();
   const router = useRouter();
   const pathname = usePathname();
-
-  const themeClasses = useMemo(() => {
-    // Forzamos clases de Amber para el tema del Kit de Arroz
-    return {
-      bgHeader: "bg-amber-600",
-      textPrimary: "text-amber-600",
-      borderActive: "border-amber-600 bg-amber-50",
-      button: "bg-amber-600 hover:bg-amber-700 shadow-[0_8px_25px_rgba(217,119,6,0.3)]",
-      ring: "ring-amber-600",
-    };
-  }, []);
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -123,9 +112,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%]">
+      <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", themeClasses.bgHeader)}>
+          <div className="p-8 bg-amber-600 text-white text-center flex flex-col items-center gap-5">
             <h2 className="text-[24px] font-black uppercase leading-none tracking-tighter">FINALIZAR PEDIDO</h2>
             <div className="relative w-32 h-10">
                 <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Confianza" fill className="object-contain invert brightness-0" unoptimized />
@@ -135,13 +124,13 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
           <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-14">
             <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
               {products.map((p) => (
-                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? themeClasses.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
-                  <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", themeClasses.textPrimary)} />
+                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? "border-amber-600 bg-amber-50" : "border-slate-100 bg-white hover:border-slate-200")}>
+                  <RadioGroupItem value={p.id} id={p.id} className="h-6 w-6 text-amber-600" />
                   <div className="flex-1 min-w-0">
                     <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{p.name}</p>
                     <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
                   </div>
-                  <p className={cn("font-black text-[24px] tracking-tighter", themeClasses.textPrimary)}>${p.price.toFixed(0)}</p>
+                  <p className="font-black text-[24px] tracking-tighter text-amber-600">${p.price.toFixed(0)}</p>
                 </Label>
               ))}
             </RadioGroup>
@@ -167,7 +156,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
               </div>
             </div>
 
-            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white", themeClasses.button)}>
+            <Button type="submit" disabled={loading} className="w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white bg-amber-600 hover:bg-amber-700 shadow-[0_8px_25px_rgba(217,119,6,0.3)]">
               {loading ? "PROCESANDO..." : "¡CONFIRMAR PEDIDO!"}
             </Button>
             

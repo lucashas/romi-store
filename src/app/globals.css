@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* Paleta Ámbar/Dorado Premium para Romi Store EC - REEMPLAZO TOTAL DE NARANJA */
+    /* Paleta Ámbar/Dorado Premium - REEMPLAZO TOTAL DE NARANJA */
     --background: 30 40% 99%;
     --foreground: 20 50% 5%;
     --card: 0 0% 100%;
@@ -12,7 +12,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 50% 5%;
     
-    /* Ámbar 600 HSL (Dorado Intenso) */
+    /* Dorado Intenso (Amber 600) */
     --primary: 38 92% 50%; 
     --primary-foreground: 30 50% 98%;
     
@@ -21,8 +21,8 @@
     --muted: 30 10% 95%;
     --muted-foreground: 20 20% 40%;
     
-    /* Dorado Brillante */
-    --accent: 43 100% 50%; 
+    /* Dorado Brillante (Amber 500) */
+    --accent: 45 93% 47%; 
     --accent-foreground: 0 0% 0%;
     
     --destructive: 0 84.2% 60.2%;
