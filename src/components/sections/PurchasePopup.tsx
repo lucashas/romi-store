@@ -115,17 +115,18 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
-        <DialogHeader className="p-0 m-0">
-          <DialogTitle className="sr-only">Finalizar Pedido - Romi Store EC</DialogTitle>
-        </DialogHeader>
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
           <div className={cn("p-8 text-white text-center flex flex-col items-center gap-4", styles.header)}>
-            <div className="text-[24px] font-black uppercase leading-[0.9] tracking-tighter">¡SÍ, QUIERO MI PIEL DE PORCELANA!</div>
-            <img 
-              src="https://i.imgur.com/Jh61uYJ.png" 
-              alt="Confianza Ecuador" 
-              className="w-40 h-auto object-contain brightness-0 invert" 
-            />
+            <DialogTitle className="text-[24px] font-black uppercase leading-[0.9] tracking-tighter">
+              ¡SÍ, QUIERO MI PIEL DE PORCELANA!
+            </DialogTitle>
+            <div className="flex justify-center w-full">
+              <img 
+                src="https://i.imgur.com/Jh61uYJ.png" 
+                alt="Confianza Ecuador" 
+                className="w-40 h-auto object-contain brightness-0 invert" 
+              />
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-14">
