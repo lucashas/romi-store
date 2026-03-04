@@ -34,22 +34,15 @@ const ecuadorData: Record<string, string[]> = {
   "COTOPAXI": ["LATACUNGA", "PUJILI", "SALCEDO", "LA MANA", "SAQUISILI", "SIGCHOS", "PANGUA"],
   "EL ORO": ["MACHALA", "PASAJE", "HUAQUILLAS", "SANTA ROSA", "ARENILLAS", "BALSAS", "CHILLA", "EL GUABO", "LAS LAJAS", "MARCABELI", "PIÑAS", "PORTOVELO", "ZARUMA", "ATAHUALPA"],
   "ESMERALDAS": ["ESMERALDAS", "QUININDE", "ATACAMES", "SAN LORENZO", "ELOY ALFARO", "MUISNE", "RIO VERDE"],
-  "GALAPAGOS": ["PUERTO BAQUERIZO MORENO", "PUERTO AYORA", "PUERTO VILLAMIL"],
   "GUAYAS": ["GUAYAQUIL", "SAMBORONDON", "DAULE", "DURAN", "MILAGRO", "PLAYAS", "NARANJAL", "EL EMPALME", "BALZAR", "BALAO", "COLIMES", "CORONEL MARCELINO MARIDUEÑA", "EL TRIUNFO", "GENERAL ANTONIO ELIZALDE", "ISIDRO AYORA", "LOMAS DE SARGENTILLO", "NARANJITO", "NOBOL", "PALESTINA", "PEDRO CHUNCHI", "SANTA LUCIA", "SIMON BOLIVAR", "YAGUACHI", "SALITRE"],
   "IMBABURA": ["IBARRA", "OTAVALO", "COTACACHI", "ANTONIO ANTE", "PIMAMPIRO", "URCUQUI"],
   "LOJA": ["LOJA", "CATAMAYO", "CALVAS", "SARAGURO", "MACARA", "CELICA", "CHAGUARPAMBA", "ESPINDOLA", "GONZANAMA", "PALTAS", "PUYANGO", "QUILANGA", "PINDAL", "SOZORANGA", "ZAPOTILLO", "OLMEDO"],
   "LOS RIOS": ["BABAHOYO", "QUEVEDO", "BABA", "VINCES", "VENTANAS", "MOCACHE", "BUENA FE", "PALENQUE", "PUEBLOVIEJO", "URDANETA", "VALENCIA", "QUINSALOMA", "MONTALVO"],
   "MANABI": ["PORTOVIEJO", "MANTA", "CHONE", "MONTECRISTI", "JIPIJAPA", "BAHIA DE CARAQUEZ", "BOLIVAR", "EL CARMEN", "FLAVIO ALFARO", "JAMA", "JARAMIJO", "JUNIN", "OLMEDO", "PAJAN", "PEDERNALES", "PICHINCHA", "ROCAFUERTE", "SANTA ANA", "SUCRE", "TOSAGUA", "24 DE MAYO", "PUERTO LOPEZ"],
-  "MORONA SANTIAGO": ["MACAS", "GUALAQUIZA", "SUCUA", "SANTIAGO", "HUAMBOYA", "LIMON INDANZA", "LOGROÑO", "PABLO SEXTO", "PALORA", "SAN JUAN BOSCO", "TAISHA", "TIWINTZA"],
-  "NAPO": ["TENA", "ARCHIDONA", "EL CHACO", "QUIJOS", "CARLOS JULIO AROSEMENA TOLA"],
-  "ORELLANA": ["PUERTO FRANCISCO DE ORELLANA", "LA JOYA DE LOS SACHAS", "LORETO", "AGUARICO"],
-  "PASTAZA": ["PUYO", "MERA", "SANTA CLARA", "ARAJUNO"],
   "PICHINCHA": ["QUITO", "SANGOLQUI", "MACHACHI", "CAYAMBE", "TABACUNDO", "PEDRO MONCAYO", "PEDRO VICENTE MALDONADO", "PUERTO QUITO", "SAN MIGUEL DE LOS BANCOS"],
   "SANTA ELENA": ["SANTA ELENA", "SALINAS", "LA LIBERTAD"],
   "SANTO DOMINGO DE LOS TSACHILAS": ["SANTO DOMINGO", "LA CONCORDIA"],
-  "SUCUMBIOS": ["NUEVA LOJA", "SHUSHUFINDI", "CASCALES", "CUYABENO", "GONZALOP IZARRO", "PUTUMAYO", "SUCUMBIOS"],
   "TUNGURAHUA": ["AMBATO", "BAÑOS", "PELILEO", "PILLARO", "CEVALLOS", "MOCHA", "QUERO", "TISALEO", "PATATE"],
-  "ZAMORA CHINCHIPE": ["ZAMORA", "YANTZAZA", "EL PANGUI", "CENTINELA DEL CONDOR", "CHINCHIPE", "NANGARITZA", "PALANDA", "PAQUISHA", "YACUAMBI"]
 };
 
 interface PurchasePopupProps {
@@ -74,31 +67,22 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const router = useRouter();
   const pathname = usePathname();
 
-  const theme = useMemo(() => {
+  const themeClasses = useMemo(() => {
     if (themeColor === "amber") {
       return {
-        bg: "bg-amber-600",
-        text: "text-amber-600",
-        border: "border-amber-600",
-        light: "bg-amber-50",
-        button: "bg-amber-600 hover:bg-amber-700",
-      };
-    }
-    if (themeColor === "orange") {
-      return {
-        bg: "bg-orange-600",
-        text: "text-orange-600",
-        border: "border-orange-600",
-        light: "bg-orange-50",
-        button: "bg-orange-600 hover:bg-orange-700",
+        bgHeader: "bg-amber-600",
+        textPrimary: "text-amber-600",
+        borderActive: "border-amber-600 bg-amber-50",
+        button: "bg-amber-600 hover:bg-amber-700 shadow-[0_8px_25px_rgba(217,119,6,0.3)]",
+        ring: "ring-amber-600",
       };
     }
     return {
-      bg: "bg-primary",
-      text: "text-primary",
-      border: "border-primary",
-      light: "bg-primary/5",
-      button: "bg-accent hover:bg-accent/90",
+      bgHeader: "bg-primary",
+      textPrimary: "text-primary",
+      borderActive: "border-primary bg-primary/5",
+      button: "bg-accent hover:bg-accent/90 shadow-xl",
+      ring: "ring-primary",
     };
   }, [themeColor]);
 
@@ -122,7 +106,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!nombre.trim() || !apellido.trim() || !whatsapp.trim() || !direccion.trim() || !provincia || !ciudad) {
-      toast({ variant: "destructive", title: "DATOS FALTANTES", description: "Complete todos los campos obligatorios." });
+      toast({ variant: "destructive", title: "DATOS FALTANTES", description: "Por favor complete todos los campos." });
       return;
     }
     setLoading(true);
@@ -147,54 +131,56 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[95vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%]">
-        <div className="max-h-[85vh] overflow-y-auto w-full">
-          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", theme.bg)}>
-            <h2 className="text-[22px] font-black uppercase leading-tight tracking-tight">CONFIRMAR PEDIDO</h2>
-            <div className="relative w-28 h-10">
-                <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Sello de Confianza" fill className="object-contain" unoptimized />
+      <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%]">
+        <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
+          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", themeClasses.bgHeader)}>
+            <h2 className="text-[24px] font-black uppercase leading-none tracking-tighter">FINALIZAR PEDIDO</h2>
+            <div className="relative w-32 h-10">
+                <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Confianza" fill className="object-contain invert brightness-0" unoptimized />
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-12">
+          <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-14">
             <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
               {products.map((p) => (
-                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? cn(theme.border, theme.light) : "border-slate-100 bg-white")}>
-                  <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", theme.text)} />
+                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? themeClasses.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
+                  <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", themeClasses.textPrimary)} />
                   <div className="flex-1 min-w-0">
                     <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{p.name}</p>
                     <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
                   </div>
-                  <p className={cn("font-black text-[24px]", theme.text)}>${p.price.toFixed(0)}</p>
+                  <p className={cn("font-black text-[24px] tracking-tighter", themeClasses.textPrimary)}>${p.price.toFixed(0)}</p>
                 </Label>
               ))}
             </RadioGroup>
 
-            <div className="grid grid-cols-2 gap-4">
-              <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900" />
-              <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900" />
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900 focus:border-amber-400" />
+                <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900 focus:border-amber-400" />
+              </div>
+
+              <Input placeholder="Número de WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900 focus:border-amber-400" />
+              <Input placeholder="Dirección Exacta (Calle y Nro Casa)" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900 focus:border-amber-400" />
+
+              <div className="grid grid-cols-2 gap-4">
+                <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
+                  <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900"><SelectValue placeholder="Provincia" /></SelectTrigger>
+                  <SelectContent className="z-[110]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
+                </Select>
+                <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
+                  <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900"><SelectValue placeholder="Ciudad" /></SelectTrigger>
+                  <SelectContent className="z-[110]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
+                </Select>
+              </div>
             </div>
 
-            <Input placeholder="Número de WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900" />
-            <Input placeholder="Dirección Exacta (Calle y Nro Casa)" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900" />
-
-            <div className="grid grid-cols-2 gap-4">
-              <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900"><SelectValue placeholder="Provincia" /></SelectTrigger>
-                <SelectContent>{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
-              </Select>
-              <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900"><SelectValue placeholder="Ciudad" /></SelectTrigger>
-                <SelectContent>{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
-              </Select>
-            </div>
-
-            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl", theme.button)}>
+            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white", themeClasses.button)}>
               {loading ? "PROCESANDO..." : "¡CONFIRMAR PEDIDO!"}
             </Button>
             
-            <p className="text-[11px] text-center font-bold text-slate-400 uppercase tracking-widest">
-              🔒 Pago contra entrega en todo Ecuador
+            <p className="text-[12px] text-center font-bold text-slate-400 uppercase tracking-widest">
+              🔒 PAGO CONTRA ENTREGA EN TODO ECUADOR
             </p>
           </form>
         </div>
