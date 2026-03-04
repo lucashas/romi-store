@@ -90,6 +90,7 @@ export default function BioaquaRicePage() {
                 </div>
               </div>
 
+              {/* Imagen de Garantía justo debajo de los precios */}
               <div className="px-2 mt-4 cursor-pointer" onClick={openPopup}>
                 <img src="https://i.imgur.com/qOmlzPP.png" alt="Garantía de Satisfacción" className="w-full h-auto rounded-2xl shadow-lg border border-slate-100" />
               </div>
@@ -102,6 +103,7 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
+        {/* Sección de testimonios con estrellas arriba y título */}
         <Testimonials title="CLIENTAS FELICES" subtitle="Resultados que hablan por sí solos" themeColor="gold" />
 
         <section className="py-14 text-center space-y-12 bg-white">
