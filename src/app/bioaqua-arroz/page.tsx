@@ -17,7 +17,7 @@ const RICE_PRODUCTS: Product[] = [
     id: "bioaqua_rice_1",
     name: "1 Kit de Arroz Bioaqua (6 piezas)",
     price: 28.00,
-    image: "https://i.imgur.com/W2P6V5x.png",
+    image: "https://i.imgur.com/tHUWnzw.png",
     badge: "MÁS VENDIDO",
     description: "Tratamiento completo de 6 pasos"
   },
@@ -25,7 +25,7 @@ const RICE_PRODUCTS: Product[] = [
     id: "bioaqua_rice_2",
     name: "2 Kits de Arroz Bioaqua (12 piezas)",
     price: 48.00,
-    image: "https://i.imgur.com/W2P6V5x.png",
+    image: "https://i.imgur.com/tHUWnzw.png",
     badge: "OFERTA HOY",
     description: "Ahorro total + Regalo a elegir"
   }
@@ -80,7 +80,7 @@ export default function BioaquaRicePage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
 
-  const bannerTopImg = "https://i.imgur.com/W2P6V5x.png";
+  const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-rice-banner-top")?.imageUrl || "https://i.imgur.com/tHUWnzw.png";
   const infoImg = "https://i.imgur.com/ICjJPPO.png";
   const trustBadgeImg = "https://i.imgur.com/bk1DAl0.png";
 
