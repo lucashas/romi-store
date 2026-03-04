@@ -80,8 +80,9 @@ export default function BioaquaRicePage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
 
-  const bannerTopImg = PlaceHolderImages.find(img => img.id === "bioaqua-rice-hero")?.imageUrl || "https://i.imgur.com/W2P6V5x.png";
-  const trustBadgeImg = PlaceHolderImages.find(img => img.id === "shipping-trust-badge")?.imageUrl || "https://i.imgur.com/bk1DAl0.png";
+  const bannerTopImg = "https://i.imgur.com/W2P6V5x.png";
+  const infoImg = "https://i.imgur.com/ICjJPPO.png";
+  const trustBadgeImg = "https://i.imgur.com/bk1DAl0.png";
 
   const promoMessage = "🌾 ¡OFERTA LANZAMIENTO KIT DE ARROZ! 🌾 - ✨ HIDRATACIÓN PROFUNDA Y PIEL DE PORCELANA - 📦 ENVÍOS A TODO ECUADOR - ";
 
@@ -170,6 +171,17 @@ export default function BioaquaRicePage() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              {/* Imagen Informativa Centrada */}
+              <div className="mt-8 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
+                <div className="relative w-full max-w-[460px] overflow-hidden rounded-2xl shadow-xl border-2 border-slate-100 bg-slate-50">
+                  <img 
+                    src={infoImg} 
+                    alt="Información Adicional Bioaqua Arroz" 
+                    className="w-full h-auto block"
+                  />
+                </div>
               </div>
 
               <section className="py-6 space-y-8">
@@ -313,7 +325,7 @@ export default function BioaquaRicePage() {
                 <p className="text-[16px] font-bold text-slate-400 uppercase tracking-widest">Envíos seguros a todo Ecuador 🇪🇨</p>
                 <div className="flex justify-center">
                   <img 
-                    src="https://i.imgur.com/bk1DAl0.png" 
+                    src={trustBadgeImg} 
                     alt="Sellos de confianza Ecuador" 
                     className="w-[280px] h-auto opacity-90"
                   />
