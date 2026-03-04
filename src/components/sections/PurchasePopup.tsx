@@ -52,7 +52,7 @@ interface PurchasePopupProps {
   themeColor?: "brown" | "orange" | "amber";
 }
 
-export function PurchasePopup({ open, onOpenChange, products, themeColor = "brown" }: PurchasePopupProps) {
+export function PurchasePopup({ open, onOpenChange, products, themeColor = "amber" }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -68,23 +68,15 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const pathname = usePathname();
 
   const themeClasses = useMemo(() => {
-    if (themeColor === "amber") {
-      return {
-        bgHeader: "bg-amber-600",
-        textPrimary: "text-amber-600",
-        borderActive: "border-amber-600 bg-amber-50",
-        button: "bg-amber-600 hover:bg-amber-700 shadow-[0_8px_25px_rgba(217,119,6,0.3)]",
-        ring: "ring-amber-600",
-      };
-    }
+    // Forzamos clases de Amber para el tema del Kit de Arroz
     return {
-      bgHeader: "bg-primary",
-      textPrimary: "text-primary",
-      borderActive: "border-primary bg-primary/5",
-      button: "bg-accent hover:bg-accent/90 shadow-xl",
-      ring: "ring-primary",
+      bgHeader: "bg-amber-600",
+      textPrimary: "text-amber-600",
+      borderActive: "border-amber-600 bg-amber-50",
+      button: "bg-amber-600 hover:bg-amber-700 shadow-[0_8px_25px_rgba(217,119,6,0.3)]",
+      ring: "ring-amber-600",
     };
-  }, [themeColor]);
+  }, []);
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {

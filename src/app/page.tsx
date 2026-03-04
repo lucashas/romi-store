@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
 export default function RootPage() {
-  // Redirigimos la raíz al nuevo producto estrella: Kit de Arroz Bioaqua
+  // Redirección directa al Kit de Arroz como página principal
   redirect('/bioaqua-arroz');
 }

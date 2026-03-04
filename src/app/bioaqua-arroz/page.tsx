@@ -7,7 +7,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Heart, Zap, ShieldCheck, Trophy, Sparkles } from "lucide-react";
+import { ShoppingCart, Star, Zap, ShieldCheck, Trophy, Sparkles } from "lucide-react";
 
 const RICE_PRODUCTS: Product[] = [
   {
