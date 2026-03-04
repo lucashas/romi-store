@@ -12,7 +12,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 50% 5%;
     
-    /* Dorado Brillante (Gold) para botones y acentos */
+    /* Dorado Puro para botones y acentos */
     --primary: 48 100% 45%; 
     --primary-foreground: 45 50% 98%;
     
@@ -21,7 +21,7 @@
     --muted: 45 10% 95%;
     --muted-foreground: 20 20% 40%;
     
-    /* Dorado Claro para efectos */
+    /* Dorado Brillante para efectos */
     --accent: 50 100% 50%; 
     --accent-foreground: 0 0% 0%;
     

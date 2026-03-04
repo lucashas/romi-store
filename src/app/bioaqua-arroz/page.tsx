@@ -58,7 +58,6 @@ export default function BioaquaRicePage() {
 
   const bannerTopImg = "https://i.imgur.com/tHUWnzw.png";
   const benefitsImg = "https://i.imgur.com/HYiuNZy.png";
-  const infoImg = "https://i.imgur.com/ICjJPPO.png";
   const promoMessage = "🌾 ¡OFERTA LANZAMIENTO KIT DE ARROZ! 🌾 - ✨ HIDRATACIÓN PROFUNDA Y PIEL DE PORCELANA - 📦 ENVÍOS A TODO ECUADOR - PAGAS AL RECIBIR - ";
 
   return (
@@ -133,7 +132,7 @@ export default function BioaquaRicePage() {
               {/* Imagen Informativa Secundaria */}
               <div className="mt-10 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full overflow-hidden rounded-[2rem] shadow-2xl border-2 border-yellow-100 bg-slate-50">
-                  <img src={infoImg} alt="Info Kit de Arroz" className="w-full h-auto block" />
+                  <img src="https://i.imgur.com/ICjJPPO.png" alt="Info Kit de Arroz" className="w-full h-auto block" />
                 </div>
               </div>
 
