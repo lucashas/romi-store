@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -25,12 +24,6 @@ export interface Product {
   badge: string | null;
   description: string;
 }
-
-const GIFTS = [
-  { id: "gift_contorno", name: "1 Contorno De Ojos Bioaqua Hyalooligo Aci", img: "https://i.imgur.com/15gxrJI.png", desc: "Hidratación profunda" },
-  { id: "gift_arroz", name: "1 Jabon Liquido De Arroz Bioaqua", img: "https://i.imgur.com/k2LgSRh.png", desc: "Limpieza y brillo" },
-  { id: "gift_pestanas", name: "1 Serum De Pestanas Bioaqua", img: "https://i.imgur.com/NdEF1tQ.png", desc: "Crecimiento intenso" }
-];
 
 const ecuadorData: Record<string, string[]> = {
   "AZUAY": ["CUENCA", "GUALACEO", "PAUTE", "CAMILO PONCE ENRIQUEZ", "SIGSIG", "CHORDELEG", "GIRON", "SANTA ISABEL", "NABON", "PUCARA", "OÑA", "SEVILLA DE ORO", "GUACHAPALA", "EL PAN"],
@@ -75,7 +68,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   const [ciudad, setCiudad] = useState<string>("");
   const [whatsapp, setWhatsapp] = useState<string>("");
   const [selectedProduct, setSelectedProduct] = useState("");
-  const [selectedGift, setSelectedGift] = useState("");
   
   const { toast } = useToast();
   const firestore = useFirestore();
@@ -116,14 +108,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
     }
   }, [open, products, selectedProduct]);
 
-  useEffect(() => {
-    if (selectedProduct.includes("_2") && !selectedGift) {
-      setSelectedGift(GIFTS[0].id);
-    } else if (selectedProduct.includes("_1")) {
-      setSelectedGift("");
-    }
-  }, [selectedProduct, selectedGift]);
-
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? ecuadorData[provincia].sort() : [];
   }, [provincia]);
@@ -134,7 +118,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
   };
 
   const product = useMemo(() => products.find(p => p.id === selectedProduct), [products, selectedProduct]);
-  const gift = useMemo(() => GIFTS.find(g => g.id === selectedGift), [selectedGift]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -147,9 +130,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       name: `${nombre.trim()} ${apellido.trim()}`,
       email: `${whatsapp}@romistore.com`,
       phoneNumber: whatsapp,
-      message: `PRODUCTO: ${product?.name} | REGALO: ${gift?.name || "N/A"} | TOTAL: $${product?.price} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
+      message: `PRODUCTO: ${product?.name} | TOTAL: $${product?.price} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
-      landingPageContentId: pathname.replace("/", "") || "bioaqua"
+      landingPageContentId: pathname.replace("/", "") || "bioaqua-arroz"
     };
     try {
       await addDoc(collection(firestore, "leadSubmissions"), orderData);
@@ -167,16 +150,16 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
       <DialogContent className="w-[95vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%]">
         <div className="max-h-[85vh] overflow-y-auto w-full">
           <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", theme.bg)}>
-            <h2 className="text-[22px] font-black uppercase leading-tight tracking-tight">PIEL DE PORCELANA</h2>
+            <h2 className="text-[22px] font-black uppercase leading-tight tracking-tight">CONFIRMAR PEDIDO</h2>
             <div className="relative w-28 h-10">
-                <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Sello" fill className="object-contain" unoptimized />
+                <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Sello de Confianza" fill className="object-contain" unoptimized />
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-12">
             <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
               {products.map((p) => (
-                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer", selectedProduct === p.id ? cn(theme.border, theme.light) : "border-slate-100 bg-white")}>
+                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? cn(theme.border, theme.light) : "border-slate-100 bg-white")}>
                   <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6", theme.text)} />
                   <div className="flex-1 min-w-0">
                     <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{p.name}</p>
@@ -188,27 +171,31 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "brow
             </RadioGroup>
 
             <div className="grid grid-cols-2 gap-4">
-              <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" />
-              <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" />
+              <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900" />
+              <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900" />
             </div>
 
-            <Input placeholder="099..." type="tel" required value={whatsapp} onChange={handleWhatsappChange} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" />
-            <Input placeholder="Dirección Exacta" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold" />
+            <Input placeholder="Número de WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900" />
+            <Input placeholder="Dirección Exacta (Calle y Nro Casa)" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900" />
 
             <div className="grid grid-cols-2 gap-4">
               <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Provincia" /></SelectTrigger>
+                <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900"><SelectValue placeholder="Provincia" /></SelectTrigger>
                 <SelectContent>{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
               </Select>
               <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Ciudad" /></SelectTrigger>
+                <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900"><SelectValue placeholder="Ciudad" /></SelectTrigger>
                 <SelectContent>{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
               </Select>
             </div>
 
-            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white", theme.button)}>
-              {loading ? "PROCESANDO..." : "CONFIRMAR PEDIDO"}
+            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl", theme.button)}>
+              {loading ? "PROCESANDO..." : "¡CONFIRMAR PEDIDO!"}
             </Button>
+            
+            <p className="text-[11px] text-center font-bold text-slate-400 uppercase tracking-widest">
+              🔒 Pago contra entrega en todo Ecuador
+            </p>
           </form>
         </div>
       </DialogContent>
