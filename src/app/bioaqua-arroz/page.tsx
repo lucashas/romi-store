@@ -65,9 +65,6 @@ export default function BioaquaRicePage() {
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-yellow-100">
               <img src="https://i.imgur.com/tHUWnzw.png" alt="Bioaqua Kit de Arroz" className="w-full h-auto block" />
-              <div className="absolute bottom-4 left-4 bg-yellow-600 text-white px-5 py-2 rounded-full font-black text-[13px] animate-pulse shadow-2xl border-2 border-white uppercase">
-                EDICIÓN LIMITADA 🌾
-              </div>
             </div>
           </div>
 
