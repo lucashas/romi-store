@@ -43,7 +43,6 @@ const CUSTOM_PRODUCTS: Product[] = [
 
 export default function MaryRuthPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
   const openPopup = () => setIsPopupOpen(true);
 
   return (
