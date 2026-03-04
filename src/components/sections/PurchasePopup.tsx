@@ -45,7 +45,7 @@ const ecuadorData: Record<string, string[]> = {
   "TUNGURAHUA": ["AMBATO", "BAÑOS", "PELILEO", "PILLARO", "CEVALLOS", "MOCHA", "QUERO", "TISALEO", "PATATE"],
 };
 
-export function PurchasePopup({ open, onOpenChange, products }: { open: boolean, onOpenChange: (open: boolean) => void, products: Product[] }) {
+export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold" }: { open: boolean, onOpenChange: (open: boolean) => void, products: Product[], themeColor?: "gold" | "orange" }) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -60,13 +60,14 @@ export function PurchasePopup({ open, onOpenChange, products }: { open: boolean,
   const router = useRouter();
   const pathname = usePathname();
 
-  // FORZAR DORADO ORO REAL (SIN NARANJA)
-  const goldStyles = {
-    header: "bg-primary",
-    borderActive: "border-primary bg-primary/5",
-    textActive: "text-primary",
-    button: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_8px_25px_rgba(var(--primary),0.3)]",
-    ring: "focus:border-primary/50"
+  const isGold = themeColor === "gold";
+
+  const styles = {
+    header: isGold ? "bg-yellow-600" : "bg-orange-600",
+    borderActive: isGold ? "border-yellow-600 bg-yellow-50" : "border-orange-600 bg-orange-50",
+    textActive: isGold ? "text-yellow-700" : "text-orange-700",
+    button: isGold ? "bg-yellow-600 hover:bg-yellow-700 shadow-yellow-200" : "bg-orange-600 hover:bg-orange-700 shadow-orange-200",
+    ring: isGold ? "focus:border-yellow-600" : "focus:border-orange-600"
   };
 
   useEffect(() => {
@@ -116,8 +117,8 @@ export function PurchasePopup({ open, onOpenChange, products }: { open: boolean,
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", goldStyles.header)}>
-            <h2 className="text-[24px] font-black uppercase leading-none tracking-tighter text-primary-foreground">FINALIZAR PEDIDO</h2>
+          <div className={cn("p-8 text-white text-center flex flex-col items-center gap-5", styles.header)}>
+            <h2 className="text-[24px] font-black uppercase leading-none tracking-tighter">FINALIZAR PEDIDO</h2>
             <div className="relative w-32 h-10">
                 <Image src="https://i.imgur.com/Jh61uYJ.png" alt="Confianza" fill className="object-contain invert brightness-0" unoptimized />
             </div>
@@ -126,45 +127,39 @@ export function PurchasePopup({ open, onOpenChange, products }: { open: boolean,
           <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-14">
             <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
               {products.map((p) => (
-                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? goldStyles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
-                  <RadioGroupItem value={p.id} id={p.id} className={cn("h-6 w-6")} />
-                  <div className="flex-1 min-w-0">
+                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
+                  <RadioGroupItem value={p.id} id={p.id} className="h-6 w-6" />
+                  <div className="flex-1 min-w-0 text-left">
                     <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{p.name}</p>
                     <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
                   </div>
-                  <p className={cn("font-black text-[24px] tracking-tighter", goldStyles.textActive)}>${p.price.toFixed(0)}</p>
+                  <p className={cn("font-black text-[24px] tracking-tighter", styles.textActive)}>${p.price.toFixed(0)}</p>
                 </Label>
               ))}
             </RadioGroup>
 
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", goldStyles.ring)} />
-                <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", goldStyles.ring)} />
+                <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+                <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
               </div>
-
-              <Input placeholder="Número de WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", goldStyles.ring)} />
-              <Input placeholder="Dirección Exacta (Calle y Nro Casa)" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900", goldStyles.ring)} />
-
+              <Input placeholder="WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+              <Input placeholder="Dirección Exacta" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
               <div className="grid grid-cols-2 gap-4">
                 <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                  <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900"><SelectValue placeholder="Provincia" /></SelectTrigger>
+                  <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Provincia" /></SelectTrigger>
                   <SelectContent className="z-[110]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
                 </Select>
                 <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                  <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold text-slate-900"><SelectValue placeholder="Ciudad" /></SelectTrigger>
+                  <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Ciudad" /></SelectTrigger>
                   <SelectContent className="z-[110]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
                 </Select>
               </div>
             </div>
 
-            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white", goldStyles.button)}>
+            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl", styles.button)}>
               {loading ? "PROCESANDO..." : "¡CONFIRMAR PEDIDO!"}
             </Button>
-            
-            <p className="text-[12px] text-center font-bold text-slate-400 uppercase tracking-widest">
-              🔒 PAGO CONTRA ENTREGA EN TODO ECUADOR
-            </p>
           </form>
         </div>
       </DialogContent>
