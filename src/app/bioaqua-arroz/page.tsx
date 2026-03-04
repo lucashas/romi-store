@@ -206,7 +206,7 @@ export default function BioaquaRicePage() {
 
                   <div 
                     onClick={openPopup}
-                    className="bg-amber-50 p-5 rounded-2rem border-2 border-amber-500 shadow-xl flex flex-col items-center text-center space-y-4 relative overflow-hidden cursor-pointer transition-transform active:scale-95"
+                    className="bg-amber-50 p-5 rounded-[2rem] border-2 border-amber-500 shadow-xl flex flex-col items-center text-center space-y-4 relative overflow-hidden cursor-pointer transition-transform active:scale-95"
                   >
                     <div className="bg-amber-600 text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase absolute top-4 animate-pulse">AHORRO PRO</div>
                     <div className="pt-8 space-y-2">
