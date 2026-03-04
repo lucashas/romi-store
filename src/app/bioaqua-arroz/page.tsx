@@ -8,8 +8,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, Heart, Zap, ShieldCheck, Gift, Trophy } from "lucide-react";
-import Image from "next/image";
+import { ShoppingCart, Star, Heart, Zap, ShieldCheck, Trophy } from "lucide-react";
 
 const RICE_PRODUCTS: Product[] = [
   {
@@ -54,35 +53,12 @@ const RICE_TESTIMONIALS: TestimonialItem[] = [
   },
 ];
 
-const GIFTS = [
-  {
-    name: "1 Contorno De Ojos Bioaqua Hyalooligo Aci",
-    desc: "Hidratación y firmeza profunda",
-    img: "https://i.imgur.com/15gxrJI.png",
-    tag: "NUEVO",
-  },
-  {
-    name: "1 Jabon Liquido De Arroz Bioaqua",
-    desc: "Hidratación y brillo natural",
-    img: "https://i.imgur.com/k2LgSRh.png",
-    tag: "MÁS PEDIDO",
-  },
-  {
-    name: "1 Serum De Pestanas Bioaqua",
-    desc: "Crecimiento y nutrición intensa",
-    img: "https://i.imgur.com/NdEF1tQ.png",
-    tag: "OFERTA",
-  },
-];
-
 export default function BioaquaRicePage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
 
-  // URL de imagen forzada por el usuario
   const bannerTopImg = "https://i.imgur.com/tHUWnzw.png";
   const infoImg = "https://i.imgur.com/ICjJPPO.png";
-  const trustBadgeImg = "https://i.imgur.com/bk1DAl0.png";
 
   const promoMessage = "🌾 ¡OFERTA LANZAMIENTO KIT DE ARROZ! 🌾 - ✨ HIDRATACIÓN PROFUNDA Y PIEL DE PORCELANA - 📦 ENVÍOS A TODO ECUADOR - ";
 
