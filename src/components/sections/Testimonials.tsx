@@ -13,7 +13,7 @@ interface TestimonialsProps {
 export function Testimonials({ 
   title = "CLIENTAS FELICES", 
   subtitle = "Resultados que hablan por sí solos",
-  testimonialImageUrl = "https://i.imgur.com/qOmlzPP.png", // Usando un marcador temporal ya que el link anterior era 'undefined'
+  testimonialImageUrl = "https://i.imgur.com/qOmlzPP.png", 
   themeColor = "orange"
 }: TestimonialsProps) {
   const isGold = themeColor === "gold";
@@ -41,17 +41,13 @@ export function Testimonials({
           </div>
         </div>
 
-        {/* Imagen única de testimonios (sin tarjetas) */}
+        {/* Imagen única de testimonios */}
         <div className="max-w-[450px] mx-auto">
           <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-slate-50">
             <img 
               src={testimonialImageUrl} 
               alt="Testimonios de clientes" 
               className="w-full h-auto block"
-              onError={(e) => {
-                // Fallback en caso de que el link siga siendo inválido
-                e.currentTarget.src = "https://i.imgur.com/qOmlzPP.png";
-              }}
             />
           </div>
         </div>
