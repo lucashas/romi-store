@@ -4,32 +4,32 @@
 
 @layer base {
   :root {
-    /* Paleta Ámbar/Dorado Premium - ELIMINACIÓN TOTAL DE NARANJA */
-    --background: 30 40% 99%;
+    /* Dorado de Lujo (Gold Premium) - PURGA TOTAL DE NARANJA */
+    --background: 45 20% 99%;
     --foreground: 20 50% 5%;
     --card: 0 0% 100%;
     --card-foreground: 20 50% 5%;
     --popover: 0 0% 100%;
     --popover-foreground: 20 50% 5%;
     
-    /* Dorado Intenso (Amber 600) como color Primario Principal */
-    --primary: 38 92% 50%; 
-    --primary-foreground: 30 50% 98%;
+    /* Dorado Brillante (Gold) para botones y acentos */
+    --primary: 48 100% 45%; 
+    --primary-foreground: 45 50% 98%;
     
-    --secondary: 38 30% 96%;
-    --secondary-foreground: 38 45% 20%;
-    --muted: 30 10% 95%;
+    --secondary: 48 30% 96%;
+    --secondary-foreground: 48 45% 20%;
+    --muted: 45 10% 95%;
     --muted-foreground: 20 20% 40%;
     
-    /* Dorado Brillante (Amber 500) para acentos */
-    --accent: 45 93% 47%; 
+    /* Dorado Claro para efectos */
+    --accent: 50 100% 50%; 
     --accent-foreground: 0 0% 0%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 38 20% 90%;
-    --input: 38 20% 90%;
-    --ring: 38 92% 50%;
+    --border: 48 20% 90%;
+    --input: 48 20% 90%;
+    --ring: 48 100% 45%;
     --radius: 1.5rem;
   }
 }

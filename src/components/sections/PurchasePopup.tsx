@@ -67,13 +67,13 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "ambe
   const router = useRouter();
   const pathname = usePathname();
 
-  // FORZAR COLORES AMBER SIEMPRE PARA ESTE POPUP
+  // FORZAR COLORES DORADOS PUROS SIEMPRE PARA ESTE POPUP
   const amberStyles = {
-    header: "bg-amber-600",
-    borderActive: "border-amber-600 bg-amber-50",
-    textActive: "text-amber-600",
-    button: "bg-amber-600 hover:bg-amber-700 shadow-[0_8px_25px_rgba(217,119,6,0.3)]",
-    ring: "focus:border-amber-400"
+    header: "bg-yellow-600",
+    borderActive: "border-yellow-600 bg-yellow-50",
+    textActive: "text-yellow-600",
+    button: "bg-yellow-600 hover:bg-yellow-700 shadow-[0_8px_25px_rgba(202,138,4,0.3)]",
+    ring: "focus:border-yellow-400"
   };
 
   useEffect(() => {
