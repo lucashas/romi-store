@@ -89,7 +89,7 @@ export default function BioaquaRicePage() {
               </p>
             </div>
 
-            <div className="mt-8 px-1 flex justify-center cursor-pointer" onClick={openPopup}>
+            <div className="mt-8 px-[5px] flex justify-center cursor-pointer" onClick={openPopup}>
               <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-2 border-slate-100 bg-white">
                 <img src="https://i.imgur.com/HYiuNZy.png" alt="Beneficios Kit de Arroz" className="w-full h-auto block" />
               </div>
@@ -114,7 +114,7 @@ export default function BioaquaRicePage() {
                 </div>
               </div>
 
-              <div className="px-2 mt-4 cursor-pointer" onClick={openPopup}>
+              <div className="px-[5px] mt-4 cursor-pointer" onClick={openPopup}>
                 <img src="https://i.imgur.com/qOmlzPP.png" alt="Garantía de Satisfacción" className="w-full h-auto rounded-2xl shadow-lg border border-slate-100" />
               </div>
 
