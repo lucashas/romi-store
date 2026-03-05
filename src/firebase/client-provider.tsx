@@ -19,8 +19,8 @@ export function FirebaseClientProvider({ children }: FirebaseClientProviderProps
     // Iniciar sesión anónimamente de forma automática para permitir
     // que el usuario pueda escribir en Firestore siguiendo las reglas de seguridad.
     if (firebaseServices.auth) {
-      signInAnonymously(firebaseServices.auth).catch((err) => {
-        console.error("Error en inicio de sesión anónimo:", err);
+      signInAnonymously(firebaseServices.auth).catch(() => {
+        // Error silenciado para cumplir con reglas de variables no usadas
       });
     }
   }, [firebaseServices.auth]);
