@@ -61,14 +61,14 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
 
   const isGold = themeColor === "gold";
 
-  const styles = {
+  const styles = useMemo(() => ({
     header: isGold ? "bg-yellow-600" : "bg-orange-600",
     borderActive: isGold ? "border-yellow-600 bg-yellow-50" : "border-orange-600 bg-orange-50",
     textActive: isGold ? "text-yellow-700" : "text-orange-700",
     button: isGold ? "bg-yellow-600 hover:bg-yellow-700" : "bg-orange-600 hover:bg-orange-700",
     ring: isGold ? "focus:border-yellow-600" : "focus:border-orange-600",
     label: "text-[11px] font-black uppercase text-slate-500 tracking-widest mb-1.5 block ml-1"
-  };
+  }), [isGold]);
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
@@ -109,7 +109,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&back=${encodeURIComponent(pathname)}`);
     } catch {
       setLoading(false);
-      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente más tarde." });
+      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente m&aacute;s tarde." });
     }
   };
 
