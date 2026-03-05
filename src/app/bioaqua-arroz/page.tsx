@@ -168,7 +168,7 @@ export default function BioaquaRicePage() {
           testimonialImageUrl="https://i.imgur.com/PTsQyWM.png" 
         />
 
-        <div className="px-4 py-4">
+        <div className="px-4 py-4 space-y-4">
           <Button onClick={openPopup} size="lg" className="w-full h-18 text-2xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-xl rounded-[2rem] animate-heartbeat border-4 border-white uppercase">
             <ShoppingCart className="h-8 w-8 mr-3" />
             ¡ORDENAR AHORA!
@@ -179,15 +179,15 @@ export default function BioaquaRicePage() {
           <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
         </div>
 
-        {/* Final Trust Badges */}
+        {/* Final Trust Badges - Compactos */}
         <section className="py-2 text-center space-y-4 bg-white">
           <div className="grid grid-cols-2 gap-4 px-4">
-            <div className="py-3 px-4 bg-slate-50 rounded-[1.5rem] border border-slate-100 flex flex-col items-center gap-1">
-              <ShieldCheck className="h-7 w-7 text-yellow-600" />
+            <div className="py-2 px-4 bg-slate-50 rounded-[1.2rem] border border-slate-100 flex flex-col items-center gap-1">
+              <ShieldCheck className="h-6 w-6 text-yellow-600" />
               <p className="text-[12px] font-black uppercase text-slate-800">100% Original</p>
             </div>
-            <div className="py-3 px-4 bg-slate-50 rounded-[1.5rem] border border-slate-100 flex flex-col items-center gap-1">
-              <ShoppingCart className="h-7 w-7 text-yellow-600" />
+            <div className="py-2 px-4 bg-slate-50 rounded-[1.2rem] border border-slate-100 flex flex-col items-center gap-1">
+              <ShoppingCart className="h-6 w-6 text-yellow-600" />
               <p className="text-[12px] font-black uppercase text-slate-800">Paga al Recibir</p>
             </div>
           </div>
