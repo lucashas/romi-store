@@ -118,7 +118,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          {/* Header with Title and Logo - Mejorado y elegante */}
+          {/* Header with Title and Logo */}
           <div className={cn("p-6 pb-6 text-white text-center flex flex-col items-center gap-4", styles.header)}>
             <DialogTitle className="text-[22px] font-black uppercase leading-tight tracking-tighter">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
