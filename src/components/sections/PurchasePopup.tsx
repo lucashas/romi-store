@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -119,20 +118,22 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-6 pb-4 text-white text-center flex flex-col items-center gap-2", styles.header)}>
-            <DialogTitle className="text-[20px] font-black uppercase leading-[0.85] tracking-tighter mb-1">
+          {/* Header with Title and Logo */}
+          <div className={cn("p-6 pb-4 text-white text-center flex flex-col items-center gap-3", styles.header)}>
+            <DialogTitle className="text-[20px] font-black uppercase leading-tight tracking-tighter">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="h-[75px] w-full flex items-center justify-center">
+            <div className="w-full flex justify-center">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
-                className="h-full w-auto object-contain" 
+                className="h-14 w-auto object-contain"
               />
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="p-5 space-y-6 bg-white pb-10">
+            {/* Step 1: Offer Selection */}
             <div className="space-y-4">
               <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">1. Selecciona tu oferta:</p>
               <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
@@ -140,10 +141,10 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
                   <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5" />
                     
-                    <div className="h-14 w-14 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white shadow-sm">
+                    <div className="h-12 w-12 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white">
                       <img 
                         src="https://i.imgur.com/aSjVyM2.png" 
-                        alt="Producto" 
+                        alt="Logo Producto" 
                         className="w-full h-full object-cover" 
                       />
                     </div>
@@ -158,6 +159,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </RadioGroup>
             </div>
 
+            {/* Step 2: Shipping Data */}
             <div className="space-y-5">
               <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">2. Datos de Envío (Pago Contra Entrega):</p>
               
@@ -203,16 +205,18 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
             </div>
 
+            {/* Attention Card */}
             <div className="bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] flex flex-col items-center gap-3 shadow-md text-center">
               <AlertTriangle className="h-8 w-8 text-red-600 animate-pulse" />
               <div className="space-y-2">
-                <p className="text-[20px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
-                <p className="text-[16px] font-bold text-red-600 leading-tight">
+                <p className="text-[18px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
+                <p className="text-[15px] font-bold text-red-600 leading-tight">
                   Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
                 </p>
               </div>
             </div>
 
+            {/* Order Summary Card */}
             <div className="bg-slate-50 p-6 rounded-[2rem] border-2 border-slate-200 shadow-sm space-y-4">
               <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
                 <ShoppingBag className={cn("h-5 w-5", styles.textActive)} />
@@ -230,14 +234,15 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
             </div>
 
+            {/* Commitment Card */}
             <div className="bg-primary/5 p-6 rounded-[2rem] border-2 border-primary/10 text-center space-y-3 shadow-inner">
               <div className="flex justify-center">
                 <Heart className={cn("h-6 w-6 animate-pulse", styles.textActive)} />
               </div>
-              <p className="text-[15px] font-medium text-slate-700 leading-relaxed italic">
+              <p className="text-[14px] font-medium text-slate-700 leading-relaxed italic">
                 ✨ Recuerda: Nosotros cubrimos el costo del envío para que tu pedido llegue hasta tu puerta sin cargos adicionales. 🙌
               </p>
-              <p className={cn("text-[15px] font-black uppercase leading-tight", styles.textActive)}>
+              <p className={cn("text-[14px] font-black uppercase leading-tight", styles.textActive)}>
                 Al confirmar tu compra, te comprometes a recibir y cancelar tu pedido con total confianza. 💖
               </p>
             </div>

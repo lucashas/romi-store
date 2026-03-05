@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -39,13 +38,15 @@ export default function BioaquaRicePage() {
 
       <main className="flex-1 w-full">
         <section className="bg-white overflow-hidden w-full">
+          {/* Hero Image */}
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-yellow-100">
               <img src="https://i.imgur.com/tHUWnzw.png" alt="Bioaqua Kit de Arroz" className="w-full h-auto block" />
             </div>
           </div>
 
-          <div className="p-4 text-center space-y-3">
+          <div className="p-4 text-center space-y-4">
+            {/* Trust Badges and Stars */}
             <div className="flex justify-center items-center gap-3">
               <div className="flex gap-0.5">
                 {[1, 2, 3, 4, 5].map((i) => (
@@ -55,6 +56,7 @@ export default function BioaquaRicePage() {
               <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest">(+1.200 VENTAS)</span>
             </div>
 
+            {/* Headline */}
             <div className="space-y-1">
               <h1 className="text-4xl font-black text-slate-900 uppercase leading-[0.9] tracking-tighter">
                 KIT PIEL DE <br /><span className="text-yellow-600 italic">PORCELANA</span>
@@ -62,17 +64,20 @@ export default function BioaquaRicePage() {
               <p className="text-lg font-bold text-yellow-600 uppercase tracking-tight">🌾✨ ¡Tu rostro merece brillar!</p>
             </div>
 
+            {/* Benefit Showcase Images */}
             <div className="grid grid-cols-2 gap-2 px-1">
               <img src="https://i.imgur.com/XFQg77J.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
               <img src="https://i.imgur.com/aSjVyM2.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
             </div>
 
+            {/* Intro Text */}
             <div className="text-left px-2">
               <p className="text-[14px] font-medium text-slate-700 leading-relaxed">
-                Disfruta de una rutina completa que limpia, hidrata y nutre tu rostro con el poder del arroz y ácido hialurónico. 💧🌸
+                Disfruta de una rutina completa que limpia, hidrata y nutre tu rostro con el poder del arroz y ácido hialurónico. Resultados visibles en pocos días. 💧🌸
               </p>
             </div>
 
+            {/* Step-by-Step Section */}
             <section className="bg-slate-50 rounded-[2rem] p-4 border border-slate-100 space-y-3 text-left">
               <h3 className="text-[19px] font-black text-slate-900 uppercase leading-none tracking-tighter">
                 BIOAQUA Rice Raw Pulp: <span className="text-yellow-600">6 pasos para una piel radiante</span>
@@ -82,17 +87,14 @@ export default function BioaquaRicePage() {
                 <img src="https://i.imgur.com/Ze3pVGV.png" alt="6 pasos Bioaqua Arroz" className="w-full h-auto block" />
               </div>
 
-              <p className="text-[13px] font-medium text-slate-600 leading-tight">
-                Descubre la rutina completa que tu piel necesita con el kit BIOAQUA Rice Raw Pulp. Cada producto está diseñado para hidratar, nutrir y revitalizar con el poder del arroz y ácido hialurónico:
-              </p>
               <div className="space-y-1.5">
                 {[
-                  { name: "Eye Cream", desc: "cuida la delicada zona de los ojos, reduciendo líneas finas y ojeras." },
-                  { name: "Cleanser", desc: "limpia profundamente, eliminando impurezas y dejando la piel fresca." },
-                  { name: "Toner", desc: "equilibra, hidrata y ayuda a reducir la apariencia de poros." },
-                  { name: "Lotion", desc: "aporta hidratación ligera y mejora la textura de la piel." },
-                  { name: "Cream", desc: "con ácido hialurónico, brinda hidratación intensa y elasticidad." },
-                  { name: "Essence", desc: "concentrado nutritivo que potencia la luminosidad y revitaliza el rostro." }
+                  { name: "Eye Cream", desc: "cuida la delicada zona de los ojos, reduciendo ojeras." },
+                  { name: "Cleanser", desc: "limpia profundamente eliminando impurezas." },
+                  { name: "Toner", desc: "equilibra e hidrata, cerrando los poros." },
+                  { name: "Lotion", desc: "aporta hidratación ligera y mejora la textura." },
+                  { name: "Cream", desc: "brinda hidratación intensa y elasticidad." },
+                  { name: "Essence", desc: "potencia la luminosidad y revitaliza el rostro." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-2">
                     <CheckCircle2 className="h-4 w-4 text-yellow-600 shrink-0 mt-0.5" />
@@ -102,12 +104,10 @@ export default function BioaquaRicePage() {
                   </div>
                 ))}
               </div>
-              <p className="text-[13px] font-medium text-slate-600 leading-tight mt-2">
-                Un kit pensado para transformar tu rutina diaria en un ritual de belleza que deja tu piel más suave, uniforme y saludable. 🌸✨
-              </p>
             </section>
 
-            <section className="py-2 space-y-5">
+            {/* Pricing / Offers Section */}
+            <section className="py-2 space-y-6">
               <h3 className="text-[26px] font-black text-slate-900 text-center uppercase tracking-tighter">
                 💎 ELIGE TU <span className="text-yellow-600">PROMOCIÓN</span> 💎
               </h3>
@@ -138,7 +138,7 @@ export default function BioaquaRicePage() {
                 </div>
               </div>
 
-              <div className="px-[5px] mt-1 cursor-pointer" onClick={openPopup}>
+              <div className="px-[5px] mt-2 cursor-pointer" onClick={openPopup}>
                 <img src="https://i.imgur.com/qOmlzPP.png" alt="Garantía de Satisfacción" className="w-full h-auto rounded-2xl shadow-lg border border-slate-100" />
               </div>
 
@@ -154,9 +154,6 @@ export default function BioaquaRicePage() {
           <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tighter leading-none">
             Belleza natural, <span className="text-yellow-600">resultados visibles</span>
           </h2>
-          <p className="text-[14px] font-bold text-yellow-700 uppercase tracking-tight">
-            Nutrición y frescura con cada aplicación.
-          </p>
         </div>
 
         <div className="grid grid-cols-2 gap-2 px-6 mb-4">
@@ -182,22 +179,23 @@ export default function BioaquaRicePage() {
           <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
         </div>
 
+        {/* Final Trust Badges */}
         <section className="py-2 text-center space-y-4 bg-white">
           <div className="grid grid-cols-2 gap-4 px-4">
-            <div className="py-3 px-4 bg-slate-50 rounded-[2rem] border border-slate-100 flex flex-col items-center gap-2">
-              <ShieldCheck className="h-8 w-8 text-yellow-600" />
-              <p className="text-[14px] font-black uppercase text-slate-800">100% Original</p>
+            <div className="py-3 px-4 bg-slate-50 rounded-[1.5rem] border border-slate-100 flex flex-col items-center gap-1">
+              <ShieldCheck className="h-7 w-7 text-yellow-600" />
+              <p className="text-[12px] font-black uppercase text-slate-800">100% Original</p>
             </div>
-            <div className="py-3 px-4 bg-slate-50 rounded-[2rem] border border-slate-100 flex flex-col items-center gap-2">
-              <ShoppingCart className="h-8 w-8 text-yellow-600" />
-              <p className="text-[14px] font-black uppercase text-slate-800">Paga al Recibir</p>
+            <div className="py-3 px-4 bg-slate-50 rounded-[1.5rem] border border-slate-100 flex flex-col items-center gap-1">
+              <ShoppingCart className="h-7 w-7 text-yellow-600" />
+              <p className="text-[12px] font-black uppercase text-slate-800">Paga al Recibir</p>
             </div>
           </div>
         </section>
       </main>
 
       <div className="sticky-cta">
-        <Button onClick={openPopup} size="lg" className="w-full h-16 text-xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-2xl rounded-2xl animate-heartbeat border-2 border-white">
+        <Button onClick={openPopup} size="lg" className="w-full h-16 text-xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-2xl rounded-2xl animate-heartbeat border-2 border-white uppercase">
           <ShoppingCart className="h-6 w-6 mr-3" />
           ¡COMPRAR AHORA!
         </Button>

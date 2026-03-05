@@ -12,15 +12,16 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-white border-t py-8 pb-20">
+    <footer className="bg-white border-t py-8 pb-24">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-8">
+          {/* Brand Logo & Authority */}
           <div className="flex flex-col items-center gap-1">
             <div className="flex items-center gap-2">
               <div className="bg-primary p-1 rounded-lg text-white">
-                <Leaf className="h-4 w-4 fill-white" />
+                <Leaf className="h-5 w-5 fill-white" />
               </div>
-              <span className="text-lg font-bold font-headline text-foreground">
+              <span className="text-xl font-black font-headline text-foreground uppercase tracking-tighter">
                 Romi Store <span className="text-primary">EC</span>
               </span>
             </div>
@@ -30,39 +31,55 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-2 text-center text-[13px] font-bold text-muted-foreground">
+          {/* Contact Information */}
+          <div className="grid grid-cols-1 gap-4 text-center text-[13px] font-bold text-slate-600">
             <div className="flex items-center justify-center gap-2">
-              <MessageSquare className="h-4 w-4 text-primary" />
+              <div className="bg-primary/10 p-2 rounded-full">
+                <MessageSquare className="h-4 w-4 text-primary" />
+              </div>
               <span>WhatsApp: 0959461399 (Solo Chat)</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <Mail className="h-4 w-4 text-primary" />
+              <div className="bg-primary/10 p-2 rounded-full">
+                <Mail className="h-4 w-4 text-primary" />
+              </div>
               <span>Email: orozco.pancho73@hotmail.com</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <MapPin className="h-4 w-4 text-primary" />
-              <span>Quito, Ecuador - Envíos Nacionales</span>
+              <div className="bg-primary/10 p-2 rounded-full">
+                <MapPin className="h-4 w-4 text-primary" />
+              </div>
+              <span>Quito, Ecuador - Envíos a todo el país</span>
             </div>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-4 text-[10px] font-black text-muted-foreground/80 uppercase tracking-tighter">
-            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/30">Privacidad</Link>
-            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/30">Términos</Link>
-            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/30">Envíos</Link>
+          {/* TikTok Ads Required Links */}
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] font-black text-slate-400 uppercase tracking-tighter">
+            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/20">Política de Privacidad</Link>
+            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/20">Términos de Servicio</Link>
+            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/20">Políticas de Envío</Link>
+            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/20">Reembolsos</Link>
           </div>
           
-          <div className="text-center space-y-2">
-            <div className="space-y-0.5">
-              <p className="text-[14px] text-muted-foreground font-medium">
-                © {year ?? "..."} Romi Store EC.
+          {/* Disclaimers for Ad Platforms */}
+          <div className="text-center space-y-4 max-w-[420px]">
+            <div className="space-y-1">
+              <p className="text-[14px] text-slate-500 font-medium">
+                © {year ?? "..."} Romi Store EC. Todos los derechos reservados.
               </p>
               <p className="text-[16px] font-black text-slate-900 uppercase tracking-tight">
                 Hecho para Ecuador con ❤️
               </p>
             </div>
-            <p className="text-[11px] text-muted-foreground/70 max-w-[340px] mx-auto leading-tight italic border-t border-primary/5 pt-3">
-              Bioaqua es una marca registrada. Esta página no está afiliada con TikTok o Facebook.
-            </p>
+            
+            <div className="border-t border-slate-100 pt-4 space-y-2">
+              <p className="text-[9px] text-slate-400 leading-tight italic uppercase tracking-tighter">
+                * Los resultados pueden variar de persona a persona. Este producto no pretende diagnosticar, tratar, curar o prevenir ninguna enfermedad.
+              </p>
+              <p className="text-[9px] text-slate-400 leading-tight italic uppercase tracking-tighter">
+                Este sitio no es parte del sitio web de TikTok o de TikTok Inc. Además, este sitio NO está respaldado por TikTok de ninguna manera. TIKTOK es una marca registrada de TIKTOK, Inc.
+              </p>
+            </div>
           </div>
         </div>
       </div>
