@@ -140,7 +140,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                   <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5" />
                     <div className="h-12 w-12 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white">
-                      <img src="https://i.imgur.com/aSjVyM2.png" alt="Logo" className="w-full h-full object-cover" />
+                      <img src="https://i.imgur.com/aSjVyM2.png" alt="Kit Bioaqua" className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 min-w-0 text-left">
                       <p className="font-black text-[14px] text-slate-900 uppercase leading-none mb-1">{p.name}</p>

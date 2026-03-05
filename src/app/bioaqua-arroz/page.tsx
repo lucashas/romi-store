@@ -64,9 +64,9 @@ export default function BioaquaRicePage() {
             </div>
 
             {/* Imágenes de detalle informativas */}
-            <div className="grid grid-cols-2 gap-2 px-1">
-              <img src="https://i.imgur.com/XFQg77J.png" alt="Detalle 1" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
-              <img src="https://i.imgur.com/aSjVyM2.png" alt="Detalle 2" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
+            <div className="grid grid-cols-2 gap-2 px-1" onClick={openPopup}>
+              <img src="https://i.imgur.com/XFQg77J.png" alt="Detalle 1" className="w-full h-auto rounded-2xl shadow-md border border-slate-100 cursor-pointer" />
+              <img src="https://i.imgur.com/aSjVyM2.png" alt="Detalle 2" className="w-full h-auto rounded-2xl shadow-md border border-slate-100 cursor-pointer" />
             </div>
 
             {/* Sección de 6 Pasos con Imagen Informativa */}
@@ -75,7 +75,7 @@ export default function BioaquaRicePage() {
                 RUTINA DE <span className="text-yellow-600">6 PASOS</span>
               </h3>
               
-              <div className="w-full rounded-2xl overflow-hidden shadow-md border border-slate-100 my-2">
+              <div className="w-full rounded-2xl overflow-hidden shadow-md border border-slate-100 my-2 cursor-pointer" onClick={openPopup}>
                 <img src="https://i.imgur.com/Ze3pVGV.png" alt="6 Pasos Bioaqua" className="w-full h-auto block" />
               </div>
 
