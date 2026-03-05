@@ -123,7 +123,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
             <DialogTitle className="text-[20px] font-black uppercase leading-[0.85] tracking-tighter mb-1">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="h-[60px] w-full flex items-center justify-center">
+            <div className="h-[65px] w-full flex items-center justify-center">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
@@ -200,12 +200,12 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
             </div>
 
-            {/* Tarjeta de Atención */}
-            <div className="bg-red-50 border-2 border-red-100 p-4 rounded-2xl flex items-start gap-3 shadow-sm">
-              <AlertTriangle className="h-6 w-6 text-red-600 shrink-0 mt-0.5" />
-              <div className="space-y-1">
-                <p className="text-[14px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
-                <p className="text-[11px] font-bold text-red-600/80 leading-tight">
+            {/* Tarjeta de Atención Mejorada */}
+            <div className="bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] flex flex-col items-center gap-3 shadow-md text-center">
+              <AlertTriangle className="h-8 w-8 text-red-600 animate-pulse" />
+              <div className="space-y-2">
+                <p className="text-[17px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
+                <p className="text-[13px] font-bold text-red-600 leading-tight">
                   Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
                 </p>
               </div>
