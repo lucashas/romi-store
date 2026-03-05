@@ -63,7 +63,7 @@ export default function BioaquaRicePage() {
               <p className="text-lg font-bold text-yellow-600 uppercase tracking-tight">🌾✨ ¡Tu rostro merece brillar!</p>
             </div>
 
-            {/* Imágenes de detalle con texto informativo */}
+            {/* Imágenes de detalle */}
             <div className="grid grid-cols-2 gap-2 px-1">
               <img src="https://i.imgur.com/XFQg77J.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
               <img src="https://i.imgur.com/aSjVyM2.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
