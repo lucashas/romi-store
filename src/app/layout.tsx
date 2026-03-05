@@ -12,8 +12,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
-  description: 'Rutina completa de 6 pasos para una piel radiante. Envío a todo Ecuador y ¡Pagas al recibir!',
-  metadataBase: new URL('https://romi-store-ec.web.app'),
+  description: 'Rutina completa de 6 pasos para una piel radiante con Bioaqua Rice Raw Pulp. Envíos rápidos a todo Ecuador y ¡Pagas al recibir en tu casa!',
+  metadataBase: new URL('https://romi-store.com'),
   icons: {
     icon: 'https://i.imgur.com/aSjVyM2.png',
     shortcut: 'https://i.imgur.com/aSjVyM2.png',
@@ -22,7 +22,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
     description: 'Consigue una piel de porcelana con el Kit de Arroz Bioaqua. ¡Pagas al recibir!',
-    images: [{ url: 'https://i.imgur.com/aSjVyM2.png' }],
+    url: 'https://romi-store.com/bioaqua-arroz',
+    siteName: 'Romi Store EC',
+    images: [
+      {
+        url: 'https://i.imgur.com/aSjVyM2.png',
+        width: 800,
+        height: 800,
+        alt: 'Kit Piel de Porcelana Bioaqua Rice',
+      },
+    ],
+    locale: 'es_EC',
+    type: 'website',
   },
 };
 

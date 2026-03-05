@@ -144,7 +144,6 @@ export default function BioaquaRicePage() {
                 </Button>
               </div>
 
-              {/* Nueva sección solicitada */}
               <div className="pt-6 pb-4 space-y-5 text-center px-2">
                 <div className="space-y-1.5">
                   <h3 className="text-[22px] font-black text-slate-900 uppercase tracking-tighter leading-none">
