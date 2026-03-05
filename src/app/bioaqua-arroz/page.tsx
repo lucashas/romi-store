@@ -170,6 +170,13 @@ export default function BioaquaRicePage() {
           testimonialImageUrl="https://i.imgur.com/PTsQyWM.png" 
         />
 
+        <div className="px-4 py-4">
+          <Button onClick={openPopup} size="lg" className="w-full h-18 text-2xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-xl rounded-[2rem] animate-heartbeat border-4 border-white uppercase">
+            <ShoppingCart className="h-8 w-8 mr-3" />
+            ¡ORDENAR AHORA!
+          </Button>
+        </div>
+
         <div className="px-[5px] mb-6 cursor-pointer" onClick={openPopup}>
           <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
         </div>
