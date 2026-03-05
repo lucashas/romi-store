@@ -15,7 +15,7 @@ import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
 import { useRouter, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { AlertTriangle, ShieldCheck, ShoppingBag } from "lucide-react";
+import { AlertTriangle, ShieldCheck, ShoppingBag, Heart } from "lucide-react";
 
 export interface Product {
   id: string;
@@ -123,7 +123,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
             <DialogTitle className="text-[20px] font-black uppercase leading-[0.85] tracking-tighter mb-1">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="h-[60px] w-full flex items-center justify-center">
+            <div className="h-[75px] w-full flex items-center justify-center">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
@@ -207,7 +207,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               <AlertTriangle className="h-8 w-8 text-red-600 animate-pulse" />
               <div className="space-y-2">
                 <p className="text-[20px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
-                <p className="text-[15px] font-bold text-red-600 leading-tight">
+                <p className="text-[16px] font-bold text-red-600 leading-tight">
                   Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
                 </p>
               </div>
@@ -228,6 +228,18 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
                   <p className="text-[10px] font-black text-green-600 uppercase">Total a pagar</p>
                 </div>
               </div>
+            </div>
+
+            <div className="bg-primary/5 p-6 rounded-[2rem] border-2 border-primary/10 text-center space-y-3 shadow-inner">
+              <div className="flex justify-center">
+                <Heart className={cn("h-6 w-6 animate-pulse", styles.textActive)} />
+              </div>
+              <p className="text-[15px] font-medium text-slate-700 leading-relaxed italic">
+                ✨ Recuerda: Nosotros cubrimos el costo del envío para que tu pedido llegue hasta tu puerta sin cargos adicionales. 🙌
+              </p>
+              <p className={cn("text-[15px] font-black uppercase leading-tight", styles.textActive)}>
+                Al confirmar tu compra, te comprometes a recibir y cancelar tu pedido con total confianza. 💖
+              </p>
             </div>
 
             <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl mt-4", styles.button)}>
