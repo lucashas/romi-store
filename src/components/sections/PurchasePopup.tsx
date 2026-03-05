@@ -67,7 +67,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     borderActive: isGold ? "border-yellow-600 bg-yellow-50" : "border-orange-600 bg-orange-50",
     textActive: isGold ? "text-yellow-700" : "text-orange-700",
     button: isGold ? "bg-yellow-600 hover:bg-yellow-700" : "bg-orange-600 hover:bg-orange-700",
-    ring: isGold ? "focus:border-yellow-600" : "focus:border-orange-600"
+    ring: isGold ? "focus:border-yellow-600" : "focus:border-orange-600",
+    label: "text-[11px] font-black uppercase text-slate-500 tracking-widest mb-1.5 block ml-1"
   };
 
   useEffect(() => {
@@ -117,55 +118,90 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-3 text-white text-center flex flex-col items-center", styles.header)}>
-            <DialogTitle className="text-[18px] font-black uppercase leading-tight tracking-tighter">
+          <div className={cn("p-4 text-white text-center flex flex-col items-center gap-1", styles.header)}>
+            <DialogTitle className="text-[19px] font-black uppercase leading-none tracking-tighter">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="mt-1 h-[40px] flex items-center justify-center">
+            <div className="h-[35px] flex items-center justify-center">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
-                className="h-full w-auto object-contain" 
+                className="h-full w-auto object-contain brightness-0 invert" 
               />
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-6 space-y-8 bg-white pb-14">
-            <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-4">
-              {products.map((p) => (
-                <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
-                  <RadioGroupItem value={p.id} id={p.id} className="h-6 w-6" />
-                  <div className="flex-1 min-w-0 text-left">
-                    <p className="font-black text-[16px] text-slate-900 uppercase leading-tight">{p.name}</p>
-                    <p className="text-[12px] text-slate-400 font-bold uppercase">{p.description}</p>
-                  </div>
-                  <p className={cn("font-black text-[24px] tracking-tighter", styles.textActive)}>${p.price.toFixed(0)}</p>
-                </Label>
-              ))}
-            </RadioGroup>
+          <form onSubmit={handleSubmit} className="p-5 space-y-6 bg-white pb-10">
+            {/* Imagen promocional al inicio */}
+            <div className="w-full rounded-2xl overflow-hidden shadow-md border-2 border-slate-100">
+              <img src="https://i.imgur.com/aSjVyM2.png" alt="Oferta Especial" className="w-full h-auto block" />
+            </div>
 
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <Input placeholder="Nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
-                <Input placeholder="Apellido" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+              <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">1. Selecciona tu oferta:</p>
+              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
+                {products.map((p) => (
+                  <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-4 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
+                    <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5" />
+                    <div className="flex-1 min-w-0 text-left">
+                      <p className="font-black text-[15px] text-slate-900 uppercase leading-tight">{p.name}</p>
+                      <p className="text-[11px] text-slate-400 font-bold uppercase">{p.description}</p>
+                    </div>
+                    <p className={cn("font-black text-[22px] tracking-tighter", styles.textActive)}>${p.price.toFixed(0)}</p>
+                  </Label>
+                ))}
+              </RadioGroup>
+            </div>
+
+            <div className="space-y-5">
+              <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">2. Datos de Envío (Pago Contra Entrega):</p>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <span className={styles.label}>Nombre</span>
+                  <Input placeholder="Ej. Ana" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+                </div>
+                <div className="space-y-1">
+                  <span className={styles.label}>Apellido</span>
+                  <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+                </div>
               </div>
-              <Input placeholder="WhatsApp" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
-              <Input placeholder="Dirección Exacta" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
-              <div className="grid grid-cols-2 gap-4">
-                <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                  <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Provincia" /></SelectTrigger>
-                  <SelectContent className="z-[110]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
-                </Select>
-                <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                  <SelectTrigger className="h-16 rounded-2xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Ciudad" /></SelectTrigger>
-                  <SelectContent className="z-[110]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
-                </Select>
+
+              <div className="space-y-1">
+                <span className={styles.label}>Número de WhatsApp</span>
+                <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <span className={styles.label}>Provincia</span>
+                  <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
+                    <SelectTrigger className="h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Seleccione" /></SelectTrigger>
+                    <SelectContent className="z-[110]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-1">
+                  <span className={styles.label}>Ciudad</span>
+                  <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
+                    <SelectTrigger className="h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold"><SelectValue placeholder="Seleccione" /></SelectTrigger>
+                    <SelectContent className="z-[110]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <span className={styles.label}>Dirección Exacta</span>
+                <Input placeholder="Calle Principal y Secundaria" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
               </div>
             </div>
 
-            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl", styles.button)}>
+            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl mt-4", styles.button)}>
               {loading ? "PROCESANDO..." : "¡CONFIRMAR PEDIDO!"}
             </Button>
+            
+            <p className="text-[10px] text-center font-bold text-slate-400 uppercase tracking-widest mt-2">
+              🔒 Envío 100% Seguro en Ecuador
+            </p>
           </form>
         </div>
       </DialogContent>
