@@ -13,22 +13,19 @@ function GraciasContent() {
   const [provincia, setProvincia] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [producto, setProducto] = useState("su pedido");
-  const [extraProduct, setExtraProduct] = useState("");
   const [volverUrl, setVolverUrl] = useState("/");
 
   useEffect(() => {
-    // Extraemos los datos de la URL para personalizar la página de forma dinámica
     setNombre(searchParams.get("nombre") || "Cliente");
     setProvincia(searchParams.get("provincia") || "");
     setCiudad(searchParams.get("ciudad") || "Ecuador");
     setWhatsapp(searchParams.get("whatsapp") || "");
     setProducto(searchParams.get("producto") || "su pedido");
-    setExtraProduct(searchParams.get("extra") || "");
     setVolverUrl(searchParams.get("back") || "/");
   }, [searchParams]);
 
   const ubicacionCompleta = provincia ? `${ciudad}, ${provincia}` : ciudad;
-  const whatsappMessage = `Hola, soy ${nombre}. Acabo de pedir ${producto} para ${ubicacionCompleta}.${extraProduct ? ' También agregué el producto adicional: ' + extraProduct + ' por $8.' : ''}`;
+  const whatsappMessage = `Hola Romi Store EC, soy ${nombre}. Acabo de pedir ${producto} para ${ubicacionCompleta}. Confirmo mi pedido para envío inmediato.`;
   const whatsappUrl = `https://wa.me/593959461399?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
@@ -49,7 +46,7 @@ function GraciasContent() {
       </h1>
       
       <p className="text-lg text-muted-foreground font-medium leading-relaxed mb-8">
-        Hola <strong>{nombre}</strong>, tu solicitud para <strong>{ubicacionCompleta}</strong> ha sido recibida en Romi Store EC.
+        Hola <strong>{nombre}</strong>, tu solicitud para <strong>{ubicacionCompleta}</strong> ha sido recibida.
       </p>
 
       <div className="w-full bg-secondary/20 p-6 rounded-[2rem] border border-secondary/50 text-left space-y-6 mb-8 shadow-sm">
@@ -62,7 +59,7 @@ function GraciasContent() {
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">1</div>
             <div className="space-y-1">
               <p className="font-black text-foreground text-sm uppercase">VERIFICACIÓN DE DATOS</p>
-              <p className="text-sm text-muted-foreground">Un asesor revisará tu dirección para el despacho inmediato de <strong>{producto}</strong>.</p>
+              <p className="text-sm text-muted-foreground">Un asesor revisará tu dirección para el despacho de <strong>{producto}</strong>.</p>
             </div>
           </div>
 
@@ -70,7 +67,7 @@ function GraciasContent() {
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">2</div>
             <div className="space-y-1">
               <p className="font-black text-foreground text-sm uppercase">CONTACTO POR WHATSAPP</p>
-              <p className="text-sm text-muted-foreground">Te escribiremos al <strong>{whatsapp || "tu número"}</strong> para confirmar la hora de entrega.</p>
+              <p className="text-sm text-muted-foreground">Te escribiremos al <strong>{whatsapp || "tu número"}</strong> para coordinar la entrega.</p>
             </div>
           </div>
 

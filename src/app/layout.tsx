@@ -3,28 +3,28 @@ import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
-  title: 'Romi Store EC | Crema V7 Bioaqua Ecuador',
-  description: 'Piel de porcelana al instante con la Crema V7 de 7 Vitaminas. Envío a todo Ecuador y ¡Pagas al recibir! Descubre el secreto de un rostro radiante con Bioaqua.',
+  title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua Ecuador',
+  description: 'Consigue una piel de porcelana con el Kit de Arroz Bioaqua. Rutina de 6 pasos para un rostro radiante. ¡Pagas al recibir en todo Ecuador!',
   metadataBase: new URL('https://romi-store.com'),
   alternates: {
-    canonical: '/bioaqua-v7',
+    canonical: '/bioaqua-arroz',
   },
   icons: {
-    icon: 'https://i.imgur.com/bUaJbMD.png',
-    shortcut: 'https://i.imgur.com/bUaJbMD.png',
-    apple: 'https://i.imgur.com/bUaJbMD.png',
+    icon: 'https://i.imgur.com/aSjVyM2.png',
+    shortcut: 'https://i.imgur.com/aSjVyM2.png',
+    apple: 'https://i.imgur.com/aSjVyM2.png',
   },
   openGraph: {
-    title: 'Romi Store EC | Crema V7 Bioaqua',
-    description: 'Piel de porcelana al instante con la Crema V7 de 7 Vitaminas. Envío a todo Ecuador y ¡Pagas al recibir!',
-    url: 'https://romi-store.com/bioaqua-v7',
+    title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
+    description: 'Rutina completa de 6 pasos para una piel radiante. Envío a todo Ecuador y ¡Pagas al recibir!',
+    url: 'https://romi-store.com/bioaqua-arroz',
     siteName: 'Romi Store EC',
     images: [
       {
-        url: 'https://i.imgur.com/bUaJbMD.png',
+        url: 'https://i.imgur.com/aSjVyM2.png',
         width: 800,
         height: 800,
-        alt: 'Crema V7 Bioaqua Ecuador',
+        alt: 'Kit Piel de Porcelana Bioaqua Ecuador',
       },
     ],
     locale: 'es_ES',
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Romi Store EC | Crema V7 Bioaqua',
+    title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
     description: 'Piel de porcelana al instante. Envío a todo Ecuador.',
-    images: ['https://i.imgur.com/bUaJbMD.png'],
+    images: ['https://i.imgur.com/aSjVyM2.png'],
   },
 };
 
