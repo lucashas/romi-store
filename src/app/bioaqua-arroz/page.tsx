@@ -114,19 +114,19 @@ export default function BioaquaRicePage() {
               <div className="grid grid-cols-2 gap-3 px-1">
                 <div onClick={openPopup} className="relative bg-white p-4 pt-7 rounded-[2.5rem] border-2 border-slate-100 shadow-xl text-center space-y-1 cursor-pointer transition-transform active:scale-95 overflow-hidden">
                   <div className="absolute top-0 left-0 w-full bg-slate-100 py-0.5">
-                    <p className="text-[9px] font-black text-slate-500 uppercase tracking-tighter">OFERTA BÁSICA</p>
+                    <p className="text-[9px] font-black text-slate-500 uppercase tracking-tighter">OFERTA B&Aacute;SICA</p>
                   </div>
                   <p className="text-[11px] font-black text-slate-900 uppercase leading-none">1 KIT (6 PROD.)</p>
                   <div className="flex flex-col items-center">
                     <span className="text-[12px] font-bold text-slate-400 line-through leading-none">$45</span>
                     <p className="text-[38px] font-black text-slate-900 leading-none">$35</p>
                   </div>
-                  <p className="text-[10px] font-black text-yellow-600 uppercase italic">Envío Gratis</p>
+                  <p className="text-[10px] font-black text-yellow-600 uppercase italic">Env&iacute;o Gratis</p>
                 </div>
 
                 <div onClick={openPopup} className="relative bg-yellow-50 p-4 pt-7 rounded-[2.5rem] border-2 border-yellow-600 shadow-xl text-center space-y-1 cursor-pointer transition-transform active:scale-95 overflow-hidden">
                   <div className="absolute top-0 left-0 w-full bg-yellow-600 py-0.5">
-                    <p className="text-[9px] font-black text-white uppercase tracking-tighter">¡MÁS VENDIDO!</p>
+                    <p className="text-[9px] font-black text-white uppercase tracking-tighter">&iexcl;M&Aacute;S VENDIDO!</p>
                   </div>
                   <p className="text-[11px] font-black text-yellow-800 uppercase leading-none">2 KITS (12 PROD.)</p>
                   <div className="flex flex-col items-center">
@@ -140,7 +140,7 @@ export default function BioaquaRicePage() {
               <div className="px-4 py-2">
                 <Button onClick={openPopup} size="lg" className="w-full h-18 text-2xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-xl rounded-[2rem] animate-heartbeat border-4 border-white uppercase">
                   <ShoppingCart className="h-8 w-8 mr-3" />
-                  ¡ORDENAR AHORA!
+                  &iexcl;ORDENAR AHORA!
                 </Button>
               </div>
             </section>
@@ -149,7 +149,7 @@ export default function BioaquaRicePage() {
 
         <Testimonials 
           title="CLIENTAS FELICES" 
-          subtitle="Resultados que hablan por sí solos" 
+          subtitle="Resultados que hablan por s&iacute; solos" 
           themeColor="gold" 
           testimonialImageUrl="https://i.imgur.com/PTsQyWM.png" 
         />
@@ -180,7 +180,7 @@ export default function BioaquaRicePage() {
       <div className="sticky-cta">
         <Button onClick={openPopup} size="lg" className="w-full h-16 text-xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-2xl rounded-2xl animate-heartbeat border-2 border-white uppercase">
           <ShoppingCart className="h-6 w-6 mr-3" />
-          ¡COMPRAR AHORA!
+          &iexcl;COMPRAR AHORA!
         </Button>
       </div>
 
