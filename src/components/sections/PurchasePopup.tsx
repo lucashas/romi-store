@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -118,7 +119,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          {/* Header with Title and Logo */}
           <div className={cn("p-6 pb-6 text-white text-center flex flex-col items-center gap-4", styles.header)}>
             <DialogTitle className="text-[22px] font-black uppercase leading-tight tracking-tighter">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
@@ -133,22 +133,15 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
           </div>
 
           <form onSubmit={handleSubmit} className="p-5 space-y-6 bg-white pb-10">
-            {/* Step 1: Offer Selection */}
             <div className="space-y-4">
               <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">1. Selecciona tu oferta:</p>
               <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
                 {products.map((p) => (
                   <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5" />
-                    
                     <div className="h-12 w-12 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white">
-                      <img 
-                        src="https://i.imgur.com/aSjVyM2.png" 
-                        alt="Logo Producto" 
-                        className="w-full h-full object-cover" 
-                      />
+                      <img src="https://i.imgur.com/aSjVyM2.png" alt="Logo" className="w-full h-full object-cover" />
                     </div>
-
                     <div className="flex-1 min-w-0 text-left">
                       <p className="font-black text-[14px] text-slate-900 uppercase leading-none mb-1">{p.name}</p>
                       <p className="text-[10px] text-slate-400 font-bold uppercase leading-tight">{p.description}</p>
@@ -159,10 +152,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </RadioGroup>
             </div>
 
-            {/* Step 2: Shipping Data */}
             <div className="space-y-5">
               <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">2. Datos de Envío (Pago Contra Entrega):</p>
-              
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <span className={styles.label}>Nombre</span>
@@ -173,12 +164,10 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
                   <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
                 </div>
               </div>
-
               <div className="space-y-1">
-                <span className={styles.label}>Número de WhatsApp (para notificaciones de envío)</span>
+                <span className={styles.label}>Número de WhatsApp (notificaciones)</span>
                 <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
               </div>
-
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <span className={styles.label}>Provincia</span>
@@ -195,35 +184,32 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
                   </Select>
                 </div>
               </div>
-
               <div className="space-y-1">
-                <span className={styles.label}>Dirección Entrega: (2 calles y una referencia para el envío a domicilio)</span>
+                <span className={styles.label}>Dirección Entrega: (2 calles y referencia)</span>
                 <Input placeholder="Calle Principal y Secundaria" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
-                <p className="text-[10px] text-slate-400 font-medium leading-tight mt-1 px-1">
-                  Ejemplo: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, # 23-3, color blanco, barrio La Pradera bloque #...
+                <p className="text-[10px] text-slate-400 font-medium leading-tight mt-1 px-1 italic">
+                  Ej: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, # 23-3, blanca, barrio La Pradera...
                 </p>
               </div>
             </div>
 
-            {/* Attention Card - Centrada y Texto Grande */}
             <div className="bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] flex flex-col items-center gap-3 shadow-md text-center">
               <AlertTriangle className="h-10 w-10 text-red-600 animate-pulse" />
               <div className="space-y-3">
                 <p className="text-[20px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
                 <p className="text-[16px] font-bold text-red-600 leading-snug">
-                  Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
+                  Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica tu dirección antes de confirmar.
                 </p>
               </div>
             </div>
 
-            {/* Order Summary Card */}
             <div className="bg-slate-50 p-6 rounded-[2rem] border-2 border-slate-200 shadow-sm space-y-4">
               <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
                 <ShoppingBag className={cn("h-5 w-5", styles.textActive)} />
                 <p className="text-[14px] font-black text-slate-900 uppercase tracking-tighter">Resumen de tu pedido:</p>
               </div>
               <div className="flex justify-between items-center">
-                <div className="space-y-1 max-w-[70%]">
+                <div className="space-y-1 max-w-[70%] text-left">
                   <p className="text-[13px] font-black text-slate-800 uppercase leading-none">{product?.name}</p>
                   <p className="text-[10px] font-bold text-slate-500 uppercase">Envío a domicilio incluido</p>
                 </div>
@@ -234,13 +220,12 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
             </div>
 
-            {/* Commitment Card */}
             <div className="bg-primary/5 p-6 rounded-[2rem] border-2 border-primary/10 text-center space-y-3 shadow-inner">
               <div className="flex justify-center">
                 <Heart className={cn("h-6 w-6 animate-pulse", styles.textActive)} />
               </div>
               <p className="text-[14px] font-medium text-slate-700 leading-relaxed italic">
-                ✨ Recuerda: Nosotros cubrimos el costo del envío para que tu pedido llegue hasta tu puerta sin cargos adicionales. 🙌
+                ✨ Recuerda: Cubrimos el costo del envío para que tu pedido llegue a tu puerta sin cargos adicionales. 🙌
               </p>
               <p className={cn("text-[14px] font-black uppercase leading-tight", styles.textActive)}>
                 Al confirmar tu compra, te comprometes a recibir y cancelar tu pedido con total confianza. 💖

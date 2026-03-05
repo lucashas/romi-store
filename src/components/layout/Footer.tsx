@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Leaf, ShieldCheck, Mail, Phone, MapPin, MessageSquare } from "lucide-react";
@@ -15,7 +16,6 @@ export function Footer() {
     <footer className="bg-white border-t py-8 pb-24">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center gap-8">
-          {/* Brand Logo & Authority */}
           <div className="flex flex-col items-center gap-1">
             <div className="flex items-center gap-2">
               <div className="bg-primary p-1 rounded-lg text-white">
@@ -31,7 +31,6 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Contact Information */}
           <div className="grid grid-cols-1 gap-4 text-center text-[13px] font-bold text-slate-600">
             <div className="flex items-center justify-center gap-2">
               <div className="bg-primary/10 p-2 rounded-full">
@@ -53,14 +52,12 @@ export function Footer() {
             </div>
           </div>
           
-          {/* TikTok Ads Required Links */}
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] font-black text-slate-400 uppercase tracking-tighter">
             <Link href="/politicas/privacidad" className="hover:text-primary transition-colors underline decoration-primary/20">Política de Privacidad</Link>
             <Link href="/politicas/terminos" className="hover:text-primary transition-colors underline decoration-primary/20">Términos de Servicio</Link>
             <Link href="/politicas/envio" className="hover:text-primary transition-colors underline decoration-primary/20">Políticas de Envío</Link>
           </div>
           
-          {/* Disclaimers for Ad Platforms */}
           <div className="text-center space-y-4 max-w-[420px]">
             <div className="space-y-1">
               <p className="text-[14px] text-slate-500 font-medium">
