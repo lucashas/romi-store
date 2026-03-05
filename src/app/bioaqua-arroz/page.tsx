@@ -16,7 +16,7 @@ const RICE_PRODUCTS: Product[] = [
     name: "1 Kit Piel de Porcelana (6 productos)",
     price: 35.0,
     image: "https://i.imgur.com/aSjVyM2.png",
-    badge: "OFERTA BÁSICA",
+    badge: "OFERTA B&Aacute;SICA",
     description: "Tratamiento completo de 6 pasos",
   },
   {
@@ -24,8 +24,8 @@ const RICE_PRODUCTS: Product[] = [
     name: "2 Kits Piel de Porcelana (12 productos)",
     price: 55.0,
     image: "https://i.imgur.com/aSjVyM2.png",
-    badge: "¡MÁS VENDIDO!",
-    description: "Resultados profesionales • Envío Gratis",
+    badge: "&iexcl;M&Aacute;S VENDIDO!",
+    description: "Resultados profesionales &bull; Env&iacute;o Gratis",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function BioaquaRicePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white pb-10 font-body overflow-x-hidden w-full max-w-[500px] mx-auto shadow-2xl relative border-x border-slate-100">
-      <TopMarquee text="✨ ¡OFERTA LANZAMIENTO PIEL DE PORCELANA! ✨ - 💧 HIDRATACIÓN PROFUNDA - 📦 ENVÍOS A TODO ECUADOR - " className="bg-yellow-600 text-white border-yellow-700" />
+      <TopMarquee text="&iexcl;OFERTA LANZAMIENTO PIEL DE PORCELANA! &bull; HIDRATACI&Oacute;N PROFUNDA &bull; ENV&Iacute;OS A TODO ECUADOR &bull; " className="bg-yellow-600 text-white border-yellow-700" />
 
       <main className="flex-1 w-full">
         <section className="bg-white overflow-hidden w-full">
@@ -66,7 +66,7 @@ export default function BioaquaRicePage() {
               <h1 className="text-4xl font-black text-slate-900 uppercase leading-[0.9] tracking-tighter">
                 KIT PIEL DE <br /><span className="text-yellow-600 italic">PORCELANA</span>
               </h1>
-              <p className="text-lg font-bold text-yellow-600 uppercase tracking-tight">🌾✨ ¡Tu rostro merece brillar!</p>
+              <p className="text-lg font-bold text-yellow-600 uppercase tracking-tight">🌾&iexcl;Tu rostro merece brillar!</p>
             </div>
 
             <div className="grid grid-cols-2 gap-2 px-1" onClick={openPopup}>
@@ -92,8 +92,8 @@ export default function BioaquaRicePage() {
                   { name: "Eye Cream", desc: "cuida la zona de los ojos, reduciendo ojeras." },
                   { name: "Cleanser", desc: "limpia profundamente eliminando impurezas." },
                   { name: "Toner", desc: "equilibra e hidrata, cerrando los poros." },
-                  { name: "Lotion", desc: "aporta hidratación ligera y mejora textura." },
-                  { name: "Cream", desc: "brinda hidratación intensa y elasticidad." },
+                  { name: "Lotion", desc: "aporta hidrataci&oacute;n ligera y mejora textura." },
+                  { name: "Cream", desc: "brinda hidrataci&oacute;n intensa y elasticidad." },
                   { name: "Essence", desc: "potencia la luminosidad y revitaliza." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-2">
@@ -108,7 +108,7 @@ export default function BioaquaRicePage() {
 
             <section className="py-2 space-y-6">
               <h3 className="text-[26px] font-black text-slate-900 text-center uppercase tracking-tighter">
-                💎 ELIGE TU <span className="text-yellow-600">PROMOCIÓN</span> 💎
+                💎 ELIGE TU <span className="text-yellow-600">PROMOCI&Oacute;N</span> 💎
               </h3>
 
               <div className="grid grid-cols-2 gap-3 px-1">
