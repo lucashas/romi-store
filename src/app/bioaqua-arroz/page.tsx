@@ -98,11 +98,6 @@ export default function BioaquaRicePage() {
               </div>
             </section>
 
-            {/* Imagen Informativa de Beneficios */}
-            <div className="px-1" onClick={openPopup}>
-              <img src="https://i.imgur.com/W2P6V5x.png" alt="Beneficios del Arroz" className="w-full h-auto rounded-2xl shadow-md cursor-pointer" />
-            </div>
-
             {/* Promociones */}
             <section className="py-2 space-y-6">
               <h3 className="text-[26px] font-black text-slate-900 text-center uppercase tracking-tighter">
