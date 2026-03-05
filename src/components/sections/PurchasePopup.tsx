@@ -118,11 +118,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-4 text-white text-center flex flex-col items-center gap-1", styles.header)}>
-            <DialogTitle className="text-[19px] font-black uppercase leading-none tracking-tighter">
+          <div className={cn("p-6 text-white text-center flex flex-col items-center gap-3", styles.header)}>
+            <DialogTitle className="text-[20px] font-black uppercase leading-tight tracking-tighter">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="h-[30px] flex items-center justify-center">
+            <div className="h-[45px] w-full flex items-center justify-center">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
@@ -139,8 +139,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
                   <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5" />
                     
-                    {/* Miniatura promocional solicitada como logo al principio */}
-                    <div className="h-14 w-14 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white">
+                    <div className="h-14 w-14 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white shadow-sm">
                       <img 
                         src="https://i.imgur.com/aSjVyM2.png" 
                         alt="Producto" 
