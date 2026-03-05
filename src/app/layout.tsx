@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Consigue una piel de porcelana con el Kit de Arroz Bioaqua. Rutina de 6 pasos para un rostro radiante. ¡Pagas al recibir en todo Ecuador!',
   metadataBase: new URL('https://romi-store.com'),
   alternates: {
-    canonical: '/bioaqua-arroz',
+    canonical: '/',
   },
   icons: {
     icon: 'https://i.imgur.com/aSjVyM2.png',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
     description: 'Rutina completa de 6 pasos para una piel radiante. Envío a todo Ecuador y ¡Pagas al recibir!',
-    url: 'https://romi-store.com/bioaqua-arroz',
+    url: 'https://romi-store.com',
     siteName: 'Romi Store EC',
     images: [
       {
