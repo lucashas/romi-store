@@ -38,8 +38,8 @@ export default function BioaquaRicePage() {
       <TopMarquee text="✨ ¡OFERTA LANZAMIENTO PIEL DE PORCELANA! ✨ - 💧 HIDRATACIÓN PROFUNDA - 📦 ENVÍOS A TODO ECUADOR - " className="bg-yellow-600 text-white border-yellow-700" />
 
       <main className="flex-1 w-full">
-        {/* Banner Principal Informativo */}
         <section className="bg-white overflow-hidden w-full">
+          {/* Banner Principal Informativo */}
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-yellow-100">
               <img src="https://i.imgur.com/tHUWnzw.png" alt="Bioaqua Kit de Arroz Banner" className="w-full h-auto block" />
@@ -69,14 +69,14 @@ export default function BioaquaRicePage() {
               <img src="https://i.imgur.com/aSjVyM2.png" alt="Detalle 2" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
             </div>
 
-            {/* Sección de 6 Pasos con Imagen Informativa con Texto */}
+            {/* Sección de 6 Pasos con Imagen Informativa */}
             <section className="bg-slate-50 rounded-[2rem] p-4 border border-slate-100 space-y-3 text-left">
-              <h3 className="text-[19px] font-black text-slate-900 uppercase leading-none tracking-tighter">
-                BIOAQUA Rice Raw Pulp: <span className="text-yellow-600">6 pasos para una piel radiante</span>
+              <h3 className="text-[19px] font-black text-slate-900 uppercase leading-none tracking-tighter text-center">
+                RUTINA DE <span className="text-yellow-600">6 PASOS</span>
               </h3>
               
               <div className="w-full rounded-2xl overflow-hidden shadow-md border border-slate-100 my-2">
-                <img src="https://i.imgur.com/Ze3pVGV.png" alt="Imagen Informativa de los 6 Pasos Bioaqua Arroz" className="w-full h-auto block" />
+                <img src="https://i.imgur.com/Ze3pVGV.png" alt="6 Pasos Bioaqua" className="w-full h-auto block" />
               </div>
 
               <div className="space-y-1.5 pt-2">
@@ -145,7 +145,6 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
-        {/* Testimonios */}
         <Testimonials 
           title="CLIENTAS FELICES" 
           subtitle="Resultados que hablan por sí solos" 
@@ -153,15 +152,6 @@ export default function BioaquaRicePage() {
           testimonialImageUrl="https://i.imgur.com/PTsQyWM.png" 
         />
 
-        {/* Botón Extra antes de Aliados Logísticos */}
-        <div className="px-4 py-4">
-          <Button onClick={openPopup} size="lg" className="w-full h-18 text-2xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-xl rounded-[2rem] animate-heartbeat border-4 border-white uppercase">
-            <ShoppingCart className="h-8 w-8 mr-3" />
-            ¡ORDENAR AHORA!
-          </Button>
-        </div>
-
-        {/* Aliados Logísticos / Confianza */}
         <section className="py-2 text-center space-y-4 bg-white">
           <div className="grid grid-cols-2 gap-4 px-4">
             <div className="py-2 px-4 bg-slate-50 rounded-[1.2rem] border border-slate-100 flex flex-col items-center gap-1">
