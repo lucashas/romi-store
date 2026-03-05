@@ -2,12 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  output: 'standalone', // Optimización crítica para Firebase App Hosting y evitar errores de build
   eslint: {
-    // Permite el build incluso si hay errores de linting para evitar fallos en el CI
     ignoreDuringBuilds: true,
   },
   typescript: {
-    // Permite el build incluso si hay errores de tipos detectados en el CI
     ignoreBuildErrors: true,
   },
   images: {

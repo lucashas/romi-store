@@ -101,7 +101,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
       phoneNumber: whatsapp,
       message: `PRODUCTO: ${product?.name} | TOTAL: $${product?.price} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
-      landingPageContentId: pathname.replace("/", "") || "bioaqua-v7"
+      landingPageContentId: pathname.replace("/", "") || "bioaqua-arroz"
     };
     try {
       await addDoc(collection(firestore, "leadSubmissions"), orderData);
