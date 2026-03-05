@@ -143,6 +143,31 @@ export default function BioaquaRicePage() {
                   &iexcl;ORDENAR AHORA!
                 </Button>
               </div>
+
+              {/* Nueva sección solicitada */}
+              <div className="pt-6 pb-4 space-y-5 text-center px-2">
+                <div className="space-y-1.5">
+                  <h3 className="text-[22px] font-black text-slate-900 uppercase tracking-tighter leading-none">
+                    BELLEZA NATURAL <br /> <span className="text-yellow-600">RESULTADOS VISIBLES</span>
+                  </h3>
+                  <p className="text-[12px] font-black text-yellow-600 uppercase tracking-widest leading-none">
+                    NUTRICI&Oacute;N Y FRESCURA CON CADA APLICACI&Oacute;N
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3" onClick={openPopup}>
+                  <div className="relative w-full aspect-square overflow-hidden rounded-2xl shadow-xl border-2 border-white cursor-pointer transition-transform active:scale-95">
+                    <Image src="https://i.imgur.com/1izaYPo.png" alt="Belleza Natural 1" fill className="object-cover" sizes="200px" />
+                  </div>
+                  <div className="relative w-full aspect-square overflow-hidden rounded-2xl shadow-xl border-2 border-white cursor-pointer transition-transform active:scale-95">
+                    <Image src="https://i.imgur.com/FdpmjYk.png" alt="Belleza Natural 2" fill className="object-cover" sizes="200px" />
+                  </div>
+                </div>
+
+                <p className="text-[14px] font-medium text-slate-600 leading-relaxed italic px-2">
+                  Descubre el poder del arroz en tu piel. El kit BIOAQUA Rice Raw Pulp ofrece limpieza profunda, hidrataci&oacute;n duradera y un acabado luminoso que realza tu belleza natural. 🌾🌟
+                </p>
+              </div>
             </section>
           </div>
         </section>

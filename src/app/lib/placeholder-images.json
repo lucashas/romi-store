@@ -74,10 +74,16 @@
       "imageHint": "rice beauty kit"
     },
     {
-      "id": "bioaqua-rice-steps",
-      "description": "6 pasos Kit de Arroz Bioaqua",
-      "imageUrl": "https://i.imgur.com/Ze3pVGV.png",
-      "imageHint": "skincare routine steps"
+      "id": "bioaqua-rice-extra-1",
+      "description": "Belleza Natural 1",
+      "imageUrl": "https://i.imgur.com/1izaYPo.png",
+      "imageHint": "skincare results"
+    },
+    {
+      "id": "bioaqua-rice-extra-2",
+      "description": "Belleza Natural 2",
+      "imageUrl": "https://i.imgur.com/FdpmjYk.png",
+      "imageHint": "skincare fresh"
     },
     {
       "id": "checkout-logo",
