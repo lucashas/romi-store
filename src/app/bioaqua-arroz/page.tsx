@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -80,6 +81,11 @@ export default function BioaquaRicePage() {
               <h3 className="text-[22px] font-black text-slate-900 uppercase leading-none tracking-tighter">
                 BIOAQUA Rice Raw Pulp: <span className="text-yellow-600">6 pasos para una piel radiante</span>
               </h3>
+              
+              <div className="w-full rounded-2xl overflow-hidden shadow-md border border-slate-100 my-4">
+                <img src="https://i.imgur.com/Ze3pVGV.png" alt="6 pasos Bioaqua Arroz" className="w-full h-auto block" />
+              </div>
+
               <p className="text-[14px] font-medium text-slate-600 leading-relaxed">
                 Descubre la rutina completa que tu piel necesita con el kit BIOAQUA Rice Raw Pulp. Cada producto está diseñado para hidratar, nutrir y revitalizar con el poder del arroz y ácido hialurónico:
               </p>
