@@ -15,6 +15,7 @@ import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
 import { useRouter, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { AlertTriangle, ShieldCheck } from "lucide-react";
 
 export interface Product {
   id: string;
@@ -118,15 +119,15 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-6 text-white text-center flex flex-col items-center gap-3", styles.header)}>
-            <DialogTitle className="text-[20px] font-black uppercase leading-tight tracking-tighter">
+          <div className={cn("p-6 pb-4 text-white text-center flex flex-col items-center gap-2", styles.header)}>
+            <DialogTitle className="text-[20px] font-black uppercase leading-[0.85] tracking-tighter mb-1">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="h-[45px] w-full flex items-center justify-center">
+            <div className="h-[60px] w-full flex items-center justify-center relative">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
-                className="h-full w-auto object-contain brightness-0 invert" 
+                className="h-full w-auto object-contain brightness-0 invert opacity-100" 
               />
             </div>
           </div>
@@ -199,11 +200,23 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
             </div>
 
+            {/* Tarjeta de Atención */}
+            <div className="bg-red-50 border-2 border-red-100 p-4 rounded-2xl flex items-start gap-3 shadow-sm">
+              <AlertTriangle className="h-6 w-6 text-red-600 shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <p className="text-[14px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
+                <p className="text-[11px] font-bold text-red-600/80 leading-tight">
+                  Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
+                </p>
+              </div>
+            </div>
+
             <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl mt-4", styles.button)}>
               {loading ? "PROCESANDO..." : "¡CONFIRMAR PEDIDO!"}
             </Button>
             
-            <p className="text-[10px] text-center font-bold text-slate-400 uppercase tracking-widest mt-2">
+            <p className="text-[10px] text-center font-bold text-slate-400 uppercase tracking-widest mt-2 flex items-center justify-center gap-1">
+              <ShieldCheck className="h-3 w-3" />
               🔒 Envío 100% Seguro en Ecuador
             </p>
           </form>
