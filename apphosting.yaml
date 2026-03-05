@@ -4,7 +4,7 @@ schemaVersion: v1
 buildConfig:
   memory: 4GiB
 runConfig:
-  memory: 2GiB
+  memory: 4GiB
   cpu: 1
 env:
   - variable: NODE_OPTIONS
