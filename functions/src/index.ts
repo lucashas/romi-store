@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import { Request, Response } from "firebase-functions";
+import { Request, Response } from "express";
 
 /**
  * @fileOverview Punto de entrada para Firebase Functions.

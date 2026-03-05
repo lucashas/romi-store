@@ -77,7 +77,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
   }, [open, products, selectedProduct]);
 
   const ciudadesDisponibles = useMemo(() => {
-    return provincia ? ecuadorData[provincia].sort() : [];
+    return provincia ? (ecuadorData[provincia] || []).sort() : [];
   }, [provincia]);
 
   const handleWhatsappChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +98,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       name: `${nombre.trim()} ${apellido.trim()}`,
       email: `${whatsapp}@romistore.com`,
       phoneNumber: whatsapp,
-      message: `PRODUCTO: ${product?.name} | TOTAL: $${product?.price} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCI&Oacute;N: ${direccion}`,
+      message: `PRODUCTO: ${product?.name} | TOTAL: $${product?.price} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
       landingPageContentId: "bioaqua-arroz"
     };
@@ -107,9 +107,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       setLoading(false);
       onOpenChange(false);
       router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&back=${encodeURIComponent(pathname)}`);
-    } catch (_) {
+    } catch {
       setLoading(false);
-      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente m&aacute;s tarde." });
+      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente más tarde." });
     }
   };
 
