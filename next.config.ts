@@ -4,9 +4,11 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   eslint: {
+    // Permite que el build pase aunque haya advertencias de lint
     ignoreDuringBuilds: true,
   },
   typescript: {
+    // Permite que el build pase aunque haya errores de tipos
     ignoreBuildErrors: true,
   },
   images: {

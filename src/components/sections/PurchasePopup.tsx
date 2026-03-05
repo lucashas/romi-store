@@ -11,8 +11,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { errorEmitter } from "@/firebase/error-emitter";
-import { FirestorePermissionError } from "@/firebase/errors";
 import { useRouter, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { AlertTriangle, ShieldCheck, ShoppingBag, Heart } from "lucide-react";
@@ -109,10 +107,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       setLoading(false);
       onOpenChange(false);
       router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&back=${encodeURIComponent(pathname)}`);
-    } catch (err) {
+    } catch (_) {
       setLoading(false);
-      console.error("Error al enviar lead:", err);
-      errorEmitter.emit("permission-error", new FirestorePermissionError({ path: "leadSubmissions", operation: "create", requestResourceData: orderData }));
+      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente m&aacute;s tarde." });
     }
   };
 
