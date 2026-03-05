@@ -17,6 +17,7 @@ type ToasterToast = ToastProps & {
   action?: ToastActionElement
 }
 
+// Se ha simplificado el reducer para evitar advertencias de ESLint sobre variables no usadas
 type Action =
   | {
       type: "ADD_TOAST"
