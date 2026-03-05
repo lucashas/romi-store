@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { TopMarquee } from "@/components/layout/TopMarquee";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup";
@@ -40,7 +41,14 @@ export default function BioaquaRicePage() {
         <section className="bg-white overflow-hidden w-full">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-yellow-100">
-              <img src="https://i.imgur.com/tHUWnzw.png" alt="Bioaqua Kit de Arroz Banner" className="w-full h-auto block" />
+              <Image 
+                src="https://i.imgur.com/tHUWnzw.png" 
+                alt="Bioaqua Kit de Arroz Banner" 
+                width={500} 
+                height={200} 
+                className="w-full h-auto block" 
+                priority
+              />
             </div>
           </div>
 
@@ -62,8 +70,12 @@ export default function BioaquaRicePage() {
             </div>
 
             <div className="grid grid-cols-2 gap-2 px-1" onClick={openPopup}>
-              <img src="https://i.imgur.com/XFQg77J.png" alt="Detalle 1" className="w-full h-auto rounded-2xl shadow-md border border-slate-100 cursor-pointer" />
-              <img src="https://i.imgur.com/aSjVyM2.png" alt="Detalle 2" className="w-full h-auto rounded-2xl shadow-md border border-slate-100 cursor-pointer" />
+              <div className="relative w-full overflow-hidden rounded-2xl shadow-md border border-slate-100 cursor-pointer">
+                <Image src="https://i.imgur.com/XFQg77J.png" alt="Detalle 1" width={250} height={250} className="w-full h-auto block" />
+              </div>
+              <div className="relative w-full overflow-hidden rounded-2xl shadow-md border border-slate-100 cursor-pointer">
+                <Image src="https://i.imgur.com/aSjVyM2.png" alt="Detalle 2" width={250} height={250} className="w-full h-auto block" />
+              </div>
             </div>
 
             <section className="bg-slate-50 rounded-[2rem] p-4 border border-slate-100 space-y-3 text-left">
@@ -72,7 +84,7 @@ export default function BioaquaRicePage() {
               </h3>
               
               <div className="w-full rounded-2xl overflow-hidden shadow-md border border-slate-100 my-2 cursor-pointer" onClick={openPopup}>
-                <img src="https://i.imgur.com/Ze3pVGV.png" alt="6 Pasos Bioaqua" className="w-full h-auto block" />
+                <Image src="https://i.imgur.com/Ze3pVGV.png" alt="6 Pasos Bioaqua" width={450} height={300} className="w-full h-auto block" />
               </div>
 
               <div className="space-y-1.5 pt-2">
@@ -154,7 +166,13 @@ export default function BioaquaRicePage() {
             </div>
           </div>
           <div className="px-4">
-            <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
+            <Image 
+              src="https://i.imgur.com/bk1DAl0.png" 
+              alt="Sello de Confianza Ecuador" 
+              width={460} 
+              height={100} 
+              className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" 
+            />
           </div>
         </section>
       </main>

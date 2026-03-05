@@ -4,11 +4,11 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   eslint: {
-    // Ignorar errores de ESLint durante el build para evitar que Google Cloud aborte el proceso
-    ignoreDuringBuilds: true,
+    // Activamos para forzar calidad de código antes de subir
+    ignoreDuringBuilds: false,
   },
   typescript: {
-    // Ignorar errores de TypeScript durante el build para asegurar la publicación
+    // Ignorar errores menores de TypeScript durante el build para asegurar la publicación
     ignoreBuildErrors: true,
   },
   images: {

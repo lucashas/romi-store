@@ -1,7 +1,7 @@
-
 "use client";
 
 import { Star } from "lucide-react";
+import Image from "next/image";
 
 interface TestimonialsProps {
   title?: string;
@@ -42,9 +42,11 @@ export function Testimonials({
 
         <div className="max-w-[450px] mx-auto">
           <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-slate-50">
-            <img 
+            <Image 
               src={testimonialImageUrl} 
               alt="Testimonios de clientes" 
+              width={450}
+              height={800}
               className="w-full h-auto block"
             />
           </div>

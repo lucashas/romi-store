@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import Image from "next/image";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -111,6 +111,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&back=${encodeURIComponent(pathname)}`);
     } catch (err) {
       setLoading(false);
+      console.error("Error al enviar lead:", err);
       errorEmitter.emit("permission-error", new FirestorePermissionError({ path: "leadSubmissions", operation: "create", requestResourceData: orderData }));
     }
   };
@@ -124,9 +125,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
             <div className="w-full flex justify-center py-1">
-              <img 
+              <Image 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
+                width={80} 
+                height={80} 
                 className="h-20 w-auto object-contain drop-shadow-xl"
               />
             </div>
@@ -139,8 +142,8 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                 {products.map((p) => (
                   <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5" />
-                    <div className="h-12 w-12 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white">
-                      <img src="https://i.imgur.com/aSjVyM2.png" alt="Kit Bioaqua" className="w-full h-full object-cover" />
+                    <div className="h-12 w-12 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white relative">
+                      <Image src="https://i.imgur.com/aSjVyM2.png" alt="Kit Bioaqua" fill className="object-cover" sizes="48px" />
                     </div>
                     <div className="flex-1 min-w-0 text-left">
                       <p className="font-black text-[14px] text-slate-900 uppercase leading-none mb-1">{p.name}</p>
