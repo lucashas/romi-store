@@ -35,12 +35,10 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.helloWorld = void 0;
 const functions = __importStar(require("firebase-functions"));
-const admin = __importStar(require("firebase-admin"));
 /**
  * @fileOverview Punto de entrada para Firebase Functions.
- * Inicializa el SDK de Admin y exporta las funciones necesarias.
+ * Implementa una función de prueba helloWorld con tipado estricto.
  */
-admin.initializeApp();
 exports.helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Romi Store EC Functions: Online");
+    response.send("Hello from Firebase!");
 });
