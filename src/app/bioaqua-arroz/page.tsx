@@ -130,10 +130,16 @@ export default function BioaquaRicePage() {
                 <img src="https://i.imgur.com/qOmlzPP.png" alt="Garantía de Satisfacción" className="w-full h-auto rounded-2xl shadow-lg border border-slate-100" />
               </div>
 
-              <Button onClick={openPopup} size="lg" className="w-full h-18 text-2xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-xl rounded-[2rem] animate-heartbeat border-4 border-white uppercase">
-                <ShoppingCart className="h-8 w-8 mr-3" />
-                ¡ORDENAR AHORA!
-              </Button>
+              <div className="px-4 py-2">
+                <Button onClick={openPopup} size="lg" className="w-full h-18 text-2xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-xl rounded-[2rem] animate-heartbeat border-4 border-white uppercase">
+                  <ShoppingCart className="h-8 w-8 mr-3" />
+                  ¡ORDENAR AHORA!
+                </Button>
+              </div>
+
+              <div className="px-[5px] mt-2 cursor-pointer" onClick={openPopup}>
+                <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
+              </div>
             </section>
           </div>
         </section>
@@ -150,10 +156,6 @@ export default function BioaquaRicePage() {
             <ShoppingCart className="h-8 w-8 mr-3" />
             ¡ORDENAR AHORA!
           </Button>
-        </div>
-
-        <div className="px-[5px] mb-6 cursor-pointer" onClick={openPopup}>
-          <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
         </div>
 
         <section className="py-2 text-center space-y-4 bg-white">
