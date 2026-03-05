@@ -98,9 +98,9 @@ export default function BioaquaRicePage() {
               </div>
             </section>
 
-            {/* Imagen Informativa de Beneficios (Si tienes la URL ponla aquí) */}
-            <div className="px-1">
-              <img src="https://i.imgur.com/W2P6V5x.png" alt="Beneficios del Arroz" className="w-full h-auto rounded-2xl shadow-md" />
+            {/* Imagen Informativa de Beneficios */}
+            <div className="px-1" onClick={openPopup}>
+              <img src="https://i.imgur.com/W2P6V5x.png" alt="Beneficios del Arroz" className="w-full h-auto rounded-2xl shadow-md cursor-pointer" />
             </div>
 
             {/* Promociones */}
