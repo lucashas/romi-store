@@ -1,6 +1,6 @@
-
 "use client";
 
+import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 interface HeroProps {
@@ -14,11 +14,14 @@ export function Hero({ onOpenPopup }: HeroProps) {
   return (
     <section className="bg-[#4a2c1d]">
       <div className="px-[5px] pt-[5px] cursor-pointer" onClick={onOpenPopup}>
-        <div className="w-full overflow-hidden rounded-xl">
-          <img 
+        <div className="w-full overflow-hidden rounded-xl relative">
+          <Image 
             src={heroImgUrl} 
-            alt="MaryRuth's Organics - Promo TikTok"
+            alt="MaryRuth&apos;s Organics - Promo TikTok"
+            width={500}
+            height={300}
             className="w-full h-auto block"
+            priority
           />
         </div>
       </div>
@@ -34,7 +37,7 @@ export function Hero({ onOpenPopup }: HeroProps) {
               <span className="h-px flex-1 bg-white/20" />
             </div>
             <p className="text-center text-white font-bold text-[11px] uppercase tracking-[0.1em] leading-tight">
-              ENVÍO GRATIS • ABSORCIÓN INMEDIATA • 100% ORGÁNICO
+              ENV&Iacute;O GRATIS &bull; ABSORCI&Oacute;N INMEDIATA &bull; 100% ORG&Aacute;NICO
             </p>
           </div>
         </div>

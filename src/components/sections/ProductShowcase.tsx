@@ -1,6 +1,6 @@
-
 "use client";
 
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -15,10 +15,12 @@ export function ProductShowcase({ onOpenPopup }: ProductShowcaseProps) {
   return (
     <section className="bg-white">
       <div className="px-[5px]">
-        <div className="w-full overflow-hidden rounded-xl cursor-pointer" onClick={onOpenPopup}>
-          <img 
+        <div className="w-full overflow-hidden rounded-xl cursor-pointer relative" onClick={onOpenPopup}>
+          <Image 
             src={imgUrl} 
-            alt="Detalle Producto MaryRuth's"
+            alt="Detalle Producto MaryRuth&apos;s"
+            width={500}
+            height={300}
             className="w-full h-auto block"
           />
         </div>
@@ -30,7 +32,7 @@ export function ProductShowcase({ onOpenPopup }: ProductShowcaseProps) {
             Tu Ritual de <span className="text-primary">30 Segundos</span>
           </h2>
           <p className="text-[14px] text-muted-foreground font-medium italic leading-snug">
-            "La forma más deliciosa de nutrir tu cuerpo sin pastillas."
+            &quot;La forma m&aacute;s deliciosa de nutrir tu cuerpo sin pastillas.&quot;
           </p>
           <div className="pt-2">
             <button 

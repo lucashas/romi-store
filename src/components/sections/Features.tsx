@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -17,7 +16,6 @@ export function Features({ onOpenPopup }: FeaturesProps) {
 
   return (
     <section id="caracteristicas" className="bg-white">
-      {/* Botón CTA Superior */}
       <div className="px-[10px] mb-[15px]">
         <Button 
           onClick={onOpenPopup}
@@ -25,24 +23,24 @@ export function Features({ onOpenPopup }: FeaturesProps) {
           className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat"
         >
           <ShoppingCart className="h-6 w-6" />
-          ¡QUIERO MI COMPRA!
+          &iexcl;QUIERO MI COMPRA!
         </Button>
       </div>
 
-      {/* Imagen Impacto Cabello */}
       <div className="px-[5px]">
-        <div className="w-full overflow-hidden rounded-xl cursor-pointer" onClick={onOpenPopup}>
+        <div className="w-full overflow-hidden rounded-xl cursor-pointer relative" onClick={onOpenPopup}>
           {featHairHero && (
-            <img 
+            <Image 
               src={featHairHero.imageUrl} 
-              alt="Impacto MaryRuth's Cabello"
+              alt="Impacto MaryRuth&apos;s Cabello"
+              width={500}
+              height={300}
               className="w-full h-auto block"
             />
           )}
         </div>
       </div>
 
-      {/* Botón CTA Intermedio */}
       <div className="px-[10px] mt-[15px]">
         <Button 
           onClick={onOpenPopup}
@@ -50,45 +48,45 @@ export function Features({ onOpenPopup }: FeaturesProps) {
           className="w-full h-16 text-xl font-black bg-accent hover:bg-accent/90 shadow-xl rounded-2xl animate-heartbeat"
         >
           <ShoppingCart className="h-6 w-6" />
-          ¡QUIERO MI COMPRA!
+          &iexcl;QUIERO MI COMPRA!
         </Button>
       </div>
 
-      {/* Imagen Extra antes de Resultados */}
       <div className="px-[5px] mt-[15px]">
-        <div className="w-full overflow-hidden rounded-xl cursor-pointer" onClick={onOpenPopup}>
+        <div className="w-full overflow-hidden rounded-xl cursor-pointer relative" onClick={onOpenPopup}>
           {featHairExtra && (
-            <img 
+            <Image 
               src={featHairExtra.imageUrl} 
-              alt="Resultados Extra MaryRuth's"
+              alt="Resultados Extra MaryRuth&apos;s"
+              width={500}
+              height={300}
               className="w-full h-auto block"
             />
           )}
         </div>
       </div>
 
-      {/* Detalles Resultados */}
       <div className="py-[20px] bg-white mt-[10px]">
         <div className="container mx-auto px-[15px] space-y-[15px]">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-black text-[11px] tracking-widest uppercase">
-            < ShieldCheck className="h-5 w-5" />
+            <ShieldCheck className="h-5 w-5" />
             RESULTADOS COMPROBADOS
           </div>
           
           <h2 className="text-3xl font-black text-foreground leading-tight uppercase">
-            CABELLO MÁS LARGO <br />
+            CABELLO M&Aacute;S LARGO <br />
             <span className="text-primary italic">Y PIEL DE PORCELANA</span>
           </h2>
           
           <p className="text-[15px] text-muted-foreground font-medium leading-relaxed">
-            Nuestra Biotina con Lustriva® está diseñada para quienes no se conforman con menos. Verás la diferencia en tu espejo desde la primera botella.
+            Nuestra Biotina con Lustriva&reg; est&aacute; dise&ntilde;ada para quienes no se conforman con menos. Ver&aacute;s la diferencia en tu espejo desde la primera botella.
           </p>
           
           <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden shadow-xl border-4 border-secondary/20">
             {featHair && (
               <Image 
                 src={featHair.imageUrl} 
-                alt="Resultados MaryRuth's"
+                alt="Resultados MaryRuth&apos;s"
                 fill
                 className="object-cover"
                 sizes="500px"
