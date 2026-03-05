@@ -4,8 +4,8 @@ import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
-  title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua Ecuador',
-  description: 'Consigue una piel de porcelana con el Kit de Arroz Bioaqua. Rutina de 6 pasos para un rostro radiante. ¡Pagas al recibir en todo Ecuador!',
+  title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
+  description: 'Consigue una piel de porcelana con el Kit de Arroz Bioaqua. Rutina completa para un rostro radiante. ¡Pagas al recibir en todo Ecuador!',
   metadataBase: new URL('https://romi-store.com'),
   alternates: {
     canonical: '/',

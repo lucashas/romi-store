@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -14,7 +15,7 @@ const RICE_PRODUCTS: Product[] = [
     id: "bioaqua_rice_1",
     name: "1 Kit Piel de Porcelana (6 productos)",
     price: 35.0,
-    image: "https://i.imgur.com/tHUWnzw.png",
+    image: "https://i.imgur.com/aSjVyM2.png",
     badge: "OFERTA BÁSICA",
     description: "Tratamiento completo de 6 pasos",
   },
@@ -22,7 +23,7 @@ const RICE_PRODUCTS: Product[] = [
     id: "bioaqua_rice_2",
     name: "2 Kits Piel de Porcelana (12 productos)",
     price: 55.0,
-    image: "https://i.imgur.com/tHUWnzw.png",
+    image: "https://i.imgur.com/aSjVyM2.png",
     badge: "¡MÁS VENDIDO!",
     description: "Resultados profesionales • Envío Gratis",
   },
@@ -38,7 +39,6 @@ export default function BioaquaRicePage() {
 
       <main className="flex-1 w-full">
         <section className="bg-white overflow-hidden w-full">
-          {/* Hero Image */}
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-yellow-100">
               <img src="https://i.imgur.com/tHUWnzw.png" alt="Bioaqua Kit de Arroz" className="w-full h-auto block" />
@@ -46,7 +46,6 @@ export default function BioaquaRicePage() {
           </div>
 
           <div className="p-4 text-center space-y-4">
-            {/* Trust Badges and Stars */}
             <div className="flex justify-center items-center gap-3">
               <div className="flex gap-0.5">
                 {[1, 2, 3, 4, 5].map((i) => (
@@ -56,7 +55,6 @@ export default function BioaquaRicePage() {
               <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest">(+1.200 VENTAS)</span>
             </div>
 
-            {/* Headline */}
             <div className="space-y-1">
               <h1 className="text-4xl font-black text-slate-900 uppercase leading-[0.9] tracking-tighter">
                 KIT PIEL DE <br /><span className="text-yellow-600 italic">PORCELANA</span>
@@ -64,20 +62,11 @@ export default function BioaquaRicePage() {
               <p className="text-lg font-bold text-yellow-600 uppercase tracking-tight">🌾✨ ¡Tu rostro merece brillar!</p>
             </div>
 
-            {/* Benefit Showcase Images */}
             <div className="grid grid-cols-2 gap-2 px-1">
               <img src="https://i.imgur.com/XFQg77J.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
               <img src="https://i.imgur.com/aSjVyM2.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" />
             </div>
 
-            {/* Intro Text */}
-            <div className="text-left px-2">
-              <p className="text-[14px] font-medium text-slate-700 leading-relaxed">
-                Disfruta de una rutina completa que limpia, hidrata y nutre tu rostro con el poder del arroz y ácido hialurónico. Resultados visibles en pocos días. 💧🌸
-              </p>
-            </div>
-
-            {/* Step-by-Step Section */}
             <section className="bg-slate-50 rounded-[2rem] p-4 border border-slate-100 space-y-3 text-left">
               <h3 className="text-[19px] font-black text-slate-900 uppercase leading-none tracking-tighter">
                 BIOAQUA Rice Raw Pulp: <span className="text-yellow-600">6 pasos para una piel radiante</span>
@@ -106,7 +95,6 @@ export default function BioaquaRicePage() {
               </div>
             </section>
 
-            {/* Pricing / Offers Section */}
             <section className="py-2 space-y-6">
               <h3 className="text-[26px] font-black text-slate-900 text-center uppercase tracking-tighter">
                 💎 ELIGE TU <span className="text-yellow-600">PROMOCIÓN</span> 💎
@@ -150,17 +138,6 @@ export default function BioaquaRicePage() {
           </div>
         </section>
 
-        <div className="p-2 text-center space-y-1">
-          <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tighter leading-none">
-            Belleza natural, <span className="text-yellow-600">resultados visibles</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2 px-6 mb-4">
-          <img src="https://i.imgur.com/1izaYPo.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" onClick={openPopup} />
-          <img src="https://i.imgur.com/FdpmjYk.png" className="w-full h-auto rounded-2xl shadow-md border border-slate-100" onClick={openPopup} />
-        </div>
-
         <Testimonials 
           title="CLIENTAS FELICES" 
           subtitle="Resultados que hablan por sí solos" 
@@ -179,7 +156,6 @@ export default function BioaquaRicePage() {
           <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
         </div>
 
-        {/* Final Trust Badges - Compactos */}
         <section className="py-2 text-center space-y-4 bg-white">
           <div className="grid grid-cols-2 gap-4 px-4">
             <div className="py-2 px-4 bg-slate-50 rounded-[1.2rem] border border-slate-100 flex flex-col items-center gap-1">
