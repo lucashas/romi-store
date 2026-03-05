@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -39,7 +38,6 @@ export default function BioaquaRicePage() {
 
       <main className="flex-1 w-full">
         <section className="bg-white overflow-hidden w-full">
-          {/* Banner Principal Informativo */}
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border-2 border-yellow-100">
               <img src="https://i.imgur.com/tHUWnzw.png" alt="Bioaqua Kit de Arroz Banner" className="w-full h-auto block" />
@@ -63,13 +61,11 @@ export default function BioaquaRicePage() {
               <p className="text-lg font-bold text-yellow-600 uppercase tracking-tight">🌾✨ ¡Tu rostro merece brillar!</p>
             </div>
 
-            {/* Imágenes de detalle informativas */}
             <div className="grid grid-cols-2 gap-2 px-1" onClick={openPopup}>
               <img src="https://i.imgur.com/XFQg77J.png" alt="Detalle 1" className="w-full h-auto rounded-2xl shadow-md border border-slate-100 cursor-pointer" />
               <img src="https://i.imgur.com/aSjVyM2.png" alt="Detalle 2" className="w-full h-auto rounded-2xl shadow-md border border-slate-100 cursor-pointer" />
             </div>
 
-            {/* Sección de 6 Pasos con Imagen Informativa */}
             <section className="bg-slate-50 rounded-[2rem] p-4 border border-slate-100 space-y-3 text-left">
               <h3 className="text-[19px] font-black text-slate-900 uppercase leading-none tracking-tighter text-center">
                 RUTINA DE <span className="text-yellow-600">6 PASOS</span>
@@ -98,7 +94,6 @@ export default function BioaquaRicePage() {
               </div>
             </section>
 
-            {/* Promociones */}
             <section className="py-2 space-y-6">
               <h3 className="text-[26px] font-black text-slate-900 text-center uppercase tracking-tighter">
                 💎 ELIGE TU <span className="text-yellow-600">PROMOCIÓN</span> 💎
