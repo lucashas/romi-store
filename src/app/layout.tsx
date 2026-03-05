@@ -31,12 +31,6 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
-    description: 'Piel de porcelana al instante. Envío a todo Ecuador.',
-    images: ['https://i.imgur.com/aSjVyM2.png'],
-  },
 };
 
 export default function RootLayout({
