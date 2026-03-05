@@ -83,16 +83,16 @@ export default function BioaquaRicePage() {
               </div>
 
               <p className="text-[13px] font-medium text-slate-600 leading-tight">
-                Descubre la rutina completa que tu piel necesita para un acabado profesional:
+                Descubre la rutina completa que tu piel necesita con el kit BIOAQUA Rice Raw Pulp. Cada producto está diseñado para hidratar, nutrir y revitalizar con el poder del arroz y ácido hialurónico:
               </p>
               <div className="space-y-1.5">
                 {[
-                  { name: "Eye Cream", desc: "cuida la delicada zona de los ojos." },
-                  { name: "Cleanser", desc: "limpia profundamente impurezas." },
-                  { name: "Toner", desc: "equilibra e hidrata poros." },
-                  { name: "Lotion", desc: "hidratación ligera y textura suave." },
-                  { name: "Cream", desc: "hidratación intensa y elasticidad." },
-                  { name: "Essence", desc: "potencia la luminosidad y revitaliza." }
+                  { name: "Eye Cream", desc: "cuida la delicada zona de los ojos, reduciendo líneas finas y ojeras." },
+                  { name: "Cleanser", desc: "limpia profundamente, eliminando impurezas y dejando la piel fresca." },
+                  { name: "Toner", desc: "equilibra, hidrata y ayuda a reducir la apariencia de poros." },
+                  { name: "Lotion", desc: "aporta hidratación ligera y mejora la textura de la piel." },
+                  { name: "Cream", desc: "con ácido hialurónico, brinda hidratación intensa y elasticidad." },
+                  { name: "Essence", desc: "concentrado nutritivo que potencia la luminosidad y revitaliza el rostro." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-2">
                     <CheckCircle2 className="h-4 w-4 text-yellow-600 shrink-0 mt-0.5" />
@@ -102,6 +102,9 @@ export default function BioaquaRicePage() {
                   </div>
                 ))}
               </div>
+              <p className="text-[13px] font-medium text-slate-600 leading-tight mt-2">
+                Un kit pensado para transformar tu rutina diaria en un ritual de belleza que deja tu piel más suave, uniforme y saludable. 🌸✨
+              </p>
             </section>
 
             <section className="py-2 space-y-5">
@@ -110,7 +113,6 @@ export default function BioaquaRicePage() {
               </h3>
 
               <div className="grid grid-cols-2 gap-3 px-1">
-                {/* Oferta 1 */}
                 <div onClick={openPopup} className="relative bg-white p-4 pt-7 rounded-[2.5rem] border-2 border-slate-100 shadow-xl text-center space-y-1 cursor-pointer transition-transform active:scale-95 overflow-hidden">
                   <div className="absolute top-0 left-0 w-full bg-slate-100 py-0.5">
                     <p className="text-[9px] font-black text-slate-500 uppercase tracking-tighter">OFERTA BÁSICA</p>
@@ -123,7 +125,6 @@ export default function BioaquaRicePage() {
                   <p className="text-[10px] font-black text-yellow-600 uppercase italic">Envío Gratis</p>
                 </div>
 
-                {/* Oferta 2 Destacada */}
                 <div onClick={openPopup} className="relative bg-yellow-50 p-4 pt-7 rounded-[2.5rem] border-2 border-yellow-600 shadow-xl text-center space-y-1 cursor-pointer transition-transform active:scale-95 overflow-hidden">
                   <div className="absolute top-0 left-0 w-full bg-yellow-600 py-0.5">
                     <p className="text-[9px] font-black text-white uppercase tracking-tighter">¡MÁS VENDIDO!</p>
@@ -181,14 +182,14 @@ export default function BioaquaRicePage() {
           <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
         </div>
 
-        <section className="py-4 text-center space-y-4 bg-white">
+        <section className="py-2 text-center space-y-4 bg-white">
           <div className="grid grid-cols-2 gap-4 px-4">
-            <div className="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 flex flex-col items-center gap-3">
-              <ShieldCheck className="h-10 w-10 text-yellow-600" />
+            <div className="py-3 px-4 bg-slate-50 rounded-[2rem] border border-slate-100 flex flex-col items-center gap-2">
+              <ShieldCheck className="h-8 w-8 text-yellow-600" />
               <p className="text-[14px] font-black uppercase text-slate-800">100% Original</p>
             </div>
-            <div className="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 flex flex-col items-center gap-3">
-              <ShoppingCart className="h-10 w-10 text-yellow-600" />
+            <div className="py-3 px-4 bg-slate-50 rounded-[2rem] border border-slate-100 flex flex-col items-center gap-2">
+              <ShoppingCart className="h-8 w-8 text-yellow-600" />
               <p className="text-[14px] font-black uppercase text-slate-800">Paga al Recibir</p>
             </div>
           </div>
