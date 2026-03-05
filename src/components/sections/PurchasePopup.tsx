@@ -123,7 +123,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
             <DialogTitle className="text-[20px] font-black uppercase leading-[0.85] tracking-tighter mb-1">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="h-[65px] w-full flex items-center justify-center">
+            <div className="h-[60px] w-full flex items-center justify-center">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
@@ -173,7 +173,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
 
               <div className="space-y-1">
-                <span className={styles.label}>Número de WhatsApp</span>
+                <span className={styles.label}>Número de WhatsApp (para notificaciones de envío)</span>
                 <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
               </div>
 
@@ -195,17 +195,19 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
 
               <div className="space-y-1">
-                <span className={styles.label}>Dirección Exacta</span>
+                <span className={styles.label}>Dirección Entrega: (2 calles y una referencia para el envío a domicilio)</span>
                 <Input placeholder="Calle Principal y Secundaria" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+                <p className="text-[10px] text-slate-400 font-medium leading-tight mt-1 px-1">
+                  Ejemplo: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, # 23-3, color blanco, barrio La Pradera bloque #...
+                </p>
               </div>
             </div>
 
-            {/* Tarjeta de Atención Mejorada */}
             <div className="bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] flex flex-col items-center gap-3 shadow-md text-center">
               <AlertTriangle className="h-8 w-8 text-red-600 animate-pulse" />
               <div className="space-y-2">
-                <p className="text-[17px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
-                <p className="text-[13px] font-bold text-red-600 leading-tight">
+                <p className="text-[20px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
+                <p className="text-[15px] font-bold text-red-600 leading-tight">
                   Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
                 </p>
               </div>
@@ -225,3 +227,4 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     </Dialog>
   );
 }
+
