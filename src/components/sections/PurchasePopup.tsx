@@ -15,7 +15,7 @@ import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
 import { useRouter, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { AlertTriangle, ShieldCheck } from "lucide-react";
+import { AlertTriangle, ShieldCheck, ShoppingBag } from "lucide-react";
 
 export interface Product {
   id: string;
@@ -213,6 +213,23 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
             </div>
 
+            <div className="bg-slate-50 p-6 rounded-[2rem] border-2 border-slate-200 shadow-sm space-y-4">
+              <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
+                <ShoppingBag className={cn("h-5 w-5", styles.textActive)} />
+                <p className="text-[14px] font-black text-slate-900 uppercase tracking-tighter">Resumen de tu pedido:</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <div className="space-y-1 max-w-[70%]">
+                  <p className="text-[13px] font-black text-slate-800 uppercase leading-none">{product?.name}</p>
+                  <p className="text-[10px] font-bold text-slate-500 uppercase">Envío a domicilio incluido</p>
+                </div>
+                <div className="text-right">
+                  <p className={cn("text-[26px] font-black tracking-tighter leading-none", styles.textActive)}>${product?.price.toFixed(0)}</p>
+                  <p className="text-[10px] font-black text-green-600 uppercase">Total a pagar</p>
+                </div>
+              </div>
+            </div>
+
             <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl mt-4", styles.button)}>
               {loading ? "PROCESANDO..." : "¡CONFIRMAR PEDIDO!"}
             </Button>
@@ -227,4 +244,3 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     </Dialog>
   );
 }
-
