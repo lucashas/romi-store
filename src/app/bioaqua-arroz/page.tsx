@@ -78,12 +78,12 @@ export default function BioaquaRicePage() {
 
               <div className="space-y-1.5">
                 {[
-                  { name: "Eye Cream", desc: "cuida la delicada zona de los ojos, reduciendo ojeras." },
+                  { name: "Eye Cream", desc: "cuida la zona de los ojos, reduciendo ojeras." },
                   { name: "Cleanser", desc: "limpia profundamente eliminando impurezas." },
                   { name: "Toner", desc: "equilibra e hidrata, cerrando los poros." },
-                  { name: "Lotion", desc: "aporta hidratación ligera y mejora la textura." },
+                  { name: "Lotion", desc: "aporta hidratación ligera y mejora textura." },
                   { name: "Cream", desc: "brinda hidratación intensa y elasticidad." },
-                  { name: "Essence", desc: "potencia la luminosidad y revitaliza el rostro." }
+                  { name: "Essence", desc: "potencia la luminosidad y revitaliza." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-2">
                     <CheckCircle2 className="h-4 w-4 text-yellow-600 shrink-0 mt-0.5" />
@@ -126,19 +126,11 @@ export default function BioaquaRicePage() {
                 </div>
               </div>
 
-              <div className="px-[5px] mt-2 cursor-pointer" onClick={openPopup}>
-                <img src="https://i.imgur.com/qOmlzPP.png" alt="Garantía de Satisfacción" className="w-full h-auto rounded-2xl shadow-lg border border-slate-100" />
-              </div>
-
               <div className="px-4 py-2">
                 <Button onClick={openPopup} size="lg" className="w-full h-18 text-2xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-xl rounded-[2rem] animate-heartbeat border-4 border-white uppercase">
                   <ShoppingCart className="h-8 w-8 mr-3" />
                   ¡ORDENAR AHORA!
                 </Button>
-              </div>
-
-              <div className="px-[5px] mt-2 cursor-pointer" onClick={openPopup}>
-                <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
               </div>
             </section>
           </div>
@@ -168,6 +160,9 @@ export default function BioaquaRicePage() {
               <ShoppingCart className="h-6 w-6 text-yellow-600" />
               <p className="text-[12px] font-black uppercase text-slate-800">Paga al Recibir</p>
             </div>
+          </div>
+          <div className="px-4">
+            <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
           </div>
         </section>
       </main>

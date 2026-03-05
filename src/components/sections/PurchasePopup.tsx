@@ -165,7 +165,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                 </div>
               </div>
               <div className="space-y-1">
-                <span className={styles.label}>Número de WhatsApp (notificaciones)</span>
+                <span className={styles.label}>Número de WhatsApp (10 dígitos)</span>
                 <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -185,10 +185,10 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                 </div>
               </div>
               <div className="space-y-1">
-                <span className={styles.label}>Dirección Entrega: (2 calles y referencia)</span>
-                <Input placeholder="Calle Principal y Secundaria" required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+                <span className={styles.label}>Dirección (Calle 1, Calle 2 y Referencia)</span>
+                <Input placeholder="Ej. Av. Amazonas y Villarroel..." required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
                 <p className="text-[10px] text-slate-400 font-medium leading-tight mt-1 px-1 italic">
-                  Ej: Av. Vicente y Jose Albaca al frente del supermaxi casa de 2 pisos, # 23-3, blanca, barrio La Pradera...
+                  Ej: Casa blanca de 2 pisos, frente a la farmacia, # 23-3, barrio La Pradera...
                 </p>
               </div>
             </div>
@@ -198,7 +198,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               <div className="space-y-3">
                 <p className="text-[20px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
                 <p className="text-[16px] font-bold text-red-600 leading-snug">
-                  Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica tu dirección antes de confirmar.
+                  Tu pedido únicamente será despachado si tus datos están completos. Verifica tu dirección antes de confirmar.
                 </p>
               </div>
             </div>
@@ -211,7 +211,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               <div className="flex justify-between items-center">
                 <div className="space-y-1 max-w-[70%] text-left">
                   <p className="text-[13px] font-black text-slate-800 uppercase leading-none">{product?.name}</p>
-                  <p className="text-[10px] font-bold text-slate-500 uppercase">Envío a domicilio incluido</p>
+                  <p className="text-[10px] font-bold text-slate-500 uppercase">Envío gratis incluido</p>
                 </div>
                 <div className="text-right">
                   <p className={cn("text-[26px] font-black tracking-tighter leading-none", styles.textActive)}>${product?.price.toFixed(0)}</p>
@@ -225,10 +225,10 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                 <Heart className={cn("h-6 w-6 animate-pulse", styles.textActive)} />
               </div>
               <p className="text-[14px] font-medium text-slate-700 leading-relaxed italic">
-                ✨ Recuerda: Cubrimos el costo del envío para que tu pedido llegue a tu puerta sin cargos adicionales. 🙌
+                ✨ Recuerda: Al confirmar, te comprometes a recibir y cancelar tu pedido al repartidor con total confianza.
               </p>
               <p className={cn("text-[14px] font-black uppercase leading-tight", styles.textActive)}>
-                Al confirmar tu compra, te comprometes a recibir y cancelar tu pedido con total confianza. 💖
+                ¡ENVÍO 100% SEGURO Y GARANTIZADO! 💖
               </p>
             </div>
 
@@ -238,7 +238,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
             
             <p className="text-[10px] text-center font-bold text-slate-400 uppercase tracking-widest mt-2 flex items-center justify-center gap-1">
               <ShieldCheck className="h-3 w-3" />
-              🔒 Envío 100% Seguro en Ecuador
+              🔒 Compra protegida en Ecuador
             </p>
           </form>
         </div>
