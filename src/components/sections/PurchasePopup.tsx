@@ -122,7 +122,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
             <DialogTitle className="text-[19px] font-black uppercase leading-none tracking-tighter">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="h-[35px] flex items-center justify-center">
+            <div className="h-[30px] flex items-center justify-center">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
@@ -132,22 +132,27 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
           </div>
 
           <form onSubmit={handleSubmit} className="p-5 space-y-6 bg-white pb-10">
-            {/* Imagen promocional al inicio */}
-            <div className="w-full rounded-2xl overflow-hidden shadow-md border-2 border-slate-100">
-              <img src="https://i.imgur.com/aSjVyM2.png" alt="Oferta Especial" className="w-full h-auto block" />
-            </div>
-
             <div className="space-y-4">
               <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">1. Selecciona tu oferta:</p>
               <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
                 {products.map((p) => (
-                  <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-4 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
+                  <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5" />
-                    <div className="flex-1 min-w-0 text-left">
-                      <p className="font-black text-[15px] text-slate-900 uppercase leading-tight">{p.name}</p>
-                      <p className="text-[11px] text-slate-400 font-bold uppercase">{p.description}</p>
+                    
+                    {/* Miniatura promocional solicitada como logo al principio */}
+                    <div className="h-14 w-14 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white">
+                      <img 
+                        src="https://i.imgur.com/aSjVyM2.png" 
+                        alt="Producto" 
+                        className="w-full h-full object-cover" 
+                      />
                     </div>
-                    <p className={cn("font-black text-[22px] tracking-tighter", styles.textActive)}>${p.price.toFixed(0)}</p>
+
+                    <div className="flex-1 min-w-0 text-left">
+                      <p className="font-black text-[14px] text-slate-900 uppercase leading-none mb-1">{p.name}</p>
+                      <p className="text-[10px] text-slate-400 font-bold uppercase leading-tight">{p.description}</p>
+                    </div>
+                    <p className={cn("font-black text-[20px] tracking-tighter", styles.textActive)}>${p.price.toFixed(0)}</p>
                   </Label>
                 ))}
               </RadioGroup>
