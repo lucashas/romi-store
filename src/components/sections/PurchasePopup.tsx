@@ -118,16 +118,16 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] bg-white mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl">
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          {/* Header with Title and Logo */}
-          <div className={cn("p-6 pb-4 text-white text-center flex flex-col items-center gap-3", styles.header)}>
-            <DialogTitle className="text-[20px] font-black uppercase leading-tight tracking-tighter">
+          {/* Header with Title and Logo - Mejorado y elegante */}
+          <div className={cn("p-6 pb-6 text-white text-center flex flex-col items-center gap-4", styles.header)}>
+            <DialogTitle className="text-[22px] font-black uppercase leading-tight tracking-tighter">
               ¡SÍ, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center py-1">
               <img 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
-                className="h-14 w-auto object-contain"
+                className="h-20 w-auto object-contain drop-shadow-xl"
               />
             </div>
           </div>
@@ -205,12 +205,12 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "oran
               </div>
             </div>
 
-            {/* Attention Card */}
+            {/* Attention Card - Centrada y Texto Grande */}
             <div className="bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] flex flex-col items-center gap-3 shadow-md text-center">
-              <AlertTriangle className="h-8 w-8 text-red-600 animate-pulse" />
-              <div className="space-y-2">
-                <p className="text-[18px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
-                <p className="text-[15px] font-bold text-red-600 leading-tight">
+              <AlertTriangle className="h-10 w-10 text-red-600 animate-pulse" />
+              <div className="space-y-3">
+                <p className="text-[20px] font-black text-red-700 uppercase leading-none">⚠️ ATENCIÓN ⚠️</p>
+                <p className="text-[16px] font-bold text-red-600 leading-snug">
                   Tu pedido únicamente podrá salir de la bodega si tus datos están completos. Por favor, verifica que tu dirección esté correcta antes de continuar.
                 </p>
               </div>

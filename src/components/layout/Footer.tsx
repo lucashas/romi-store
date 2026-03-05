@@ -53,12 +53,11 @@ export function Footer() {
             </div>
           </div>
           
-          {/* TikTok Ads Required Links */}
+          {/* TikTok Ads Required Links - Rutas reales para cumplimiento */}
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] font-black text-slate-400 uppercase tracking-tighter">
-            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/20">Política de Privacidad</Link>
-            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/20">Términos de Servicio</Link>
-            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/20">Políticas de Envío</Link>
-            <Link href="#" className="hover:text-primary transition-colors underline decoration-primary/20">Reembolsos</Link>
+            <Link href="/politicas/privacidad" className="hover:text-primary transition-colors underline decoration-primary/20">Política de Privacidad</Link>
+            <Link href="/politicas/terminos" className="hover:text-primary transition-colors underline decoration-primary/20">Términos de Servicio</Link>
+            <Link href="/politicas/envio" className="hover:text-primary transition-colors underline decoration-primary/20">Políticas de Envío</Link>
           </div>
           
           {/* Disclaimers for Ad Platforms */}
