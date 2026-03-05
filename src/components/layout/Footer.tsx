@@ -26,7 +26,7 @@ export function Footer() {
             </div>
             <p className="text-[10px] font-black text-primary/60 uppercase tracking-widest flex items-center gap-1">
               <ShieldCheck className="h-3 w-3" />
-              Distribuidor Autorizado Bioaqua V7
+              distribuidor autorizado BIOAQUA Rice Raw Pulp
             </p>
           </div>
 
