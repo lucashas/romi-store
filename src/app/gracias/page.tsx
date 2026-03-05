@@ -38,11 +38,11 @@ function GraciasContent() {
 
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 text-green-700 font-black text-[12px] tracking-widest uppercase mb-4 border border-green-200">
         <ShieldCheck className="h-4 w-4" />
-        PEDIDO REGISTRADO CON ÉXITO
+        PEDIDO REGISTRADO CON &Eacute;XITO
       </div>
 
       <h1 className="text-3xl font-black text-foreground uppercase leading-tight mb-4">
-        ¡GRACIAS POR <span className="text-green-600">TU COMPRA!</span>
+        &iexcl;GRACIAS POR <span className="text-green-600">TU COMPRA!</span>
       </h1>
       
       <p className="text-lg text-muted-foreground font-medium leading-relaxed mb-8">
@@ -51,15 +51,15 @@ function GraciasContent() {
 
       <div className="w-full bg-secondary/20 p-6 rounded-[2rem] border border-secondary/50 text-left space-y-6 mb-8 shadow-sm">
         <p className="text-[13px] font-black uppercase text-primary border-b border-primary/10 pb-2 tracking-widest text-center">
-          PRÓXIMOS PASOS IMPORTANTES:
+          PR&Oacute;XIMOS PASOS IMPORTANTES:
         </p>
         
         <div className="space-y-6">
           <div className="flex items-start gap-4">
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">1</div>
             <div className="space-y-1">
-              <p className="font-black text-foreground text-sm uppercase">VERIFICACIÓN DE DATOS</p>
-              <p className="text-sm text-muted-foreground">Un asesor revisará tu dirección para el despacho de <strong>{producto}</strong>.</p>
+              <p className="font-black text-foreground text-sm uppercase">VERIFICACI&Oacute;N DE DATOS</p>
+              <p className="text-sm text-muted-foreground">Un asesor revisar&aacute; tu direcci&oacute;n para el despacho de <strong>{producto}</strong>.</p>
             </div>
           </div>
 
@@ -67,7 +67,7 @@ function GraciasContent() {
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">2</div>
             <div className="space-y-1">
               <p className="font-black text-foreground text-sm uppercase">CONTACTO POR WHATSAPP</p>
-              <p className="text-sm text-muted-foreground">Te escribiremos al <strong>{whatsapp || "tu número"}</strong> para coordinar la entrega.</p>
+              <p className="text-sm text-muted-foreground">Te escribiremos al <strong>{whatsapp || "tu n&uacute;mero"}</strong> para coordinar la entrega.</p>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ function GraciasContent() {
 
       <div className="flex items-center justify-center gap-2 opacity-50 text-[10px] font-bold uppercase tracking-widest">
         <Truck className="h-4 w-4" />
-        Envíos rápidos a todo el Ecuador
+        Env&iacute;os r&aacute;pidos a todo el Ecuador
       </div>
     </div>
   );
@@ -107,7 +107,7 @@ function GraciasContent() {
 
 export default function GraciasPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-black uppercase">Cargando confirmación...</div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-black uppercase">Cargando confirmaci&oacute;n...</div>}>
       <GraciasContent />
     </Suspense>
   );
