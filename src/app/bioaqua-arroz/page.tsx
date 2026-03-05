@@ -152,6 +152,10 @@ export default function BioaquaRicePage() {
           testimonialImageUrl="https://i.imgur.com/PTsQyWM.png" 
         />
 
+        <div className="px-[5px] mb-8 cursor-pointer" onClick={openPopup}>
+          <img src="https://i.imgur.com/bk1DAl0.png" alt="Sello de Confianza Ecuador" className="w-full h-auto rounded-2xl shadow-xl border-2 border-yellow-50" />
+        </div>
+
         <section className="py-14 text-center space-y-12 bg-white">
           <div className="grid grid-cols-2 gap-6 px-4">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 flex flex-col items-center gap-4">
