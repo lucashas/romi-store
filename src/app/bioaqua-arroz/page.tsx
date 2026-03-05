@@ -7,7 +7,7 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Star, ShieldCheck } from "lucide-react";
+import { ShoppingCart, Star, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 const RICE_PRODUCTS: Product[] = [
   {
@@ -74,25 +74,36 @@ export default function BioaquaRicePage() {
               <p className="text-[15px] font-medium text-slate-700 leading-relaxed">
                 Con el kit <span className="font-black text-slate-900">BIOAQUA Rice Raw Pulp</span> disfruta de una rutina completa que limpia, hidrata y nutre tu rostro con el poder del arroz y ácido hialurónico. 💧🌸
               </p>
-              <p className="text-[15px] font-black text-yellow-700 leading-relaxed">
-                👉 Piel más suave, luminosa y saludable en cada aplicación.
-              </p>
-              <p className="text-[15px] font-medium text-slate-700 leading-relaxed italic">
-                📦 ¡Transforma tu cuidado diario en un ritual de belleza!
-              </p>
             </div>
 
-            <div className="bg-yellow-50 py-4 rounded-3xl border border-yellow-200 px-6">
-              <p className="text-[16px] font-black text-yellow-700 uppercase leading-tight">
-                6 Pasos • Hidratación • Poros Invisibles
+            <section className="bg-slate-50 rounded-[2.5rem] p-6 border border-slate-100 space-y-6 text-left">
+              <h3 className="text-[22px] font-black text-slate-900 uppercase leading-none tracking-tighter">
+                BIOAQUA Rice Raw Pulp: <span className="text-yellow-600">6 pasos para una piel radiante</span>
+              </h3>
+              <p className="text-[14px] font-medium text-slate-600 leading-relaxed">
+                Descubre la rutina completa que tu piel necesita con el kit BIOAQUA Rice Raw Pulp. Cada producto está diseñado para hidratar, nutrir y revitalizar con el poder del arroz y ácido hialurónico:
               </p>
-            </div>
-
-            <div className="mt-8 px-[5px] flex justify-center cursor-pointer" onClick={openPopup}>
-              <div className="relative w-full overflow-hidden rounded-[2.5rem] shadow-2xl border-2 border-slate-100 bg-white">
-                <img src="https://i.imgur.com/HYiuNZy.png" alt="Beneficios Kit de Arroz" className="w-full h-auto block" />
+              <div className="space-y-3">
+                {[
+                  { name: "Eye Cream", desc: "cuida la delicada zona de los ojos, reduciendo líneas finas y ojeras." },
+                  { name: "Cleanser", desc: "limpia profundamente, eliminando impurezas y dejando la piel fresca." },
+                  { name: "Toner", desc: "equilibra, hidrata y ayuda a reducir la apariencia de poros." },
+                  { name: "Lotion", desc: "aporta hidratación ligera y mejora la textura de la piel." },
+                  { name: "Cream", desc: "con ácido hialurónico, brinda hidratación intensa y elasticidad." },
+                  { name: "Essence", desc: "concentrado nutritivo que potencia la luminosidad y revitaliza el rostro." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-yellow-600 shrink-0 mt-0.5" />
+                    <p className="text-[13px] leading-tight">
+                      <span className="font-black text-slate-900 uppercase">{item.name}:</span> <span className="text-slate-600 font-medium">{item.desc}</span>
+                    </p>
+                  </div>
+                ))}
               </div>
-            </div>
+              <p className="text-[14px] font-bold text-yellow-700 italic">
+                Un kit pensado para transformar tu rutina diaria en un ritual de belleza que deja tu piel más suave, uniforme y saludable. 🌸✨
+              </p>
+            </section>
 
             <section className="py-10 space-y-8">
               <h3 className="text-[28px] font-black text-slate-900 text-center uppercase tracking-tighter">
