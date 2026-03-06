@@ -26,7 +26,7 @@ function GraciasContent() {
 
   const ubicacionCompleta = provincia ? `${ciudad}, ${provincia}` : ciudad;
   const whatsappMessage = `Hola Romi Store EC, soy ${nombre}. Acabo de pedir ${producto} para ${ubicacionCompleta}. Confirmo mi pedido para envío inmediato.`;
-  // Nuevo número actualizado: 0997740583 (Ecuador: 593997740583)
+  // Número actualizado: 0997740583
   const whatsappUrl = `https://wa.me/593997740583?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
@@ -39,7 +39,7 @@ function GraciasContent() {
 
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 text-green-700 font-black text-[12px] tracking-widest uppercase mb-4 border border-green-200">
         <ShieldCheck className="h-4 w-4" />
-        PEDIDO REGISTRADO CON &Eacute;XITO
+        PEDIDO REGISTRADO CON ÉXITO
       </div>
 
       <h1 className="text-3xl font-black text-foreground uppercase leading-tight mb-4">
@@ -100,7 +100,7 @@ function GraciasContent() {
 
       <div className="flex items-center justify-center gap-2 opacity-50 text-[10px] font-bold uppercase tracking-widest">
         <Truck className="h-4 w-4" />
-        Env&iacute;os r&aacute;pidos a todo el Ecuador
+        Envíos rápidos a todo el Ecuador
       </div>
     </div>
   );

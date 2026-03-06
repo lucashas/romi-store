@@ -109,7 +109,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&back=${encodeURIComponent(pathname)}`);
     } catch {
       setLoading(false);
-      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente m&aacute;s tarde." });
+      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente más tarde." });
     }
   };
 
@@ -198,7 +198,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               <div className="space-y-3">
                 <p className="text-[20px] font-black text-red-700 uppercase leading-none">&iexcl;Aviso Importante!</p>
                 <p className="text-[16px] font-bold text-red-600 leading-snug">
-                  Tu pedido &uacute;nicamente ser&aacute; despachado si tus datos est&aacute;n completos. Verifica tu direcci&oacute;n antes de confirmar.
+                  Tu pedido únicamente será despachado si tus datos están completos. Verifica tu dirección antes de confirmar.
                 </p>
               </div>
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Leaf, ShieldCheck, Mail, Phone, MapPin, MessageSquare } from "lucide-react";
+import { Leaf, ShieldCheck, Mail, MessageSquare, MapPin } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
