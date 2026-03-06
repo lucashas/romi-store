@@ -12,7 +12,6 @@ function GraciasContent() {
   const [nombre, setNombre] = useState("Cliente");
   const [ciudad, setCiudad] = useState("Ecuador");
   const [provincia, setProvincia] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
   const [producto, setProducto] = useState("su pedido");
   const [volverUrl, setVolverUrl] = useState("/");
 
@@ -20,7 +19,6 @@ function GraciasContent() {
     setNombre(searchParams.get("nombre") || "Cliente");
     setProvincia(searchParams.get("provincia") || "");
     setCiudad(searchParams.get("ciudad") || "Ecuador");
-    setWhatsapp(searchParams.get("whatsapp") || "");
     setProducto(searchParams.get("producto") || "su pedido");
     setVolverUrl(searchParams.get("back") || "/");
   }, [searchParams]);
@@ -31,9 +29,38 @@ function GraciasContent() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center p-6 text-center animate-in fade-in duration-700">
-      {/* TikTok CompletePayment Event */}
+      {/* TikTok CompletePayment Event Dinámico */}
       <Script id="tiktok-complete-payment" strategy="afterInteractive">
-        {`if(typeof ttq !== 'undefined') { ttq.track('CompletePayment'); }`}
+        {`
+          if(typeof ttq !== 'undefined') {
+            let value = 0;
+            let quantity = 1;
+            let prodName = "${producto}";
+            
+            if (prodName.includes("1 Kit") || prodName.includes("1 kit")) {
+              value = 35;
+              quantity = 1;
+            } else if (prodName.includes("2 Kits") || prodName.includes("2 kits")) {
+              value = 55;
+              quantity = 2;
+            } else {
+              // Fallback por si el nombre no coincide exactamente
+              value = 35; 
+              quantity = 1;
+            }
+
+            ttq.track('CompletePayment', {
+              value: value,
+              currency: 'USD',
+              contents: [{
+                content_id: prodName,
+                content_type: 'product',
+                quantity: quantity,
+                price: value
+              }]
+            });
+          }
+        `}
       </Script>
 
       <div className="mt-12 mb-8">
@@ -52,7 +79,7 @@ function GraciasContent() {
       </h1>
       
       <p className="text-lg text-muted-foreground font-medium leading-relaxed mb-8">
-        Hola <strong>{nombre}</strong>, tu solicitud para <strong>{ubicacionCompleta}</strong> ha sido recibida.
+        Hola <strong>{nombre}</strong>, tu solicitud para <strong>{ubicacionCompleta}</strong> ha sido recibida correctamente.
       </p>
 
       <div className="w-full bg-secondary/20 p-6 rounded-[2rem] border border-secondary/50 text-left space-y-6 mb-8 shadow-sm">
@@ -73,7 +100,7 @@ function GraciasContent() {
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">2</div>
             <div className="space-y-1">
               <p className="font-black text-foreground text-sm uppercase">CONTACTO POR WHATSAPP</p>
-              <p className="text-sm text-muted-foreground">Te escribiremos al <strong>0997740583</strong> para coordinar la entrega.</p>
+              <p className="text-sm text-muted-foreground">Te escribiremos al n&uacute;mero proporcionado para coordinar la entrega.</p>
             </div>
           </div>
 
