@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function ShilajitLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      {/* TikTok Pixel Base Code */}
+      {/* TikTok Pixel Base Code - Shilajit Specific */}
       <Script id="tiktok-pixel-shilajit" strategy="afterInteractive">
         {`
           !function (w, d, t) {

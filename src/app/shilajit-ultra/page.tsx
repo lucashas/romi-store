@@ -8,14 +8,14 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Zap, ShieldCheck, CheckCircle2, Flame, Trophy } from "lucide-react";
+import { ShoppingCart, Zap, ShieldCheck, Flame, Trophy } from "lucide-react";
 
 const SHILAJIT_PRODUCTS: Product[] = [
   {
     id: "shilajit-ultra-1",
     name: "1 Frasco Shilajit Ultra (30 d&iacute;as)",
     price: 27.99,
-    image: "https://i.imgur.com/W2P6V5x.png", // Imagen referencial
+    image: "https://i.imgur.com/W2P6V5x.png",
     badge: "OFERTA INDIVIDUAL",
     description: "Ideal para probar el poder del Himalaya",
   },
@@ -23,7 +23,7 @@ const SHILAJIT_PRODUCTS: Product[] = [
     id: "shilajit-ultra-3",
     name: "Lleva 3 al precio de 2 (90 d&iacute;as)",
     price: 44.99,
-    image: "https://i.imgur.com/W2P6V5x.png", // Imagen referencial
+    image: "https://i.imgur.com/W2P6V5x.png",
     badge: "&iexcl;M&Aacute;S VENDIDO!",
     description: "Recibe el 3ero GRATIS &bull; Ahorro de $39.98",
   },
@@ -41,12 +41,11 @@ export default function ShilajitUltraPage() {
       />
 
       <main className="flex-1 w-full bg-slate-900">
-        {/* Hero Section */}
         <section className="relative overflow-hidden w-full">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl border-2 border-amber-500/30">
               <Image 
-                src="https://i.imgur.com/XfmwUEJ.png" // Placeholder Shilajit Hero
+                src="https://i.imgur.com/XfmwUEJ.png" 
                 alt="Shilajit Ultra Banner" 
                 width={500} 
                 height={250} 
@@ -75,12 +74,11 @@ export default function ShilajitUltraPage() {
             </div>
 
             <div className="bg-amber-600/10 border border-amber-600/30 p-4 rounded-2xl text-left">
-              <p className="text-[14px] text-amber-200 font-medium leading-relaxed italic">
+              <p className="text-[14px] text-amber-200 font-medium leading-relaxed italic text-center">
                 &quot;Sent&iacute; un cambio total en mi energ&iacute;a desde el primer d&iacute;a. Es como si mi cuerpo hubiera encendido un motor nuevo.&quot;
               </p>
             </div>
 
-            {/* Promociones Principales */}
             <div className="space-y-4 py-4">
               <div onClick={openPopup} className="relative bg-slate-800 p-5 rounded-[2rem] border-2 border-amber-600 shadow-2xl text-center space-y-1 cursor-pointer transition-transform active:scale-95 overflow-hidden">
                 <div className="absolute top-0 right-0 bg-amber-600 py-1 px-4 rounded-bl-xl">
@@ -108,7 +106,6 @@ export default function ShilajitUltraPage() {
           </div>
         </section>
 
-        {/* Benefits Section */}
         <section className="p-6 bg-slate-950 space-y-6">
           <h3 className="text-[22px] font-black text-white uppercase leading-none tracking-tighter text-center">
             M&Aacute;S QUE UN SUPLEMENTO, <br /><span className="text-amber-500">TU MEJOR VERSI&Oacute;N</span>
@@ -138,20 +135,6 @@ export default function ShilajitUltraPage() {
           subtitle="Hombres que recuperaron su fuego" 
           themeColor="gold" 
         />
-
-        {/* Trust Badges */}
-        <section className="py-6 text-center space-y-4 bg-slate-900">
-          <div className="grid grid-cols-2 gap-4 px-4">
-            <div className="py-3 px-4 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col items-center gap-1">
-              <ShieldCheck className="h-6 w-6 text-amber-500" />
-              <p className="text-[10px] font-black uppercase text-white tracking-widest">Pago al Recibir</p>
-            </div>
-            <div className="py-3 px-4 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col items-center gap-1">
-              <ShoppingCart className="h-6 w-6 text-amber-500" />
-              <p className="text-[10px] font-black uppercase text-white tracking-widest">Env&iacute;o Gratis</p>
-            </div>
-          </div>
-        </section>
       </main>
 
       <div className="sticky-cta">

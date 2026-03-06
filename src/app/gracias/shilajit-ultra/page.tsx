@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { CheckCircle2, Truck, Home, MessageCircle, ShieldCheck, Zap } from "lucide-react";
+import { CheckCircle2, Truck, Home, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
@@ -29,20 +29,18 @@ function ShilajitGraciasContent() {
 
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col items-center p-6 text-center animate-in fade-in duration-700 text-white">
-      {/* TikTok CompletePayment Event Din&aacute;mico Shilajit */}
+      {/* TikTok CompletePayment Event - Dynamic for Shilajit */}
       <Script id="tiktok-complete-payment-shilajit" strategy="afterInteractive">
         {`
           if(typeof ttq !== 'undefined') {
             let value = 0;
             let quantity = 1;
             let prodName = "${producto}";
-            let contentId = "shilajit-ultra-1";
             let contents = [];
             
-            if (prodName.includes("3 al precio de 2") || prodName.includes("3 frascos")) {
+            if (prodName.includes("3 al precio de 2")) {
               value = 44.99;
               quantity = 3;
-              contentId = "shilajit-ultra-3";
               contents = [
                 { content_id: "shilajit-ultra-1", quantity: 2, price: 22.495 },
                 { content_id: "shilajit-ultra-free", quantity: 1, price: 0 }
@@ -50,8 +48,7 @@ function ShilajitGraciasContent() {
             } else {
               value = 27.99;
               quantity = 1;
-              contentId = "shilajit-ultra-1";
-              contents = [{ content_id: contentId, quantity: 1, price: value }];
+              contents = [{ content_id: "shilajit-ultra-1", quantity: 1, price: 27.99 }];
             }
 
             ttq.track('CompletePayment', {
@@ -95,20 +92,11 @@ function ShilajitGraciasContent() {
               <p className="text-sm text-slate-400">Nuestro equipo est&aacute; preparando tu <strong>Shilajit Ultra</strong> para env&iacute;o prioritario.</p>
             </div>
           </div>
-
           <div className="flex items-start gap-4">
             <div className="h-8 w-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">2</div>
             <div className="space-y-1">
               <p className="font-black text-white text-sm uppercase">CONTACTO WHATSAPP</p>
-              <p className="text-sm text-slate-400">Recibir&aacute;s un mensaje para confirmar el horario de entrega en tu domicilio.</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-4">
-            <div className="h-8 w-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">3</div>
-            <div className="space-y-1">
-              <p className="font-black text-white text-sm uppercase">RECARGA TU ENERG&Iacute;A</p>
-              <p className="text-sm text-slate-400">Prep&aacute;rate para sentir el cambio real en tu vitalidad diaria.</p>
+              <p className="text-sm text-slate-400">Recibir&aacute;s un mensaje para confirmar el horario de entrega.</p>
             </div>
           </div>
         </div>
@@ -121,7 +109,6 @@ function ShilajitGraciasContent() {
             CONFIRMAR POR WHATSAPP
           </a>
         </Button>
-        
         <Button asChild variant="outline" className="w-full h-14 text-sm font-bold uppercase border-2 border-slate-700 rounded-2xl text-slate-300">
           <Link href={volverUrl}>
             <Home className="mr-2 h-4 w-4" />
