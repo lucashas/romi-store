@@ -109,7 +109,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&back=${encodeURIComponent(pathname)}`);
     } catch {
       setLoading(false);
-      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente más tarde." });
+      toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente m&aacute;s tarde." });
     }
   };
 
@@ -119,7 +119,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
           <div className={cn("p-6 pb-6 text-white text-center flex flex-col items-center gap-4", styles.header)}>
             <DialogTitle className="text-[22px] font-black uppercase leading-tight tracking-tighter">
-              ¡SÍ, QUIERO MI PIEL DE PORCELANA!
+              &iexcl;S&Iacute;, QUIERO MI PIEL DE PORCELANA!
             </DialogTitle>
             <div className="w-full flex justify-center py-1">
               <Image 
@@ -153,7 +153,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
             </div>
 
             <div className="space-y-5">
-              <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">2. Datos de Envío (Pago Contra Entrega):</p>
+              <p className="text-[14px] font-black text-slate-900 uppercase border-l-4 border-primary pl-3">2. Datos de Env&iacute;o (Pago Contra Entrega):</p>
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <span className={styles.label}>Nombre</span>
@@ -161,11 +161,11 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                 </div>
                 <div className="space-y-1">
                   <span className={styles.label}>Apellido</span>
-                  <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
+                  <Input placeholder="Ej. P&eacute;rez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
                 </div>
               </div>
               <div className="space-y-1">
-                <span className={styles.label}>Número de WhatsApp (10 dígitos)</span>
+                <span className={styles.label}>N&uacute;mero de WhatsApp (10 d&iacute;gitos)</span>
                 <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -185,7 +185,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                 </div>
               </div>
               <div className="space-y-1">
-                <span className={styles.label}>Dirección (Calle 1, Calle 2 y Referencia)</span>
+                <span className={styles.label}>Direcci&oacute;n (Calle 1, Calle 2 y Referencia)</span>
                 <Input placeholder="Ej. Av. Amazonas y Villarroel..." required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
                 <p className="text-[10px] text-slate-400 font-medium leading-tight mt-1 px-1 italic">
                   Ej: Casa blanca de 2 pisos, frente a la farmacia, # 23-3, barrio La Pradera...
@@ -196,9 +196,9 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
             <div className="bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] flex flex-col items-center gap-3 shadow-md text-center">
               <AlertTriangle className="h-10 w-10 text-red-600 animate-pulse" />
               <div className="space-y-3">
-                <p className="text-[20px] font-black text-red-700 uppercase leading-none">¡Aviso Importante!</p>
+                <p className="text-[20px] font-black text-red-700 uppercase leading-none">&iexcl;Aviso Importante!</p>
                 <p className="text-[16px] font-bold text-red-600 leading-snug">
-                  Tu pedido únicamente será despachado si tus datos están completos. Verifica tu dirección antes de confirmar.
+                  Tu pedido &uacute;nicamente ser&aacute; despachado si tus datos est&aacute;n completos. Verifica tu direcci&oacute;n antes de confirmar.
                 </p>
               </div>
             </div>
@@ -211,7 +211,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               <div className="flex justify-between items-center">
                 <div className="space-y-1 max-w-[70%] text-left">
                   <p className="text-[13px] font-black text-slate-800 uppercase leading-none">{product?.name}</p>
-                  <p className="text-[10px] font-bold text-slate-500 uppercase">Envío gratis incluido</p>
+                  <p className="text-[10px] font-bold text-slate-500 uppercase">Env&iacute;o gratis incluido</p>
                 </div>
                 <div className="text-right">
                   <p className={cn("text-[26px] font-black tracking-tighter leading-none", styles.textActive)}>${product?.price.toFixed(0)}</p>
@@ -228,7 +228,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                 Recuerda: Al confirmar, te comprometes a recibir y cancelar tu pedido al repartidor con total confianza.
               </p>
               <p className={cn("text-[14px] font-black uppercase leading-tight", styles.textActive)}>
-                ¡ENVÍO 100% SEGURO Y GARANTIZADO!
+                &iexcl;ENV&Iacute;O 100% SEGURO Y GARANTIZADO!
               </p>
             </div>
 
