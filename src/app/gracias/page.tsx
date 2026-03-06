@@ -5,6 +5,7 @@ import { CheckCircle2, Truck, Home, MessageCircle, ShieldCheck } from "lucide-re
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
+import Script from 'next/script';
 
 function GraciasContent() {
   const searchParams = useSearchParams();
@@ -26,11 +27,15 @@ function GraciasContent() {
 
   const ubicacionCompleta = provincia ? `${ciudad}, ${provincia}` : ciudad;
   const whatsappMessage = `Hola Romi Store EC, soy ${nombre}. Acabo de pedir ${producto} para ${ubicacionCompleta}. Confirmo mi pedido para envío inmediato.`;
-  // Número actualizado: 0997740583
   const whatsappUrl = `https://wa.me/593997740583?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center p-6 text-center animate-in fade-in duration-700">
+      {/* TikTok CompletePayment Event */}
+      <Script id="tiktok-complete-payment" strategy="afterInteractive">
+        {`if(typeof ttq !== 'undefined') { ttq.track('CompletePayment'); }`}
+      </Script>
+
       <div className="mt-12 mb-8">
         <div className="h-24 w-24 bg-green-100 rounded-full flex items-center justify-center text-green-600 shadow-inner mx-auto">
           <CheckCircle2 className="h-14 w-14" />
@@ -68,7 +73,7 @@ function GraciasContent() {
             <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">2</div>
             <div className="space-y-1">
               <p className="font-black text-foreground text-sm uppercase">CONTACTO POR WHATSAPP</p>
-              <p className="text-sm text-muted-foreground">Te escribiremos al <strong>{whatsapp || "tu n&uacute;mero"}</strong> para coordinar la entrega.</p>
+              <p className="text-sm text-muted-foreground">Te escribiremos al <strong>0997740583</strong> para coordinar la entrega.</p>
             </div>
           </div>
 
