@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Leaf, ShieldCheck, Mail, Phone, MapPin, MessageSquare } from "lucide-react";
@@ -36,7 +35,7 @@ export function Footer() {
               <div className="bg-primary/10 p-2 rounded-full">
                 <MessageSquare className="h-4 w-4 text-primary" />
               </div>
-              <span>WhatsApp: 0959461399 (Solo Chat)</span>
+              <span>WhatsApp: 0997740583 (Solo Chat)</span>
             </div>
             <div className="flex items-center justify-center gap-2">
               <div className="bg-primary/10 p-2 rounded-full">

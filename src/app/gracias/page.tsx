@@ -26,7 +26,8 @@ function GraciasContent() {
 
   const ubicacionCompleta = provincia ? `${ciudad}, ${provincia}` : ciudad;
   const whatsappMessage = `Hola Romi Store EC, soy ${nombre}. Acabo de pedir ${producto} para ${ubicacionCompleta}. Confirmo mi pedido para envío inmediato.`;
-  const whatsappUrl = `https://wa.me/593959461399?text=${encodeURIComponent(whatsappMessage)}`;
+  // Nuevo número actualizado: 0997740583 (Ecuador: 593997740583)
+  const whatsappUrl = `https://wa.me/593997740583?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center p-6 text-center animate-in fade-in duration-700">
