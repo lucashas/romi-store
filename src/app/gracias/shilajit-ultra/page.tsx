@@ -29,7 +29,7 @@ function ShilajitGraciasContent() {
 
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col items-center p-6 text-center animate-in fade-in duration-700 text-white">
-      {/* TikTok CompletePayment Event - Dynamic for Shilajit */}
+      {/* TikTok CompletePayment Event - Din&aacute;mico para Shilajit */}
       <Script id="tiktok-complete-payment-shilajit" strategy="afterInteractive">
         {`
           if(typeof ttq !== 'undefined') {
@@ -42,12 +42,14 @@ function ShilajitGraciasContent() {
               value = 44.99;
               quantity = 3;
               contents = [
-                { content_id: "shilajit-ultra-3", quantity: 3, price: 44.99 }
+                { content_id: "shilajit-ultra-3", content_type: 'product', quantity: 3, price: 44.99 }
               ];
             } else {
               value = 27.99;
               quantity = 1;
-              contents = [{ content_id: "shilajit-ultra-1", quantity: 1, price: 27.99 }];
+              contents = [
+                { content_id: "shilajit-ultra-1", content_type: 'product', quantity: 1, price: 27.99 }
+              ];
             }
 
             ttq.track('CompletePayment', {
