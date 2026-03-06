@@ -44,7 +44,16 @@ const ecuadorData: Record<string, string[]> = {
   "TUNGURAHUA": ["AMBATO", "BAÑOS", "PELILEO", "PILLARO", "CEVALLOS", "MOCHA", "QUERO", "TISALEO", "PATATE"],
 };
 
-export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold" }: { open: boolean, onOpenChange: (open: boolean) => void, products: Product[], themeColor?: "gold" | "orange" }) {
+interface PurchasePopupProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  products: Product[];
+  themeColor?: "gold" | "orange";
+  redirectPath?: string;
+  landingId?: string;
+}
+
+export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold", redirectPath = "/gracias", landingId = "general" }: PurchasePopupProps) {
   const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -100,13 +109,13 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
       phoneNumber: whatsapp,
       message: `PRODUCTO: ${product?.name} | TOTAL: $${product?.price} | PROVINCIA: ${provincia} | CIUDAD: ${ciudad} | DIRECCIÓN: ${direccion}`,
       submissionDateTime: new Date().toISOString(),
-      landingPageContentId: "bioaqua-arroz"
+      landingPageContentId: landingId
     };
     try {
       await addDoc(collection(firestore, "leadSubmissions"), orderData);
       setLoading(false);
       onOpenChange(false);
-      router.push(`/gracias?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&back=${encodeURIComponent(pathname)}`);
+      router.push(`${redirectPath}?nombre=${encodeURIComponent(nombre)}&provincia=${encodeURIComponent(provincia)}&ciudad=${encodeURIComponent(ciudad)}&whatsapp=${encodeURIComponent(whatsapp)}&producto=${encodeURIComponent(product?.name || "")}&back=${encodeURIComponent(pathname)}`);
     } catch {
       setLoading(false);
       toast({ variant: "destructive", title: "ERROR", description: "No se pudo procesar el pedido. Intente más tarde." });
@@ -119,7 +128,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
           <div className={cn("p-6 pb-6 text-white text-center flex flex-col items-center gap-4", styles.header)}>
             <DialogTitle className="text-[22px] font-black uppercase leading-tight tracking-tighter">
-              &iexcl;S&Iacute;, QUIERO MI PIEL DE PORCELANA!
+              &iexcl;S&Iacute;, QUIERO MI PEDIDO!
             </DialogTitle>
             <div className="w-full flex justify-center py-1">
               <Image 
@@ -140,13 +149,13 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                   <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : "border-slate-100 bg-white hover:border-slate-200")}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5" />
                     <div className="h-12 w-12 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-white relative">
-                      <Image src="https://i.imgur.com/aSjVyM2.png" alt="Kit Bioaqua" fill className="object-cover" sizes="48px" />
+                      <Image src={p.image} alt={p.name} fill className="object-cover" sizes="48px" />
                     </div>
                     <div className="flex-1 min-w-0 text-left">
                       <p className="font-black text-[14px] text-slate-900 uppercase leading-none mb-1">{p.name}</p>
                       <p className="text-[10px] text-slate-400 font-bold uppercase leading-tight">{p.description}</p>
                     </div>
-                    <p className={cn("font-black text-[20px] tracking-tighter", styles.textActive)}>${p.price.toFixed(0)}</p>
+                    <p className={cn("font-black text-[20px] tracking-tighter", styles.textActive)}>${p.price.toFixed(2)}</p>
                   </Label>
                 ))}
               </RadioGroup>
@@ -187,9 +196,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               <div className="space-y-1">
                 <span className={styles.label}>Direcci&oacute;n (Calle 1, Calle 2 y Referencia)</span>
                 <Input placeholder="Ej. Av. Amazonas y Villarroel..." required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-14 rounded-xl bg-slate-50 border-2 border-slate-100 font-bold", styles.ring)} />
-                <p className="text-[10px] text-slate-400 font-medium leading-tight mt-1 px-1 italic">
-                  Ej: Casa blanca de 2 pisos, frente a la farmacia, # 23-3, barrio La Pradera...
-                </p>
               </div>
             </div>
 
@@ -201,35 +207,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                   Tu pedido únicamente será despachado si tus datos están completos. Verifica tu dirección antes de confirmar.
                 </p>
               </div>
-            </div>
-
-            <div className="bg-slate-50 p-6 rounded-[2rem] border-2 border-slate-200 shadow-sm space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
-                <ShoppingBag className={cn("h-5 w-5", styles.textActive)} />
-                <p className="text-[14px] font-black text-slate-900 uppercase tracking-tighter">Resumen de tu pedido:</p>
-              </div>
-              <div className="flex justify-between items-center">
-                <div className="space-y-1 max-w-[70%] text-left">
-                  <p className="text-[13px] font-black text-slate-800 uppercase leading-none">{product?.name}</p>
-                  <p className="text-[10px] font-bold text-slate-500 uppercase">Env&iacute;o gratis incluido</p>
-                </div>
-                <div className="text-right">
-                  <p className={cn("text-[26px] font-black tracking-tighter leading-none", styles.textActive)}>${product?.price.toFixed(0)}</p>
-                  <p className="text-[10px] font-black text-green-600 uppercase">Total a pagar</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-primary/5 p-6 rounded-[2rem] border-2 border-primary/10 text-center space-y-3 shadow-inner">
-              <div className="flex justify-center">
-                <Heart className={cn("h-6 w-6 animate-pulse", styles.textActive)} />
-              </div>
-              <p className="text-[14px] font-medium text-slate-700 leading-relaxed italic">
-                Recuerda: Al confirmar, te comprometes a recibir y cancelar tu pedido al repartidor con total confianza.
-              </p>
-              <p className={cn("text-[14px] font-black uppercase leading-tight", styles.textActive)}>
-                &iexcl;ENV&Iacute;O 100% SEGURO Y GARANTIZADO!
-              </p>
             </div>
 
             <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat text-white shadow-xl mt-4", styles.button)}>

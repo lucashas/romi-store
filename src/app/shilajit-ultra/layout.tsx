@@ -40,7 +40,9 @@ export default function ShilajitLayout({ children }: { children: React.ReactNode
           }(window, document, 'ttq');
         `}
       </Script>
-      {children}
+      <div className="shilajit-theme">
+        {children}
+      </div>
     </>
   );
 }

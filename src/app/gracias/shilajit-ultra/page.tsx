@@ -38,12 +38,11 @@ function ShilajitGraciasContent() {
             let prodName = "${producto}";
             let contents = [];
             
-            if (prodName.includes("3 al precio de 2")) {
+            if (prodName.includes("3 al precio de 2") || prodName.includes("Lleva 3")) {
               value = 44.99;
               quantity = 3;
               contents = [
-                { content_id: "shilajit-ultra-1", quantity: 2, price: 22.495 },
-                { content_id: "shilajit-ultra-free", quantity: 1, price: 0 }
+                { content_id: "shilajit-ultra-3", quantity: 3, price: 44.99 }
               ];
             } else {
               value = 27.99;
@@ -68,7 +67,7 @@ function ShilajitGraciasContent() {
 
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-600/10 text-amber-500 font-black text-[12px] tracking-widest uppercase mb-4 border border-amber-600/20">
         <ShieldCheck className="h-4 w-4" />
-        PODER DEL HIMALAYA ACTIVADO
+        PODER NATURAL ACTIVADO
       </div>
 
       <h1 className="text-3xl font-black text-white uppercase leading-tight mb-4">
@@ -81,7 +80,7 @@ function ShilajitGraciasContent() {
 
       <div className="w-full bg-slate-900 p-6 rounded-[2rem] border border-slate-800 text-left space-y-6 mb-8 shadow-2xl">
         <p className="text-[13px] font-black uppercase text-amber-500 border-b border-amber-500/10 pb-2 tracking-widest text-center">
-          PR&Oacute;XIMOS PASOS DE PODER:
+          PR&Oacute;XIMOS PASOS:
         </p>
         
         <div className="space-y-6">
@@ -89,7 +88,7 @@ function ShilajitGraciasContent() {
             <div className="h-8 w-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">1</div>
             <div className="space-y-1">
               <p className="font-black text-white text-sm uppercase">DESPACHO INMEDIATO</p>
-              <p className="text-sm text-slate-400">Nuestro equipo est&aacute; preparando tu <strong>Shilajit Ultra</strong> para env&iacute;o prioritario.</p>
+              <p className="text-sm text-slate-400">Nuestro equipo est&aacute; preparando tu pedido para env&iacute;o prioritario.</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -127,7 +126,7 @@ function ShilajitGraciasContent() {
 
 export default function ShilajitGraciasPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950 flex items-center justify-center font-black uppercase text-white">Cargando confirmaci&oacute;n de poder...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-slate-950 flex items-center justify-center font-black uppercase text-white">Cargando confirmaci&oacute;n...</div>}>
       <ShilajitGraciasContent />
     </Suspense>
   );

@@ -8,14 +8,14 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Zap, ShieldCheck, Flame, Trophy } from "lucide-react";
+import { ShoppingCart, Zap, ShieldCheck, Flame, Trophy, Star } from "lucide-react";
 
 const SHILAJIT_PRODUCTS: Product[] = [
   {
     id: "shilajit-ultra-1",
     name: "1 Frasco Shilajit Ultra (30 d&iacute;as)",
     price: 27.99,
-    image: "https://i.imgur.com/W2P6V5x.png",
+    image: "https://i.imgur.com/XfmwUEJ.png",
     badge: "OFERTA INDIVIDUAL",
     description: "Ideal para probar el poder del Himalaya",
   },
@@ -23,7 +23,7 @@ const SHILAJIT_PRODUCTS: Product[] = [
     id: "shilajit-ultra-3",
     name: "Lleva 3 al precio de 2 (90 d&iacute;as)",
     price: 44.99,
-    image: "https://i.imgur.com/W2P6V5x.png",
+    image: "https://i.imgur.com/XfmwUEJ.png",
     badge: "&iexcl;M&Aacute;S VENDIDO!",
     description: "Recibe el 3ero GRATIS &bull; Ahorro de $39.98",
   },
@@ -73,10 +73,15 @@ export default function ShilajitUltraPage() {
               </p>
             </div>
 
-            <div className="bg-amber-600/10 border border-amber-600/30 p-4 rounded-2xl text-left">
-              <p className="text-[14px] text-amber-200 font-medium leading-relaxed italic text-center">
-                &quot;Sent&iacute; un cambio total en mi energ&iacute;a desde el primer d&iacute;a. Es como si mi cuerpo hubiera encendido un motor nuevo.&quot;
-              </p>
+            <div className="grid grid-cols-2 gap-3 py-2">
+              <div className="bg-slate-800/80 p-3 rounded-2xl border border-slate-700 flex flex-col items-center gap-1">
+                <Flame className="h-6 w-6 text-amber-500" />
+                <p className="text-[10px] font-black text-white uppercase">Energ&iacute;a</p>
+              </div>
+              <div className="bg-slate-800/80 p-3 rounded-2xl border border-slate-700 flex flex-col items-center gap-1">
+                <Trophy className="h-6 w-6 text-amber-500" />
+                <p className="text-[10px] font-black text-white uppercase">Enfoque</p>
+              </div>
             </div>
 
             <div className="space-y-4 py-4">
@@ -95,7 +100,7 @@ export default function ShilajitUltraPage() {
               <div onClick={openPopup} className="relative bg-slate-800/50 p-4 rounded-[2rem] border-2 border-slate-700 text-center space-y-1 cursor-pointer transition-transform active:scale-95">
                 <p className="text-[12px] font-black text-slate-400 uppercase leading-none">1 FRASCO (30 D&Iacute;AS)</p>
                 <p className="text-[32px] font-black text-white leading-none">$27.99</p>
-                <p className="text-[10px] font-black text-amber-500 uppercase">Energ&iacute;a inmediata</p>
+                <p className="text-[10px] font-black text-amber-500 uppercase">Vitalidad inmediata</p>
               </div>
             </div>
 
@@ -108,14 +113,14 @@ export default function ShilajitUltraPage() {
 
         <section className="p-6 bg-slate-950 space-y-6">
           <h3 className="text-[22px] font-black text-white uppercase leading-none tracking-tighter text-center">
-            M&Aacute;S QUE UN SUPLEMENTO, <br /><span className="text-amber-500">TU MEJOR VERSI&Oacute;N</span>
+            DESBLOQUEA TU <br /><span className="text-amber-500">M&Aacute;XIMO NIVEL</span>
           </h3>
 
           <div className="grid grid-cols-1 gap-4">
             {[
-              { icon: Flame, title: "ENERG&Iacute;A INAGOTABLE", desc: "Combate el cansancio y mantente activo todo el d&iacute;a sin bajones." },
-              { icon: Trophy, title: "RENDIMIENTO M&Aacute;XIMO", desc: "Potencia tu capacidad f&iacute;sica y mental en cada desaf&iacute;o." },
-              { icon: ShieldCheck, title: "RECUPERACI&Oacute;N R&Aacute;PIDA", desc: "Siente c&oacute;mo tu cuerpo se regenera m&aacute;s r&aacute;pido despu&eacute;s del esfuerzo." }
+              { icon: Flame, title: "RENDIMIENTO F&Iacute;SICO", desc: "Mant&eacute;n el ritmo en tus actividades diarias sin agotamiento temprano." },
+              { icon: Trophy, title: "POTENCIA NATURAL", desc: "Minerales del Himalaya que nutren tu cuerpo desde el interior." },
+              { icon: ShieldCheck, title: "RECUPERACI&Oacute;N DIARIA", desc: "Despierta con m&aacute;s ganas y energ&iacute;a renovada cada mañana." }
             ].map((item, i) => (
               <div key={i} className="flex gap-4 p-4 bg-slate-900 rounded-2xl border border-slate-800 shadow-lg">
                 <div className="h-12 w-12 rounded-xl bg-amber-600/20 flex items-center justify-center shrink-0">
@@ -131,8 +136,8 @@ export default function ShilajitUltraPage() {
         </section>
 
         <Testimonials 
-          title="TESTIMONIOS REALES" 
-          subtitle="Hombres que recuperaron su fuego" 
+          title="CLIENTES REALES" 
+          subtitle="Energ&iacute;a que se nota" 
           themeColor="gold" 
         />
       </main>
@@ -140,11 +145,18 @@ export default function ShilajitUltraPage() {
       <div className="sticky-cta">
         <Button onClick={openPopup} size="lg" className="w-full h-16 text-xl font-black bg-amber-600 hover:bg-amber-700 text-white shadow-2xl rounded-2xl animate-heartbeat border-2 border-white/20 uppercase">
           <ShoppingCart className="h-6 w-6 mr-3" />
-          &iexcl;RESCATA TU ENERG&Iacute;A!
+          &iexcl;PEDIR SHILAJIT AHORA!
         </Button>
       </div>
 
-      <PurchasePopup open={isPopupOpen} onOpenChange={setIsPopupOpen} products={SHILAJIT_PRODUCTS} themeColor="gold" />
+      <PurchasePopup 
+        open={isPopupOpen} 
+        onOpenChange={setIsPopupOpen} 
+        products={SHILAJIT_PRODUCTS} 
+        themeColor="gold" 
+        redirectPath="/gracias/shilajit-ultra"
+        landingId="shilajit-ultra"
+      />
       <Footer />
       <Toaster />
     </div>
