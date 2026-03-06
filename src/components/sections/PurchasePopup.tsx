@@ -236,7 +236,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               {loading ? "PROCESANDO..." : (
                 <>
                   <ShoppingCart className="h-6 w-6 mr-3" />
-                  ¡CONFIRMAR PEDIDO!
+                  CONFIRMAR PEDIDO
                 </>
               )}
             </Button>
