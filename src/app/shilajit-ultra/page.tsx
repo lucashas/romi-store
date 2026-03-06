@@ -8,14 +8,14 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Zap, ShieldCheck, CheckCircle2, Flame, BatteryLow } from "lucide-react";
+import { ShoppingCart, Zap, ShieldCheck, CheckCircle2, Flame } from "lucide-react";
 
 const SHILAJIT_PRODUCTS: Product[] = [
   {
     id: "shilajit_ultra_1",
     name: "1 Frasco de Shilajit Ultra (30g)",
     price: 27.99,
-    image: "https://i.imgur.com/W2P6V5x.png", // Reemplazar con imagen real si está disponible
+    image: "https://i.imgur.com/W2P6V5x.png",
     badge: "OFERTA B&Aacute;SICA",
     description: "Energ&iacute;a para 1 mes &bull; Resina Pura",
   },
@@ -23,8 +23,8 @@ const SHILAJIT_PRODUCTS: Product[] = [
     id: "shilajit_ultra_3",
     name: "Lleva 3 al precio de 2 (90g)",
     price: 44.99,
-    image: "https://i.imgur.com/W2P6V5x.png", // Reemplazar con imagen real si está disponible
-    badge: "&iexcl;M&Aacute;S VENDIDO!",
+    image: "https://i.imgur.com/W2P6V5x.png",
+    badge: "&iexcl;M&Aacute;S RECOMENDADO!",
     description: "Abastece tu Energ&iacute;a para 3 Meses &bull; Env&iacute;o Gratis",
   },
 ];
@@ -38,12 +38,11 @@ export default function ShilajitUltraPage() {
       <TopMarquee text="&iexcl;STOCK LIMITADO! &bull; ENERG&Iacute;A PURA DE LAS MONTA&Ntilde;AS &bull; VITALIDAD TOTAL &bull; " className="bg-amber-600 text-white border-amber-700" />
 
       <main className="flex-1 w-full">
-        {/* Hero Section */}
         <section className="bg-slate-950 overflow-hidden w-full relative">
           <div className="px-[5px] pt-[5px] cursor-pointer" onClick={openPopup}>
             <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl border-2 border-amber-600/30">
               <Image 
-                src="https://i.imgur.com/W2P6V5x.png" // Placeholder - Reemplazar con banner de Shilajit
+                src="https://i.imgur.com/W2P6V5x.png" 
                 alt="Shilajit Ultra Banner" 
                 width={500} 
                 height={250} 
@@ -94,14 +93,12 @@ export default function ShilajitUltraPage() {
               </div>
             </section>
 
-            {/* Pricing Section */}
             <section className="py-4 space-y-6">
               <h3 className="text-[24px] font-black text-white text-center uppercase tracking-tighter">
                 💎 ELIGE TU <span className="text-amber-500">POTENCIA</span> 💎
               </h3>
 
               <div className="grid grid-cols-1 gap-4 px-2">
-                {/* Promo 1 */}
                 <div onClick={openPopup} className="relative bg-slate-900 p-6 pt-10 rounded-[2.5rem] border-2 border-slate-800 shadow-xl text-center space-y-2 cursor-pointer transition-transform active:scale-95 overflow-hidden">
                   <div className="absolute top-0 left-0 w-full bg-slate-800 py-1">
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ENERG&Iacute;A B&Aacute;SICA</p>
@@ -114,7 +111,6 @@ export default function ShilajitUltraPage() {
                   <p className="text-[12px] font-black text-amber-500 uppercase italic">Env&iacute;o Gratis a todo Ecuador</p>
                 </div>
 
-                {/* Promo 3x2 - MAS VENDIDO */}
                 <div onClick={openPopup} className="relative bg-amber-600/10 p-6 pt-10 rounded-[2.5rem] border-2 border-amber-600 shadow-2xl text-center space-y-2 cursor-pointer transition-transform active:scale-95 overflow-hidden ring-4 ring-amber-600/20">
                   <div className="absolute top-0 left-0 w-full bg-amber-600 py-1">
                     <p className="text-[10px] font-black text-white uppercase tracking-widest">&iexcl;M&Aacute;S RECOMENDADO!</p>
