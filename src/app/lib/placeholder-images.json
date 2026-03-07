@@ -74,18 +74,6 @@
       "imageHint": "rice beauty kit"
     },
     {
-      "id": "bioaqua-rice-extra-1",
-      "description": "Belleza Natural 1",
-      "imageUrl": "https://i.imgur.com/1izaYPo.png",
-      "imageHint": "skincare results"
-    },
-    {
-      "id": "bioaqua-rice-extra-2",
-      "description": "Belleza Natural 2",
-      "imageUrl": "https://i.imgur.com/FdpmjYk.png",
-      "imageHint": "skincare fresh"
-    },
-    {
       "id": "shilajit-hero-main",
       "description": "Shilajit Ultra Hero Principal",
       "imageUrl": "https://i.imgur.com/S1VGamv.png",
@@ -100,19 +88,19 @@
     {
       "id": "shilajit-testi-1",
       "description": "Carlos R. - Testimonio Shilajit",
-      "imageUrl": "https://picsum.photos/seed/sh-t1/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&fit=crop",
       "imageHint": "man casual 40s"
     },
     {
       "id": "shilajit-testi-2",
       "description": "Andrés A. - Testimonio Shilajit",
-      "imageUrl": "https://picsum.photos/seed/sh-t2/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1548330950-d1e2748050ee?q=80&w=200&h=200&fit=crop",
       "imageHint": "athletic man 30s"
     },
     {
       "id": "shilajit-testi-3",
       "description": "Lucas F. - Testimonio Shilajit",
-      "imageUrl": "https://picsum.photos/seed/sh-t3/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&fit=crop",
       "imageHint": "mature man confident"
     },
     {

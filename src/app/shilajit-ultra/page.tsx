@@ -35,21 +35,24 @@ const TESTIMONIALS_DATA = [
     name: "Carlos R.",
     city: "Guayaquil",
     date: "Enero 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-1")?.imageUrl || "https://picsum.photos/seed/sh-t1/600/400",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-1")?.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&fit=crop",
+    imageHint: "man casual 40s",
     quote: "“¡La firmeza que recuperé es increíble! Llevaba unos meses notando que mis erecciones no eran del 100%. Probé este Shilajit por la Arginina y vaya cambio. A la segunda semana ya me despertaba con una firmeza que no sentía hace años. Mi esposa está encantada.”"
   },
   {
     name: "Andrés A.",
     city: "Quito",
     date: "Febrero 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-2")?.imageUrl || "https://picsum.photos/seed/sh-t2/600/400",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-2")?.imageUrl || "https://images.unsplash.com/photo-1548330950-d1e2748050ee?q=80&w=200&h=200&fit=crop",
+    imageHint: "athletic man 30s",
     quote: "“Energía brutal para el día y la noche. Lo compré para el gimnasio, pero el beneficio sexual fue el verdadero premio. Llego del trabajo con ganas y aguanto mucho más en la cama. Se nota que te sube la testosterona de verdad.”"
   },
   {
     name: "Lucas F.",
     city: "Ambato",
     date: "Marzo 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-3")?.imageUrl || "https://picsum.photos/seed/sh-t3/600/400",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-3")?.imageUrl || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&fit=crop",
+    imageHint: "mature man confident",
     quote: "“Volví a sentirme de 25 años. Tengo 48 años y mi líbido estaba por los suelos. Flynew me devolvió el impulso. Me siento más 'macho', con más confianza y siempre listo. Recomendado al 100%.”"
   }
 ];
@@ -81,7 +84,7 @@ export default function ShilajitUltraPage() {
         />
 
         <main className="flex-1 w-full">
-          {/* HERO SECTION CON IMAGEN INTEGRADA */}
+          {/* HERO SECTION */}
           <section className="relative w-full overflow-hidden bg-black">
             <div className="w-full relative cursor-pointer" onClick={openPopup}>
               <Image 
@@ -198,7 +201,7 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          {/* NUEVA SECCIÓN DE TESTIMONIOS DETALLADOS */}
+          {/* SECCIÓN DE TESTIMONIOS DETALLADOS - MOBILE OPTIMIZED AVATARS */}
           <section id="testimonios" className="py-12 bg-black overflow-hidden border-t border-[#DAA520]/20">
             <div className="px-6 space-y-10">
               <div className="text-center space-y-3">
@@ -217,29 +220,30 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
-              <div className="space-y-12">
+              <div className="space-y-6">
                 {TESTIMONIALS_DATA.map((testi, idx) => (
-                  <div key={idx} className="space-y-4">
-                    <div className="relative w-full aspect-[3/2] rounded-[2rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/10">
+                  <div key={idx} className="bg-zinc-900/50 p-5 rounded-[2rem] border border-[#DAA520]/10 flex gap-4 items-start shadow-xl">
+                    <div className="relative w-20 h-20 shrink-0 rounded-full overflow-hidden border-2 border-[#DAA520]/30 shadow-lg">
                       <Image 
                         src={testi.image} 
                         alt={testi.name} 
                         fill 
                         className="object-cover" 
-                        sizes="500px" 
+                        sizes="80px" 
+                        data-ai-hint={testi.imageHint}
                       />
                     </div>
-                    <div className="bg-zinc-900/50 p-6 rounded-[2rem] border border-[#DAA520]/10 space-y-3">
+                    <div className="flex-1 space-y-2">
                       <div className="flex justify-between items-start">
-                        <div>
-                          <p className="font-black text-white uppercase text-lg leading-none">{testi.name}</p>
-                          <p className="text-[10px] font-bold text-[#DAA520] uppercase tracking-widest mt-1">{testi.city} – {testi.date}</p>
+                        <div className="min-w-0">
+                          <p className="font-black text-white uppercase text-md leading-none truncate">{testi.name}</p>
+                          <p className="text-[9px] font-bold text-[#DAA520] uppercase tracking-widest mt-1">{testi.city} – {testi.date}</p>
                         </div>
-                        <div className="flex gap-0.5">
-                          {[1,2,3,4,5].map(s => <Star key={s} className="h-3 w-3 fill-[#DAA520] text-[#DAA520]" />)}
+                        <div className="flex gap-0.5 shrink-0 ml-1">
+                          {[1,2,3,4,5].map(s => <Star key={s} className="h-2.5 w-2.5 fill-[#DAA520] text-[#DAA520]" />)}
                         </div>
                       </div>
-                      <p className="text-[14px] text-slate-300 font-medium leading-relaxed italic">
+                      <p className="text-[13px] text-slate-300 font-medium leading-tight italic">
                         {testi.quote}
                       </p>
                     </div>
@@ -277,7 +281,7 @@ export default function ShilajitUltraPage() {
                 alt="Sello Confianza Ecuador" 
                 width={500} 
                 height={100} 
-                className="w-full h-auto opacity-70 grayscale hover:grayscale-0 transition-all"
+                className="w-full h-auto opacity-70 grayscale"
               />
             </div>
           </section>
