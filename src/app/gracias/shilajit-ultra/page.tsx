@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -6,7 +5,6 @@ import { CheckCircle2, Truck, Home, MessageCircle, ShieldCheck, Smartphone, Clip
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
-import Script from 'next/script';
 
 function ShilajitGraciasContent() {
   const searchParams = useSearchParams();
@@ -14,7 +12,6 @@ function ShilajitGraciasContent() {
   const [ciudad, setCiudad] = useState("Ecuador");
   const [provincia, setProvincia] = useState("");
   const [producto, setProducto] = useState("Shilajit Ultra");
-  const [whatsapp, setWhatsapp] = useState("");
   const [volverUrl, setVolverUrl] = useState("/shilajit-ultra");
 
   useEffect(() => {
@@ -22,7 +19,6 @@ function ShilajitGraciasContent() {
     setProvincia(searchParams.get("provincia") || "");
     setCiudad(searchParams.get("ciudad") || "Ecuador");
     setProducto(searchParams.get("producto") || "Shilajit Ultra");
-    setWhatsapp(searchParams.get("whatsapp") || "");
     setVolverUrl(searchParams.get("back") || "/shilajit-ultra");
   }, [searchParams]);
 
@@ -44,44 +40,6 @@ function ShilajitGraciasContent() {
 
       {/* MOBILE CONTENT */}
       <div className="md:hidden min-h-screen bg-[#111111] flex flex-col items-center p-6 text-center animate-in fade-in duration-700 text-white">
-        {/* TikTok CompletePayment Event dinámico y completo */}
-        <Script id="tiktok-complete-payment-shilajit" strategy="afterInteractive">
-          {`
-            if(typeof ttq !== 'undefined') {
-              let value = 0;
-              let quantity = 1;
-              let prodName = "${producto}";
-              let contents = [];
-              
-              if (prodName.includes("3 al precio de 2") || prodName.includes("Lleva 3")) {
-                value = 44.99;
-                quantity = 3;
-                contents = [
-                  { content_id: "shilajit-ultra-3", content_type: 'product', quantity: 3, price: 44.99 }
-                ];
-              } else {
-                value = 27.99;
-                quantity = 1;
-                contents = [
-                  { content_id: "shilajit-ultra-1", content_type: 'product', quantity: 1, price: 27.99 }
-                ];
-              }
-
-              ttq.track('CompletePayment', {
-                value: value,
-                currency: 'USD',
-                contents: contents,
-                nombreCliente: "${nombre}",
-                producto: prodName,
-                ciudad: "${ciudad}",
-                provincia: "${provincia}",
-                email: "${whatsapp}@romistore.com",
-                teléfono: "${whatsapp}"
-              });
-            }
-          `}
-        </Script>
-
         <div className="mt-10 mb-6">
           <div className="h-20 w-20 bg-green-500/20 rounded-full flex items-center justify-center text-green-500 shadow-inner mx-auto border-2 border-green-500/30">
             <CheckCircle2 className="h-12 w-12" />

@@ -5,7 +5,6 @@ import { CheckCircle2, Truck, Home, MessageCircle, ShieldCheck } from "lucide-re
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
-import Script from 'next/script';
 
 function GraciasContent() {
   const searchParams = useSearchParams();
@@ -29,40 +28,6 @@ function GraciasContent() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center p-6 text-center animate-in fade-in duration-700">
-      {/* TikTok CompletePayment Event Dinámico */}
-      <Script id="tiktok-complete-payment" strategy="afterInteractive">
-        {`
-          if(typeof ttq !== 'undefined') {
-            let value = 0;
-            let quantity = 1;
-            let prodName = "${producto}";
-            
-            if (prodName.includes("1 Kit") || prodName.includes("1 kit")) {
-              value = 35;
-              quantity = 1;
-            } else if (prodName.includes("2 Kits") || prodName.includes("2 kits")) {
-              value = 55;
-              quantity = 2;
-            } else {
-              // Fallback por si el nombre no coincide exactamente
-              value = 35; 
-              quantity = 1;
-            }
-
-            ttq.track('CompletePayment', {
-              value: value,
-              currency: 'USD',
-              contents: [{
-                content_id: prodName,
-                content_type: 'product',
-                quantity: quantity,
-                price: value
-              }]
-            });
-          }
-        `}
-      </Script>
-
       <div className="mt-12 mb-8">
         <div className="h-24 w-24 bg-green-100 rounded-full flex items-center justify-center text-green-600 shadow-inner mx-auto">
           <CheckCircle2 className="h-14 w-14" />

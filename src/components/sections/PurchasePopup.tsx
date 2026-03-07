@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -84,40 +83,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
     inputBg: isOrange ? "bg-white border-[#DDDDDD] text-black text-[14px] md:text-[16px]" : "bg-slate-50 border-slate-100",
     sectionTitle: isOrange ? "text-[18px] md:text-[20px] font-bold text-white uppercase" : "text-slate-900 font-black text-[14px] uppercase"
   }), [isGold, isOrange]);
-
-  // TikTok Events: InitiateCheckout y AddToCart
-  useEffect(() => {
-    if (open && typeof window !== 'undefined' && (window as any).ttq) {
-      (window as any).ttq.track('InitiateCheckout', {
-        contents: products.map(p => ({
-          content_id: p.id,
-          content_type: 'product',
-          quantity: 1,
-          price: p.price
-        })),
-        currency: 'USD',
-        value: products[1]?.price || products[0].price
-      });
-    }
-  }, [open, products]);
-
-  useEffect(() => {
-    if (selectedProduct && typeof window !== 'undefined' && (window as any).ttq) {
-      const p = products.find(prod => prod.id === selectedProduct);
-      if (p) {
-        (window as any).ttq.track('AddToCart', {
-          contents: [{
-            content_id: p.id,
-            content_type: 'product',
-            quantity: 1,
-            price: p.price
-          }],
-          value: p.price,
-          currency: 'USD'
-        });
-      }
-    }
-  }, [selectedProduct, products]);
 
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
