@@ -219,7 +219,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               </div>
             </div>
 
-            <Button type="submit" disabled={loading} className={cn("w-full h-14 rounded-2xl transition-all active:scale-95 mt-2", styles.button)}>
+            <Button type="submit" disabled={loading} className={cn("w-full h-14 rounded-2xl transition-all active:scale-95 mt-2 animate-heartbeat", styles.button)}>
               {loading ? "PROCESANDO..." : (
                 <span className={cn("flex items-center uppercase", styles.buttonText)}>
                   <ShoppingCart className="h-5 w-5 mr-2" />
