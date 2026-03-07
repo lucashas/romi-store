@@ -1,4 +1,3 @@
-
 {
   "placeholderImages": [
     {
@@ -84,6 +83,12 @@
       "description": "Belleza Natural 2",
       "imageUrl": "https://i.imgur.com/FdpmjYk.png",
       "imageHint": "skincare fresh"
+    },
+    {
+      "id": "shilajit-hero-main",
+      "description": "Shilajit Ultra Hero Principal",
+      "imageUrl": "https://i.imgur.com/S1VGamv.png",
+      "imageHint": "shilajit energy"
     },
     {
       "id": "checkout-logo",
