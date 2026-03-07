@@ -37,11 +37,12 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     @apply w-full max-w-[500px] mx-auto shadow-2xl min-h-screen bg-white relative overflow-x-hidden;
+    touch-action: manipulation;
   }
 }
 
 .sticky-cta {
-  @apply fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[460px] z-[100];
+  @apply fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[460px] z-40;
 }
 
 @keyframes heartbeat {

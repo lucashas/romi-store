@@ -57,7 +57,10 @@ const TESTIMONIALS_DATA = [
 
 export default function ShilajitUltraPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const openPopup = () => setIsPopupOpen(true);
+  
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
 
   return (
     <>
@@ -351,15 +354,17 @@ export default function ShilajitUltraPage() {
           </section>
         </main>
 
-        <div className="sticky-cta px-6">
-          <Button 
-            onClick={() => setIsPopupOpen(true)}
-            className="w-full h-18 text-xl font-black bg-[#DAA520] text-black shadow-2xl rounded-2xl animate-heartbeat border-2 border-black uppercase"
-          >
-            <ShoppingCart className="h-6 w-6 mr-3" />
-            ¡QUIERO MI SHILAJIT!
-          </Button>
-        </div>
+        {!isPopupOpen && (
+          <div className="sticky-cta px-6">
+            <Button 
+              onClick={openPopup}
+              className="w-full h-18 text-xl font-black bg-[#DAA520] text-black shadow-2xl rounded-2xl animate-heartbeat border-2 border-black uppercase"
+            >
+              <ShoppingCart className="h-6 w-6 mr-3" />
+              ¡QUIERO MI SHILAJIT!
+            </Button>
+          </div>
+        )}
 
         <PurchasePopup 
           open={isPopupOpen} 
