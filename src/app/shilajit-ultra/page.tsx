@@ -153,6 +153,19 @@ export default function ShilajitUltraPage() {
                 </div>
               </section>
 
+              {/* TARJETA VISUAL ANTES DE BENEFICIOS */}
+              <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
+                <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
+                  <Image 
+                    src="https://i.imgur.com/vDe4Joa.png" 
+                    alt="Confianza Shilajit" 
+                    width={500} 
+                    height={400} 
+                    className="w-full h-auto object-cover block"
+                  />
+                </div>
+              </div>
+
               {/* Imagen de Beneficios Adicional */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/10 bg-zinc-900/40">
