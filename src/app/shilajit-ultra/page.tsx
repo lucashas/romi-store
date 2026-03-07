@@ -64,7 +64,7 @@ export default function ShilajitUltraPage() {
       {/* DESKTOP NOTICE - Solo visible en pantallas >= 768px */}
       <div className="hidden md:flex min-h-screen bg-black items-center justify-center p-8 text-center flex-col gap-6">
         <div className="h-24 w-24 bg-[#DAA520]/20 rounded-full flex items-center justify-center text-[#DAA520] border-2 border-[#DAA520]/30">
-          <Smartphone className="h-12 w-12" />
+          < Smartphone className="h-12 w-12" />
         </div>
         <h1 className="text-[38px] font-black text-white uppercase tracking-tighter">
           CONTENIDO EXCLUSIVO <br /> <span className="text-[#DAA520]">PARA MÓVILES</span>
@@ -255,7 +255,7 @@ export default function ShilajitUltraPage() {
           </section>
 
           {/* SECCIÓN DE TESTIMONIOS CON AVATARES CIRCULARES */}
-          <section id="testimonios" className="py-12 bg-black overflow-hidden border-t border-[#DAA520]/20">
+          <section id="testimonios" className="pt-12 pb-4 bg-black overflow-hidden border-t border-[#DAA520]/20">
             <div className="px-6 space-y-10">
               <div className="text-center space-y-3">
                 <div className="flex justify-center gap-1">
@@ -307,7 +307,7 @@ export default function ShilajitUltraPage() {
           </section>
 
           {/* SECCIÓN GIF IMPACTO */}
-          <section className="px-6 py-8 bg-black flex flex-col items-center text-center space-y-5">
+          <section className="px-6 py-4 bg-black flex flex-col items-center text-center space-y-5">
             <div className="relative w-[120px] h-[120px] rounded-[2.5rem] overflow-hidden shadow-[0_0_25px_rgba(218,165,32,0.4)] border-2 border-[#DAA520]/40 bg-zinc-900">
               <img 
                 src="https://i.imgur.com/AF9JlOo.gif" 
