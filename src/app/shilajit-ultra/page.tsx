@@ -307,15 +307,16 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          {/* IMAGEN DE IMPACTO DESPUÉS DE TESTIMONIOS - REEMPLAZANDO AL GIF */}
+          {/* IMAGEN DE IMPACTO DESPUÉS DE TESTIMONIOS */}
           <section className="px-6 py-6 bg-black flex justify-center">
             <div className="relative w-full max-w-[420px] rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/20 bg-zinc-900/40 cursor-pointer" onClick={openPopup}>
               <Image 
-                src="https://i.imgur.com/XH5FEeK.png" 
-                alt="Impacto Shilajit Ultra" 
+                src="https://i.imgur.com/AF9JlOo.png" 
+                alt="Impacto Final Shilajit Ultra" 
                 width={500} 
                 height={600} 
                 className="w-full h-auto object-cover block"
+                unoptimized // Usamos unoptimized para asegurar carga de Imgur si hay problemas
               />
             </div>
           </section>
