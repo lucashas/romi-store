@@ -78,7 +78,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
     button: isGold ? "bg-yellow-600 hover:bg-yellow-700" : (isOrange ? "bg-[#2E7D32] hover:bg-[#1B5E20] transition-colors shadow-lg" : "bg-orange-600 hover:bg-orange-700"),
     buttonText: "text-white font-bold text-[16px]",
     ring: isGold ? "focus:border-yellow-600" : (isOrange ? "focus:ring-[#DAA520]" : "focus:border-orange-600"),
-    label: isOrange ? "text-[16px] font-medium text-[#DDDDDD] mb-1.5 block ml-1" : "text-[11px] font-black uppercase text-slate-500 tracking-widest mb-1.5 block ml-1",
+    label: isOrange ? "text-[16px] font-bold text-[#FFFFFF] mb-1.5 block ml-1" : "text-[11px] font-black uppercase text-slate-500 tracking-widest mb-1.5 block ml-1",
     modalBg: isOrange ? "bg-[#111111]" : "bg-white",
     inputBg: isOrange ? "bg-white border-[#DDDDDD] text-black text-[14px] md:text-[16px]" : "bg-slate-50 border-slate-100",
     sectionTitle: isOrange ? "text-[18px] md:text-[20px] font-bold text-white uppercase" : "text-slate-900 font-black text-[14px] uppercase"
@@ -171,16 +171,16 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-1">
                   <span className={styles.label}>Nombre</span>
-                  <Input placeholder="Ej. Ana" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-12 rounded-xl font-bold", styles.inputBg, styles.ring)} />
+                  <Input placeholder="Ej. Ana" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-12 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
                 </div>
                 <div className="space-y-1">
                   <span className={styles.label}>Apellido</span>
-                  <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-12 rounded-xl font-bold", styles.inputBg, styles.ring)} />
+                  <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-12 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
                 </div>
               </div>
               <div className="space-y-1">
                 <span className={styles.label}>Número de WhatsApp</span>
-                <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-12 rounded-xl font-bold", styles.inputBg, styles.ring)} />
+                <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-12 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-1">
@@ -199,8 +199,17 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
                 </div>
               </div>
               <div className="space-y-1">
-                <span className={styles.label}>Dirección y Referencia</span>
-                <Input placeholder="Ej. Av. Amazonas y Villarroel..." required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-12 rounded-xl font-bold", styles.inputBg, styles.ring)} />
+                <span className={styles.label}>Dirección y Referencia (Calle 1, Calle 2 y Referencia)</span>
+                <Input 
+                  placeholder="Ej. Av. Amazonas y Villaroel, #Casa 24, Barrio San José" 
+                  required 
+                  value={direccion} 
+                  onChange={(e) => setDireccion(e.target.value)} 
+                  className={cn("h-12 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} 
+                />
+                <p className="text-[12px] text-[#AAAAAA] leading-tight mt-1.5 px-1 font-medium italic">
+                  Por favor ingresa tu dirección completa incluyendo calles principales, número de casa, barrio y referencias cercanas. Ejemplo: A lado del Supermaxi, casa color amarillo.
+                </p>
               </div>
             </div>
 
