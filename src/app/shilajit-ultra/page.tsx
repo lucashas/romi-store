@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -67,7 +66,7 @@ export default function ShilajitUltraPage() {
         <div className="h-24 w-24 bg-[#DAA520]/20 rounded-full flex items-center justify-center text-[#DAA520] border-2 border-[#DAA520]/30">
           <Smartphone className="h-12 w-12" />
         </div>
-        <h1 className="text-4xl font-black text-white uppercase tracking-tighter">
+        <h1 className="text-[38px] font-black text-white uppercase tracking-tighter">
           CONTENIDO EXCLUSIVO <br /> <span className="text-[#DAA520]">PARA MÓVILES</span>
         </h1>
         <p className="text-slate-400 max-w-md font-medium leading-relaxed">
@@ -153,7 +152,7 @@ export default function ShilajitUltraPage() {
                 </div>
               </section>
 
-              {/* TARJETA VISUAL ANTES DE BENEFICIOS */}
+              {/* TARJETA VISUAL ANTES DE OFERTAS (CONFIDENCIAL) */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
@@ -166,7 +165,20 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
-              {/* SECCIÓN DE PROMOCIONES - REUBICADA ANTES DE IMAGEN DE BENEFICIOS */}
+              {/* NUEVA TARJETA VISUAL (RESULTADOS) ANTES DE OFERTAS */}
+              <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
+                <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
+                  <Image 
+                    src="https://i.imgur.com/dWq39By.png" 
+                    alt="Resultados Shilajit" 
+                    width={500} 
+                    height={400} 
+                    className="w-full h-auto object-cover block"
+                  />
+                </div>
+              </div>
+
+              {/* SECCIÓN DE PROMOCIONES */}
               <section className="py-6 w-full">
                 <div className="space-y-8">
                   <h2 className="text-[26px] font-black text-white text-center uppercase tracking-tighter">
