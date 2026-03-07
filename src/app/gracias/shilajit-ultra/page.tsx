@@ -24,12 +24,12 @@ function ShilajitGraciasContent() {
   }, [searchParams]);
 
   const ubicacionCompleta = provincia ? `${ciudad}, ${provincia}` : ciudad;
-  const whatsappMessage = `Hola Romi Store EC, soy ${nombre}. Acabo de pedir ${producto} para ${ubicacionCompleta}. Confirmo mi pedido para env&iacute;o inmediato.`;
+  const whatsappMessage = `Hola Romi Store EC, soy ${nombre}. Acabo de pedir ${producto} para ${ubicacionCompleta}. Confirmo mi pedido para envío inmediato.`;
   const whatsappUrl = `https://wa.me/593997740583?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center p-6 text-center animate-in fade-in duration-700 text-white">
-      {/* TikTok CompletePayment Event - Din&aacute;mico para Shilajit */}
+    <div className="min-h-screen bg-black flex flex-col items-center p-6 text-center animate-in fade-in duration-700 text-white">
+      {/* TikTok CompletePayment Event */}
       <Script id="tiktok-complete-payment-shilajit" strategy="afterInteractive">
         {`
           if(typeof ttq !== 'undefined') {
@@ -62,55 +62,55 @@ function ShilajitGraciasContent() {
       </Script>
 
       <div className="mt-12 mb-8">
-        <div className="h-24 w-24 bg-amber-600/20 rounded-full flex items-center justify-center text-amber-500 shadow-inner mx-auto border-2 border-amber-600/30">
+        <div className="h-24 w-24 bg-[#DAA520]/20 rounded-full flex items-center justify-center text-[#DAA520] shadow-inner mx-auto border-2 border-[#DAA520]/30">
           <CheckCircle2 className="h-14 w-14" />
         </div>
       </div>
 
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-600/10 text-amber-500 font-black text-[12px] tracking-widest uppercase mb-4 border border-amber-600/20">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#DAA520]/10 text-[#DAA520] font-black text-[12px] tracking-widest uppercase mb-4 border border-[#DAA520]/20">
         <ShieldCheck className="h-4 w-4" />
         PODER NATURAL ACTIVADO
       </div>
 
       <h1 className="text-3xl font-black text-white uppercase leading-tight mb-4">
-        &iexcl;GRACIAS POR <span className="text-amber-500">TU COMPRA!</span>
+        ¡GRACIAS POR <span className="text-[#DAA520]">TU COMPRA!</span>
       </h1>
       
       <p className="text-lg text-slate-400 font-medium leading-relaxed mb-8">
-        Hola <strong>{nombre}</strong>, tu pedido de <strong>{producto}</strong> est&aacute; siendo procesado para <strong>{ubicacionCompleta}</strong>.
+        Hola <strong>{nombre}</strong>, tu pedido de <strong>{producto}</strong> está siendo procesado para <strong>{ubicacionCompleta}</strong>.
       </p>
 
-      <div className="w-full bg-slate-900 p-6 rounded-[2rem] border border-slate-800 text-left space-y-6 mb-8 shadow-2xl">
-        <p className="text-[13px] font-black uppercase text-amber-500 border-b border-amber-500/10 pb-2 tracking-widest text-center">
-          PR&Oacute;XIMOS PASOS:
+      <div className="w-full bg-zinc-900 p-6 rounded-[2rem] border border-[#DAA520]/10 text-left space-y-6 mb-8 shadow-2xl">
+        <p className="text-[13px] font-black uppercase text-[#DAA520] border-b border-[#DAA520]/10 pb-2 tracking-widest text-center">
+          PRÓXIMOS PASOS:
         </p>
         
         <div className="space-y-6">
           <div className="flex items-start gap-4">
-            <div className="h-8 w-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">1</div>
+            <div className="h-8 w-8 rounded-full bg-[#DAA520] text-black flex items-center justify-center shrink-0 font-bold text-sm shadow-md">1</div>
             <div className="space-y-1">
               <p className="font-black text-white text-sm uppercase">DESPACHO INMEDIATO</p>
-              <p className="text-sm text-slate-400">Nuestro equipo est&aacute; preparando tu pedido para env&iacute;o prioritario.</p>
+              <p className="text-sm text-slate-400">Nuestro equipo está preparando tu pedido para envío prioritario.</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <div className="h-8 w-8 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-md">2</div>
+            <div className="h-8 w-8 rounded-full bg-[#DAA520] text-black flex items-center justify-center shrink-0 font-bold text-sm shadow-md">2</div>
             <div className="space-y-1">
               <p className="font-black text-white text-sm uppercase">CONTACTO WHATSAPP</p>
-              <p className="text-sm text-slate-400">Recibir&aacute;s un mensaje para confirmar el horario de entrega.</p>
+              <p className="text-sm text-slate-400">Recibirás un mensaje para confirmar el horario de entrega.</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="w-full space-y-4 mb-12">
-        <Button asChild className="w-full h-16 text-lg font-black uppercase bg-green-600 hover:bg-green-700 shadow-xl rounded-2xl transition-transform active:scale-95">
+        <Button asChild className="w-full h-16 text-lg font-black uppercase bg-[#DAA520] hover:bg-black hover:text-[#DAA520] text-black shadow-xl rounded-2xl transition-all duration-500 border-2 border-[#DAA520]">
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
             <MessageCircle className="mr-2 h-6 w-6" />
             CONFIRMAR POR WHATSAPP
           </a>
         </Button>
-        <Button asChild variant="outline" className="w-full h-14 text-sm font-bold uppercase border-2 border-slate-700 rounded-2xl text-slate-300">
+        <Button asChild variant="outline" className="w-full h-14 text-sm font-bold uppercase border-2 border-zinc-700 rounded-2xl text-white bg-black hover:border-[#DAA520]">
           <Link href={volverUrl}>
             <Home className="mr-2 h-4 w-4" />
             VOLVER A LA TIENDA
@@ -120,7 +120,7 @@ function ShilajitGraciasContent() {
 
       <div className="flex items-center justify-center gap-2 opacity-50 text-[10px] font-bold uppercase tracking-widest text-slate-400">
         <Truck className="h-4 w-4" />
-        Env&iacute;os r&aacute;pidos a todo el Ecuador
+        Envíos rápidos a todo el Ecuador
       </div>
     </div>
   );
@@ -128,7 +128,7 @@ function ShilajitGraciasContent() {
 
 export default function ShilajitGraciasPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950 flex items-center justify-center font-black uppercase text-white">Cargando confirmaci&oacute;n...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center font-black uppercase text-white">Cargando confirmación...</div>}>
       <ShilajitGraciasContent />
     </Suspense>
   );
