@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
@@ -84,11 +85,43 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
     sectionTitle: isOrange ? "text-[18px] md:text-[20px] font-bold text-white uppercase" : "text-slate-900 font-black text-[14px] uppercase"
   }), [isGold, isOrange]);
 
+  const product = useMemo(() => products.find(p => p.id === selectedProduct), [products, selectedProduct]);
+
   useEffect(() => {
     if (open && products.length > 0 && !selectedProduct) {
       setSelectedProduct(products[1]?.id || products[0].id);
     }
   }, [open, products, selectedProduct]);
+
+  // Evento InitiateCheckout al abrir el modal
+  useEffect(() => {
+    if (open && typeof window !== "undefined" && (window as any).ttq) {
+      (window as any).ttq.track('InitiateCheckout', {
+        value: product?.price || 0,
+        currency: 'USD',
+        contents: [{
+          content_id: product?.id,
+          content_name: product?.name,
+          quantity: 1
+        }]
+      });
+    }
+  }, [open, product]);
+
+  // Evento AddToCart al cambiar de producto
+  useEffect(() => {
+    if (open && selectedProduct && typeof window !== "undefined" && (window as any).ttq) {
+      (window as any).ttq.track('AddToCart', {
+        value: product?.price || 0,
+        currency: 'USD',
+        contents: [{
+          content_id: product?.id,
+          content_name: product?.name,
+          quantity: 1
+        }]
+      });
+    }
+  }, [selectedProduct, open, product]);
 
   const ciudadesDisponibles = useMemo(() => {
     return provincia ? (ecuadorData[provincia] || []).sort() : [];
@@ -98,8 +131,6 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
     const value = e.target.value.replace(/\D/g, "").slice(0, 10);
     setWhatsapp(value);
   };
-
-  const product = useMemo(() => products.find(p => p.id === selectedProduct), [products, selectedProduct]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

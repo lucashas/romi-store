@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { TopMarquee } from "@/components/layout/TopMarquee";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -32,6 +33,18 @@ const RICE_PRODUCTS: Product[] = [
 export default function BioaquaRicePage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
+
+  useEffect(() => {
+    // Evento ViewContent al cargar la landing
+    if (typeof window !== "undefined" && (window as any).ttq) {
+      (window as any).ttq.track('ViewContent', {
+        content_name: 'Kit Piel de Porcelana Bioaqua',
+        content_category: 'Skincare',
+        value: 35.0,
+        currency: 'USD'
+      });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-white pb-10 font-body overflow-x-hidden w-full max-w-[500px] mx-auto shadow-2xl relative border-x border-slate-100">
@@ -202,14 +215,16 @@ export default function BioaquaRicePage() {
         </section>
       </main>
 
-      <div className="sticky-cta">
-        <Button onClick={openPopup} size="lg" className="w-full h-16 text-xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-2xl rounded-2xl animate-heartbeat border-2 border-white uppercase">
-          <ShoppingCart className="h-6 w-6 mr-3" />
-          &iexcl;COMPRAR AHORA!
-        </Button>
-      </div>
+      {!isPopupOpen && (
+        <div className="sticky-cta">
+          <Button onClick={openPopup} size="lg" className="w-full h-16 text-xl font-black bg-yellow-600 hover:bg-yellow-700 text-white shadow-2xl rounded-2xl animate-heartbeat border-2 border-white uppercase">
+            <ShoppingCart className="h-6 w-6 mr-3" />
+            &iexcl;COMPRAR AHORA!
+          </Button>
+        </div>
+      )}
 
-      <PurchasePopup open={isPopupOpen} onOpenChange={setIsPopupOpen} products={RICE_PRODUCTS} themeColor="gold" />
+      <PurchasePopup open={isPopupOpen} onOpenChange={setIsPopupOpen} products={RICE_PRODUCTS} themeColor="gold" landingId="bioaqua-rice-v1" />
       <Footer theme="light" />
       <Toaster />
     </div>

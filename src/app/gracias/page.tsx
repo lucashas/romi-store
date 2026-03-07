@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -15,11 +16,32 @@ function GraciasContent() {
   const [volverUrl, setVolverUrl] = useState("/");
 
   useEffect(() => {
-    setNombre(searchParams.get("nombre") || "Cliente");
-    setProvincia(searchParams.get("provincia") || "");
-    setCiudad(searchParams.get("ciudad") || "Ecuador");
-    setProducto(searchParams.get("producto") || "su pedido");
-    setVolverUrl(searchParams.get("back") || "/");
+    const name = searchParams.get("nombre") || "Cliente";
+    const prov = searchParams.get("provincia") || "";
+    const city = searchParams.get("ciudad") || "Ecuador";
+    const prod = searchParams.get("producto") || "su pedido";
+    const back = searchParams.get("back") || "/";
+    const phone = searchParams.get("whatsapp") || "";
+
+    setNombre(name);
+    setProvincia(prov);
+    setCiudad(city);
+    setProducto(prod);
+    setVolverUrl(back);
+
+    // Evento CompletePayment para Bioaqua
+    if (typeof window !== "undefined" && (window as any).ttq) {
+      const price = prod.includes("2") ? 55.0 : 35.0;
+      (window as any).ttq.track('CompletePayment', {
+        value: price,
+        currency: 'USD',
+        content_name: prod,
+        content_type: 'product',
+        quantity: 1,
+        phone_number: phone,
+        external_id: phone
+      });
+    }
   }, [searchParams]);
 
   const ubicacionCompleta = provincia ? `${ciudad}, ${provincia}` : ciudad;
