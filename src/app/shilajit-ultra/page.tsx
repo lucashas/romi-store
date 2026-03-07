@@ -256,7 +256,7 @@ export default function ShilajitUltraPage() {
           </section>
 
           {/* SECCIÓN DE TESTIMONIOS CON AVATARES CIRCULARES */}
-          <section id="testimonios" className="pt-12 pb-1 bg-black overflow-hidden border-t border-[#DAA520]/20">
+          <section id="testimonios" className="pt-12 pb-4 bg-black overflow-hidden border-t border-[#DAA520]/20">
             <div className="px-6 space-y-10">
               <div className="text-center space-y-3">
                 <div className="flex justify-center gap-1">
@@ -308,7 +308,7 @@ export default function ShilajitUltraPage() {
           </section>
 
           {/* SECCIÓN GIF IMPACTO */}
-          <section className="px-6 py-2 bg-black flex flex-col items-center text-center space-y-5">
+          <section className="px-6 py-4 bg-black flex flex-col items-center text-center space-y-5">
             <div className="relative w-[120px] h-[120px] rounded-[2.5rem] overflow-hidden shadow-[0_0_25px_rgba(218,165,32,0.4)] border-2 border-[#DAA520]/40 bg-zinc-900">
               <img 
                 src="https://i.imgur.com/AF9JlOo.gif" 
@@ -344,7 +344,7 @@ export default function ShilajitUltraPage() {
                 alt="Sello Confianza Ecuador" 
                 width={500} 
                 height={100} 
-                className="w-full h-auto opacity-70 grayscale"
+                className="w-full h-auto rounded-2xl shadow-xl border-2 border-[#DAA520]/20" 
               />
             </div>
           </section>
