@@ -4,12 +4,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { TopMarquee } from "@/components/layout/TopMarquee";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Flame, ShieldCheck, CheckCircle2, Smartphone } from "lucide-react";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { ShoppingCart, Flame, ShieldCheck, CheckCircle2, Smartphone, Star } from "lucide-react";
 
 const SHILAJIT_PRODUCTS: Product[] = [
   {
@@ -28,6 +28,30 @@ const SHILAJIT_PRODUCTS: Product[] = [
     badge: "¡MÁS RECOMENDADO!",
     description: "Vitalidad Total para 3 Meses • Envío Gratis",
   },
+];
+
+const TESTIMONIALS_DATA = [
+  {
+    name: "Carlos R.",
+    city: "Guayaquil",
+    date: "Enero 2027",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-1")?.imageUrl || "https://picsum.photos/seed/sh-t1/600/400",
+    quote: "“¡La firmeza que recuperé es increíble! Llevaba unos meses notando que mis erecciones no eran del 100%. Probé este Shilajit por la Arginina y vaya cambio. A la segunda semana ya me despertaba con una firmeza que no sentía hace años. Mi esposa está encantada.”"
+  },
+  {
+    name: "Andrés A.",
+    city: "Quito",
+    date: "Febrero 2027",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-2")?.imageUrl || "https://picsum.photos/seed/sh-t2/600/400",
+    quote: "“Energía brutal para el día y la noche. Lo compré para el gimnasio, pero el beneficio sexual fue el verdadero premio. Llego del trabajo con ganas y aguanto mucho más en la cama. Se nota que te sube la testosterona de verdad.”"
+  },
+  {
+    name: "Lucas F.",
+    city: "Ambato",
+    date: "Marzo 2027",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-3")?.imageUrl || "https://picsum.photos/seed/sh-t3/600/400",
+    quote: "“Volví a sentirme de 25 años. Tengo 48 años y mi líbido estaba por los suelos. Flynew me devolvió el impulso. Me siento más 'macho', con más confianza y siempre listo. Recomendado al 100%.”"
+  }
 ];
 
 export default function ShilajitUltraPage() {
@@ -68,10 +92,7 @@ export default function ShilajitUltraPage() {
                 className="w-full h-auto object-cover block" 
                 priority
               />
-              {/* Overlay con degradado para legibilidad */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-              
-              {/* Badge flotante sobre la imagen */}
               <div className="absolute top-4 right-4 bg-[#DAA520] text-black px-4 py-1 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl animate-pulse">
                 ENVÍO GRATUITO 🇪🇨
               </div>
@@ -117,7 +138,7 @@ export default function ShilajitUltraPage() {
                 </div>
               </section>
 
-              {/* Nueva Imagen de Beneficios */}
+              {/* Imagen de Beneficios */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/10 bg-zinc-900/40">
                   <Image 
@@ -136,7 +157,6 @@ export default function ShilajitUltraPage() {
                 </h2>
 
                 <div className="grid grid-cols-1 gap-4">
-                  {/* Opción 1 Frasco */}
                   <div onClick={openPopup} className="relative bg-zinc-900 p-6 pt-10 rounded-[2rem] border-2 border-zinc-800 shadow-xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group hover:border-[#DAA520]/30">
                     <div className="absolute top-0 left-0 w-full bg-zinc-800 py-1">
                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">OFERTA BÁSICA</p>
@@ -148,7 +168,6 @@ export default function ShilajitUltraPage() {
                     </div>
                   </div>
 
-                  {/* Opción 3 Frascos - BEST SELLER */}
                   <div onClick={openPopup} className="relative bg-zinc-900/90 p-6 pt-10 rounded-[2.5rem] border-4 border-[#DAA520] shadow-2xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group">
                     <div className="absolute top-0 left-0 w-full bg-[#DAA520] py-1">
                       <p className="text-[9px] font-black text-black uppercase tracking-widest">¡OFERTA MÁS VENDIDA!</p>
@@ -179,12 +198,66 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          <Testimonials 
-            title="RESULTADOS REALES" 
-            subtitle="Hombres imparables cada día" 
-            themeColor="orange" 
-            testimonialImageUrl="https://i.imgur.com/PTsQyWM.png" 
-          />
+          {/* NUEVA SECCIÓN DE TESTIMONIOS DETALLADOS */}
+          <section id="testimonios" className="py-12 bg-black overflow-hidden border-t border-[#DAA520]/20">
+            <div className="px-6 space-y-10">
+              <div className="text-center space-y-3">
+                <div className="flex justify-center gap-1">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} className="h-5 w-5 fill-[#DAA520] text-[#DAA520]" />
+                  ))}
+                </div>
+                <div className="space-y-1">
+                  <h2 className="text-3xl font-black uppercase tracking-tighter leading-none text-white">
+                    RESULTADOS REALES
+                  </h2>
+                  <p className="text-[14px] font-black uppercase tracking-widest text-[#DAA520]">
+                    Hombres imparables cada día
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-12">
+                {TESTIMONIALS_DATA.map((testi, idx) => (
+                  <div key={idx} className="space-y-4">
+                    <div className="relative w-full aspect-[3/2] rounded-[2rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/10">
+                      <Image 
+                        src={testi.image} 
+                        alt={testi.name} 
+                        fill 
+                        className="object-cover" 
+                        sizes="500px" 
+                      />
+                    </div>
+                    <div className="bg-zinc-900/50 p-6 rounded-[2rem] border border-[#DAA520]/10 space-y-3">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <p className="font-black text-white uppercase text-lg leading-none">{testi.name}</p>
+                          <p className="text-[10px] font-bold text-[#DAA520] uppercase tracking-widest mt-1">{testi.city} – {testi.date}</p>
+                        </div>
+                        <div className="flex gap-0.5">
+                          {[1,2,3,4,5].map(s => <Star key={s} className="h-3 w-3 fill-[#DAA520] text-[#DAA520]" />)}
+                        </div>
+                      </div>
+                      <p className="text-[14px] text-slate-300 font-medium leading-relaxed italic">
+                        {testi.quote}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="py-6">
+                <Button 
+                  onClick={openPopup} 
+                  className="w-full h-18 text-xl font-black bg-[#DAA520] text-black shadow-2xl rounded-2xl animate-heartbeat border-2 border-black uppercase"
+                >
+                  <ShoppingCart className="h-6 w-6 mr-3" />
+                  ¡QUIERO MI SHILAJIT!
+                </Button>
+              </div>
+            </div>
+          </section>
 
           <section className="py-10 text-center space-y-8 bg-black">
             <div className="grid grid-cols-2 gap-4 px-6">
@@ -210,7 +283,6 @@ export default function ShilajitUltraPage() {
           </section>
         </main>
 
-        {/* STICKY CTA MOBILE */}
         <div className="sticky-cta px-6">
           <Button 
             onClick={openPopup} 
