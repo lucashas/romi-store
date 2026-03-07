@@ -307,22 +307,9 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          {/* GIF DE INTIMIDAD - DISIMULADO */}
-          <section className="px-6 py-4 bg-black flex justify-center">
-            <div className="relative w-72 h-48 rounded-[2rem] overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
-              <Image 
-                src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGp6ZzBqZzBqZzBqZzBqZzBqZzBqZzBqZzBqZzBqZzBqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l2Je2MvUMnLT0H0TS/giphy.gif" 
-                alt="Momento Shilajit" 
-                fill
-                className="object-cover opacity-70"
-                unoptimized
-              />
-            </div>
-          </section>
-
-          {/* IMAGEN DE IMPACTO DESPUÉS DE TESTIMONIOS */}
-          <section className="px-6 py-6 bg-black">
-            <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/20 bg-zinc-900/40 cursor-pointer" onClick={openPopup}>
+          {/* IMAGEN DE IMPACTO DESPUÉS DE TESTIMONIOS - REEMPLAZANDO AL GIF */}
+          <section className="px-6 py-6 bg-black flex justify-center">
+            <div className="relative w-full max-w-[420px] rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/20 bg-zinc-900/40 cursor-pointer" onClick={openPopup}>
               <Image 
                 src="https://i.imgur.com/XH5FEeK.png" 
                 alt="Impacto Shilajit Ultra" 
