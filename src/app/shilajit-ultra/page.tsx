@@ -166,6 +166,54 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
+              {/* SECCIÓN DE PROMOCIONES - REUBICADA ANTES DE IMAGEN DE BENEFICIOS */}
+              <section className="py-6 w-full">
+                <div className="space-y-8">
+                  <h2 className="text-[26px] font-black text-white text-center uppercase tracking-tighter">
+                    💎 ELIGE TU <span className="text-[#DAA520]">OFERTA</span> 💎
+                  </h2>
+
+                  <div className="grid grid-cols-1 gap-4">
+                    <div onClick={openPopup} className="relative bg-zinc-900 p-6 pt-10 rounded-[2rem] border-2 border-zinc-800 shadow-xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group hover:border-[#DAA520]/30">
+                      <div className="absolute top-0 left-0 w-full bg-zinc-800 py-1">
+                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">OFERTA BÁSICA</p>
+                      </div>
+                      <p className="text-[14px] font-black text-white uppercase leading-none">1 FRASCO SHILAJIT ULTRA</p>
+                      <div className="flex justify-center items-baseline gap-2">
+                        <span className="text-[14px] font-bold text-slate-600 line-through mb-1">$40.00</span>
+                        <p className="text-[42px] font-black text-white leading-none">$27.99</p>
+                      </div>
+                    </div>
+
+                    <div onClick={openPopup} className="relative bg-zinc-900/90 p-6 pt-10 rounded-[2.5rem] border-4 border-[#DAA520] shadow-2xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group">
+                      <div className="absolute top-0 left-0 w-full bg-[#DAA520] py-1">
+                        <p className="text-[9px] font-black text-black uppercase tracking-widest">¡OFERTA MÁS VENDIDA!</p>
+                      </div>
+                      <p className="text-[17px] font-black text-[#DAA520] uppercase leading-none">LLEVA 3 AL PRECIO DE 2</p>
+                      <div className="flex justify-center items-baseline gap-2">
+                        <span className="text-[14px] font-bold text-[#DAA520]/30 line-through mb-1">$84.97</span>
+                        <p className="text-[48px] font-black text-white leading-none">$44.99</p>
+                      </div>
+                      <p className="text-[11px] font-black text-[#DAA520] uppercase italic tracking-tighter">Recibes el 3ero TOTALMENTE GRATIS</p>
+                    </div>
+                  </div>
+
+                  <div className="py-4">
+                    <Button 
+                      onClick={openPopup} 
+                      className="w-full h-20 text-2xl font-black bg-[#DAA520] text-black shadow-[0_0_30px_rgba(218,165,32,0.4)] rounded-3xl animate-heartbeat border-2 border-black uppercase transition-all active:scale-95"
+                    >
+                      <ShoppingCart className="h-7 w-7 mr-3" />
+                      ¡PEDIR AHORA!
+                    </Button>
+                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-4 flex items-center justify-center gap-2">
+                      <ShieldCheck className="h-4 w-4" />
+                      Pago Seguro Contra Entrega
+                    </p>
+                  </div>
+                </div>
+              </section>
+
               {/* Imagen de Beneficios Adicional */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/10 bg-zinc-900/40">
@@ -229,54 +277,6 @@ export default function ShilajitUltraPage() {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-          </section>
-
-          {/* SECCIÓN DE PROMOCIONES */}
-          <section className="py-12 bg-black">
-            <div className="px-6 space-y-8">
-              <h2 className="text-[26px] font-black text-white text-center uppercase tracking-tighter">
-                💎 ELIGE TU <span className="text-[#DAA520]">OFERTA</span> 💎
-              </h2>
-
-              <div className="grid grid-cols-1 gap-4">
-                <div onClick={openPopup} className="relative bg-zinc-900 p-6 pt-10 rounded-[2rem] border-2 border-zinc-800 shadow-xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group hover:border-[#DAA520]/30">
-                  <div className="absolute top-0 left-0 w-full bg-zinc-800 py-1">
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">OFERTA BÁSICA</p>
-                  </div>
-                  <p className="text-[14px] font-black text-white uppercase leading-none">1 FRASCO SHILAJIT ULTRA</p>
-                  <div className="flex justify-center items-baseline gap-2">
-                    <span className="text-[14px] font-bold text-slate-600 line-through mb-1">$40.00</span>
-                    <p className="text-[42px] font-black text-white leading-none">$27.99</p>
-                  </div>
-                </div>
-
-                <div onClick={openPopup} className="relative bg-zinc-900/90 p-6 pt-10 rounded-[2.5rem] border-4 border-[#DAA520] shadow-2xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group">
-                  <div className="absolute top-0 left-0 w-full bg-[#DAA520] py-1">
-                    <p className="text-[9px] font-black text-black uppercase tracking-widest">¡OFERTA MÁS VENDIDA!</p>
-                  </div>
-                  <p className="text-[17px] font-black text-[#DAA520] uppercase leading-none">LLEVA 3 AL PRECIO DE 2</p>
-                  <div className="flex justify-center items-baseline gap-2">
-                    <span className="text-[14px] font-bold text-[#DAA520]/30 line-through mb-1">$84.97</span>
-                    <p className="text-[48px] font-black text-white leading-none">$44.99</p>
-                  </div>
-                  <p className="text-[11px] font-black text-[#DAA520] uppercase italic tracking-tighter">Recibes el 3ero TOTALMENTE GRATIS</p>
-                </div>
-              </div>
-
-              <div className="py-4">
-                <Button 
-                  onClick={openPopup} 
-                  className="w-full h-20 text-2xl font-black bg-[#DAA520] text-black shadow-[0_0_30px_rgba(218,165,32,0.4)] rounded-3xl animate-heartbeat border-2 border-black uppercase transition-all active:scale-95"
-                >
-                  <ShoppingCart className="h-7 w-7 mr-3" />
-                  ¡PEDIR AHORA!
-                </Button>
-                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-4 flex items-center justify-center gap-2">
-                  <ShieldCheck className="h-4 w-4" />
-                  Pago Seguro Contra Entrega
-                </p>
               </div>
             </div>
           </section>
