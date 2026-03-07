@@ -309,7 +309,7 @@ export default function ShilajitUltraPage() {
 
           {/* IMAGEN DE IMPACTO DESPUÉS DE TESTIMONIOS */}
           <section className="px-6 py-6 bg-black flex justify-center">
-            <div className="relative w-full max-w-[420px] rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/20 bg-zinc-900/40 cursor-pointer" onClick={openPopup}>
+            <div className="relative w-full max-w-[300px] rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/20 bg-zinc-900/40 cursor-pointer" onClick={openPopup}>
               <Image 
                 src="https://i.imgur.com/AF9JlOo.png" 
                 alt="Impacto Final Shilajit Ultra" 
