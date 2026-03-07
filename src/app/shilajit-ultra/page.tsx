@@ -35,7 +35,7 @@ const TESTIMONIALS_DATA = [
     name: "Carlos R.",
     city: "Guayaquil",
     date: "Enero 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-1")?.imageUrl || "https://picsum.photos/seed/sh-man-1/200/200",
+    image: "https://picsum.photos/seed/sh-man-1/200/200",
     imageHint: "illustration man",
     quote: "“¡La firmeza que recuperé es increíble! Llevaba unos meses notando que mis erecciones no eran del 100%. Probé este Shilajit por la Arginina y vaya cambio. A la segunda semana ya me despertaba con una firmeza que no sentía hace años. Mi esposa está encantada.”"
   },
@@ -43,7 +43,7 @@ const TESTIMONIALS_DATA = [
     name: "Andrés A.",
     city: "Quito",
     date: "Febrero 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-2")?.imageUrl || "https://picsum.photos/seed/sh-man-2/200/200",
+    image: "https://picsum.photos/seed/sh-man-2/200/200",
     imageHint: "illustration athletic",
     quote: "“Energía brutal para el día y la noche. Lo compré para el gimnasio, pero el beneficio sexual fue el verdadero premio. Llego del trabajo con ganas y aguanto mucho más en la cama. Se nota que te sube la testosterona de verdad.”"
   },
@@ -51,9 +51,42 @@ const TESTIMONIALS_DATA = [
     name: "Lucas F.",
     city: "Ambato",
     date: "Marzo 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-3")?.imageUrl || "https://picsum.photos/seed/sh-man-3/200/200",
+    image: "https://picsum.photos/seed/sh-man-3/200/200",
     imageHint: "illustration mature",
     quote: "“Volví a sentirme de 25 años. Tengo 48 años y mi líbido estaba por los suelos. Flynew me devolvió el impulso. Me siento más 'macho', con más confianza y siempre listo. Recomendado al 100%.”"
+  }
+];
+
+const BENEFIT_BLOCKS = [
+  {
+    img1: "https://i.imgur.com/f0B52yT.png",
+    img2: "https://i.imgur.com/ptwUqIZ.png",
+    title: "Energía que despierta tu día",
+    text: "Shilajit Ultra activa tu vitalidad desde la primera dosis, ayudándote a rendir más en cada jornada."
+  },
+  {
+    img1: "https://i.imgur.com/vDe4Joa.png",
+    img2: "https://i.imgur.com/DHJQhEW.png",
+    title: "Confianza que se nota",
+    text: "Recupera la seguridad en ti mismo y disfruta de una firmeza que te acompaña en cada momento."
+  },
+  {
+    img1: "https://i.imgur.com/SrEzkhf.png",
+    img2: "https://i.imgur.com/UKBZSjL.png",
+    title: "Fuerza masculina real",
+    text: "La combinación de Shilajit y Arginina potencia tu testosterona y te devuelve la potencia de tus mejores años."
+  },
+  {
+    img1: "https://i.imgur.com/XH5FEeK.png",
+    img2: "https://i.imgur.com/dWq39By.png",
+    title: "Resultados visibles",
+    text: "No son promesas, son cambios que se notan en tu cuerpo, tu energía y tu desempeño."
+  },
+  {
+    img1: "https://i.imgur.com/R8ViGNT.png",
+    img2: "https://i.imgur.com/S1VGamv.png",
+    title: "Hombres imparables",
+    text: "Cada testimonio refleja lo mismo: más vigor, más pasión y más confianza cada día."
   }
 ];
 
@@ -96,7 +129,6 @@ export default function ShilajitUltraPage() {
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-              {/* Badge movido un poco más abajo (top-14) para no tapar el texto */}
               <div className="absolute top-14 right-4 bg-[#DAA520] text-black px-4 py-1 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl animate-pulse z-20">
                 ENVÍO GRATUITO 🇪🇨
               </div>
@@ -154,51 +186,6 @@ export default function ShilajitUltraPage() {
                   />
                 </div>
               </div>
-
-              <section className="py-4 space-y-6">
-                <h2 className="text-[26px] font-black text-white text-center uppercase tracking-tighter">
-                  💎 ELIGE TU <span className="text-[#DAA520]">OFERTA</span> 💎
-                </h2>
-
-                <div className="grid grid-cols-1 gap-4">
-                  <div onClick={openPopup} className="relative bg-zinc-900 p-6 pt-10 rounded-[2rem] border-2 border-zinc-800 shadow-xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group hover:border-[#DAA520]/30">
-                    <div className="absolute top-0 left-0 w-full bg-zinc-800 py-1">
-                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">OFERTA BÁSICA</p>
-                    </div>
-                    <p className="text-[14px] font-black text-white uppercase leading-none">1 FRASCO SHILAJIT ULTRA</p>
-                    <div className="flex justify-center items-baseline gap-2">
-                      <span className="text-[14px] font-bold text-slate-600 line-through mb-1">$40.00</span>
-                      <p className="text-[42px] font-black text-white leading-none">$27.99</p>
-                    </div>
-                  </div>
-
-                  <div onClick={openPopup} className="relative bg-zinc-900/90 p-6 pt-10 rounded-[2.5rem] border-4 border-[#DAA520] shadow-2xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group">
-                    <div className="absolute top-0 left-0 w-full bg-[#DAA520] py-1">
-                      <p className="text-[9px] font-black text-black uppercase tracking-widest">¡OFERTA MÁS VENDIDA!</p>
-                    </div>
-                    <p className="text-[17px] font-black text-[#DAA520] uppercase leading-none">LLEVA 3 AL PRECIO DE 2</p>
-                    <div className="flex justify-center items-baseline gap-2">
-                      <span className="text-[14px] font-bold text-[#DAA520]/30 line-through mb-1">$84.97</span>
-                      <p className="text-[48px] font-black text-white leading-none">$44.99</p>
-                    </div>
-                    <p className="text-[11px] font-black text-[#DAA520] uppercase italic tracking-tighter">Recibes el 3ero TOTALMENTE GRATIS</p>
-                  </div>
-                </div>
-
-                <div className="py-4">
-                  <Button 
-                    onClick={openPopup} 
-                    className="w-full h-20 text-2xl font-black bg-[#DAA520] text-black shadow-[0_0_30px_rgba(218,165,32,0.4)] rounded-3xl animate-heartbeat border-2 border-black uppercase transition-all active:scale-95"
-                  >
-                    <ShoppingCart className="h-7 w-7 mr-3" />
-                    ¡PEDIR AHORA!
-                  </Button>
-                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-4 flex items-center justify-center gap-2">
-                    <ShieldCheck className="h-4 w-4" />
-                    Pago Seguro Contra Entrega
-                  </p>
-                </div>
-              </section>
             </div>
           </section>
 
@@ -251,15 +238,79 @@ export default function ShilajitUltraPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
 
-              <div className="py-6">
+          {/* NUEVA SECCIÓN VISUAL DE BLOQUES DE IMPACTO */}
+          <section className="py-12 bg-black border-y border-[#DAA520]/20">
+            <div className="px-6 space-y-12">
+              {BENEFIT_BLOCKS.map((block, i) => (
+                <div key={i} className="space-y-4 text-center">
+                  <div className="flex justify-center gap-4">
+                    <div className="relative w-[120px] h-[120px] rounded-2xl overflow-hidden border border-[#DAA520]/20 shadow-lg">
+                      <Image src={block.img1} alt={block.title} fill className="object-cover" sizes="120px" />
+                    </div>
+                    <div className="relative w-[120px] h-[120px] rounded-2xl overflow-hidden border border-[#DAA520]/20 shadow-lg">
+                      <Image src={block.img2} alt={block.title} fill className="object-cover" sizes="120px" />
+                    </div>
+                  </div>
+                  <div className="space-y-2 px-2">
+                    <h3 className="text-xl font-black text-[#DAA520] uppercase tracking-tighter leading-none">
+                      {block.title}
+                    </h3>
+                    <p className="text-sm text-slate-300 font-medium leading-tight">
+                      {block.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* SECCIÓN DE PROMOCIONES */}
+          <section className="py-12 bg-black">
+            <div className="px-6 space-y-8">
+              <h2 className="text-[26px] font-black text-white text-center uppercase tracking-tighter">
+                💎 ELIGE TU <span className="text-[#DAA520]">OFERTA</span> 💎
+              </h2>
+
+              <div className="grid grid-cols-1 gap-4">
+                <div onClick={openPopup} className="relative bg-zinc-900 p-6 pt-10 rounded-[2rem] border-2 border-zinc-800 shadow-xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group hover:border-[#DAA520]/30">
+                  <div className="absolute top-0 left-0 w-full bg-zinc-800 py-1">
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">OFERTA BÁSICA</p>
+                  </div>
+                  <p className="text-[14px] font-black text-white uppercase leading-none">1 FRASCO SHILAJIT ULTRA</p>
+                  <div className="flex justify-center items-baseline gap-2">
+                    <span className="text-[14px] font-bold text-slate-600 line-through mb-1">$40.00</span>
+                    <p className="text-[42px] font-black text-white leading-none">$27.99</p>
+                  </div>
+                </div>
+
+                <div onClick={openPopup} className="relative bg-zinc-900/90 p-6 pt-10 rounded-[2.5rem] border-4 border-[#DAA520] shadow-2xl text-center space-y-2 cursor-pointer transition-all active:scale-[0.97] overflow-hidden group">
+                  <div className="absolute top-0 left-0 w-full bg-[#DAA520] py-1">
+                    <p className="text-[9px] font-black text-black uppercase tracking-widest">¡OFERTA MÁS VENDIDA!</p>
+                  </div>
+                  <p className="text-[17px] font-black text-[#DAA520] uppercase leading-none">LLEVA 3 AL PRECIO DE 2</p>
+                  <div className="flex justify-center items-baseline gap-2">
+                    <span className="text-[14px] font-bold text-[#DAA520]/30 line-through mb-1">$84.97</span>
+                    <p className="text-[48px] font-black text-white leading-none">$44.99</p>
+                  </div>
+                  <p className="text-[11px] font-black text-[#DAA520] uppercase italic tracking-tighter">Recibes el 3ero TOTALMENTE GRATIS</p>
+                </div>
+              </div>
+
+              <div className="py-4">
                 <Button 
                   onClick={openPopup} 
-                  className="w-full h-18 text-xl font-black bg-[#DAA520] text-black shadow-2xl rounded-2xl animate-heartbeat border-2 border-black uppercase"
+                  className="w-full h-20 text-2xl font-black bg-[#DAA520] text-black shadow-[0_0_30px_rgba(218,165,32,0.4)] rounded-3xl animate-heartbeat border-2 border-black uppercase transition-all active:scale-95"
                 >
-                  <ShoppingCart className="h-6 w-6 mr-3" />
-                  ¡QUIERO MI SHILAJIT!
+                  <ShoppingCart className="h-7 w-7 mr-3" />
+                  ¡PEDIR AHORA!
                 </Button>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-4 flex items-center justify-center gap-2">
+                  <ShieldCheck className="h-4 w-4" />
+                  Pago Seguro Contra Entrega
+                </p>
               </div>
             </div>
           </section>
