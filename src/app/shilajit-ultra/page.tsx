@@ -8,7 +8,6 @@ import { PurchasePopup, type Product } from "@/components/sections/PurchasePopup
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ShoppingCart, Flame, ShieldCheck, CheckCircle2, Smartphone, Star } from "lucide-react";
 
 const SHILAJIT_PRODUCTS: Product[] = [
@@ -54,39 +53,6 @@ const TESTIMONIALS_DATA = [
     image: "https://picsum.photos/seed/sh-man-3/200/200",
     imageHint: "illustration mature",
     quote: "“Volví a sentirme de 25 años. Tengo 48 años y mi líbido estaba por los suelos. Flynew me devolvió el impulso. Me siento más 'macho', con más confianza y siempre listo. Recomendado al 100%.”"
-  }
-];
-
-const BENEFIT_BLOCKS = [
-  {
-    img1: "https://i.imgur.com/f0B52yT.png",
-    img2: "https://i.imgur.com/ptwUqIZ.png",
-    title: "Energía que despierta tu día",
-    text: "Shilajit Ultra activa tu vitalidad desde la primera dosis, ayudándote a rendir más en cada jornada."
-  },
-  {
-    img1: "https://i.imgur.com/vDe4Joa.png",
-    img2: "https://i.imgur.com/DHJQhEW.png",
-    title: "Confianza que se nota",
-    text: "Recupera la seguridad en ti mismo y disfruta de una firmeza que te acompaña en cada momento."
-  },
-  {
-    img1: "https://i.imgur.com/SrEzkhf.png",
-    img2: "https://i.imgur.com/UKBZSjL.png",
-    title: "Fuerza masculina real",
-    text: "La combinación de Shilajit y Arginina potencia tu testosterona y te devuelve la potencia de tus mejores años."
-  },
-  {
-    img1: "https://i.imgur.com/XH5FEeK.png",
-    img2: "https://i.imgur.com/dWq39By.png",
-    title: "Resultados visibles",
-    text: "No son promesas, son cambios que se notan en tu cuerpo, tu energía y tu desempeño."
-  },
-  {
-    img1: "https://i.imgur.com/R8ViGNT.png",
-    img2: "https://i.imgur.com/S1VGamv.png",
-    title: "Hombres imparables",
-    text: "Cada testimonio refleja lo mismo: más vigor, más pasión y más confianza cada día."
   }
 ];
 
@@ -150,6 +116,19 @@ export default function ShilajitUltraPage() {
                 </p>
               </div>
 
+              {/* IMAGEN DESTACADA ANTES DE BENEFICIOS */}
+              <div className="w-full px-2 py-2" onClick={openPopup}>
+                <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20">
+                  <Image 
+                    src="https://i.imgur.com/ptwUqIZ.png" 
+                    alt="Vitalidad Shilajit" 
+                    width={500} 
+                    height={400} 
+                    className="w-full h-auto object-cover block"
+                  />
+                </div>
+              </div>
+
               <section className="bg-zinc-900/60 rounded-[2.5rem] p-6 border border-[#DAA520]/20 space-y-5 text-left backdrop-blur-md shadow-2xl">
                 <h3 className="text-[18px] font-black text-white uppercase tracking-tighter text-center">
                   VITALIDAD QUE <span className="text-[#DAA520]">NO SE DETIENE</span>
@@ -174,7 +153,7 @@ export default function ShilajitUltraPage() {
                 </div>
               </section>
 
-              {/* Imagen de Beneficios */}
+              {/* Imagen de Beneficios Adicional */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/10 bg-zinc-900/40">
                   <Image 
@@ -238,32 +217,6 @@ export default function ShilajitUltraPage() {
                   </div>
                 ))}
               </div>
-            </div>
-          </section>
-
-          {/* NUEVA SECCIÓN VISUAL DE BLOQUES DE IMPACTO */}
-          <section className="py-12 bg-black border-y border-[#DAA520]/20">
-            <div className="px-6 space-y-12">
-              {BENEFIT_BLOCKS.map((block, i) => (
-                <div key={i} className="space-y-4 text-center">
-                  <div className="flex justify-center gap-4">
-                    <div className="relative w-[120px] h-[120px] rounded-2xl overflow-hidden border border-[#DAA520]/20 shadow-lg">
-                      <Image src={block.img1} alt={block.title} fill className="object-cover" sizes="120px" />
-                    </div>
-                    <div className="relative w-[120px] h-[120px] rounded-2xl overflow-hidden border border-[#DAA520]/20 shadow-lg">
-                      <Image src={block.img2} alt={block.title} fill className="object-cover" sizes="120px" />
-                    </div>
-                  </div>
-                  <div className="space-y-2 px-2">
-                    <h3 className="text-xl font-black text-[#DAA520] uppercase tracking-tighter leading-none">
-                      {block.title}
-                    </h3>
-                    <p className="text-sm text-slate-300 font-medium leading-tight">
-                      {block.text}
-                    </p>
-                  </div>
-                </div>
-              ))}
             </div>
           </section>
 
