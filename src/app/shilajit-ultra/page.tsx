@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -15,7 +14,7 @@ const SHILAJIT_PRODUCTS: Product[] = [
     id: "shilajit_ultra_1",
     name: "1 Frasco de Shilajit Ultra (30g)",
     price: 27.99,
-    image: "https://i.imgur.com/HuR3Fdd.png",
+    image: "https://imgur.com/HuR3Fdd.png",
     badge: "ENERGÍA MENSUAL",
     description: "Resina Pura • 84+ Minerales",
   },
@@ -23,7 +22,7 @@ const SHILAJIT_PRODUCTS: Product[] = [
     id: "shilajit_ultra_3",
     name: "Lleva 3 al precio de 2 (90g)",
     price: 44.99,
-    image: "https://i.imgur.com/F3YlJHM.png",
+    image: "https://imgur.com/F3YlJHM.png",
     badge: "¡MÁS RECOMENDADO!",
     description: "Vitalidad Total para 3 Meses • Envío Gratis",
   },
@@ -65,7 +64,7 @@ export default function ShilajitUltraPage() {
       {/* DESKTOP NOTICE - Solo visible en pantallas >= 768px */}
       <div className="hidden md:flex min-h-screen bg-black items-center justify-center p-8 text-center flex-col gap-6">
         <div className="h-24 w-24 bg-[#DAA520]/20 rounded-full flex items-center justify-center text-[#DAA520] border-2 border-[#DAA520]/30">
-          < Smartphone className="h-12 w-12" />
+          <Smartphone className="h-12 w-12" />
         </div>
         <h1 className="text-[38px] font-black text-white uppercase tracking-tighter">
           CONTENIDO EXCLUSIVO <br /> <span className="text-[#DAA520]">PARA MÓVILES</span>
@@ -354,7 +353,7 @@ export default function ShilajitUltraPage() {
 
         <div className="sticky-cta px-6">
           <Button 
-            onClick={openPopup} 
+            onClick={() => setIsPopupOpen(true)}
             className="w-full h-18 text-xl font-black bg-[#DAA520] text-black shadow-2xl rounded-2xl animate-heartbeat border-2 border-black uppercase"
           >
             <ShoppingCart className="h-6 w-6 mr-3" />
