@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -67,7 +68,7 @@ export default function ShilajitUltraPage() {
                 className="w-full h-auto object-cover block" 
                 priority
               />
-              {/* Overlay con degradado para legibilidad si se añade texto encima */}
+              {/* Overlay con degradado para legibilidad */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
               
               {/* Badge flotante sobre la imagen */}
@@ -115,6 +116,19 @@ export default function ShilajitUltraPage() {
                   ))}
                 </div>
               </section>
+
+              {/* Nueva Imagen de Beneficios */}
+              <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
+                <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/10 bg-zinc-900/40">
+                  <Image 
+                    src="https://i.imgur.com/cwYEkAt.png" 
+                    alt="Beneficios Shilajit Ultra" 
+                    width={500} 
+                    height={600} 
+                    className="w-full h-auto object-contain block"
+                  />
+                </div>
+              </div>
 
               <section className="py-4 space-y-6">
                 <h2 className="text-[26px] font-black text-white text-center uppercase tracking-tighter">

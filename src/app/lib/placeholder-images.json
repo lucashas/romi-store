@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -89,6 +90,12 @@
       "description": "Shilajit Ultra Hero Principal",
       "imageUrl": "https://i.imgur.com/S1VGamv.png",
       "imageHint": "shilajit energy"
+    },
+    {
+      "id": "shilajit-benefits-image",
+      "description": "Imagen de Beneficios Shilajit Ultra",
+      "imageUrl": "https://i.imgur.com/cwYEkAt.png",
+      "imageHint": "shilajit benefits"
     },
     {
       "id": "checkout-logo",
