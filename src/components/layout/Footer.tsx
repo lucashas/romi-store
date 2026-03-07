@@ -43,7 +43,7 @@ export function Footer({ theme = "light" }: FooterProps) {
               isDark ? "text-white" : "text-primary/60"
             )}>
               <ShieldCheck className="h-4 w-4" />
-              distribuidor autorizado BIOAQUA Rice Raw Pulp
+              distribuidor autorizado {isDark ? "SHILAJIT ULTRA" : "BIOAQUA Rice Raw Pulp"}
             </p>
           </div>
 
