@@ -13,7 +13,7 @@ import { useFirestore } from "@/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useRouter, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { AlertTriangle, ShieldCheck, ShoppingBag, Heart, ShoppingCart } from "lucide-react";
+import { AlertTriangle, ShieldCheck, ShoppingCart } from "lucide-react";
 
 export interface Product {
   id: string;
@@ -69,19 +69,19 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
   const pathname = usePathname();
 
   const isGold = themeColor === "gold";
-  const isOrange = themeColor === "orange"; // Shilajit uses orange color as placeholder for Gold
+  const isOrange = themeColor === "orange";
 
   const styles = useMemo(() => ({
-    header: isGold ? "bg-yellow-600" : (isOrange ? "bg-black" : "bg-orange-600"),
-    borderActive: isGold ? "border-yellow-600 bg-yellow-50" : (isOrange ? "border-[#DAA520] bg-zinc-900" : "border-orange-600 bg-orange-50"),
+    header: isGold ? "bg-yellow-600" : (isOrange ? "bg-[#111111]" : "bg-orange-600"),
+    borderActive: isGold ? "border-yellow-600 bg-yellow-50" : (isOrange ? "border-[#DAA520] bg-zinc-800" : "border-orange-600 bg-orange-50"),
     textActive: isGold ? "text-yellow-700" : (isOrange ? "text-[#DAA520]" : "text-orange-700"),
-    button: isGold ? "bg-yellow-600 hover:bg-yellow-700" : (isOrange ? "bg-[#DAA520] hover:bg-black hover:text-[#DAA520] transition-all border-2 border-transparent hover:border-[#DAA520]" : "bg-orange-600 hover:bg-orange-700"),
-    buttonText: isOrange ? "text-black group-hover:text-[#DAA520]" : "text-white",
-    ring: isGold ? "focus:border-yellow-600" : (isOrange ? "focus:border-[#DAA520]" : "focus:border-orange-600"),
-    label: "text-[11px] font-black uppercase text-slate-500 tracking-widest mb-1.5 block ml-1",
-    modalBg: isOrange ? "bg-zinc-950" : "bg-white",
-    inputBg: isOrange ? "bg-zinc-900 border-zinc-800 text-white" : "bg-slate-50 border-slate-100",
-    sectionTitle: isOrange ? "text-white" : "text-slate-900"
+    button: isGold ? "bg-yellow-600 hover:bg-yellow-700" : (isOrange ? "bg-[#2E7D32] hover:bg-[#1B5E20] transition-colors shadow-lg" : "bg-orange-600 hover:bg-orange-700"),
+    buttonText: "text-white font-bold text-[16px]",
+    ring: isGold ? "focus:border-yellow-600" : (isOrange ? "focus:ring-[#DAA520]" : "focus:border-orange-600"),
+    label: isOrange ? "text-[16px] font-medium text-[#DDDDDD] mb-1.5 block ml-1" : "text-[11px] font-black uppercase text-slate-500 tracking-widest mb-1.5 block ml-1",
+    modalBg: isOrange ? "bg-[#111111]" : "bg-white",
+    inputBg: isOrange ? "bg-white border-[#DDDDDD] text-black text-[14px] md:text-[16px]" : "bg-slate-50 border-slate-100",
+    sectionTitle: isOrange ? "text-[18px] md:text-[20px] font-bold text-white uppercase" : "text-slate-900 font-black text-[14px] uppercase"
   }), [isGold, isOrange]);
 
   useEffect(() => {
@@ -131,101 +131,100 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className={cn("w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl", styles.modalBg)}>
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-6 pb-6 text-white text-center flex flex-col items-center gap-4 relative", styles.header)}>
-            <DialogTitle className="text-[22px] font-black uppercase leading-tight tracking-tighter">
+          <div className={cn("p-4 pb-4 text-white text-center flex flex-col items-center gap-2 relative", styles.header)}>
+            <DialogTitle className={cn(styles.sectionTitle)}>
               ¡SÍ, QUIERO MI PEDIDO!
             </DialogTitle>
             <div className="w-full flex justify-center py-1">
               <Image 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
-                width={80} 
-                height={80} 
-                className="h-20 w-auto object-contain drop-shadow-xl"
+                width={70} 
+                height={70} 
+                className="h-16 w-auto object-contain drop-shadow-xl"
               />
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className={cn("p-5 space-y-6 pb-10", styles.modalBg)}>
-            <div className="space-y-4">
-              <p className={cn("text-[14px] font-black uppercase border-l-4 border-[#DAA520] pl-3", styles.sectionTitle)}>1. Selecciona tu oferta:</p>
-              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-3">
+          <form onSubmit={handleSubmit} className={cn("p-4 space-y-4 pb-6", styles.modalBg)}>
+            <div className="space-y-3">
+              <p className={cn(styles.sectionTitle, "border-l-4 border-[#DAA520] pl-3 text-[16px] md:text-[18px]")}>1. Selecciona tu oferta:</p>
+              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-2">
                 {products.map((p) => (
-                  <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : (isOrange ? "border-zinc-800 bg-black hover:border-[#DAA520]/30" : "border-slate-100 bg-white hover:border-slate-200"))}>
+                  <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : (isOrange ? "border-zinc-800 bg-zinc-900/50 hover:border-[#DAA520]/30" : "border-slate-100 bg-white hover:border-slate-200"))}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5 border-[#DAA520] text-[#DAA520]" />
-                    <div className="h-12 w-12 rounded-xl overflow-hidden border border-zinc-800 shrink-0 bg-white relative">
-                      <Image src={p.image} alt={p.name} fill className="object-cover" sizes="48px" />
+                    <div className="h-10 w-10 rounded-lg overflow-hidden border border-zinc-800 shrink-0 bg-white relative">
+                      <Image src={p.image} alt={p.name} fill className="object-cover" sizes="40px" />
                     </div>
                     <div className="flex-1 min-w-0 text-left">
-                      <p className={cn("font-black text-[14px] uppercase leading-none mb-1", isOrange ? "text-white" : "text-slate-900")}>{p.name}</p>
-                      <p className="text-[10px] text-slate-500 font-bold uppercase leading-tight">{p.description}</p>
+                      <p className={cn("font-bold text-[13px] uppercase leading-none mb-1", isOrange ? "text-white" : "text-slate-900")}>{p.name}</p>
+                      <p className="text-[10px] text-slate-400 font-medium uppercase leading-tight">{p.description}</p>
                     </div>
-                    <p className={cn("font-black text-[20px] tracking-tighter", styles.textActive)}>${p.price.toFixed(2)}</p>
+                    <p className={cn("font-black text-[18px] tracking-tighter", styles.textActive)}>${p.price.toFixed(2)}</p>
                   </Label>
                 ))}
               </RadioGroup>
             </div>
 
-            <div className="space-y-5">
-              <p className={cn("text-[14px] font-black uppercase border-l-4 border-[#DAA520] pl-3", styles.sectionTitle)}>2. Datos de Envío (Pago Contra Entrega):</p>
-              <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-4">
+              <p className={cn(styles.sectionTitle, "border-l-4 border-[#DAA520] pl-3 text-[16px] md:text-[18px]")}>2. Datos de Envío:</p>
+              <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-1">
                   <span className={styles.label}>Nombre</span>
-                  <Input placeholder="Ej. Ana" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-14 rounded-xl font-bold", styles.inputBg, styles.ring)} />
+                  <Input placeholder="Ej. Ana" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-12 rounded-xl font-bold", styles.inputBg, styles.ring)} />
                 </div>
                 <div className="space-y-1">
                   <span className={styles.label}>Apellido</span>
-                  <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-14 rounded-xl font-bold", styles.inputBg, styles.ring)} />
+                  <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-12 rounded-xl font-bold", styles.inputBg, styles.ring)} />
                 </div>
               </div>
               <div className="space-y-1">
-                <span className={styles.label}>Número de WhatsApp (10 dígitos)</span>
-                <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-14 rounded-xl font-bold", styles.inputBg, styles.ring)} />
+                <span className={styles.label}>Número de WhatsApp</span>
+                <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-12 rounded-xl font-bold", styles.inputBg, styles.ring)} />
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-1">
                   <span className={styles.label}>Provincia</span>
                   <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                    <SelectTrigger className={cn("h-14 rounded-xl font-bold", styles.inputBg)}><SelectValue placeholder="Seleccione" /></SelectTrigger>
+                    <SelectTrigger className={cn("h-12 rounded-xl font-bold", styles.inputBg)}><SelectValue placeholder="Seleccione" /></SelectTrigger>
                     <SelectContent className="z-[110]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-1">
                   <span className={styles.label}>Ciudad</span>
                   <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                    <SelectTrigger className={cn("h-14 rounded-xl font-bold", styles.inputBg)}><SelectValue placeholder="Seleccione" /></SelectTrigger>
+                    <SelectTrigger className={cn("h-12 rounded-xl font-bold", styles.inputBg)}><SelectValue placeholder="Seleccione" /></SelectTrigger>
                     <SelectContent className="z-[110]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
               </div>
               <div className="space-y-1">
-                <span className={styles.label}>Dirección (Calle 1, Calle 2 y Referencia)</span>
-                <Input placeholder="Ej. Av. Amazonas y Villarroel..." required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-14 rounded-xl font-bold", styles.inputBg, styles.ring)} />
+                <span className={styles.label}>Dirección y Referencia</span>
+                <Input placeholder="Ej. Av. Amazonas y Villarroel..." required value={direccion} onChange={(e) => setDireccion(e.target.value)} className={cn("h-12 rounded-xl font-bold", styles.inputBg, styles.ring)} />
               </div>
             </div>
 
-            <div className={cn("p-6 rounded-[2rem] flex flex-col items-center gap-3 shadow-md text-center", isOrange ? "bg-red-950/30 border-2 border-red-900/30" : "bg-red-50 border-2 border-red-100")}>
-              <AlertTriangle className="h-10 w-10 text-red-600 animate-pulse" />
-              <div className="space-y-2">
-                <p className="text-[20px] font-black text-red-600 uppercase leading-none">¡Aviso Importante!</p>
-                <p className={cn("text-[14px] font-bold leading-snug", isOrange ? "text-slate-300" : "text-red-600")}>
-                  Tu pedido únicamente será despachado si tus datos están completos. Verifica tu dirección antes de confirmar.
+            <div className={cn("p-4 rounded-2xl flex flex-col items-center gap-2 text-center", isOrange ? "bg-red-950/20 border border-red-900/40" : "bg-red-50 border border-red-100")}>
+              <div className="space-y-1">
+                <p className="text-[14px] font-black text-red-600 uppercase">¡Aviso Importante!</p>
+                <p className={cn("text-[11px] font-bold", isOrange ? "text-slate-300" : "text-red-500")}>
+                  Tu pedido solo se enviará si los datos están completos.
                 </p>
               </div>
             </div>
 
-            <Button type="submit" disabled={loading} className={cn("w-full h-20 text-xl font-black uppercase rounded-3xl animate-heartbeat shadow-xl mt-4 group", styles.button)}>
+            <Button type="submit" disabled={loading} className={cn("w-full h-14 rounded-2xl transition-all active:scale-95 mt-2", styles.button)}>
               {loading ? "PROCESANDO..." : (
-                <span className={cn("flex items-center", styles.buttonText)}>
-                  <ShoppingCart className="h-6 w-6 mr-3" />
-                  CONFIRMAR PEDIDO
+                <span className={cn("flex items-center uppercase", styles.buttonText)}>
+                  <ShoppingCart className="h-5 w-5 mr-2" />
+                  Confirmar pedido
                 </span>
               )}
             </Button>
             
-            <p className="text-[10px] text-center font-bold text-slate-500 uppercase tracking-widest mt-2 flex items-center justify-center gap-1">
+            <p className="text-[10px] text-center font-bold text-slate-500 uppercase tracking-widest mt-1 flex items-center justify-center gap-1">
               <ShieldCheck className="h-3 w-3" />
-              Compra protegida en Ecuador
+              Pago Contra Entrega en Ecuador
             </p>
           </form>
         </div>
