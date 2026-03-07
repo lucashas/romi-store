@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { Poppins } from 'next/font/google';
+import Script from 'next/script';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -47,6 +48,12 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning className={poppins.variable}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+        {/* TikTok Pixel Base Code Placeholder */}
+        <Script id="tiktok-pixel" strategy="afterInteractive">
+          {`
+            // Aquí irá el código base del Pixel de TikTok (ttq.load).
+          `}
+        </Script>
       </head>
       <body className="font-body antialiased selection:bg-accent selection:text-accent-foreground" suppressHydrationWarning>
         <FirebaseClientProvider>

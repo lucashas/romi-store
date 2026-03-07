@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -13,6 +14,7 @@ function ShilajitGraciasContent() {
   const [ciudad, setCiudad] = useState("Ecuador");
   const [provincia, setProvincia] = useState("");
   const [producto, setProducto] = useState("Shilajit Ultra");
+  const [whatsapp, setWhatsapp] = useState("");
   const [volverUrl, setVolverUrl] = useState("/shilajit-ultra");
 
   useEffect(() => {
@@ -20,6 +22,7 @@ function ShilajitGraciasContent() {
     setProvincia(searchParams.get("provincia") || "");
     setCiudad(searchParams.get("ciudad") || "Ecuador");
     setProducto(searchParams.get("producto") || "Shilajit Ultra");
+    setWhatsapp(searchParams.get("whatsapp") || "");
     setVolverUrl(searchParams.get("back") || "/shilajit-ultra");
   }, [searchParams]);
 
@@ -41,7 +44,7 @@ function ShilajitGraciasContent() {
 
       {/* MOBILE CONTENT */}
       <div className="md:hidden min-h-screen bg-[#111111] flex flex-col items-center p-6 text-center animate-in fade-in duration-700 text-white">
-        {/* TikTok CompletePayment Event */}
+        {/* TikTok CompletePayment Event dinámico y completo */}
         <Script id="tiktok-complete-payment-shilajit" strategy="afterInteractive">
           {`
             if(typeof ttq !== 'undefined') {
@@ -67,7 +70,13 @@ function ShilajitGraciasContent() {
               ttq.track('CompletePayment', {
                 value: value,
                 currency: 'USD',
-                contents: contents
+                contents: contents,
+                nombreCliente: "${nombre}",
+                producto: prodName,
+                ciudad: "${ciudad}",
+                provincia: "${provincia}",
+                email: "${whatsapp}@romistore.com",
+                teléfono: "${whatsapp}"
               });
             }
           `}
