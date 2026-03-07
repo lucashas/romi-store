@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -179,8 +180,8 @@ export default function ShilajitUltraPage() {
               </div>
 
               {/* SECCIÓN DE PROMOCIONES */}
-              <section className="py-6 w-full">
-                <div className="space-y-8">
+              <section className="py-2 w-full">
+                <div className="space-y-4">
                   <h2 className="text-[26px] font-black text-white text-center uppercase tracking-tighter">
                     💎 ELIGE TU <span className="text-[#DAA520]">OFERTA</span> 💎
                   </h2>
@@ -210,7 +211,7 @@ export default function ShilajitUltraPage() {
                     </div>
                   </div>
 
-                  <div className="py-4">
+                  <div className="py-2">
                     <Button 
                       onClick={openPopup} 
                       className="w-full h-20 text-2xl font-black bg-[#DAA520] text-black shadow-[0_0_30px_rgba(218,165,32,0.4)] rounded-3xl animate-heartbeat border-2 border-black uppercase transition-all active:scale-95"
@@ -218,7 +219,7 @@ export default function ShilajitUltraPage() {
                       <ShoppingCart className="h-7 w-7 mr-3" />
                       ¡PEDIR AHORA!
                     </Button>
-                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-4 flex items-center justify-center gap-2">
+                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-2 flex items-center justify-center gap-2">
                       <ShieldCheck className="h-4 w-4" />
                       Pago Seguro Contra Entrega
                     </p>
@@ -227,7 +228,7 @@ export default function ShilajitUltraPage() {
               </section>
 
               {/* Imagen de Beneficios Adicional */}
-              <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
+              <div className="w-full py-1 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/10 bg-zinc-900/40">
                   <Image 
                     src="https://i.imgur.com/cwYEkAt.png" 
@@ -240,7 +241,7 @@ export default function ShilajitUltraPage() {
               </div>
 
               {/* TARJETA VISUAL DE POTENCIA MASCULINA */}
-              <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
+              <div className="w-full py-1 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
                     src="https://i.imgur.com/UKBZSjL.png" 
@@ -255,7 +256,7 @@ export default function ShilajitUltraPage() {
           </section>
 
           {/* SECCIÓN DE TESTIMONIOS CON AVATARES CIRCULARES */}
-          <section id="testimonios" className="pt-12 pb-4 bg-black overflow-hidden border-t border-[#DAA520]/20">
+          <section id="testimonios" className="pt-12 pb-1 bg-black overflow-hidden border-t border-[#DAA520]/20">
             <div className="px-6 space-y-10">
               <div className="text-center space-y-3">
                 <div className="flex justify-center gap-1">
@@ -307,7 +308,7 @@ export default function ShilajitUltraPage() {
           </section>
 
           {/* SECCIÓN GIF IMPACTO */}
-          <section className="px-6 py-4 bg-black flex flex-col items-center text-center space-y-5">
+          <section className="px-6 py-2 bg-black flex flex-col items-center text-center space-y-5">
             <div className="relative w-[120px] h-[120px] rounded-[2.5rem] overflow-hidden shadow-[0_0_25px_rgba(218,165,32,0.4)] border-2 border-[#DAA520]/40 bg-zinc-900">
               <img 
                 src="https://i.imgur.com/AF9JlOo.gif" 
