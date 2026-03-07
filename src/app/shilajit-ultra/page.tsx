@@ -152,7 +152,7 @@ export default function ShilajitUltraPage() {
                 </div>
               </section>
 
-              {/* TARJETA VISUAL ANTES DE OFERTAS (CONFIDENCIAL) */}
+              {/* TARJETA VISUAL DE CONFIANZA */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
@@ -165,7 +165,7 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
-              {/* TARJETA VISUAL DE RESULTADOS ANTES DE OFERTAS */}
+              {/* TARJETA VISUAL DE RESULTADOS */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
@@ -235,6 +235,19 @@ export default function ShilajitUltraPage() {
                     width={500} 
                     height={600} 
                     className="w-full h-auto object-contain block"
+                  />
+                </div>
+              </div>
+
+              {/* TARJETA VISUAL DE POTENCIA MASCULINA (UKBZSjL) */}
+              <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
+                <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
+                  <Image 
+                    src="https://i.imgur.com/UKBZSjL.png" 
+                    alt="Fuerza Masculina Shilajit" 
+                    width={500} 
+                    height={400} 
+                    className="w-full h-auto object-cover block"
                   />
                 </div>
               </div>
