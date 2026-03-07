@@ -96,7 +96,8 @@ export default function ShilajitUltraPage() {
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-              <div className="absolute top-4 right-4 bg-[#DAA520] text-black px-4 py-1 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl animate-pulse">
+              {/* Badge movido un poco más abajo (top-14) para no tapar el texto */}
+              <div className="absolute top-14 right-4 bg-[#DAA520] text-black px-4 py-1 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl animate-pulse z-20">
                 ENVÍO GRATUITO 🇪🇨
               </div>
             </div>
