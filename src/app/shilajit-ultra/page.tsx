@@ -99,7 +99,7 @@ export default function ShilajitUltraPage() {
               </div>
             </div>
 
-            <div className="p-6 text-center space-y-6 -mt-10 relative z-10">
+            <div className="p-6 text-center space-y-6 relative z-10">
               <div className="space-y-3">
                 <div className="flex justify-center items-center gap-1">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -165,7 +165,7 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
-              {/* NUEVA TARJETA VISUAL (RESULTADOS) ANTES DE OFERTAS */}
+              {/* TARJETA VISUAL DE RESULTADOS ANTES DE OFERTAS */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
@@ -290,6 +290,19 @@ export default function ShilajitUltraPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+          {/* IMAGEN DE IMPACTO DESPUÉS DE TESTIMONIOS */}
+          <section className="px-6 py-6 bg-black">
+            <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/20 bg-zinc-900/40 cursor-pointer" onClick={openPopup}>
+              <Image 
+                src="https://i.imgur.com/XH5FEeK.png" 
+                alt="Impacto Shilajit Ultra" 
+                width={500} 
+                height={600} 
+                className="w-full h-auto object-cover block"
+              />
             </div>
           </section>
 
