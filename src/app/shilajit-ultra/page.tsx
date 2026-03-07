@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -239,7 +240,7 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
-              {/* TARJETA VISUAL DE POTENCIA MASCULINA (UKBZSjL) */}
+              {/* TARJETA VISUAL DE POTENCIA MASCULINA */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
@@ -303,6 +304,19 @@ export default function ShilajitUltraPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+          {/* GIF DE INTIMIDAD - DISIMULADO */}
+          <section className="px-6 py-4 bg-black flex justify-center">
+            <div className="relative w-72 h-48 rounded-[2rem] overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
+              <Image 
+                src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGp6ZzBqZzBqZzBqZzBqZzBqZzBqZzBqZzBqZzBqZzBqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l2Je2MvUMnLT0H0TS/giphy.gif" 
+                alt="Momento Shilajit" 
+                fill
+                className="object-cover opacity-70"
+                unoptimized
+              />
             </div>
           </section>
 
