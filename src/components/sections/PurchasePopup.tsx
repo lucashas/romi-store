@@ -204,11 +204,17 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               </div>
             </div>
 
-            <div className={cn("p-4 rounded-2xl flex flex-col items-center gap-2 text-center", isOrange ? "bg-red-950/20 border border-red-900/40" : "bg-red-50 border border-red-100")}>
-              <div className="space-y-1">
-                <p className="text-[14px] font-black text-red-600 uppercase">¡Aviso Importante!</p>
-                <p className={cn("text-[11px] font-bold", isOrange ? "text-slate-300" : "text-red-500")}>
-                  Tu pedido solo se enviará si los datos están completos.
+            <div className={cn("p-4 rounded-2xl flex flex-col items-center gap-3 text-center border-2", isOrange ? "bg-red-950/20 border-red-900/40" : "bg-red-50 border-red-100")}>
+              <div className="flex flex-col items-center gap-2">
+                <AlertTriangle className="h-8 w-8 text-red-600 animate-heartbeat" />
+                <p className="text-[16px] font-black text-red-600 uppercase">¡Aviso Importante!</p>
+              </div>
+              <div className="space-y-3">
+                <p className={cn("text-[13px] font-bold leading-tight", isOrange ? "text-slate-200" : "text-red-700")}>
+                  Tu pedido únicamente será despachado si tus datos están completos. Verifica tu nombre y dirección antes de confirmar.
+                </p>
+                <p className={cn("text-[12px] font-medium leading-relaxed italic border-t pt-2", isOrange ? "text-slate-400 border-white/10" : "text-slate-600 border-red-200")}>
+                  “En Romi Store EC cubrimos el costo del envío para que tu pedido llegue sin recargos adicionales. El pago se realiza contra entrega, garantizando un proceso seguro y transparente para todos nuestros clientes.”
                 </p>
               </div>
             </div>
