@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -307,7 +306,7 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          {/* SECCIÓN GIF IMPACTO - NUEVA UBICACIÓN */}
+          {/* SECCIÓN GIF IMPACTO */}
           <section className="px-6 py-8 bg-black flex flex-col items-center text-center space-y-5">
             <div className="relative w-[120px] h-[120px] rounded-[2.5rem] overflow-hidden shadow-[0_0_25px_rgba(218,165,32,0.4)] border-2 border-[#DAA520]/40 bg-zinc-900">
               <img 
@@ -368,7 +367,7 @@ export default function ShilajitUltraPage() {
           redirectPath="/gracias/shilajit-ultra"
           landingId="shilajit-ultra-v1"
         />
-        <Footer />
+        <Footer theme="dark" />
         <Toaster />
       </div>
     </>

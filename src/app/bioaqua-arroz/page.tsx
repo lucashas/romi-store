@@ -210,7 +210,7 @@ export default function BioaquaRicePage() {
       </div>
 
       <PurchasePopup open={isPopupOpen} onOpenChange={setIsPopupOpen} products={RICE_PRODUCTS} themeColor="gold" />
-      <Footer />
+      <Footer theme="light" />
       <Toaster />
     </div>
   );
