@@ -35,24 +35,24 @@ const TESTIMONIALS_DATA = [
     name: "Carlos R.",
     city: "Guayaquil",
     date: "Enero 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-1")?.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&fit=crop",
-    imageHint: "man casual 40s",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-1")?.imageUrl || "https://picsum.photos/seed/sh-man-1/200/200",
+    imageHint: "illustration man",
     quote: "“¡La firmeza que recuperé es increíble! Llevaba unos meses notando que mis erecciones no eran del 100%. Probé este Shilajit por la Arginina y vaya cambio. A la segunda semana ya me despertaba con una firmeza que no sentía hace años. Mi esposa está encantada.”"
   },
   {
     name: "Andrés A.",
     city: "Quito",
     date: "Febrero 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-2")?.imageUrl || "https://images.unsplash.com/photo-1548330950-d1e2748050ee?q=80&w=200&h=200&fit=crop",
-    imageHint: "athletic man 30s",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-2")?.imageUrl || "https://picsum.photos/seed/sh-man-2/200/200",
+    imageHint: "illustration athletic",
     quote: "“Energía brutal para el día y la noche. Lo compré para el gimnasio, pero el beneficio sexual fue el verdadero premio. Llego del trabajo con ganas y aguanto mucho más en la cama. Se nota que te sube la testosterona de verdad.”"
   },
   {
     name: "Lucas F.",
     city: "Ambato",
     date: "Marzo 2027",
-    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-3")?.imageUrl || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&fit=crop",
-    imageHint: "mature man confident",
+    image: PlaceHolderImages.find(img => img.id === "shilajit-testi-3")?.imageUrl || "https://picsum.photos/seed/sh-man-3/200/200",
+    imageHint: "illustration mature",
     quote: "“Volví a sentirme de 25 años. Tengo 48 años y mi líbido estaba por los suelos. Flynew me devolvió el impulso. Me siento más 'macho', con más confianza y siempre listo. Recomendado al 100%.”"
   }
 ];
@@ -201,7 +201,7 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          {/* SECCIÓN DE TESTIMONIOS DETALLADOS - MOBILE OPTIMIZED AVATARS */}
+          {/* SECCIÓN DE TESTIMONIOS CON AVATARES CIRCULARES */}
           <section id="testimonios" className="py-12 bg-black overflow-hidden border-t border-[#DAA520]/20">
             <div className="px-6 space-y-10">
               <div className="text-center space-y-3">
@@ -223,7 +223,7 @@ export default function ShilajitUltraPage() {
               <div className="space-y-6">
                 {TESTIMONIALS_DATA.map((testi, idx) => (
                   <div key={idx} className="bg-zinc-900/50 p-5 rounded-[2rem] border border-[#DAA520]/10 flex gap-4 items-start shadow-xl">
-                    <div className="relative w-20 h-20 shrink-0 rounded-full overflow-hidden border-2 border-[#DAA520]/30 shadow-lg">
+                    <div className="relative w-20 h-20 shrink-0 rounded-full overflow-hidden border-2 border-[#DAA520]/30 shadow-lg bg-zinc-800">
                       <Image 
                         src={testi.image} 
                         alt={testi.name} 

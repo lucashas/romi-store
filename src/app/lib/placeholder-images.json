@@ -87,21 +87,21 @@
     },
     {
       "id": "shilajit-testi-1",
-      "description": "Carlos R. - Testimonio Shilajit",
-      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&h=200&fit=crop",
-      "imageHint": "man casual 40s"
+      "description": "Carlos R. - Ilustración Realista Hombre 40-50",
+      "imageUrl": "https://picsum.photos/seed/sh-man-1/200/200",
+      "imageHint": "illustration man"
     },
     {
       "id": "shilajit-testi-2",
-      "description": "Andrés A. - Testimonio Shilajit",
-      "imageUrl": "https://images.unsplash.com/photo-1548330950-d1e2748050ee?q=80&w=200&h=200&fit=crop",
-      "imageHint": "athletic man 30s"
+      "description": "Andrés A. - Ilustración Realista Hombre Atlético 30-40",
+      "imageUrl": "https://picsum.photos/seed/sh-man-2/200/200",
+      "imageHint": "illustration athletic"
     },
     {
       "id": "shilajit-testi-3",
-      "description": "Lucas F. - Testimonio Shilajit",
-      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&fit=crop",
-      "imageHint": "mature man confident"
+      "description": "Lucas F. - Ilustración Realista Hombre Madura 45-50",
+      "imageUrl": "https://picsum.photos/seed/sh-man-3/200/200",
+      "imageHint": "illustration mature"
     },
     {
       "id": "checkout-logo",
