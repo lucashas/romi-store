@@ -307,17 +307,22 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          {/* IMAGEN DE IMPACTO DESPUÉS DE TESTIMONIOS */}
-          <section className="px-6 py-6 bg-black flex justify-center">
-            <div className="relative w-full max-w-[300px] rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-[#DAA520]/20 bg-zinc-900/40 cursor-pointer" onClick={openPopup}>
-              <Image 
-                src="https://i.imgur.com/AF9JlOo.png" 
-                alt="Impacto Final Shilajit Ultra" 
-                width={500} 
-                height={600} 
-                className="w-full h-auto object-cover block"
-                unoptimized // Usamos unoptimized para asegurar carga de Imgur si hay problemas
+          {/* SECCIÓN GIF IMPACTO - NUEVA UBICACIÓN */}
+          <section className="px-6 py-8 bg-black flex flex-col items-center text-center space-y-5">
+            <div className="relative w-[120px] h-[120px] rounded-[2.5rem] overflow-hidden shadow-[0_0_25px_rgba(218,165,32,0.4)] border-2 border-[#DAA520]/40 bg-zinc-900">
+              <img 
+                src="https://i.imgur.com/AF9JlOo.gif" 
+                alt="Impacto Vitalidad" 
+                className="w-full h-full object-cover"
               />
+            </div>
+            <div className="space-y-2 px-2">
+              <h3 className="text-[22px] font-black text-white uppercase tracking-tighter leading-none">
+                ¡SIÉNTETE <span className="text-[#DAA520]">IMPARABLE!</span>
+              </h3>
+              <p className="text-[13px] text-slate-400 font-bold uppercase tracking-widest leading-tight max-w-[280px] mx-auto">
+                MÁXIMA POTENCIA Y ENERGÍA <br /> EN CADA MOMENTO DEL DÍA.
+              </p>
             </div>
           </section>
 
