@@ -78,7 +78,7 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
     button: isGold ? "bg-yellow-600 hover:bg-yellow-700" : (isOrange ? "bg-[#2E7D32] hover:bg-[#1B5E20] transition-colors shadow-lg" : "bg-orange-600 hover:bg-orange-700"),
     buttonText: "text-white font-bold text-[16px]",
     ring: isGold ? "focus:border-yellow-600" : (isOrange ? "focus:ring-[#DAA520]" : "focus:border-orange-600"),
-    label: isOrange ? "text-[16px] font-bold text-[#FFFFFF] mb-1.5 block ml-1" : "text-[11px] font-black uppercase text-slate-500 tracking-widest mb-1.5 block ml-1",
+    label: isOrange ? "text-[16px] font-bold text-[#FFFFFF] mb-1 block ml-1" : "text-[11px] font-black uppercase text-slate-500 tracking-widest mb-1.5 block ml-1",
     modalBg: isOrange ? "bg-[#111111]" : "bg-white",
     inputBg: isOrange ? "bg-white border-[#DDDDDD] text-black text-[14px] md:text-[16px]" : "bg-slate-50 border-slate-100",
     sectionTitle: isOrange ? "text-[18px] md:text-[20px] font-bold text-white uppercase" : "text-slate-900 font-black text-[14px] uppercase"
@@ -131,34 +131,34 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className={cn("w-[98vw] max-w-[480px] p-0 overflow-hidden rounded-[2.5rem] mx-auto !translate-x-[-50%] !left-[50%] !translate-y-[-50%] !top-[50%] border-none shadow-2xl", styles.modalBg)}>
         <div className="max-h-[90vh] overflow-y-auto w-full scrollbar-hide">
-          <div className={cn("p-4 pb-4 text-white text-center flex flex-col items-center gap-2 relative", styles.header)}>
+          <div className={cn("p-3 pb-3 text-white text-center flex flex-col items-center gap-1 relative", styles.header)}>
             <DialogTitle className={cn(styles.sectionTitle)}>
               ¡SÍ, QUIERO MI PEDIDO!
             </DialogTitle>
-            <div className="w-full flex justify-center py-1">
+            <div className="w-full flex justify-center">
               <Image 
                 src="https://i.imgur.com/Jh61uYJ.png" 
                 alt="Confianza Ecuador" 
-                width={70} 
-                height={70} 
-                className="h-16 w-auto object-contain drop-shadow-xl"
+                width={60} 
+                height={60} 
+                className="h-14 w-auto object-contain drop-shadow-xl"
               />
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className={cn("p-4 space-y-4 pb-6", styles.modalBg)}>
-            <div className="space-y-3">
+          <form onSubmit={handleSubmit} className={cn("p-4 space-y-3 pb-4", styles.modalBg)}>
+            <div className="space-y-2">
               <p className={cn(styles.sectionTitle, "border-l-4 border-[#DAA520] pl-3 text-[16px] md:text-[18px]")}>1. Selecciona tu oferta:</p>
-              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-2">
+              <RadioGroup value={selectedProduct} onValueChange={setSelectedProduct} className="grid gap-1.5">
                 {products.map((p) => (
-                  <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-3 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : (isOrange ? "border-zinc-800 bg-zinc-900/50 hover:border-[#DAA520]/30" : "border-slate-100 bg-white hover:border-slate-200"))}>
+                  <Label key={p.id} htmlFor={p.id} className={cn("flex items-center gap-3 p-2 rounded-2xl border-2 cursor-pointer transition-all", selectedProduct === p.id ? styles.borderActive : (isOrange ? "border-zinc-800 bg-zinc-900/50 hover:border-[#DAA520]/30" : "border-slate-100 bg-white hover:border-slate-200"))}>
                     <RadioGroupItem value={p.id} id={p.id} className="h-5 w-5 border-[#DAA520] text-[#DAA520]" />
                     <div className="h-10 w-10 rounded-lg overflow-hidden border border-zinc-800 shrink-0 bg-white relative">
                       <Image src={p.image} alt={p.name} fill className="object-cover" sizes="40px" />
                     </div>
                     <div className="flex-1 min-w-0 text-left">
                       <p className={cn("font-bold text-[13px] uppercase leading-none mb-1", isOrange ? "text-white" : "text-slate-900")}>{p.name}</p>
-                      <p className="text-[10px] text-slate-400 font-medium uppercase leading-tight">{p.description}</p>
+                      <p className="text-[10px] text-slate-300 font-medium uppercase leading-tight">{p.description}</p>
                     </div>
                     <p className={cn("font-black text-[18px] tracking-tighter", styles.textActive)}>${p.price.toFixed(2)}</p>
                   </Label>
@@ -166,69 +166,64 @@ export function PurchasePopup({ open, onOpenChange, products, themeColor = "gold
               </RadioGroup>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <p className={cn(styles.sectionTitle, "border-l-4 border-[#DAA520] pl-3 text-[16px] md:text-[18px]")}>2. Datos de Envío:</p>
               <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-1">
                   <span className={styles.label}>Nombre</span>
-                  <Input placeholder="Ej. Ana" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-12 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
+                  <Input placeholder="Ej. Ana" required value={nombre} onChange={(e) => setNombre(e.target.value)} className={cn("h-11 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
                 </div>
                 <div className="space-y-1">
                   <span className={styles.label}>Apellido</span>
-                  <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-12 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
+                  <Input placeholder="Ej. Pérez" required value={apellido} onChange={(e) => setApellido(e.target.value)} className={cn("h-11 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
                 </div>
               </div>
               <div className="space-y-1">
                 <span className={styles.label}>Número de WhatsApp</span>
-                <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-12 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
+                <Input placeholder="09XXXXXXXX" type="tel" required value={whatsapp} onChange={handleWhatsappChange} className={cn("h-11 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-1">
                   <span className={styles.label}>Provincia</span>
                   <Select onValueChange={(val) => { setProvincia(val); setCiudad(""); }} required value={provincia}>
-                    <SelectTrigger className={cn("h-12 rounded-xl font-bold", styles.inputBg)}><SelectValue placeholder="Seleccione" /></SelectTrigger>
+                    <SelectTrigger className={cn("h-11 rounded-xl font-bold", styles.inputBg)}><SelectValue placeholder="Seleccione" /></SelectTrigger>
                     <SelectContent className="z-[110]">{Object.keys(ecuadorData).sort().map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-1">
                   <span className={styles.label}>Ciudad</span>
                   <Select onValueChange={setCiudad} disabled={!provincia} required value={ciudad}>
-                    <SelectTrigger className={cn("h-12 rounded-xl font-bold", styles.inputBg)}><SelectValue placeholder="Seleccione" /></SelectTrigger>
+                    <SelectTrigger className={cn("h-11 rounded-xl font-bold", styles.inputBg)}><SelectValue placeholder="Seleccione" /></SelectTrigger>
                     <SelectContent className="z-[110]">{ciudadesDisponibles.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
               </div>
               <div className="space-y-1">
-                <span className={styles.label}>Dirección y Referencia (Calle 1, Calle 2 y Referencia)</span>
+                <span className={styles.label}>Dirección y Referencia</span>
                 <Input 
                   placeholder="Ej. Av. Amazonas y Villaroel, #Casa 24, Barrio San José" 
                   required 
                   value={direccion} 
                   onChange={(e) => setDireccion(e.target.value)} 
-                  className={cn("h-12 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} 
+                  className={cn("h-11 rounded-xl font-bold placeholder:text-[#CCCCCC]", styles.inputBg, styles.ring)} 
                 />
-                <p className="text-[12px] text-[#AAAAAA] leading-tight mt-1.5 px-1 font-medium italic">
-                  Por favor ingresa tu dirección completa incluyendo calles principales, número de casa, barrio y referencias cercanas. Ejemplo: A lado del Supermaxi, casa color amarillo.
+                <p className="text-[11px] text-[#AAAAAA] leading-tight mt-1 px-1 font-medium italic">
+                  Ingresa tu dirección completa con calles, número de casa y referencias. Ej: A lado del Supermaxi.
                 </p>
               </div>
             </div>
 
-            <div className={cn("p-4 rounded-2xl flex flex-col items-center gap-3 text-center border-2", isOrange ? "bg-red-950/20 border-red-900/40" : "bg-red-50 border-red-100")}>
-              <div className="flex flex-col items-center gap-2">
-                <AlertTriangle className="h-8 w-8 text-red-600 animate-heartbeat" />
-                <p className="text-[16px] font-black text-red-600 uppercase">¡Aviso Importante!</p>
+            <div className={cn("p-3 rounded-2xl flex flex-col items-center gap-2 text-center border-2", isOrange ? "bg-red-950/20 border-red-900/40" : "bg-red-50 border-red-100")}>
+              <div className="flex flex-col items-center gap-1">
+                <AlertTriangle className="h-7 w-7 text-red-600 animate-heartbeat" />
+                <p className="text-[15px] font-black text-red-600 uppercase">¡Aviso Importante!</p>
               </div>
-              <div className="space-y-3">
-                <p className={cn("text-[13px] font-bold leading-tight", isOrange ? "text-slate-200" : "text-red-700")}>
-                  Tu pedido únicamente será despachado si tus datos están completos. Verifica tu nombre y dirección antes de confirmar.
-                </p>
-                <p className={cn("text-[12px] font-medium leading-relaxed italic border-t pt-2", isOrange ? "text-slate-400 border-white/10" : "text-slate-600 border-red-200")}>
-                  “En Romi Store EC cubrimos el costo del envío para que tu pedido llegue sin recargos adicionales. El pago se realiza contra entrega, garantizando un proceso seguro y transparente para todos nuestros clientes.”
-                </p>
-              </div>
+              <p className={cn("text-[12px] font-bold leading-tight", isOrange ? "text-slate-200" : "text-red-700")}>
+                Tu pedido se despacha solo con datos completos. Verifica antes de confirmar.
+              </p>
             </div>
 
-            <Button type="submit" disabled={loading} className={cn("w-full h-14 rounded-2xl transition-all active:scale-95 mt-2 animate-heartbeat", styles.button)}>
+            <Button type="submit" disabled={loading} className={cn("w-full h-14 rounded-2xl transition-all active:scale-95 animate-heartbeat", styles.button)}>
               {loading ? "PROCESANDO..." : (
                 <span className={cn("flex items-center uppercase", styles.buttonText)}>
                   <ShoppingCart className="h-5 w-5 mr-2" />

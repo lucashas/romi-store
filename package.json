@@ -1,6 +1,7 @@
+
 {
   "name": "romi-store-ec",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "engines": {
     "node": "20.x"
@@ -43,7 +44,7 @@
     "firebase": "^11.9.1",
     "genkit": "^1.28.0",
     "lucide-react": "^0.475.0",
-    "next": "15.1.11",
+    "next": "15.1.7",
     "postcss": "^8.4.41",
     "react": "19.0.0",
     "react-day-picker": "^8.10.1",
@@ -63,7 +64,7 @@
     "@typescript-eslint/parser": "^8.24.1",
     "cross-env": "^7.0.3",
     "eslint": "^9.21.0",
-    "eslint-config-next": "15.1.11",
+    "eslint-config-next": "15.1.7",
     "typescript": "^5"
   },
   "overrides": {
