@@ -258,6 +258,17 @@ export default function ShilajitUltraPage() {
           {/* SECCIÓN DE TESTIMONIOS CON AVATARES CIRCULARES */}
           <section id="testimonios" className="pt-12 pb-4 bg-black overflow-hidden border-t border-[#DAA520]/20">
             <div className="px-6 space-y-10">
+              {/* GIF ANTES DE TITULO DE TESTIMONIOS */}
+              <div className="flex justify-center -mb-4">
+                <div className="relative w-[120px] h-[120px] rounded-[2.5rem] overflow-hidden shadow-[0_0_25px_rgba(218,165,32,0.4)] border-2 border-[#DAA520]/40 bg-zinc-900">
+                  <img 
+                    src="https://i.imgur.com/SQOcoDE.gif" 
+                    alt="Impacto Shilajit" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
               <div className="text-center space-y-3">
                 <div className="flex justify-center gap-1">
                   {[1, 2, 3, 4, 5].map((s) => (
