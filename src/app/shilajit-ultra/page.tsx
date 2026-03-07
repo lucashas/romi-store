@@ -15,7 +15,7 @@ const SHILAJIT_PRODUCTS: Product[] = [
     id: "shilajit_ultra_1",
     name: "1 Frasco de Shilajit Ultra (30g)",
     price: 27.99,
-    image: "https://i.imgur.com/S1VGamv.png",
+    image: "https://i.imgur.com/HuR3Fdd.png",
     badge: "ENERGÍA MENSUAL",
     description: "Resina Pura • 84+ Minerales",
   },
@@ -23,7 +23,7 @@ const SHILAJIT_PRODUCTS: Product[] = [
     id: "shilajit_ultra_3",
     name: "Lleva 3 al precio de 2 (90g)",
     price: 44.99,
-    image: "https://i.imgur.com/S1VGamv.png",
+    image: "https://i.imgur.com/F3YlJHM.png",
     badge: "¡MÁS RECOMENDADO!",
     description: "Vitalidad Total para 3 Meses • Envío Gratis",
   },
@@ -116,7 +116,6 @@ export default function ShilajitUltraPage() {
                 </p>
               </div>
 
-              {/* IMAGEN DESTACADA ANTES DE BENEFICIOS */}
               <div className="w-full px-2 py-2" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20">
                   <Image 
@@ -153,7 +152,6 @@ export default function ShilajitUltraPage() {
                 </div>
               </section>
 
-              {/* TARJETA VISUAL DE CONFIANZA */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
@@ -166,7 +164,6 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
-              {/* TARJETA VISUAL DE RESULTADOS */}
               <div className="w-full py-2 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
@@ -179,7 +176,6 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
-              {/* SECCIÓN DE PROMOCIONES */}
               <section className="py-2 w-full">
                 <div className="space-y-4">
                   <h2 className="text-[26px] font-black text-white text-center uppercase tracking-tighter">
@@ -227,7 +223,6 @@ export default function ShilajitUltraPage() {
                 </div>
               </section>
 
-              {/* Imagen de Beneficios Adicional */}
               <div className="w-full py-1 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/10 bg-zinc-900/40">
                   <Image 
@@ -240,7 +235,6 @@ export default function ShilajitUltraPage() {
                 </div>
               </div>
 
-              {/* TARJETA VISUAL DE POTENCIA MASCULINA */}
               <div className="w-full py-1 cursor-pointer" onClick={openPopup}>
                 <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DAA520]/20 bg-zinc-900/40">
                   <Image 
@@ -255,10 +249,8 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          {/* SECCIÓN DE TESTIMONIOS CON AVATARES CIRCULARES */}
           <section id="testimonios" className="pt-12 pb-4 bg-black overflow-hidden border-t border-[#DAA520]/20">
             <div className="px-6 space-y-10">
-              {/* GIF ANTES DE TITULO DE TESTIMONIOS */}
               <div className="flex justify-center -mb-4">
                 <div className="relative w-[120px] h-[120px] rounded-[2.5rem] overflow-hidden shadow-[0_0_25px_rgba(218,165,32,0.4)] border-2 border-[#DAA520]/40 bg-zinc-900">
                   <img 
@@ -318,7 +310,6 @@ export default function ShilajitUltraPage() {
             </div>
           </section>
 
-          {/* SECCIÓN GIF IMPACTO */}
           <section className="px-6 py-4 bg-black flex flex-col items-center text-center space-y-5">
             <div className="relative w-[120px] h-[120px] rounded-[2.5rem] overflow-hidden shadow-[0_0_25px_rgba(218,165,32,0.4)] border-2 border-[#DAA520]/40 bg-zinc-900">
               <img 

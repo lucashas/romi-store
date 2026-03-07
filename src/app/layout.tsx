@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
@@ -11,25 +12,25 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
-  description: 'Rutina completa de 6 pasos para una piel radiante con Bioaqua Rice Raw Pulp. Envíos rápidos a todo Ecuador y ¡Pagas al recibir en tu casa!',
+  title: 'Shilajit Ultra | Romi Store EC',
+  description: 'Shilajit Ultra – Resina pura con más de 84 minerales. Potencia, vigor y vitalidad natural. Envíos a todo Ecuador, pagas al recibir.',
   metadataBase: new URL('https://romi-store.com'),
   icons: {
-    icon: 'https://i.imgur.com/aSjVyM2.png',
-    shortcut: 'https://i.imgur.com/aSjVyM2.png',
-    apple: 'https://i.imgur.com/aSjVyM2.png',
+    icon: 'https://i.imgur.com/DwO3E2c.png',
+    shortcut: 'https://i.imgur.com/DwO3E2c.png',
+    apple: 'https://i.imgur.com/DwO3E2c.png',
   },
   openGraph: {
-    title: 'Romi Store EC | Kit Piel de Porcelana Bioaqua',
-    description: 'Consigue una piel de porcelana con el Kit de Arroz Bioaqua. ¡Pagas al recibir!',
-    url: 'https://romi-store.com/bioaqua-arroz',
+    title: 'Shilajit Ultra | Potencia y Vitalidad Natural',
+    description: 'Shilajit Ultra – Resina pura con más de 84 minerales. Potencia, vigor y vitalidad natural.',
+    url: 'https://romi-store.com/shilajit-ultra',
     siteName: 'Romi Store EC',
     images: [
       {
-        url: 'https://i.imgur.com/aSjVyM2.png',
+        url: 'https://i.imgur.com/DwO3E2c.png',
         width: 800,
         height: 800,
-        alt: 'Kit Piel de Porcelana Bioaqua Rice',
+        alt: 'Shilajit Ultra Potencia Natural',
       },
     ],
     locale: 'es_EC',
